@@ -13,6 +13,8 @@
 		3E49890923F6B1670082322E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890723F6B1670082322E /* Main.storyboard */; };
 		3E49890B23F6B16A0082322E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890A23F6B16A0082322E /* Assets.xcassets */; };
 		3E49890E23F6B16A0082322E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890C23F6B16A0082322E /* LaunchScreen.storyboard */; };
+		3EB62F8923F6BA2500C3F1D6 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB62F8823F6BA2500C3F1D6 /* AppAppearance.swift */; };
+		3EB62F8C23F6BC0400C3F1D6 /* ColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB62F8B23F6BC0400C3F1D6 /* ColorStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		3E49890A23F6B16A0082322E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E49890D23F6B16A0082322E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E49890F23F6B16A0082322E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EB62F8823F6BA2500C3F1D6 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
+		3EB62F8B23F6BC0400C3F1D6 /* ColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,33 @@
 		3E49890023F6B1670082322E /* TReader */ = {
 			isa = PBXGroup;
 			children = (
-				3E49890123F6B1670082322E /* AppDelegate.swift */,
-				3E49890323F6B1670082322E /* SceneDelegate.swift */,
-				3E49890523F6B1670082322E /* ViewController.swift */,
+				3EB62F8623F6B9F000C3F1D6 /* Code */,
 				3E49890723F6B1670082322E /* Main.storyboard */,
 				3E49890A23F6B16A0082322E /* Assets.xcassets */,
 				3E49890C23F6B16A0082322E /* LaunchScreen.storyboard */,
 				3E49890F23F6B16A0082322E /* Info.plist */,
 			);
 			path = TReader;
+			sourceTree = "<group>";
+		};
+		3EB62F8623F6B9F000C3F1D6 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				3EB62F8A23F6BBE800C3F1D6 /* Theme */,
+				3E49890123F6B1670082322E /* AppDelegate.swift */,
+				3E49890323F6B1670082322E /* SceneDelegate.swift */,
+				3E49890523F6B1670082322E /* ViewController.swift */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		3EB62F8A23F6BBE800C3F1D6 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				3EB62F8823F6BA2500C3F1D6 /* AppAppearance.swift */,
+				3EB62F8B23F6BC0400C3F1D6 /* ColorStyle.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +163,8 @@
 				3E49890623F6B1670082322E /* ViewController.swift in Sources */,
 				3E49890223F6B1670082322E /* AppDelegate.swift in Sources */,
 				3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */,
+				3EB62F8C23F6BC0400C3F1D6 /* ColorStyle.swift in Sources */,
+				3EB62F8923F6BA2500C3F1D6 /* AppAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
