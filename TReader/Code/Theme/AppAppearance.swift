@@ -17,6 +17,8 @@ struct AppAppearance {
     static func setupTabbarAppearance(_ tabBar: UITabBar) {
         let appearance = UITabBarAppearance()
         appearance.backgroundColor = ColorStyle.menuGray.color
+        appearance.stackedLayoutAppearance.normal.iconColor = ColorStyle.iconsLight.color
+        appearance.stackedLayoutAppearance.selected.iconColor = ColorStyle.menuDark.color
         tabBar.standardAppearance = appearance
     }
 
