@@ -20,7 +20,7 @@ class BooksListViewController: UICollectionViewController {
         collectionView.delegate = nil
         collectionView.dataSource = nil
 
-        let books = Observable.just([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+        let books = Observable.just([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
         let cellIdentifier = BooksListItemCell.reuseIdentifier
         let cellType = BooksListItemCell.self
 

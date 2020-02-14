@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +10,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="dwd-xS-ykM">
             <objects>
-                <tabBarController id="W7M-16-6jQ" sceneMemberID="viewController">
+                <tabBarController wantsFullScreenLayout="YES" id="W7M-16-6jQ" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="D8h-ai-ywO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -28,7 +27,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Uxd-DL-HM5">
             <objects>
-                <navigationController id="4TL-Jn-UHF" sceneMemberID="viewController">
+                <navigationController wantsFullScreenLayout="YES" id="4TL-Jn-UHF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="Library" id="jgi-7H-cPj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wML-pR-6e7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -42,7 +41,7 @@
             </objects>
             <point key="canvasLocation" x="-739" y="-920"/>
         </scene>
-        <!--Books List View Controller-->
+        <!--Library-->
         <scene sceneID="7MK-uY-2SW">
             <objects>
                 <collectionViewController id="vSW-sS-pMc" customClass="BooksListViewController" customModule="TReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,7 +49,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="17" id="IPg-9F-8FD">
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="15" id="IPg-9F-8FD">
                             <size key="itemSize" width="0.0" height="0.0"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -58,24 +57,23 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BooksListItemCell" id="ZgH-2K-3nh" customClass="BooksListItemCell" customModule="TReader" customModuleProvider="target">
-                                <rect key="frame" x="12" y="12" width="78" height="143"/>
+                                <rect key="frame" x="12" y="12" width="76" height="145"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="l2F-wl-Bgu">
-                                    <rect key="frame" x="0.0" y="0.0" width="78" height="143"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="76" height="145"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tCc-0w-zEg">
-                                            <rect key="frame" x="2" y="0.0" width="76" height="108"/>
-                                            <color key="backgroundColor" name="Orange"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="76" height="108"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="108" id="AEz-2A-0zE"/>
                                                 <constraint firstAttribute="width" constant="76" id="bsS-44-jLm"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJE-vb-jFR">
-                                            <rect key="frame" x="0.0" y="113" width="78" height="30"/>
+                                            <rect key="frame" x="4" y="113" width="68" height="32"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="dUJ-LZ-iiU"/>
+                                                <constraint firstAttribute="height" constant="32" id="dUJ-LZ-iiU"/>
                                             </constraints>
                                             <string key="text">Label
 Label
@@ -85,15 +83,14 @@ Label</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" name="MenuGray"/>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="CJE-vb-jFR" secondAttribute="trailing" constant="4" id="Atf-g6-wim"/>
                                         <constraint firstItem="tCc-0w-zEg" firstAttribute="top" secondItem="l2F-wl-Bgu" secondAttribute="top" id="OM2-hU-4mO"/>
+                                        <constraint firstItem="CJE-vb-jFR" firstAttribute="leading" secondItem="l2F-wl-Bgu" secondAttribute="leading" constant="4" id="TLb-vw-qdA"/>
                                         <constraint firstItem="CJE-vb-jFR" firstAttribute="top" secondItem="tCc-0w-zEg" secondAttribute="bottom" constant="5" id="f5c-k3-fDG"/>
-                                        <constraint firstItem="tCc-0w-zEg" firstAttribute="leading" secondItem="l2F-wl-Bgu" secondAttribute="leading" constant="2" id="oaz-34-3XI"/>
+                                        <constraint firstItem="tCc-0w-zEg" firstAttribute="leading" secondItem="l2F-wl-Bgu" secondAttribute="leading" id="oaz-34-3XI"/>
                                         <constraint firstAttribute="trailing" secondItem="tCc-0w-zEg" secondAttribute="trailing" id="qsA-dc-dw2"/>
                                         <constraint firstAttribute="bottom" secondItem="CJE-vb-jFR" secondAttribute="bottom" id="rqp-To-l76"/>
-                                        <constraint firstAttribute="trailing" secondItem="CJE-vb-jFR" secondAttribute="trailing" id="yhH-bC-did"/>
-                                        <constraint firstItem="CJE-vb-jFR" firstAttribute="leading" secondItem="l2F-wl-Bgu" secondAttribute="leading" id="yog-cX-y35"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
@@ -103,7 +100,7 @@ Label</string>
                             </collectionViewCell>
                         </cells>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="GVs-zw-98y"/>
+                    <navigationItem key="navigationItem" title="Library" id="GVs-zw-98y"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6T-D6-Puw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -112,11 +109,5 @@ Label</string>
     </scenes>
     <resources>
         <image name="Library" width="20" height="18"/>
-        <namedColor name="MenuGray">
-            <color red="0.73299998044967651" green="0.74900001287460327" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Orange">
-            <color red="0.87800002098083496" green="0.62400001287460327" blue="0.21600000560283661" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

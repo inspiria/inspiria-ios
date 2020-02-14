@@ -26,6 +26,9 @@ struct AppAppearance {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithDefaultBackground()
         appearance.backgroundColor = ColorStyle.textGray.color
+        appearance.titleTextAttributes = [.foregroundColor: ColorStyle.bkgrndWhite.color]
+        appearance.largeTitleTextAttributes = [.foregroundColor: ColorStyle.bkgrndWhite.color]
+
         navBar.standardAppearance = appearance
     }
     
