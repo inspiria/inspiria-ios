@@ -15,26 +15,16 @@ struct AppAppearance {
     }
 
     static func setupTabbarAppearance(_ tabBar: UITabBar) {
-        tabBar.barTintColor = ColorStyle.menuGray.color
-        tabBar.tintColor = ColorStyle.menuGray.color
-
-        if #available(iOS 13.0, *) {
-            let appearance = UITabBarAppearance()
-            appearance.backgroundColor = ColorStyle.menuGray.color
-            tabBar.standardAppearance = appearance
-        }
+        let appearance = UITabBarAppearance()
+        appearance.backgroundColor = ColorStyle.menuGray.color
+        tabBar.standardAppearance = appearance
     }
 
     static func setupNavBarAppearance(_ navBar: UINavigationBar) {
-        navBar.isTranslucent = false
-        navBar.backgroundColor = ColorStyle.textGray.color
-
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithDefaultBackground()
-            appearance.backgroundColor = ColorStyle.textGray.color
-            navBar.standardAppearance = appearance
-        }
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundColor = ColorStyle.textGray.color
+        navBar.standardAppearance = appearance
     }
     
 }
