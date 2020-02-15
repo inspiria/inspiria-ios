@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BookProgressView: UIView {
+class BooksListItemProgress: UIView {
 
     private let bgColor = ColorStyle.bkgrndWhite.color.withAlphaComponent(0.75)
 

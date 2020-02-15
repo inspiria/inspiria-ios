@@ -15,13 +15,13 @@ import RxGesture
 class BooksListItemCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var progress: BookProgressView!
+    @IBOutlet weak var progress: BooksListItemProgress!
 
     var disposeBag = DisposeBag()
 
-    func set(index: Int) {
-        image.image = UIImage(named: "\(index)")
-        title.text = "This is book with id: \(index)" + (Bool.random() ? " The longer name\nand new line\nnew line" : "")
+    func set(book: Book) {
+        image.image = UIImage(named: "\(book.imageName)")
+        title.text = book.title
 
         disposeBag = DisposeBag()
 

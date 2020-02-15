@@ -16,9 +16,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="4TL-Jn-UHF" kind="relationship" relationship="viewControllers" id="4zn-q4-MaJ"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i9r-Dh-dpy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -27,15 +24,12 @@
         <!--Navigation Controller-->
         <scene sceneID="Uxd-DL-HM5">
             <objects>
-                <navigationController wantsFullScreenLayout="YES" id="4TL-Jn-UHF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="BooksListNavigationController" wantsFullScreenLayout="YES" id="4TL-Jn-UHF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="Library" id="jgi-7H-cPj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wML-pR-6e7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="vSW-sS-pMc" kind="relationship" relationship="rootViewController" id="hay-lN-l4N"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpa-GJ-2u0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,7 +38,7 @@
         <!--Library-->
         <scene sceneID="7MK-uY-2SW">
             <objects>
-                <collectionViewController id="vSW-sS-pMc" customClass="BooksListViewController" customModule="TReader" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="BooksListViewController" id="vSW-sS-pMc" customClass="BooksListViewController" customModule="TReader" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7Bl-X0-Sc2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,17 +59,18 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiw-4g-NQ7">
                                             <rect key="frame" x="2" y="77" width="72" height="10"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" priority="999" constant="72" id="p0S-B1-9zf"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="8"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tCc-0w-zEg">
                                             <rect key="frame" x="0.0" y="0.0" width="76" height="72"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="999" constant="108" id="Rgy-kV-K8x"/>
+                                                <constraint firstAttribute="width" priority="999" constant="76" id="f2c-OH-9jm"/>
+                                            </constraints>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7l-TY-vYV" customClass="BookProgressView" customModule="TReader" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7l-TY-vYV" customClass="BooksListItemProgress" customModule="TReader" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="76" height="72"/>
                                         </view>
                                     </subviews>

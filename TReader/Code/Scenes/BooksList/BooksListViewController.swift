@@ -14,18 +14,34 @@ import NSObject_Rx
 
 class BooksListViewController: UICollectionViewController {
 
+    var viewModel: BooksListViewModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureView()
+        bindViewModel()
+    }
+
+    func configureView() {
         collectionView.delegate = nil
         collectionView.dataSource = nil
+    }
 
-        let books = Observable.just([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+    private func bindViewModel() {
+
+        let input = BooksListViewModel.Input()
+        let output = viewModel.transform(input: input)
+
         let cellIdentifier = BooksListItemCell.reuseIdentifier
         let cellType = BooksListItemCell.self
 
-        books.bind(to: collectionView.rx
-            .items(cellIdentifier: cellIdentifier, cellType: cellType)) { _, index, cell in cell.set(index: index) }
+        output.books
+            .asObservable()
+            .bind(to: collectionView.rx
+                .items(cellIdentifier: cellIdentifier, cellType: cellType)) { _, model, cell in
+                    cell.set(book: model)
+        }
         .disposed(by: rx.disposeBag)
     }
 }
