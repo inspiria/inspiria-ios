@@ -10,5 +10,6 @@ target 'TReader' do
 
   pod 'RxOptional'
   pod 'NSObject+Rx'
+  pod 'RxGesture'
 
 end

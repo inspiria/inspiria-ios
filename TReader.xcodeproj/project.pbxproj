@@ -17,6 +17,7 @@
 		3EC05CC423F6CF7800862940 /* BooksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC05CC323F6CF7800862940 /* BooksListViewController.swift */; };
 		3EC05CC623F6D0C300862940 /* BooksListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC05CC523F6D0C300862940 /* BooksListItemCell.swift */; };
 		3EC05CC923F6D22E00862940 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC05CC823F6D22E00862940 /* ReusableView.swift */; };
+		3EC05CCB23F7F71800862940 /* BookProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC05CCA23F7F71800862940 /* BookProgressView.swift */; };
 		AAA5DDD24CC0A2A5CE5DB2E0 /* Pods_TReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		3EC05CC323F6CF7800862940 /* BooksListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksListViewController.swift; sourceTree = "<group>"; };
 		3EC05CC523F6D0C300862940 /* BooksListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListItemCell.swift; sourceTree = "<group>"; };
 		3EC05CC823F6D22E00862940 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		3EC05CCA23F7F71800862940 /* BookProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookProgressView.swift; sourceTree = "<group>"; };
 		591C195EBB897077DA992FD1 /* Pods-TReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TReader.debug.xcconfig"; path = "Target Support Files/Pods-TReader/Pods-TReader.debug.xcconfig"; sourceTree = "<group>"; };
 		91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -106,6 +108,7 @@
 			children = (
 				3EC05CC323F6CF7800862940 /* BooksListViewController.swift */,
 				3EC05CC523F6D0C300862940 /* BooksListItemCell.swift */,
+				3EC05CCA23F7F71800862940 /* BookProgressView.swift */,
 			);
 			path = BooksList;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */,
 				3EB62F8C23F6BC0400C3F1D6 /* ColorStyle.swift in Sources */,
 				3EB62F8923F6BA2500C3F1D6 /* AppAppearance.swift in Sources */,
+				3EC05CCB23F7F71800862940 /* BookProgressView.swift in Sources */,
 				3EC05CC423F6CF7800862940 /* BooksListViewController.swift in Sources */,
 				3EC05CC923F6D22E00862940 /* ReusableView.swift in Sources */,
 				3EC05CC623F6D0C300862940 /* BooksListItemCell.swift in Sources */,
