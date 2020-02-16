@@ -11,24 +11,32 @@ import RxCocoa
 import RxSwift
 
 class BooksListViewModel {
-    let booksUseCase: BooksUseCase
+    private let booksUseCase: BooksUseCase
+    private let navigator: BooksListNavigator
 
-    init (booksUseCase: BooksUseCase) {
+    init (booksUseCase: BooksUseCase, navigator: BooksListNavigator) {
         self.booksUseCase = booksUseCase
+        self.navigator = navigator
     }
 
     func transform(input: Input) -> Output {
-
         let books = self.booksUseCase.books().asDriver(onErrorJustReturn: [])
 
-        return Output(books: books)
+        let select = input.onSelect
+            .withLatestFrom(books) { $1[$0] }
+            .do(onNext: navigator.to)
+            .mapToVoid()
+
+        return Output(books: books, select: select)
     }
 }
 
 extension BooksListViewModel {
     struct Input {
+        let onSelect: Driver<Int>
     }
     struct Output {
         let books: Driver<[Book]>
+        let select: Driver<Void>
     }
 }

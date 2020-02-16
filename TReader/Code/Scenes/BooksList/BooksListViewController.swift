@@ -30,7 +30,8 @@ class BooksListViewController: UICollectionViewController {
 
     private func bindViewModel() {
 
-        let input = BooksListViewModel.Input()
+        let itemSelected = collectionView.rx.itemSelected.asDriver().map { $0.row }
+        let input = BooksListViewModel.Input(onSelect: itemSelected)
         let output = viewModel.transform(input: input)
 
         let cellIdentifier = BooksListItemCell.reuseIdentifier
@@ -43,6 +44,10 @@ class BooksListViewController: UICollectionViewController {
                     cell.set(book: model)
         }
         .disposed(by: rx.disposeBag)
+
+        output.select
+            .drive()
+            .disposed(by: rx.disposeBag)
     }
 }
 

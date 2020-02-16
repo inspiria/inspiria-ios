@@ -11,6 +11,7 @@ import RxSwift
 
 protocol BooksUseCase {
     func books() -> Single<[Book]>
+    func book(id: Int) -> Single<[Chapter]>
 }
 
 class DefaultBooksUseCase: BooksUseCase {
@@ -22,5 +23,9 @@ class DefaultBooksUseCase: BooksUseCase {
 
     func books() -> Single<[Book]> {
         return networkService.request(path: "books", method: .get)
+    }
+
+    func book(id: Int) -> Single<[Chapter]> {
+        return networkService.request(path: "book/\(id)", method: .get)
     }
 }

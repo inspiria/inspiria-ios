@@ -28,13 +28,14 @@ class DefaultBooksListNavigator: BooksListNavigator {
 
     func toList() {
         let controller = storyboard.instantiateViewController(withIdentifier: BooksListViewController.identifier) as! BooksListViewController
-        controller.viewModel = BooksListViewModel(booksUseCase: services.booksUseCase())
+        controller.viewModel = BooksListViewModel(booksUseCase: services.booksUseCase(), navigator: self)
 
         rootController.viewControllers = [controller]
     }
 
     func to(book: Book) {
-
+        let navigator = DefaultBookNavigator(services: services, storyboard: storyboard, controller: rootController)
+        navigator.toBook(id: book.id)
     }
     
 }
