@@ -1,4 +1,7 @@
 PODS:
+  - Kingfisher (5.13.0):
+    - Kingfisher/Core (= 5.13.0)
+  - Kingfisher/Core (5.13.0)
   - "NSObject+Rx (5.0.2)":
     - RxSwift (~> 5.0)
   - RxCocoa (5.0.1):
@@ -15,6 +18,7 @@ PODS:
   - RxSwift (5.0.1)
 
 DEPENDENCIES:
+  - Kingfisher (~> 5.0)
   - "NSObject+Rx"
   - RxCocoa (~> 5)
   - RxGesture
@@ -24,6 +28,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Kingfisher
     - "NSObject+Rx"
     - RxCocoa
     - RxGesture
@@ -32,6 +37,7 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
+  Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
   "NSObject+Rx": 2eb2cf51fd1c554118449a7fbc36e4cd620b9e94
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
   RxGesture: a3f8dd6adf078110ed5e1c9c30d09d705a09852e
@@ -39,6 +45,6 @@ SPEC CHECKSUMS:
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
 
-PODFILE CHECKSUM: 6c2c7e86f0a3c2a929e0e61eb17a47bdd906ee8a
+PODFILE CHECKSUM: 8024ccb98be5afade678ba51e7dde627280ac521
 
 COCOAPODS: 1.8.4

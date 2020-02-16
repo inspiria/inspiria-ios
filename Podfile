@@ -12,4 +12,6 @@ target 'TReader' do
   pod 'NSObject+Rx'
   pod 'RxGesture'
 
+  pod 'Kingfisher', '~> 5.0'
+
 end

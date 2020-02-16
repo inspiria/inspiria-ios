@@ -13,5 +13,5 @@ struct Book: Codable {
     let title: String
     let subtitle: String
     let year: Int
-    let coverImage: String
+    let coverImageUrl: String
 }
