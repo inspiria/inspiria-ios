@@ -11,5 +11,7 @@ import Foundation
 struct Book: Codable {
     let id: Int
     let title: String
-    let imageName: String
+    let subtitle: String
+    let year: Int
+    let coverImage: String
 }

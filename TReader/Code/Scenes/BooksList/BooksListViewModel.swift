@@ -19,7 +19,9 @@ class BooksListViewModel {
 
     func transform(input: Input) -> Output {
 
-        return Output(books: Driver.just(booksUseCase.books()))
+        let books = self.booksUseCase.books().asDriver(onErrorJustReturn: [])
+
+        return Output(books: books)
     }
 }
 

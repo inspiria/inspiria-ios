@@ -7,20 +7,20 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol BooksUseCase {
-    func books() -> [Book]
+    func books() -> Single<[Book]>
 }
 
 class DefaultBooksUseCase: BooksUseCase {
-    func books() -> [Book] {
-        var books = [Book]()
-        for index in 1...100 {
-            let title = "This is book with id: \(index)" + (Bool.random() ? "\nand new line\nnew line\nnew line" : "")
-            let image = "\(index % 11)"
-            let book = Book(id: index, title: title, imageName: image)
-            books.append(book)
-        }
-        return books
+    private let networkService: NetworkService
+
+    init(networkService: NetworkService) {
+        self.networkService = networkService
+    }
+
+    func books() -> Single<[Book]> {
+        return networkService.request(path: "books", method: .get)
     }
 }

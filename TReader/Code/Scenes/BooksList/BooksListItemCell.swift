@@ -20,7 +20,7 @@ class BooksListItemCell: UICollectionViewCell {
     var disposeBag = DisposeBag()
 
     func set(book: Book) {
-        image.image = UIImage(named: "\(book.imageName)")
+        image.image = UIImage(named: "1")
         title.text = book.title
 
         disposeBag = DisposeBag()

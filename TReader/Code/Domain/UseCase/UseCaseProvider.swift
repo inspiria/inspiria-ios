@@ -16,7 +16,7 @@ class DefaultUseCaseProvider: UseCaseProvider {
     static var provider = DefaultUseCaseProvider()
 
     func booksUseCase() -> BooksUseCase {
-        return DefaultBooksUseCase()
+        return DefaultBooksUseCase(networkService: NetworkService(url: "http://localhost:3000"))
     }
 
 }
