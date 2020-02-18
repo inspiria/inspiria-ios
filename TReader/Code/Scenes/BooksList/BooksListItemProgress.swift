@@ -25,7 +25,7 @@ class BooksListItemProgress: UIView {
             setNeedsDisplay()
         }
     }
-    var progress: Float = 0 {
+    var progress: Double = 0 {
         didSet {
             setNeedsDisplay()
         }

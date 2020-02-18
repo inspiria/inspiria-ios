@@ -13,5 +13,5 @@ target 'TReader' do
   pod 'RxGesture'
 
   pod 'Kingfisher', '~> 5.0'
-
+  pod 'Zip', '~> 1.1'
 end

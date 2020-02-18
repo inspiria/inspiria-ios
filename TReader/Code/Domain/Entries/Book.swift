@@ -8,10 +8,24 @@
 
 import Foundation
 
+struct BookShort: Codable {
+    let id: Int
+    let title: String
+    let subtitle: String
+    let year: Int
+    let coverImageUrl: String
+}
+
 struct Book: Codable {
     let id: Int
     let title: String
     let subtitle: String
     let year: Int
     let coverImageUrl: String
+    let chapters: [Chapter]
+}
+
+struct FileProgress: Codable {
+    let progress: Double
+    let data: Data?
 }

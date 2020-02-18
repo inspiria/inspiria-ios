@@ -67,16 +67,15 @@ class NetworkService {
                     if let error = error {
                         throw error
                     }
-                    guard let code = (response as? HTTPURLResponse)?.statusCode else {
-                        throw NetworkError.response("No status code")
+                    guard let response = response as? HTTPURLResponse else {
+                        throw NetworkError.response("Not HTTPURLResponse")
                     }
-                    guard let data = data, let str = String(data: data, encoding: .utf8) else {
-                        throw NetworkError.response("Failed to convert response data to string")
+                    if response.statusCode < 200 || response.statusCode >= 300 {
+                        let str = data.flatMap { String(data: $0, encoding: .utf8) } ?? ""
+                        throw NetworkError.HTTPCode(response.statusCode, str)
                     }
-                    if code < 200 || code >= 300 {
-                        throw NetworkError.HTTPCode(code, str)
-                    } else if code == 204 {
-                        return single(.success(try T(json: "{}")))
+                    guard let data = data else {
+                        throw NetworkError.response("Failed to retrieve response data")
                     }
                     do {
                         single(.success(try T(data: data)))
@@ -93,6 +92,48 @@ class NetworkService {
             }.resume()
             return Disposables.create()
         }
+        .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+        .observeOn(MainScheduler.instance)
+    }
+
+    func fileRequest(path: String) -> Observable<FileProgress> {
+        let url = URLComponents(string: "\(self.url)/\(path)")!.url!
+        var req = URLRequest(url: url)
+        req.httpMethod = HTTPMethod.get.rawValue
+        var observation: NSKeyValueObservation?
+
+        return Observable.create { observable in
+            let task = URLSession.shared.dataTask(with: req) { data, response, error in
+                do {
+                    if let error = error {
+                        throw error
+                    }
+                    guard let response = response as? HTTPURLResponse else {
+                        throw NetworkError.response("Not HTTPURLResponse")
+                    }
+                    if response.statusCode < 200 || response.statusCode >= 300 {
+                        let str = data.flatMap { String(data: $0, encoding: .utf8) } ?? ""
+                        throw NetworkError.HTTPCode(response.statusCode, str)
+                    }
+                    guard let data = data else {
+                        throw NetworkError.response("Failed to retrieve response data")
+                    }
+                    let file = FileProgress(progress: 1.0, data: data)
+                    print("done!")
+                    observable.on(.next(file))
+                    observable.on(.completed)
+                } catch {
+                    observable.on(.error(error))
+                }
+            }
+            observation = task.progress.observe(\.fractionCompleted) { progress, _ in
+                observable.on(.next(FileProgress(progress: progress.fractionCompleted, data: nil)))
+            }
+            task.resume()
+            return Disposables.create()
+        }
+        .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+        .observeOn(MainScheduler.instance)
     }
 }
 

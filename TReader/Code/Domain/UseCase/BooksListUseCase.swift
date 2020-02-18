@@ -1,5 +1,5 @@
 //
-//  BooksUseCase.swift
+//  BooksListUseCase.swift
 //  TReader
 //
 //  Created by tadas on 2020-02-15.
@@ -9,23 +9,18 @@
 import Foundation
 import RxSwift
 
-protocol BooksUseCase {
-    func books() -> Single<[Book]>
-    func book(id: Int) -> Single<[Chapter]>
+protocol BooksListUseCase {
+    func books() -> Single<[BookShort]>
 }
 
-class DefaultBooksUseCase: BooksUseCase {
+class DefaultBooksListUseCase: BooksListUseCase {
     private let networkService: NetworkService
 
     init(networkService: NetworkService) {
         self.networkService = networkService
     }
 
-    func books() -> Single<[Book]> {
+    func books() -> Single<[BookShort]> {
         return networkService.request(path: "books", method: .get)
-    }
-
-    func book(id: Int) -> Single<[Chapter]> {
-        return networkService.request(path: "book/\(id)", method: .get)
     }
 }

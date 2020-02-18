@@ -11,24 +11,25 @@ import RxSwift
 import RxCocoa
 
 class BookViewModel {
-    private let booksUseCase: BooksUseCase
+    private let bookUseCase: BookUseCase
     private let navigator: BookNavigator
     private let bookId: Int
 
-    init (booksUseCase: BooksUseCase,
+    init (bookUseCase: BookUseCase,
           navigator: BookNavigator,
           bookId: Int) {
-        self.booksUseCase = booksUseCase
+        self.bookUseCase = bookUseCase
         self.navigator = navigator
         self.bookId = bookId
     }
 
     func transform(input: Input) -> Output {
-        let chapters = Driver.just(bookId)
-            .flatMap { self.booksUseCase.book(id: $0)
-                .asDriver(onErrorJustReturn: [])
-        }
-        return Output(chapters: chapters)
+        let book = bookUseCase
+            .book(id: bookId)
+            .asObservable()
+            .asDriverOnErrorJustComplete()
+
+        return Output(book: book)
     }
 }
 
@@ -36,6 +37,6 @@ extension BookViewModel {
     struct Input {
     }
     struct Output {
-        let chapters: Driver<[Chapter]>
+        let book: Driver<Book>
     }
 }

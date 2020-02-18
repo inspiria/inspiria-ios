@@ -29,10 +29,12 @@ class BookViewController: UITableViewController {
         let input = BookViewModel.Input()
         let output = viewModel.transform(input: input)
 
-        output.chapters
+        output.book
+            .map { $0.chapters }
             .asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (row, element, cell) in
-                cell.textLabel?.text = "\(element.id) \n \(element.title)"
+            .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (row, model, cell) in
+                let number = model.showNumber == 1 ? "\(Int(floor(model.order)))." : " "
+                cell.textLabel?.text = "\(number) \(model.title)"
         }
         .disposed(by: rx.disposeBag)
     }

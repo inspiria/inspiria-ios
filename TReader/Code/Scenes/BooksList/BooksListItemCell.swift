@@ -15,23 +15,37 @@ import Kingfisher
 class BooksListItemCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var progress: BooksListItemProgress!
+    @IBOutlet weak var progressHud: BooksListItemProgress!
 
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
+    private let usecase = DefaultUseCaseProvider.provider.bookUseCase()
 
-    func set(book: Book) {
-        setCover(url: book.coverImageUrl)
-        title.text = book.title
+    func set(book: BookState) {
+        setCover(url: book.book.coverImageUrl)
+        title.text = book.book.title
+
+        if book.downloaded {
+            progressHud.state = .downloaded
+            return
+        }
 
         disposeBag = DisposeBag()
-        progress.state = .waiting
+        progressHud.state = .waiting
 
-        progress.rx
+        progressHud.rx
             .tapGesture()
             .skip(1)
-            .map { _ in }
-            .subscribe(onNext: animate)
-            .disposed(by: disposeBag)
+            .flatMap { [unowned self] _ in self.usecase.downloadBook(id: book.book.id) }
+            .subscribe(onNext: { [unowned self] progress in
+                if progress < 1 {
+                    self.progressHud.state = .downloading
+                    self.progressHud.progress = progress
+                } else {
+                    self.progressHud.state = .downloaded
+                }
+                }, onError: { [unowned self] error in
+                    self.progressHud.state = Bool.random() ? .downloaded : .error
+            }).disposed(by: disposeBag)
     }
 
     private func setCover(url: String) {
@@ -48,22 +62,6 @@ class BooksListItemCell: UICollectionViewCell {
                       .transition(.fade(1)),
                       .cacheOriginalImage,
                       .onFailureImage(#imageLiteral(resourceName: "BookCover"))
-            ])
-    }
-
-    private func animate() {
-        progress.state = .downloading
-        progress.progress = 0.0
-
-        let timer = Observable<Int>.interval(0.01, scheduler: MainScheduler.instance)
-        timer.subscribe(onNext: { [unowned self] _ in
-            if self.progress.progress < 1 {
-                self.progress.state = .downloading
-                self.progress.progress += 0.02
-            } else {
-                self.progress.state = Bool.random() ? .downloaded : .error
-                self.disposeBag = DisposeBag()
-            }
-        }).disposed(by: disposeBag)
+        ])
     }
 }

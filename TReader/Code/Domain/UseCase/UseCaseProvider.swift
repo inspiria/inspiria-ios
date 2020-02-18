@@ -9,14 +9,25 @@
 import Foundation
 
 protocol UseCaseProvider {
-    func booksUseCase() -> BooksUseCase
+    func booksListUseCase() -> BooksListUseCase
+    func bookUseCase() -> BookUseCase
 }
 
 class DefaultUseCaseProvider: UseCaseProvider {
     static var provider = DefaultUseCaseProvider()
 
-    func booksUseCase() -> BooksUseCase {
-        return DefaultBooksUseCase(networkService: NetworkService(url: "http://localhost:3000"))
+    private  let mNetworkService: NetworkService
+
+    init() {
+        mNetworkService = NetworkService(url: "http://localhost:3000")
+    }
+
+    func booksListUseCase() -> BooksListUseCase {
+        return DefaultBooksListUseCase(networkService: mNetworkService)
+    }
+
+    func bookUseCase() -> BookUseCase {
+        return DefaultBookUseCase(networkService: mNetworkService)
     }
 
 }
