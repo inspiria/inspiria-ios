@@ -8,20 +8,17 @@
 
 import Foundation
 
-struct BookShort: Codable {
+struct BookInfo: Codable {
     let id: Int
     let title: String
     let subtitle: String
+    let version: String
     let year: Int
     let coverImageUrl: String
 }
 
 struct Book: Codable {
-    let id: Int
-    let title: String
-    let subtitle: String
-    let year: Int
-    let coverImageUrl: String
+    let info: BookInfo
     let chapters: [Chapter]
 }
 

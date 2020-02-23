@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol BooksListUseCase {
-    func books() -> Single<[BookShort]>
+    func books() -> Single<[BookInfo]>
 }
 
 class DefaultBooksListUseCase: BooksListUseCase {
@@ -20,7 +20,7 @@ class DefaultBooksListUseCase: BooksListUseCase {
         self.networkService = networkService
     }
 
-    func books() -> Single<[BookShort]> {
+    func books() -> Single<[BookInfo]> {
         return networkService.request(path: "books", method: .get)
     }
 }

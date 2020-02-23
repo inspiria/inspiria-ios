@@ -19,7 +19,7 @@ class DefaultUseCaseProvider: UseCaseProvider {
     private  let mNetworkService: NetworkService
 
     init() {
-        mNetworkService = NetworkService(url: "http://localhost:3000")
+        mNetworkService = NetworkService(url: "http://10.0.1.105:3000")
     }
 
     func booksListUseCase() -> BooksListUseCase {

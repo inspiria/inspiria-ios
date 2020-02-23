@@ -40,7 +40,7 @@ class BooksListViewModel {
 
 struct BookState {
     let downloaded: Bool
-    let book: BookShort
+    let book: BookInfo
 }
 
 extension BooksListViewModel {

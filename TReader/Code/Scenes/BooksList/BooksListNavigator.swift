@@ -10,7 +10,7 @@ import UIKit
 
 protocol BooksListNavigator {
     func toList()
-    func to(book: BookShort)
+    func to(book: BookInfo)
 }
 
 class DefaultBooksListNavigator: BooksListNavigator {
@@ -35,7 +35,7 @@ class DefaultBooksListNavigator: BooksListNavigator {
         rootController.viewControllers = [controller]
     }
 
-    func to(book: BookShort) {
+    func to(book: BookInfo) {
         let navigator = DefaultBookNavigator(services: services, storyboard: storyboard, controller: rootController)
         navigator.toBook(id: book.id)
     }
