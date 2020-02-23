@@ -119,15 +119,16 @@ class NetworkService {
                         throw NetworkError.response("Failed to retrieve response data")
                     }
                     let file = FileProgress(progress: 1.0, data: data)
-                    print("done!")
-                    observable.on(.next(file))
-                    observable.on(.completed)
+                    observable.onNext(file)
+                    observable.onCompleted()
                 } catch {
-                    observable.on(.error(error))
+                    observable.onError(error)
                 }
             }
             observation = task.progress.observe(\.fractionCompleted) { progress, _ in
-                observable.on(.next(FileProgress(progress: progress.fractionCompleted, data: nil)))
+                if progress.fractionCompleted < 1.0 {
+                    observable.onNext(FileProgress(progress: progress.fractionCompleted, data: nil))
+                }
             }
             task.resume()
             return Disposables.create()

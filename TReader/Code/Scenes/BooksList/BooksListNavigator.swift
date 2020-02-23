@@ -27,11 +27,8 @@ class DefaultBooksListNavigator: BooksListNavigator {
     }
 
     func toList() {
-        let controller = storyboard.instantiateViewController(withIdentifier: BooksListViewController.identifier) as! BooksListViewController
-        controller.viewModel = BooksListViewModel(booksListUseCase: services.booksListUseCase(),
-                                                  bookUseCase: services.bookUseCase(),
-                                                  navigator: self)
-
+        let controller: BooksListViewController = storyboard.instantiateViewController()
+        controller.viewModel = BooksListViewModel(booksUseCase: services.booksUseCase(), navigator: self)
         rootController.viewControllers = [controller]
     }
 

@@ -9,8 +9,7 @@
 import Foundation
 
 protocol UseCaseProvider {
-    func booksListUseCase() -> BooksListUseCase
-    func bookUseCase() -> BookUseCase
+    func booksUseCase() -> BooksUseCase
 }
 
 class DefaultUseCaseProvider: UseCaseProvider {
@@ -19,15 +18,12 @@ class DefaultUseCaseProvider: UseCaseProvider {
     private  let mNetworkService: NetworkService
 
     init() {
-        mNetworkService = NetworkService(url: "http://10.0.1.105:3000")
+        mNetworkService = NetworkService(url: "http://172.20.10.3:8080")
     }
 
-    func booksListUseCase() -> BooksListUseCase {
-        return DefaultBooksListUseCase(networkService: mNetworkService)
+    func booksUseCase() -> BooksUseCase {
+        return DefaultBooksUseCase(networkService: mNetworkService,
+                                   bookStorage: DefaultBooksStorage(userDefaults: UserDefaults.standard,
+                                                                    fileManager: FileManager.default))
     }
-
-    func bookUseCase() -> BookUseCase {
-        return DefaultBookUseCase(networkService: mNetworkService)
-    }
-
 }

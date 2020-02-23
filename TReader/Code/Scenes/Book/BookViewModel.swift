@@ -11,20 +11,20 @@ import RxSwift
 import RxCocoa
 
 class BookViewModel {
-    private let bookUseCase: BookUseCase
+    private let booksUseCase: BooksUseCase
     private let navigator: BookNavigator
     private let bookId: Int
 
-    init (bookUseCase: BookUseCase,
+    init (booksUseCase: BooksUseCase,
           navigator: BookNavigator,
           bookId: Int) {
-        self.bookUseCase = bookUseCase
+        self.booksUseCase = booksUseCase
         self.navigator = navigator
         self.bookId = bookId
     }
 
     func transform(input: Input) -> Output {
-        let book = bookUseCase
+        let book = booksUseCase
             .book(id: bookId)
             .asObservable()
             .asDriverOnErrorJustComplete()

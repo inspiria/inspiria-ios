@@ -48,6 +48,10 @@ class BooksListViewController: UICollectionViewController {
         output.select
             .drive()
             .disposed(by: rx.disposeBag)
+
+        output.fetch
+            .drive()
+            .disposed(by: rx.disposeBag)
     }
 }
 

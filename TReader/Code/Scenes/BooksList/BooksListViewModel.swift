@@ -11,36 +11,29 @@ import RxCocoa
 import RxSwift
 
 class BooksListViewModel {
-    private let booksListUseCase: BooksListUseCase
-    private let bookUseCase: BookUseCase
+    private let booksUseCase: BooksUseCase
     private let navigator: BooksListNavigator
 
-    init (booksListUseCase: BooksListUseCase,
-          bookUseCase: BookUseCase,
-          navigator: BooksListNavigator) {
-        self.booksListUseCase = booksListUseCase
-        self.bookUseCase = bookUseCase
+    init (booksUseCase: BooksUseCase, navigator: BooksListNavigator) {
+        self.booksUseCase = booksUseCase
         self.navigator = navigator
     }
 
     func transform(input: Input) -> Output {
-        let books = self.booksListUseCase
-            .books()
-            .map { [unowned self] in $0.map { BookState(downloaded: self.bookUseCase.bookExists(id: $0.id), book: $0) } }
+        let books = booksUseCase.books()
             .asDriver(onErrorJustReturn: [])
 
         let select = input.onSelect
-            .withLatestFrom(books) { $1[$0].book }
+            .withLatestFrom(books) { $1[$0] }
             .do(onNext: navigator.to)
             .mapToVoid()
 
-        return Output(books: books, select: select)
-    }
-}
+        let fetch = booksUseCase
+            .fetchBooks()
+            .asDriver(onErrorJustReturn: ())
 
-struct BookState {
-    let downloaded: Bool
-    let book: BookInfo
+        return Output(books: books, select: select, fetch: fetch)
+    }
 }
 
 extension BooksListViewModel {
@@ -48,7 +41,8 @@ extension BooksListViewModel {
         let onSelect: Driver<Int>
     }
     struct Output {
-        let books: Driver<[BookState]>
+        let books: Driver<[BookInfo]>
         let select: Driver<Void>
+        let fetch: Driver<Void>
     }
 }

@@ -26,8 +26,8 @@ class DefaultBookNavigator: BookNavigator {
     }
 
     func toBook(id: Int) {
-        let viewController = storyboard.instantiateViewController(withIdentifier: BookViewController.identifier) as! BookViewController
-        viewController.viewModel = BookViewModel(bookUseCase: self.services.bookUseCase(),
+        let viewController: BookViewController = storyboard.instantiateViewController()
+        viewController.viewModel = BookViewModel(booksUseCase: self.services.booksUseCase(),
                                                  navigator: self,
                                                  bookId: id)
         rootController.pushViewController(viewController, animated: true)
