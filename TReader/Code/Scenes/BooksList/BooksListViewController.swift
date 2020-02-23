@@ -13,8 +13,9 @@ import RxCocoa
 import NSObject_Rx
 
 class BooksListViewController: UICollectionViewController {
-
     var viewModel: BooksListViewModel!
+    var editButton: UIBarButtonItem!
+    var toolbar: BooksListToolbar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,15 @@ class BooksListViewController: UICollectionViewController {
     func configureView() {
         collectionView.delegate = nil
         collectionView.dataSource = nil
+
+        editButton = UIBarButtonItem(title: "Edit", style: .done, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = editButton
+
+        guard let h = tabBarController?.tabBar.frame.height else { return }
+        let bounds = UIScreen.main.bounds
+        let frame = CGRect(x: 0, y: bounds.height - h, width: bounds.width, height: h)
+        toolbar = BooksListToolbar(frame: frame)
+        view.addSubview(toolbar)
     }
 
     private func bindViewModel() {
@@ -52,6 +62,26 @@ class BooksListViewController: UICollectionViewController {
         output.fetch
             .drive()
             .disposed(by: rx.disposeBag)
+
+        editButton.rx.tap.bind { [unowned self] _ in
+            self.edit()
+        }.disposed(by: rx.disposeBag)
+    }
+}
+
+private extension BooksListViewController {
+    func edit() {
+        if tabBarController!.tabBar.isHidden {
+            tabBarController?.tabBar.isHidden = false
+            toolbar.set(state: .hidden)
+            editButton.tintColor = ColorStyle.bkgrndWhite.color
+            editButton.title = "Edit"
+        } else {
+            tabBarController?.tabBar.isHidden = true
+            toolbar.set(state: .disabled)
+            editButton.tintColor = ColorStyle.orange.color
+            editButton.title = "Done"
+        }
     }
 }
 

@@ -18,6 +18,7 @@
 		3E49890923F6B1670082322E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890723F6B1670082322E /* Main.storyboard */; };
 		3E49890B23F6B16A0082322E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890A23F6B16A0082322E /* Assets.xcassets */; };
 		3E49890E23F6B16A0082322E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890C23F6B16A0082322E /* LaunchScreen.storyboard */; };
+		3E53649C2402E0A800C896D4 /* BooksListToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E53649B2402E0A800C896D4 /* BooksListToolbar.swift */; };
 		3E9CEDA924028858002E8FA3 /* BooksStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CEDA824028858002E8FA3 /* BooksStorage.swift */; };
 		3E9CEDAB2402A849002E8FA3 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CEDAA2402A849002E8FA3 /* Storyboard.swift */; };
 		3EB62F8923F6BA2500C3F1D6 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB62F8823F6BA2500C3F1D6 /* AppAppearance.swift */; };
@@ -51,6 +52,7 @@
 		3E49890A23F6B16A0082322E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E49890D23F6B16A0082322E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E49890F23F6B16A0082322E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E53649B2402E0A800C896D4 /* BooksListToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListToolbar.swift; sourceTree = "<group>"; };
 		3E9CEDA824028858002E8FA3 /* BooksStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksStorage.swift; sourceTree = "<group>"; };
 		3E9CEDAA2402A849002E8FA3 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		3EB62F8823F6BA2500C3F1D6 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				3EC05CC323F6CF7800862940 /* BooksListViewController.swift */,
+				3E53649B2402E0A800C896D4 /* BooksListToolbar.swift */,
 				3ED413F423F8795200BEC2C5 /* BooksListViewModel.swift */,
 				3EC05CC523F6D0C300862940 /* BooksListItemCell.swift */,
 				3EC05CCA23F7F71800862940 /* BooksListItemProgress.swift */,
@@ -368,6 +371,7 @@
 				3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */,
 				3ED413F523F8795200BEC2C5 /* BooksListViewModel.swift in Sources */,
 				3ED413EE23F875D700BEC2C5 /* BooksUseCase.swift in Sources */,
+				3E53649C2402E0A800C896D4 /* BooksListToolbar.swift in Sources */,
 				3E149F2123F9D112006968D4 /* BookViewModel.swift in Sources */,
 				3ED413F823F87D7000BEC2C5 /* BooksListNavigator.swift in Sources */,
 				3EB62F8C23F6BC0400C3F1D6 /* ColorStyle.swift in Sources */,

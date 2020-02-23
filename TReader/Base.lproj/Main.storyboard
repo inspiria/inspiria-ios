@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W7M-16-6jQ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -39,55 +40,61 @@
             <objects>
                 <collectionViewController storyboardIdentifier="BooksListViewController" id="vSW-sS-pMc" customClass="BooksListViewController" customModule="TReader" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7Bl-X0-Sc2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="15" id="IPg-9F-8FD">
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="IPg-9F-8FD">
                             <size key="itemSize" width="0.0" height="0.0"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="12" minY="12" maxX="12" maxY="12"/>
+                            <inset key="sectionInset" minX="4" minY="12" maxX="4" maxY="12"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BooksListItemCell" id="ZgH-2K-3nh" customClass="BooksListItemCell" customModule="TReader" customModuleProvider="target">
-                                <rect key="frame" x="12" y="12" width="76" height="108"/>
+                                <rect key="frame" x="4" y="12" width="86" height="113"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0pr-IY-ETd">
-                                    <rect key="frame" x="0.0" y="0.0" width="76" height="108"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="86" height="113"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiw-4g-NQ7">
-                                            <rect key="frame" x="2" y="77" width="72" height="10"/>
+                                            <rect key="frame" x="7" y="82" width="72" height="10"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="8"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tCc-0w-zEg">
-                                            <rect key="frame" x="0.0" y="0.0" width="76" height="72"/>
+                                            <rect key="frame" x="5" y="5" width="76" height="72"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="999" constant="108" id="Rgy-kV-K8x"/>
                                                 <constraint firstAttribute="width" priority="999" constant="76" id="f2c-OH-9jm"/>
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7l-TY-vYV" customClass="BooksListItemProgress" customModule="TReader" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="76" height="72"/>
+                                            <rect key="frame" x="5" y="5" width="76" height="72"/>
                                         </view>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SelectOpen" id="hbd-yD-Owl" customClass="SelectCheck">
+                                            <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="g7l-TY-vYV" firstAttribute="trailing" secondItem="tCc-0w-zEg" secondAttribute="trailing" id="2Ej-FH-mur"/>
-                                        <constraint firstItem="fiw-4g-NQ7" firstAttribute="leading" secondItem="0pr-IY-ETd" secondAttribute="leading" constant="2" id="5zc-ze-qTN"/>
-                                        <constraint firstItem="tCc-0w-zEg" firstAttribute="top" secondItem="0pr-IY-ETd" secondAttribute="top" id="6Fy-7c-yKk"/>
+                                        <constraint firstItem="fiw-4g-NQ7" firstAttribute="leading" secondItem="0pr-IY-ETd" secondAttribute="leading" constant="7" id="5zc-ze-qTN"/>
+                                        <constraint firstItem="tCc-0w-zEg" firstAttribute="top" secondItem="0pr-IY-ETd" secondAttribute="top" constant="5" id="6Fy-7c-yKk"/>
                                         <constraint firstAttribute="bottom" secondItem="tCc-0w-zEg" secondAttribute="bottom" constant="36" id="Drh-S2-JyJ"/>
                                         <constraint firstItem="g7l-TY-vYV" firstAttribute="bottom" secondItem="tCc-0w-zEg" secondAttribute="bottom" id="LAa-Ix-rZx"/>
-                                        <constraint firstAttribute="trailing" secondItem="fiw-4g-NQ7" secondAttribute="trailing" constant="2" id="M5k-Mg-f5y"/>
+                                        <constraint firstAttribute="trailing" secondItem="fiw-4g-NQ7" secondAttribute="trailing" constant="7" id="M5k-Mg-f5y"/>
                                         <constraint firstItem="g7l-TY-vYV" firstAttribute="top" secondItem="tCc-0w-zEg" secondAttribute="top" id="Rn9-9Y-v1l"/>
-                                        <constraint firstItem="tCc-0w-zEg" firstAttribute="leading" secondItem="0pr-IY-ETd" secondAttribute="leading" id="oap-Up-e9a"/>
-                                        <constraint firstAttribute="trailing" secondItem="tCc-0w-zEg" secondAttribute="trailing" id="rb6-m1-tbf"/>
+                                        <constraint firstItem="hbd-yD-Owl" firstAttribute="top" secondItem="tCc-0w-zEg" secondAttribute="top" constant="-5" id="U9v-YT-0fU"/>
+                                        <constraint firstItem="tCc-0w-zEg" firstAttribute="leading" secondItem="0pr-IY-ETd" secondAttribute="leading" constant="5" id="oap-Up-e9a"/>
+                                        <constraint firstItem="hbd-yD-Owl" firstAttribute="leading" secondItem="tCc-0w-zEg" secondAttribute="leading" constant="-5" id="qR3-4c-rXX"/>
+                                        <constraint firstAttribute="trailing" secondItem="tCc-0w-zEg" secondAttribute="trailing" constant="5" id="rb6-m1-tbf"/>
                                         <constraint firstItem="fiw-4g-NQ7" firstAttribute="top" secondItem="tCc-0w-zEg" secondAttribute="bottom" constant="5" id="shl-L1-Lor"/>
                                         <constraint firstItem="g7l-TY-vYV" firstAttribute="leading" secondItem="tCc-0w-zEg" secondAttribute="leading" id="yEO-34-DWY"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="76" height="108"/>
+                                <size key="customSize" width="86" height="113"/>
                                 <connections>
                                     <outlet property="image" destination="tCc-0w-zEg" id="Le2-VA-X91"/>
                                     <outlet property="progressHud" destination="g7l-TY-vYV" id="unF-gx-xv1"/>
@@ -107,19 +114,19 @@
             <objects>
                 <tableViewController storyboardIdentifier="BookViewController" id="dvO-Pe-OGk" customClass="BookViewController" customModule="TReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="32o-PU-GKu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="yku-ee-Hzx" style="IBUITableViewCellStyleDefault" id="VaZ-iM-Rso">
-                                <rect key="frame" x="0.0" y="28" width="600" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VaZ-iM-Rso" id="eVs-bI-b9C">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yku-ee-Hzx">
-                                            <rect key="frame" x="20" y="0.0" width="560" height="43.5"/>
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -142,5 +149,7 @@
     </scenes>
     <resources>
         <image name="Library" width="20" height="18"/>
+        <image name="SelectOpen" width="28" height="28"/>
     </resources>
+    <color key="tintColor" name="BkgrndWhite"/>
 </document>

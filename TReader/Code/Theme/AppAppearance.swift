@@ -28,8 +28,13 @@ struct AppAppearance {
         appearance.backgroundColor = ColorStyle.textGray.color
         appearance.titleTextAttributes = [.foregroundColor: ColorStyle.bkgrndWhite.color]
         appearance.largeTitleTextAttributes = [.foregroundColor: ColorStyle.bkgrndWhite.color]
+        appearance.setBackIndicatorImage(#imageLiteral(resourceName: "Back"), transitionMaskImage: #imageLiteral(resourceName: "Back"))
+
+        let buttonAppearance = UIBarButtonItemAppearance()
+        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: ColorStyle.bkgrndWhite.color,
+                                                       .font: UIFont.systemFont(ofSize: 16)]
+        appearance.buttonAppearance = buttonAppearance
 
         navBar.standardAppearance = appearance
     }
-    
 }
