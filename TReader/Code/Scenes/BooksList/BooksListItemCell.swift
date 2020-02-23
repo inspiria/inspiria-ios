@@ -16,6 +16,7 @@ class BooksListItemCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var progressHud: BooksListItemProgress!
+    @IBOutlet weak var selection: UIImageView!
 
 
     private var disposeBag = DisposeBag()

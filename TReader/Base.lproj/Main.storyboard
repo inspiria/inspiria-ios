@@ -73,7 +73,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7l-TY-vYV" customClass="BooksListItemProgress" customModule="TReader" customModuleProvider="target">
                                             <rect key="frame" x="5" y="5" width="76" height="72"/>
                                         </view>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SelectOpen" id="hbd-yD-Owl" customClass="SelectCheck">
+                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SelectOpen" id="hbd-yD-Owl" customClass="SelectCheck">
                                             <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -98,6 +98,7 @@
                                 <connections>
                                     <outlet property="image" destination="tCc-0w-zEg" id="Le2-VA-X91"/>
                                     <outlet property="progressHud" destination="g7l-TY-vYV" id="unF-gx-xv1"/>
+                                    <outlet property="selection" destination="hbd-yD-Owl" id="9fV-uO-EhV"/>
                                     <outlet property="title" destination="fiw-4g-NQ7" id="PeE-zI-vcH"/>
                                 </connections>
                             </collectionViewCell>

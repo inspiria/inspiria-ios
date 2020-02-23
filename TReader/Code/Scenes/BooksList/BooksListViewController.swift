@@ -14,8 +14,9 @@ import NSObject_Rx
 
 class BooksListViewController: UICollectionViewController {
     var viewModel: BooksListViewModel!
-    var editButton: UIBarButtonItem!
-    var toolbar: BooksListToolbar!
+
+    private var editButton: UIBarButtonItem!
+    private var toolbar: BooksListToolbar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,6 @@ class BooksListViewController: UICollectionViewController {
     }
 
     private func bindViewModel() {
-
         let itemSelected = collectionView.rx.itemSelected.asDriver().map { $0.row }
         let input = BooksListViewModel.Input(onSelect: itemSelected)
         let output = viewModel.transform(input: input)
@@ -65,6 +65,7 @@ class BooksListViewController: UICollectionViewController {
 
         editButton.rx.tap.bind { [unowned self] _ in
             self.edit()
+            self.collectionView.reloadData()
         }.disposed(by: rx.disposeBag)
     }
 }
