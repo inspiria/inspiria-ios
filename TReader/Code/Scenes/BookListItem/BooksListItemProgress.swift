@@ -13,7 +13,7 @@ class BooksListItemProgress: UIView {
 
     private let bgColor = ColorStyle.bkgrndWhite.color.withAlphaComponent(0.75)
 
-    var state: BooksListItemViewModel.State = .waiting {
+    var state: BooksListItemViewModel.Download.State = .waiting {
         didSet {
             setNeedsDisplay()
         }
