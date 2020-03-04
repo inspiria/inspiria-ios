@@ -22,30 +22,65 @@ class BooksListViewModel {
     func transform(input: Input) -> Output {
         let books = booksUseCase.books()
             .map { [unowned self] in
-                $0.map { BooksListItemViewModel(useCase: self.booksUseCase, navigator: self.navigator, book: $0) }}
+                $0.enumerated().map { BooksListItemViewModel(useCase: self.booksUseCase, book: $0.element, index: $0.offset) }}
             .asDriver(onErrorJustReturn: [])
-
-        let select = Driver.just(())
-//        let select = input.onSelect
-//            .withLatestFrom(books) { $1[$0] }
-//            .do(onNext: navigator.to)
-//            .mapToVoid()
 
         let fetch = booksUseCase
             .fetchBooks()
             .asDriver(onErrorJustReturn: ())
 
-        return Output(books: books, select: select, fetch: fetch)
+        let select = input.onSelect
+            .withLatestFrom(input.canEdit) { ($0, $1) }
+            .filter { $0.1 }
+            .withLatestFrom(books) { $1[$0.0] }
+            .filter { $0.isDownloaded }
+            .do(onNext: { $0.state.accept($0.state.value.isSelected ? .deselected : .selected) } )
+            .mapToVoid()
+
+        let enable = input.canEdit
+            .withLatestFrom(books) { ($0, $1.filter { $0.isDownloaded }) }
+            .do(onNext: { args in args.1.forEach { $0.state.accept(args.0 ? .deselected : .downloaded) }})
+            .mapToVoid()
+
+        let download = input.onSelect
+            .withLatestFrom(input.canEdit) { ($0, $1) }
+            .filter { !$0.1 }
+            .withLatestFrom(books) { $1[$0.0] }
+            .filter { !$0.isDownloaded }
+            .do(onNext: { $0.onDownload.onNext(()) })
+            .mapToVoid()
+
+        let booksToRemove = input.onSelect
+            .withLatestFrom(books)
+            .map { $0.filter { $0.state.value.isSelected } }
+
+        let canRemove = booksToRemove
+            .map { $0.count > 0 }
+
+        let remove = input.onRemove
+            .withLatestFrom(booksToRemove)
+            .map { $0.compactMap { model -> Int? in
+                model.state.accept(.none)
+                return self.booksUseCase.remove(id: model.book.id) ? model.index : nil
+            }}
+
+        return Output(books: books,
+                      canRemove: canRemove,
+                      remove: remove,
+                      drivers: [fetch, select, enable, download])
     }
 }
 
 extension BooksListViewModel {
     struct Input {
         let onSelect: Driver<Int>
+        let canEdit: Driver<Bool>
+        let onRemove: Driver<Void>
     }
     struct Output {
         let books: Driver<[BooksListItemViewModel]>
-        let select: Driver<Void>
-        let fetch: Driver<Void>
+        let canRemove: Driver<Bool>
+        let remove: Driver<[Int]>
+        let drivers: [Driver<Void>]
     }
 }

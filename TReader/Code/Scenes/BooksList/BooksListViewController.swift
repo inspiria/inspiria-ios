@@ -40,8 +40,17 @@ class BooksListViewController: UICollectionViewController {
     }
 
     private func bindViewModel() {
+        let canEdit = BehaviorSubject<Bool>(value: false)
+        let onRemove = toolbar.removeButton.rx.tap
+            .flatMap { [unowned self] _ in self.canRemove() }
+            .filter { $0 }
+            .asDriverOnErrorJustComplete()
+            .mapToVoid()
         let itemSelected = collectionView.rx.itemSelected.asDriver().map { $0.row }
-        let input = BooksListViewModel.Input(onSelect: itemSelected)
+
+        let input = BooksListViewModel.Input(onSelect: itemSelected,
+                                             canEdit: canEdit.asDriver(onErrorJustReturn: false),
+                                             onRemove: onRemove)
         let output = viewModel.transform(input: input)
 
         let cellIdentifier = BooksListItemCell.reuseIdentifier
@@ -55,18 +64,29 @@ class BooksListViewController: UICollectionViewController {
         }
         .disposed(by: rx.disposeBag)
 
-        output.select
-            .drive()
+        output.drivers.forEach {
+            $0.drive().disposed(by: rx.disposeBag)
+        }
+
+        output.canRemove
+            .drive(onNext: { [unowned self] in self.toolbar.set(state: $0 ? .enabled : .disabled) })
             .disposed(by: rx.disposeBag)
 
-        output.fetch
-            .drive()
+        output.remove
+            .drive(onNext: { [unowned self] indexes in
+                let paths = indexes.map { IndexPath(row: $0, section: 0) }
+                self.collectionView.reloadItems(at: paths)
+                self.edit()
+                canEdit.onNext(false)
+            })
             .disposed(by: rx.disposeBag)
 
-        editButton.rx.tap.bind { [unowned self] _ in
-            self.edit()
-            self.collectionView.reloadData()
-        }.disposed(by: rx.disposeBag)
+        editButton.rx.tap
+            .do(onNext: { [unowned self] _ in
+                canEdit.onNext(!self.tabBarController!.tabBar.isHidden)
+            })
+            .bind(onNext: edit)
+            .disposed(by: rx.disposeBag)
     }
 }
 
@@ -83,6 +103,21 @@ private extension BooksListViewController {
             editButton.tintColor = ColorStyle.orange.color
             editButton.title = "Done"
         }
+    }
+
+    func canRemove() -> Single<Bool> {
+        return Single.create { single in
+            let alert = UIAlertController(title: nil, message: "Remove the download.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Remove download", style: .default) { _ in
+                single(.success(true))
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+                single(.success(false))
+            })
+            self.present(alert, animated: true, completion: nil)
+            return Disposables.create()
+        }
+        .observeOn(MainScheduler.instance)
     }
 }
 

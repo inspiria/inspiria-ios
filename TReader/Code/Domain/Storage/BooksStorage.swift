@@ -20,7 +20,7 @@ protocol BooksStorage {
     func bookFilesExists(id: Int) -> Bool
     func storeBook(id: Int, data: Data) -> Observable<Double>
     func getBook(id: Int) -> Single<Book>
-    func delete(id: Int) -> Single<Bool>
+    func remove(id: Int) -> Bool
 }
 
 class DefaultBooksStorage: BooksStorage {
@@ -92,13 +92,13 @@ class DefaultBooksStorage: BooksStorage {
         }
     }
 
-    func delete(id: Int) -> Single<Bool> {
+    func remove(id: Int) -> Bool {
         let url = getBookUrl(id: id)
         do {
             try self.manager.removeItem(at: url)
-            return Single.just(true)
+            return true
         } catch {
-            return Single.error(error)
+            return false
         }
     }
 }

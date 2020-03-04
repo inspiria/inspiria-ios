@@ -12,69 +12,61 @@ import RxCocoa
 
 class BooksListItemViewModel {
     private let useCase: BooksUseCase
-    private let navigator: BooksListNavigator
-    private let book: BookInfo
+    let book: BookInfo
+    let index: Int
+
+    lazy var state = BehaviorRelay<HoodState>(value: isDownloaded ? .downloaded : .none)
+    let onDownload = PublishSubject<Void>()
+
+    var isDownloaded: Bool {
+        return useCase.isBookDownloaded(id: self.book.id)
+    }
 
     init (useCase: BooksUseCase,
-          navigator: BooksListNavigator,
-          book: BookInfo) {
+          book: BookInfo,
+          index: Int) {
         self.useCase = useCase
-        self.navigator = navigator
         self.book = book
+        self.index = index
     }
 
-    func transform(input: Input) -> Output {
-        let initState = useCase.isBookDownloaded(id: self.book.id) ? Download.downloaded : Download.waiting
+    func transform() -> Output {
         let book = Driver.just(self.book)
-        let state = getState(onSelect: input.onSelect).startWith(initState)
-        let selectionEnabled = Driver.just(false)
-        let selected = Driver.just(false)
+        let download = onDownload.asDriverOnErrorJustComplete()
+            .flatMap { [unowned self] _ -> Driver<Double> in
+                return self.useCase
+                    .downloadBook(id: self.book.id)
+                    .asDriver(onErrorJustReturn: -1.0)
+        }
+        .do(onNext: { [unowned self] prg in
+            switch prg {
+            case -1.0: self.state.accept(.error)
+            case 1.0: self.state.accept(.downloaded)
+            default: self.state.accept(.downloading)
+            }
+        })
 
         return Output(book:book,
-                      state: state,
-                      selectionEnabled: selectionEnabled,
-                      selected: selected)
-    }
-
-    func getState(onSelect: Driver<Void>) -> Driver<Download> {
-        return onSelect.flatMap { [unowned self] state -> Driver<Download> in
-            if self.useCase.isBookDownloaded(id: self.book.id) {
-                return Driver.just(Download.downloaded)
-            }
-            return self.useCase
-                .downloadBook(id: self.book.id)
-                .map { Download( $0 < 1.0 ? .downloading : .downloaded, $0) }
-                .asDriver(onErrorJustReturn: Download.error)
-        }
+                      state: state.asDriver(),
+                      downloadProgress: download)
     }
 }
 
 extension BooksListItemViewModel {
-    struct Input {
-        let onSelect: Driver<Void>
-    }
     struct Output {
         let book: Driver<BookInfo>
-        let state: Driver<Download>
-        let selectionEnabled: Driver<Bool>
-        let selected: Driver<Bool>
+        let state: Driver<HoodState>
+        let downloadProgress: Driver<Double>
     }
 
-    struct Download {
-        enum State {
-            case waiting, downloaded, downloading, error
-        }
-
-        let state: State
-        let progress: Double
-
-        static var waiting = Download(.waiting, 0.0)
-        static var downloaded = Download(.downloaded, 1.0)
-        static var error = Download(.error, 0.0)
-
-        init(_ state: State, _ progress: Double) {
-            self.state = state
-            self.progress = progress
+    enum HoodState {
+        case none, deselected, selected, downloaded, downloading, error
+        var isSelected: Bool {
+            if case self = HoodState.selected {
+                return true
+            } else {
+                return false
+            }
         }
     }
 }

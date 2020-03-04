@@ -16,7 +16,10 @@ protocol BooksUseCase {
 
     func isBookDownloaded(id: Int) -> Bool
     func downloadBook(id: Int) -> Observable<Double>
+
     func book(id: Int) -> Single<Book>
+
+    func remove(id: Int) -> Bool
 }
 
 class DefaultBooksUseCase: BooksUseCase {
@@ -66,5 +69,9 @@ class DefaultBooksUseCase: BooksUseCase {
 
     func book(id: Int) -> Single<Book> {
         return bookStorage.getBook(id: id)
+    }
+
+    func remove(id: Int) -> Bool {
+        return bookStorage.remove(id: id)
     }
 }

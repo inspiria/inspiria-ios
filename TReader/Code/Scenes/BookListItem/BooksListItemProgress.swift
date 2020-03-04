@@ -13,7 +13,7 @@ class BooksListItemProgress: UIView {
 
     private let bgColor = ColorStyle.bkgrndWhite.color.withAlphaComponent(0.75)
 
-    var state: BooksListItemViewModel.Download.State = .waiting {
+    var state: BooksListItemViewModel.HoodState = .none {
         didSet {
             setNeedsDisplay()
         }
@@ -36,20 +36,19 @@ class BooksListItemProgress: UIView {
 
     override func draw(_ rect: CGRect) {
         switch state {
-        case .waiting:
+        case .none:
             bgColor.set()
             UIGraphicsGetCurrentContext()?.fill(rect)
         case .downloading:
             drawProgressCircleInRect(bounds)
-        case .downloaded:
-            UIColor.clear.set()
-            UIGraphicsGetCurrentContext()?.fill(rect)
         case .error:
             bgColor.set()
             UIGraphicsGetCurrentContext()?.fill(rect)
             let backgroundImage = #imageLiteral(resourceName: "DownloadError")
             backgroundImage.draw(at: CGPoint(x: (bounds.size.width - backgroundImage.size.width) / 2, y: (bounds.size.height - backgroundImage.size.height) / 2))
-
+        default:
+            UIColor.clear.set()
+            UIGraphicsGetCurrentContext()?.fill(rect)
         }
     }
 

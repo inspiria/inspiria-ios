@@ -25,9 +25,7 @@ class BooksListItemCell: UICollectionViewCell {
         self.viewModel = viewModel
         disposeBag = DisposeBag()
 
-        let select = progressHud.rx.tapGesture().skip(1).mapToVoid().asDriverOnErrorJustComplete()
-        let input =  BooksListItemViewModel.Input(onSelect: select)
-        let output = viewModel.transform(input: input)
+        let output = viewModel.transform()
 
         output.book
             .map { $0.title }
@@ -40,25 +38,34 @@ class BooksListItemCell: UICollectionViewCell {
             .disposed(by: disposeBag)
 
         output.state
-            .drive(onNext: { [unowned self] in self.progressHud.state = $0.state })
+            .drive(state)
             .disposed(by: disposeBag)
 
-        output.state
-            .drive(onNext: { [unowned self] in self.progressHud.progress = $0.progress })
+        output.downloadProgress
+            .drive(onNext: { [unowned self] in self.progressHud.progress = $0 })
             .disposed(by: disposeBag)
 
-        output.selectionEnabled
-            .map { !$0 }
-            .drive(selection.rx.isHidden)
-            .disposed(by: disposeBag)
-
-        output.selected
-            .drive(onNext: { [unowned self] in self.selection.image = $0 ? #imageLiteral(resourceName: "SelectCheck") : #imageLiteral(resourceName: "SelectOpen") })
-            .disposed(by: disposeBag)
     }
 }
 
 extension BooksListItemCell {
+    fileprivate var state: Binder<BooksListItemViewModel.HoodState> {
+        return Binder<BooksListItemViewModel.HoodState>(self, binding: { cnt, state in
+            cnt.progressHud.state = state
+
+            switch (state) {
+            case .deselected:
+                cnt.selection.isHidden = false
+                cnt.selection.image =  #imageLiteral(resourceName: "SelectOpen")
+            case .selected:
+                cnt.selection.isHidden = false
+                cnt.selection.image = #imageLiteral(resourceName: "SelectCheck")
+            default:
+                cnt.selection.isHidden = true
+            }
+        })
+    }
+
     fileprivate var imageUrl: Binder<String> {
         return Binder<String>(self, binding: { controller, url in
             let url = URL(string: url)
