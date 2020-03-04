@@ -13,14 +13,7 @@ class BooksListItemProgress: UIView {
 
     private let bgColor = ColorStyle.bkgrndWhite.color.withAlphaComponent(0.75)
 
-    enum State {
-        case waiting
-        case downloading
-        case downloaded
-        case error
-    }
-
-    var state: State = .waiting {
+    var state: BooksListItemViewModel.State = .waiting {
         didSet {
             setNeedsDisplay()
         }

@@ -21,12 +21,15 @@ class BooksListViewModel {
 
     func transform(input: Input) -> Output {
         let books = booksUseCase.books()
+            .map { [unowned self] in
+                $0.map { BooksListItemViewModel(useCase: self.booksUseCase, navigator: self.navigator, book: $0) }}
             .asDriver(onErrorJustReturn: [])
 
-        let select = input.onSelect
-            .withLatestFrom(books) { $1[$0] }
-            .do(onNext: navigator.to)
-            .mapToVoid()
+        let select = Driver.just(())
+//        let select = input.onSelect
+//            .withLatestFrom(books) { $1[$0] }
+//            .do(onNext: navigator.to)
+//            .mapToVoid()
 
         let fetch = booksUseCase
             .fetchBooks()
@@ -41,7 +44,7 @@ extension BooksListViewModel {
         let onSelect: Driver<Int>
     }
     struct Output {
-        let books: Driver<[BookInfo]>
+        let books: Driver<[BooksListItemViewModel]>
         let select: Driver<Void>
         let fetch: Driver<Void>
     }

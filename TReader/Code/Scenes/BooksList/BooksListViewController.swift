@@ -51,7 +51,7 @@ class BooksListViewController: UICollectionViewController {
             .asObservable()
             .bind(to: collectionView.rx
                 .items(cellIdentifier: cellIdentifier, cellType: cellType)) { _, model, cell in
-                    cell.set(book: model)
+                    cell.set(viewModel: model)
         }
         .disposed(by: rx.disposeBag)
 
