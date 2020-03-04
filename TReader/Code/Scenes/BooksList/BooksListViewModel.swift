@@ -50,6 +50,15 @@ class BooksListViewModel {
             .do(onNext: { $0.onDownload.onNext(()) })
             .mapToVoid()
 
+        let open = input.onSelect
+            .withLatestFrom(input.canEdit) { ($0, $1) }
+            .filter { !$0.1 }
+            .withLatestFrom(books) { $1[$0.0] }
+            .filter { $0.isDownloaded }
+            .map { $0.book }
+            .do(onNext: navigator.to)
+            .mapToVoid()
+
         let booksToRemove = input.onSelect
             .withLatestFrom(books)
             .map { $0.filter { $0.state.value.isSelected } }
@@ -67,7 +76,7 @@ class BooksListViewModel {
         return Output(books: books,
                       canRemove: canRemove,
                       remove: remove,
-                      drivers: [fetch, select, enable, download])
+                      drivers: [fetch, select, enable, download, open])
     }
 }
 
