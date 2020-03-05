@@ -9,7 +9,8 @@
 import UIKit
 
 protocol BookNavigator {
-    func toBook(id: Int)
+    func to(book: BookInfo)
+    func to(chapter: Chapter)
 }
 
 class DefaultBookNavigator: BookNavigator {
@@ -25,11 +26,16 @@ class DefaultBookNavigator: BookNavigator {
         self.rootController = controller
     }
 
-    func toBook(id: Int) {
+    func to(book: BookInfo) {
         let viewController: BookViewController = storyboard.instantiateViewController()
         viewController.viewModel = BookViewModel(booksUseCase: self.services.booksUseCase(),
                                                  navigator: self,
-                                                 bookId: id)
+                                                 bookInfo: book)
         rootController.pushViewController(viewController, animated: true)
+    }
+
+    func to(chapter: Chapter) {
+        let navigator = DefaultChapterNavigator(services: services, storyboard: storyboard, controller: rootController)
+        navigator.to(chapter: chapter)
     }
 }

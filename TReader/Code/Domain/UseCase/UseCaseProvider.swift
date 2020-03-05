@@ -20,7 +20,7 @@ class DefaultUseCaseProvider: UseCaseProvider {
     init() {
         let url: String
         #if DEBUG
-            url = "http://localisation:8080"
+            url = "http://127.0.0.1:8080"
         #else
             url = "http://3.127.45.134:8080"
         #endif

@@ -34,7 +34,6 @@ class DefaultBooksListNavigator: BooksListNavigator {
 
     func to(book: BookInfo) {
         let navigator = DefaultBookNavigator(services: services, storyboard: storyboard, controller: rootController)
-        navigator.toBook(id: book.id)
+        navigator.to(book: book)
     }
-    
 }
