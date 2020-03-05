@@ -18,7 +18,13 @@ class DefaultUseCaseProvider: UseCaseProvider {
     private  let mNetworkService: NetworkService
 
     init() {
-        mNetworkService = NetworkService(url: "http://localhost:8080")
+        let url: String
+        #if DEBUG
+            url = "http://localisation:8080"
+        #else
+            url = "http://3.127.45.134:8080"
+        #endif
+        mNetworkService = NetworkService(url: url)
     }
 
     func booksUseCase() -> BooksUseCase {
