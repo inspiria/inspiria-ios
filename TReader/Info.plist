@@ -64,6 +64,8 @@
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIStatusBarHidden</key>
 	<false/>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
