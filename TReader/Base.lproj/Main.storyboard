@@ -169,7 +169,7 @@
                         <constraints>
                             <constraint firstItem="7LW-AI-0hM" firstAttribute="leading" secondItem="uWy-tS-Uri" secondAttribute="leading" id="IUd-Zr-Wpz"/>
                             <constraint firstItem="uWy-tS-Uri" firstAttribute="trailing" secondItem="7LW-AI-0hM" secondAttribute="trailing" id="Jrt-Lb-46Q"/>
-                            <constraint firstItem="7LW-AI-0hM" firstAttribute="bottom" secondItem="uWy-tS-Uri" secondAttribute="bottom" id="LxZ-Yw-0gV"/>
+                            <constraint firstItem="uWy-tS-Uri" firstAttribute="bottom" secondItem="7LW-AI-0hM" secondAttribute="bottom" id="VXl-Si-CdL"/>
                             <constraint firstItem="7LW-AI-0hM" firstAttribute="top" secondItem="uWy-tS-Uri" secondAttribute="top" id="q6p-Ol-o86"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uWy-tS-Uri"/>

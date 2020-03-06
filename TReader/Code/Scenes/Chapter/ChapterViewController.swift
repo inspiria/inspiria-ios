@@ -14,7 +14,7 @@ class ChapterViewController: UIViewController {
     var viewModel: ChapterViewModel!
 
     @IBOutlet weak var textView: UITextView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
