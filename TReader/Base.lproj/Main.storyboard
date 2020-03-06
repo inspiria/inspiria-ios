@@ -111,43 +111,6 @@
             </objects>
             <point key="canvasLocation" x="-1488" y="-237"/>
         </scene>
-        <!--Book View Controller-->
-        <scene sceneID="LYN-xt-y66">
-            <objects>
-                <tableViewController storyboardIdentifier="BookViewController" id="dvO-Pe-OGk" customClass="BookViewController" customModule="TReader" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="32o-PU-GKu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="yku-ee-Hzx" style="IBUITableViewCellStyleDefault" id="VaZ-iM-Rso">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VaZ-iM-Rso" id="eVs-bI-b9C">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yku-ee-Hzx">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="dvO-Pe-OGk" id="8Fi-KA-Mrt"/>
-                            <outlet property="delegate" destination="dvO-Pe-OGk" id="I1S-4n-pdf"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K6Q-2T-wJc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-739" y="-237"/>
-        </scene>
         <!--Chapter View Controller-->
         <scene sceneID="XFU-do-qN8">
             <objects>
@@ -181,6 +144,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JY1-2p-8mo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-71.014492753623188" y="-664.28571428571422"/>
+        </scene>
+        <!--Content View Controller-->
+        <scene sceneID="zzq-ik-Tjr">
+            <objects>
+                <viewController storyboardIdentifier="ContentViewController" id="F43-fM-TCj" customClass="ContentViewController" customModule="TReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c4a-ft-Nqn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLm-m7-4Xa">
+                                <rect key="frame" x="24" y="44" width="366" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yjC-FM-C6z">
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="818"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="yjC-FM-C6z" secondAttribute="bottom" id="9OJ-Kd-FTI"/>
+                                    <constraint firstItem="yjC-FM-C6z" firstAttribute="width" secondItem="VLm-m7-4Xa" secondAttribute="width" id="HoZ-cO-0OS"/>
+                                    <constraint firstItem="yjC-FM-C6z" firstAttribute="leading" secondItem="VLm-m7-4Xa" secondAttribute="leading" id="InA-YV-r9Z"/>
+                                    <constraint firstItem="yjC-FM-C6z" firstAttribute="top" secondItem="VLm-m7-4Xa" secondAttribute="top" id="Nic-55-iyP"/>
+                                    <constraint firstItem="yjC-FM-C6z" firstAttribute="height" secondItem="VLm-m7-4Xa" secondAttribute="height" placeholder="YES" id="dCG-WG-r2g"/>
+                                    <constraint firstAttribute="trailing" secondItem="yjC-FM-C6z" secondAttribute="trailing" id="yka-b9-HnF"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VLm-m7-4Xa" firstAttribute="leading" secondItem="E5e-Il-wHj" secondAttribute="leading" constant="24" id="1Gf-6u-1Ld"/>
+                            <constraint firstItem="VLm-m7-4Xa" firstAttribute="bottom" secondItem="E5e-Il-wHj" secondAttribute="bottom" id="jaD-dH-dlB"/>
+                            <constraint firstItem="E5e-Il-wHj" firstAttribute="trailing" secondItem="VLm-m7-4Xa" secondAttribute="trailing" constant="24" id="uGZ-D6-q1x"/>
+                            <constraint firstItem="VLm-m7-4Xa" firstAttribute="top" secondItem="E5e-Il-wHj" secondAttribute="top" id="uTj-8d-k5s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="E5e-Il-wHj"/>
+                    </view>
+                    <connections>
+                        <outlet property="stackView" destination="yjC-FM-C6z" id="jTn-EL-LiR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="foR-eu-2yn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-739.13043478260875" y="-237.05357142857142"/>
         </scene>
     </scenes>
     <resources>

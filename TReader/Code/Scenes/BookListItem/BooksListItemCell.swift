@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxGesture
-import Kingfisher
 
 class BooksListItemCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
@@ -34,7 +33,7 @@ class BooksListItemCell: UICollectionViewCell {
 
         output.book
             .map { $0.coverImageUrl }
-            .drive(imageUrl)
+            .drive(onNext: image.setBookCover)
             .disposed(by: disposeBag)
 
         output.state
@@ -63,26 +62,6 @@ extension BooksListItemCell {
             default:
                 cnt.selection.isHidden = true
             }
-        })
-    }
-
-    fileprivate var imageUrl: Binder<String> {
-        return Binder<String>(self, binding: { controller, url in
-            let url = URL(string: url)
-            let processor = DownsamplingImageProcessor(size: self.image.frame.size) |> RoundCornerImageProcessor(cornerRadius: 3)
-            let scale = UIScreen.main.scale
-
-            controller.image.kf.cancelDownloadTask()
-            controller.image.kf.indicatorType = .activity
-            controller.image.kf.setImage(
-                with: url,
-                options: [.processor(processor),
-                          .scaleFactor(scale),
-                          .transition(.fade(1)),
-                          .cacheOriginalImage,
-                          .cacheOriginalImage,
-                          .onFailureImage(#imageLiteral(resourceName: "BookCover"))
-            ])
         })
     }
 }

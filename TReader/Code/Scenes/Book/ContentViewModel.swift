@@ -1,5 +1,5 @@
 //
-//  BookViewModel.swift
+//  ContentViewModel.swift
 //  TReader
 //
 //  Created by tadas on 2020-02-16.
@@ -10,13 +10,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class BookViewModel {
+class ContentViewModel {
     private let booksUseCase: BooksUseCase
-    private let navigator: BookNavigator
+    private let navigator: ContentNavigator
     private let bookInfo: BookInfo
 
     init (booksUseCase: BooksUseCase,
-          navigator: BookNavigator,
+          navigator: ContentNavigator,
           bookInfo: BookInfo) {
         self.booksUseCase = booksUseCase
         self.navigator = navigator
@@ -40,7 +40,7 @@ class BookViewModel {
     }
 }
 
-extension BookViewModel {
+extension ContentViewModel {
     struct Input {
         let onSelect: Driver<Int>
     }

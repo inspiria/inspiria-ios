@@ -10,6 +10,7 @@ import UIKit
 
 enum ColorStyle: CaseIterable {
     case textGray
+    case textDark
     case orange
     case menuGray
     case menuDark
@@ -19,6 +20,7 @@ enum ColorStyle: CaseIterable {
     var color: UIColor {
         switch self {
         case .textGray: return UIColor.textGray
+        case .textDark: return UIColor.textDark
         case .orange: return UIColor.orange
         case .menuGray: return UIColor.menuGray
         case .menuDark: return UIColor.menuDark
@@ -31,6 +33,10 @@ enum ColorStyle: CaseIterable {
 fileprivate extension UIColor {
     @nonobjc class var textGray: UIColor {
         return UIColor.init(named: "TextGray")!
+    }
+
+    @nonobjc class var textDark: UIColor {
+        return UIColor.init(named: "TextDark")!
     }
 
     @nonobjc class var orange: UIColor {

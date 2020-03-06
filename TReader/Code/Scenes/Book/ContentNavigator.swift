@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol BookNavigator {
+protocol ContentNavigator {
     func to(book: BookInfo)
     func to(chapter: Chapter)
 }
 
-class DefaultBookNavigator: BookNavigator {
+class ContentBookNavigator: ContentNavigator {
     private let services: UseCaseProvider
     private let storyboard: UIStoryboard
     private let rootController: UINavigationController
@@ -27,8 +27,8 @@ class DefaultBookNavigator: BookNavigator {
     }
 
     func to(book: BookInfo) {
-        let viewController: BookViewController = storyboard.instantiateViewController()
-        viewController.viewModel = BookViewModel(booksUseCase: self.services.booksUseCase(),
+        let viewController: ContentViewController = storyboard.instantiateViewController()
+        viewController.viewModel = ContentViewModel(booksUseCase: self.services.booksUseCase(),
                                                  navigator: self,
                                                  bookInfo: book)
         rootController.pushViewController(viewController, animated: true)

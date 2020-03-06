@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E03BDC32412994000E16147 /* ContentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03BDC22412994000E16147 /* ContentHeaderView.swift */; };
+		3E03BDC524129FC600E16147 /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03BDC424129FC600E16147 /* UIImageView+Kingfisher.swift */; };
 		3E0A587F24116C3100B09EE0 /* ChapterNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A587B24116C3100B09EE0 /* ChapterNavigator.swift */; };
 		3E0A588024116C3100B09EE0 /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A587C24116C3100B09EE0 /* ChapterViewController.swift */; };
 		3E0A588124116C3100B09EE0 /* ChapterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A587D24116C3100B09EE0 /* ChapterViewModel.swift */; };
 		3E149F1723F974A9006968D4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1623F974A9006968D4 /* NetworkService.swift */; };
 		3E149F1923F9CFE1006968D4 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1823F9CFE1006968D4 /* Chapter.swift */; };
-		3E149F1F23F9D112006968D4 /* BookNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1B23F9D112006968D4 /* BookNavigator.swift */; };
-		3E149F2023F9D112006968D4 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1C23F9D112006968D4 /* BookViewController.swift */; };
-		3E149F2123F9D112006968D4 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1D23F9D112006968D4 /* BookViewModel.swift */; };
+		3E149F1F23F9D112006968D4 /* ContentNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1B23F9D112006968D4 /* ContentNavigator.swift */; };
+		3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1C23F9D112006968D4 /* ContentViewController.swift */; };
+		3E149F2123F9D112006968D4 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1D23F9D112006968D4 /* ContentViewModel.swift */; };
 		3E149F2423F9D6F4006968D4 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F2323F9D6F4006968D4 /* Observable.swift */; };
 		3E49890223F6B1670082322E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E49890123F6B1670082322E /* AppDelegate.swift */; };
 		3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E49890323F6B1670082322E /* SceneDelegate.swift */; };
@@ -43,14 +45,16 @@
 
 /* Begin PBXFileReference section */
 		01B34655862641D9A74B762E /* Pods-TReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TReader.release.xcconfig"; path = "Target Support Files/Pods-TReader/Pods-TReader.release.xcconfig"; sourceTree = "<group>"; };
+		3E03BDC22412994000E16147 /* ContentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentHeaderView.swift; sourceTree = "<group>"; };
+		3E03BDC424129FC600E16147 /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		3E0A587B24116C3100B09EE0 /* ChapterNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterNavigator.swift; sourceTree = "<group>"; };
 		3E0A587C24116C3100B09EE0 /* ChapterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
 		3E0A587D24116C3100B09EE0 /* ChapterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewModel.swift; sourceTree = "<group>"; };
 		3E149F1623F974A9006968D4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3E149F1823F9CFE1006968D4 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
-		3E149F1B23F9D112006968D4 /* BookNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookNavigator.swift; sourceTree = "<group>"; };
-		3E149F1C23F9D112006968D4 /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
-		3E149F1D23F9D112006968D4 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		3E149F1B23F9D112006968D4 /* ContentNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentNavigator.swift; sourceTree = "<group>"; };
+		3E149F1C23F9D112006968D4 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		3E149F1D23F9D112006968D4 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		3E149F2323F9D6F4006968D4 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		3E4988FE23F6B1670082322E /* TReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E49890123F6B1670082322E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,9 +117,10 @@
 		3E149F1A23F9D0DE006968D4 /* Book */ = {
 			isa = PBXGroup;
 			children = (
-				3E149F1C23F9D112006968D4 /* BookViewController.swift */,
-				3E149F1D23F9D112006968D4 /* BookViewModel.swift */,
-				3E149F1B23F9D112006968D4 /* BookNavigator.swift */,
+				3E149F1C23F9D112006968D4 /* ContentViewController.swift */,
+				3E149F1D23F9D112006968D4 /* ContentViewModel.swift */,
+				3E149F1B23F9D112006968D4 /* ContentNavigator.swift */,
+				3E03BDC22412994000E16147 /* ContentHeaderView.swift */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				3ED413F223F8776000BEC2C5 /* Codable.swift */,
 				3E149F2323F9D6F4006968D4 /* Observable.swift */,
 				3E9CEDAA2402A849002E8FA3 /* Storyboard.swift */,
+				3E03BDC424129FC600E16147 /* UIImageView+Kingfisher.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -398,13 +404,15 @@
 				3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */,
 				3E9CEDAB2402A849002E8FA3 /* Storyboard.swift in Sources */,
 				3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */,
+				3E03BDC32412994000E16147 /* ContentHeaderView.swift in Sources */,
 				3ED413F523F8795200BEC2C5 /* BooksListViewModel.swift in Sources */,
+				3E03BDC524129FC600E16147 /* UIImageView+Kingfisher.swift in Sources */,
 				3ED413EE23F875D700BEC2C5 /* BooksUseCase.swift in Sources */,
 				3E53649C2402E0A800C896D4 /* BooksListToolbar.swift in Sources */,
-				3E149F2123F9D112006968D4 /* BookViewModel.swift in Sources */,
+				3E149F2123F9D112006968D4 /* ContentViewModel.swift in Sources */,
 				3ED413F823F87D7000BEC2C5 /* BooksListNavigator.swift in Sources */,
 				3EB62F8C23F6BC0400C3F1D6 /* ColorStyle.swift in Sources */,
-				3E149F1F23F9D112006968D4 /* BookNavigator.swift in Sources */,
+				3E149F1F23F9D112006968D4 /* ContentNavigator.swift in Sources */,
 				3E0A588124116C3100B09EE0 /* ChapterViewModel.swift in Sources */,
 				3E149F2423F9D6F4006968D4 /* Observable.swift in Sources */,
 				3EB62F8923F6BA2500C3F1D6 /* AppAppearance.swift in Sources */,
@@ -412,7 +420,7 @@
 				3E149F1723F974A9006968D4 /* NetworkService.swift in Sources */,
 				3EFF974B23FC2B7B000103FE /* Book.swift in Sources */,
 				3E0A588024116C3100B09EE0 /* ChapterViewController.swift in Sources */,
-				3E149F2023F9D112006968D4 /* BookViewController.swift in Sources */,
+				3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */,
 				3EC05CC423F6CF7800862940 /* BooksListViewController.swift in Sources */,
 				3E0A587F24116C3100B09EE0 /* ChapterNavigator.swift in Sources */,
 				3EC05CC923F6D22E00862940 /* ReusableView.swift in Sources */,
