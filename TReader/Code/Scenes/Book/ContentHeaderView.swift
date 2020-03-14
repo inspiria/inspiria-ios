@@ -9,43 +9,41 @@
 import UIKit
 
 class ContentHeaderView: UIView {
-    private let coverImage: UIImageView
+    private let imageView: UIImageView
     private let titleLabel: Label
     private let authorLabel: Label
 
     init(title: String, author: String, coverUrl: String) {
-        let width = UIScreen.main.bounds.width - 48
         let spacing: CGFloat = 12
+        let width = UIScreen.main.bounds.width - spacing * 2
 
-        coverImage = UIImageView(frame: CGRect(x: 0, y: spacing, width: 64, height: 90))
-        titleLabel = Label(frame: CGRect(x: 80, y: spacing, width: width - 80, height: 90))
-        authorLabel = Label(frame: CGRect(x: 0, y: 0, width: width, height: 21))
-
+        imageView = UIImageView(frame: CGRect(x: spacing, y: spacing, width: 64, height: 90))
+        imageView.setBookCover(url: coverUrl)
+        
+        titleLabel = Label(frame: CGRect(x: imageView.frame.maxX + spacing, y: spacing,
+                                         width: width - imageView.frame.maxX - spacing, height: 0))
         titleLabel.textStyle = TextStyle.Book.h1
         titleLabel.text = title
         titleLabel.textColor = ColorStyle.textDark.color
         titleLabel.numberOfLines = 0
         titleLabel.sizeToFit()
-
         
-        authorLabel.frame.origin.y = max(coverImage.frame.maxY, titleLabel.frame.maxY) + spacing
+        let y = max(imageView.frame.maxY, titleLabel.frame.maxY) + spacing
+        authorLabel = Label(frame: CGRect(x: spacing, y: y, width: width - spacing*2, height: 0))
         authorLabel.textStyle = TextStyle.Book.bodyText
         authorLabel.text = author
         authorLabel.textColor = ColorStyle.orange.color
         authorLabel.numberOfLines = 0
-
-        coverImage.setBookCover(url: coverUrl)
+        authorLabel.sizeToFit()
 
         super.init(frame: CGRect.zero)
 
         let height = authorLabel.frame.maxY + spacing
-
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
-        self.widthAnchor.constraint(equalToConstant: width).isActive = true
 
         addSubview(titleLabel)
         addSubview(authorLabel)
-        addSubview(coverImage)
+        addSubview(imageView)
     }
 
     required init?(coder: NSCoder) {

@@ -32,7 +32,7 @@ class ChapterViewController: UIViewController {
         output.chapter
             .asObservable()
             .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .map { $0.text.att() }
+            .map { $0.text.htmlAttributedString }
             .asDriverOnErrorJustComplete()
             .drive(textView.rx.attributedText)
             .disposed(by: rx.disposeBag)
@@ -41,13 +41,5 @@ class ChapterViewController: UIViewController {
             .map { $0.title }
             .drive(navigationItem.rx.title)
             .disposed(by: rx.disposeBag)
-    }
-}
-
-extension String {
-    func att() -> NSAttributedString? {
-        let string = self.data(using: .unicode) ?? Data()
-        let options = [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html]
-        return try? NSAttributedString(data: string, options: options, documentAttributes: nil)
     }
 }

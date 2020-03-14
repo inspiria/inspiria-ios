@@ -21,8 +21,21 @@ extension UIImageView {
                               .scaleFactor(scale),
                               .transition(.fade(1)),
                               .cacheOriginalImage,
-                              .cacheOriginalImage,
                               .onFailureImage(#imageLiteral(resourceName: "BookCover"))
+        ])
+    }
+    
+    func setImage(url: String) {
+        let url = URL(string: url)
+        let processor = DownsamplingImageProcessor(size: self.frame.size)
+        let scale = UIScreen.main.scale
+        kf.cancelDownloadTask()
+        kf.indicatorType = .activity
+        kf.setImage(with: url,
+                    options: [.processor(processor),
+                              .scaleFactor(scale),
+                              .transition(.fade(1)),
+                              .cacheOriginalImage
         ])
     }
 }

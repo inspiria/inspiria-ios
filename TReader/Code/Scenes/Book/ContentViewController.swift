@@ -47,6 +47,16 @@ class ContentViewController: UIViewController {
                     let label = self.buildLabel(for: arg.element, offset: arg.offset)
                     self.stackView.addArrangedSubview(label)
                 }
+                let view = UIView()
+                view.heightAnchor.constraint(equalToConstant: 12).isActive = true
+                self.stackView.addArrangedSubview(view)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        output.info
+            .drive(onNext: { [unowned self] info in
+                let footer = AuthorSectionView()
+                self.stackView.addArrangedSubview(footer)
             })
             .disposed(by: rx.disposeBag)
         
@@ -57,13 +67,15 @@ class ContentViewController: UIViewController {
     
     func buildLabel(for model: Chapter, offset: Int) -> UIView {
         let number = model.showNumber ? "\(Int(floor(model.orderNumber))). " : ""
-        let heading = model.showHeadings ? "    " : ""
-        let text = "\(heading)\(number)\(model.title)"
+        let text = "\(number)\(model.title)"
         
         let label = Label()
         label.textStyle = model.showHeadings ? TextStyle.Book.bodyText : TextStyle.Book.h4
+        label.headIndent = model.showHeadings ? 34 : 18
         label.text = text
         label.numberOfLines = 0
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        label.setContentHuggingPriority(.required, for: .vertical)
 
         label.rx.tapGesture()
             .asDriver()

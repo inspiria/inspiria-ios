@@ -39,6 +39,7 @@
 		3ECF6F13241CFF310043E0D0 /* NotoSerif-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F0F241CFF310043E0D0 /* NotoSerif-Italic.ttf */; };
 		3ECF6F14241CFF310043E0D0 /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F10241CFF310043E0D0 /* NotoSerif-Bold.ttf */; };
 		3ECF6F16241D208B0043E0D0 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF6F15241D208B0043E0D0 /* Label.swift */; };
+		3ECF6F19241D3FF30043E0D0 /* AuthorSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF6F18241D3FF30043E0D0 /* AuthorSectionView.swift */; };
 		3ED413EB23F8757C00BEC2C5 /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413EA23F8757B00BEC2C5 /* UseCaseProvider.swift */; };
 		3ED413EE23F875D700BEC2C5 /* BooksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */; };
 		3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413F223F8776000BEC2C5 /* Codable.swift */; };
@@ -85,6 +86,7 @@
 		3ECF6F0F241CFF310043E0D0 /* NotoSerif-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Italic.ttf"; sourceTree = "<group>"; };
 		3ECF6F10241CFF310043E0D0 /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
 		3ECF6F15241D208B0043E0D0 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		3ECF6F18241D3FF30043E0D0 /* AuthorSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorSectionView.swift; sourceTree = "<group>"; };
 		3ED413EA23F8757B00BEC2C5 /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
 		3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksUseCase.swift; sourceTree = "<group>"; };
 		3ED413F223F8776000BEC2C5 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
@@ -244,6 +246,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		3ECF6F17241D3F9A0043E0D0 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				3ECF6F18241D3FF30043E0D0 /* AuthorSectionView.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
 		3ED413E623F8732E00BEC2C5 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +269,7 @@
 				3EB9707A240A93DA009AC54D /* BookListItem */,
 				3EC05CC223F6CF4500862940 /* BooksList */,
 				3E149F1A23F9D0DE006968D4 /* Book */,
+				3ECF6F17241D3F9A0043E0D0 /* Sections */,
 				3E0A587A24116C1500B09EE0 /* Chapter */,
 			);
 			path = Scenes;
@@ -429,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ECF6F19241D3FF30043E0D0 /* AuthorSectionView.swift in Sources */,
 				3EB97079240A93D3009AC54D /* BooksListItemViewModel.swift in Sources */,
 				3E49890223F6B1670082322E /* AppDelegate.swift in Sources */,
 				3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */,
