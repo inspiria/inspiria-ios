@@ -15,18 +15,22 @@ class ContentHeaderView: UIView {
 
     init(title: String, author: String, coverUrl: String) {
         let width = UIScreen.main.bounds.width - 48
+        let spacing: CGFloat = 12
+        let title = title + ". Some extra characters to test layout of the book name. And some mote text!"
 
-        coverImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 64, height: 90))
-        titleLabel = UILabel(frame: CGRect(x: 80, y: 0, width: width - 80, height: 90))
-        authorLabel = UILabel(frame: CGRect(x: 0, y: 102, width: width, height: 29))
+        coverImage = UIImageView(frame: CGRect(x: 0, y: spacing, width: 64, height: 90))
+        titleLabel = UILabel(frame: CGRect(x: 80, y: spacing, width: width - 80, height: 90))
+        authorLabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: 21))
 
         titleLabel.text = title
-        titleLabel.font = .systemFont(ofSize: 22, weight: .bold)
+        titleLabel.font = TextStyle.Book.h1.font
         titleLabel.textColor = ColorStyle.textDark.color
         titleLabel.numberOfLines = 0
+        titleLabel.sizeToFit()
 
+        authorLabel.frame.origin.y = max(coverImage.frame.maxY, titleLabel.frame.maxY) + spacing
         authorLabel.text = author
-        authorLabel.font = .systemFont(ofSize: 14)
+        authorLabel.font = TextStyle.Book.bodyText.font
         authorLabel.textColor = ColorStyle.orange.color
         authorLabel.numberOfLines = 0
 
@@ -34,7 +38,7 @@ class ContentHeaderView: UIView {
 
         super.init(frame: CGRect.zero)
 
-        let height = authorLabel.frame.maxY + 10
+        let height = authorLabel.frame.maxY + spacing
 
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
         self.widthAnchor.constraint(equalToConstant: width).isActive = true

@@ -33,6 +33,11 @@
 		3EC05CC623F6D0C300862940 /* BooksListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC05CC523F6D0C300862940 /* BooksListItemCell.swift */; };
 		3EC05CC923F6D22E00862940 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC05CC823F6D22E00862940 /* ReusableView.swift */; };
 		3EC05CCB23F7F71800862940 /* BooksListItemProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC05CCA23F7F71800862940 /* BooksListItemProgress.swift */; };
+		3ECF6F09241CF7810043E0D0 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF6F08241CF7810043E0D0 /* TextStyle.swift */; };
+		3ECF6F11241CFF310043E0D0 /* NotoSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F0D241CFF310043E0D0 /* NotoSerif-Regular.ttf */; };
+		3ECF6F12241CFF310043E0D0 /* NotoSerif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F0E241CFF310043E0D0 /* NotoSerif-Medium.ttf */; };
+		3ECF6F13241CFF310043E0D0 /* NotoSerif-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F0F241CFF310043E0D0 /* NotoSerif-Italic.ttf */; };
+		3ECF6F14241CFF310043E0D0 /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F10241CFF310043E0D0 /* NotoSerif-Bold.ttf */; };
 		3ED413EB23F8757C00BEC2C5 /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413EA23F8757B00BEC2C5 /* UseCaseProvider.swift */; };
 		3ED413EE23F875D700BEC2C5 /* BooksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */; };
 		3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413F223F8776000BEC2C5 /* Codable.swift */; };
@@ -73,6 +78,11 @@
 		3EC05CC523F6D0C300862940 /* BooksListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListItemCell.swift; sourceTree = "<group>"; };
 		3EC05CC823F6D22E00862940 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		3EC05CCA23F7F71800862940 /* BooksListItemProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListItemProgress.swift; sourceTree = "<group>"; };
+		3ECF6F08241CF7810043E0D0 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
+		3ECF6F0D241CFF310043E0D0 /* NotoSerif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Regular.ttf"; sourceTree = "<group>"; };
+		3ECF6F0E241CFF310043E0D0 /* NotoSerif-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Medium.ttf"; sourceTree = "<group>"; };
+		3ECF6F0F241CFF310043E0D0 /* NotoSerif-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Italic.ttf"; sourceTree = "<group>"; };
+		3ECF6F10241CFF310043E0D0 /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
 		3ED413EA23F8757B00BEC2C5 /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
 		3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksUseCase.swift; sourceTree = "<group>"; };
 		3ED413F223F8776000BEC2C5 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
@@ -148,8 +158,9 @@
 			children = (
 				3EB62F8623F6B9F000C3F1D6 /* Code */,
 				3E49890723F6B1670082322E /* Main.storyboard */,
-				3E49890A23F6B16A0082322E /* Assets.xcassets */,
 				3E49890C23F6B16A0082322E /* LaunchScreen.storyboard */,
+				3E49890A23F6B16A0082322E /* Assets.xcassets */,
+				3ECF6F0C241CFF310043E0D0 /* Fonts */,
 				3E49890F23F6B16A0082322E /* Info.plist */,
 			);
 			path = TReader;
@@ -180,6 +191,7 @@
 			children = (
 				3EB62F8823F6BA2500C3F1D6 /* AppAppearance.swift */,
 				3EB62F8B23F6BC0400C3F1D6 /* ColorStyle.swift */,
+				3ECF6F08241CF7810043E0D0 /* TextStyle.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -216,6 +228,17 @@
 				3E03BDC424129FC600E16147 /* UIImageView+Kingfisher.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3ECF6F0C241CFF310043E0D0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3ECF6F0D241CFF310043E0D0 /* NotoSerif-Regular.ttf */,
+				3ECF6F0E241CFF310043E0D0 /* NotoSerif-Medium.ttf */,
+				3ECF6F0F241CFF310043E0D0 /* NotoSerif-Italic.ttf */,
+				3ECF6F10241CFF310043E0D0 /* NotoSerif-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		3ED413E623F8732E00BEC2C5 /* Application */ = {
@@ -345,6 +368,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E49890E23F6B16A0082322E /* LaunchScreen.storyboard in Resources */,
+				3ECF6F14241CFF310043E0D0 /* NotoSerif-Bold.ttf in Resources */,
+				3ECF6F11241CFF310043E0D0 /* NotoSerif-Regular.ttf in Resources */,
+				3ECF6F13241CFF310043E0D0 /* NotoSerif-Italic.ttf in Resources */,
+				3ECF6F12241CFF310043E0D0 /* NotoSerif-Medium.ttf in Resources */,
 				3E49890B23F6B16A0082322E /* Assets.xcassets in Resources */,
 				3E49890923F6B1670082322E /* Main.storyboard in Resources */,
 			);
@@ -423,6 +450,7 @@
 				3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */,
 				3EC05CC423F6CF7800862940 /* BooksListViewController.swift in Sources */,
 				3E0A587F24116C3100B09EE0 /* ChapterNavigator.swift in Sources */,
+				3ECF6F09241CF7810043E0D0 /* TextStyle.swift in Sources */,
 				3EC05CC923F6D22E00862940 /* ReusableView.swift in Sources */,
 				3ED413EB23F8757C00BEC2C5 /* UseCaseProvider.swift in Sources */,
 				3E149F1923F9CFE1006968D4 /* Chapter.swift in Sources */,

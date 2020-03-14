@@ -46,12 +46,12 @@ class ContentViewController: UIViewController {
             .drive(onNext: { chapters in
                 chapters.enumerated().forEach { [unowned self] arg in
                     let model = arg.element
-                    let number = model.showNumber == 1 ? " \(Int(floor(model.order)))." : " ·"
+                    let number = model.showNumber == 1 ? " \(Int(floor(model.order)))." : " · "
                     let text = "\(number) \(model.title)"
                     let label = UILabel()
                     label.text = text
                     label.numberOfLines = 0
-                    label.font = .systemFont(ofSize: 14)
+                    label.font = TextStyle.Book.h4.font
 
                     label.rx.tapGesture()
                         .asDriver()

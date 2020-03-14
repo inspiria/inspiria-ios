@@ -154,27 +154,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLm-m7-4Xa">
-                                <rect key="frame" x="24" y="44" width="366" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yjC-FM-C6z">
-                                        <rect key="frame" x="0.0" y="0.0" width="366" height="818"/>
+                                        <rect key="frame" x="24" y="0.0" width="366" height="818"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="yjC-FM-C6z" secondAttribute="bottom" id="9OJ-Kd-FTI"/>
-                                    <constraint firstItem="yjC-FM-C6z" firstAttribute="width" secondItem="VLm-m7-4Xa" secondAttribute="width" id="HoZ-cO-0OS"/>
-                                    <constraint firstItem="yjC-FM-C6z" firstAttribute="leading" secondItem="VLm-m7-4Xa" secondAttribute="leading" id="InA-YV-r9Z"/>
+                                    <constraint firstItem="yjC-FM-C6z" firstAttribute="width" secondItem="VLm-m7-4Xa" secondAttribute="width" constant="-48" id="HoZ-cO-0OS"/>
+                                    <constraint firstItem="yjC-FM-C6z" firstAttribute="leading" secondItem="VLm-m7-4Xa" secondAttribute="leading" constant="24" id="InA-YV-r9Z"/>
                                     <constraint firstItem="yjC-FM-C6z" firstAttribute="top" secondItem="VLm-m7-4Xa" secondAttribute="top" id="Nic-55-iyP"/>
                                     <constraint firstItem="yjC-FM-C6z" firstAttribute="height" secondItem="VLm-m7-4Xa" secondAttribute="height" placeholder="YES" id="dCG-WG-r2g"/>
-                                    <constraint firstAttribute="trailing" secondItem="yjC-FM-C6z" secondAttribute="trailing" id="yka-b9-HnF"/>
+                                    <constraint firstAttribute="trailing" secondItem="yjC-FM-C6z" secondAttribute="trailing" constant="24" id="yka-b9-HnF"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="VLm-m7-4Xa" firstAttribute="leading" secondItem="E5e-Il-wHj" secondAttribute="leading" constant="24" id="1Gf-6u-1Ld"/>
+                            <constraint firstItem="VLm-m7-4Xa" firstAttribute="leading" secondItem="E5e-Il-wHj" secondAttribute="leading" id="1Gf-6u-1Ld"/>
                             <constraint firstItem="VLm-m7-4Xa" firstAttribute="bottom" secondItem="E5e-Il-wHj" secondAttribute="bottom" id="jaD-dH-dlB"/>
-                            <constraint firstItem="E5e-Il-wHj" firstAttribute="trailing" secondItem="VLm-m7-4Xa" secondAttribute="trailing" constant="24" id="uGZ-D6-q1x"/>
+                            <constraint firstItem="E5e-Il-wHj" firstAttribute="trailing" secondItem="VLm-m7-4Xa" secondAttribute="trailing" id="uGZ-D6-q1x"/>
                             <constraint firstItem="VLm-m7-4Xa" firstAttribute="top" secondItem="E5e-Il-wHj" secondAttribute="top" id="uTj-8d-k5s"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="E5e-Il-wHj"/>
