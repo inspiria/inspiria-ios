@@ -46,7 +46,7 @@ class ContentViewController: UIViewController {
             .drive(onNext: { chapters in
                 chapters.enumerated().forEach { [unowned self] arg in
                     let model = arg.element
-                    let number = model.showNumber == 1 ? " \(Int(floor(model.order)))." : " · "
+                    let number = model.showNumber ? " \(Int(floor(model.orderNumber)))." : " · "
                     let text = "\(number) \(model.title)"
                     let label = UILabel()
                     label.text = text
