@@ -30,7 +30,10 @@ class ChapterViewController: UIViewController {
         let output = viewModel.transform(input: input)
 
         output.chapter
+            .asObservable()
+            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .map { $0.textProcessed.att() }
+            .asDriverOnErrorJustComplete()
             .drive(textView.rx.attributedText)
             .disposed(by: rx.disposeBag)
 
