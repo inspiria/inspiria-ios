@@ -11,7 +11,7 @@ import Foundation
 private let dateFormatterUTF: DateFormatter = {
     let frm = DateFormatter()
     frm.timeZone = TimeZone(secondsFromGMT: 0)
-    frm.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    frm.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
     return frm
 }()
 
