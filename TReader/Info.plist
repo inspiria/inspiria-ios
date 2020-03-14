@@ -37,6 +37,13 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSerif-Bold.ttf</string>
+		<string>NotoSerif-Italic.ttf</string>
+		<string>NotoSerif-Medium.ttf</string>
+		<string>NotoSerif-Regular.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -85,12 +92,5 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>NotoSerif-Bold.ttf</string>
-		<string>NotoSerif-Italic.ttf</string>
-		<string>NotoSerif-Medium.ttf</string>
-		<string>NotoSerif-Regular.ttf</string>
-	</array>
 </dict>
 </plist>
