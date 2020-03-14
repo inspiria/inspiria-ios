@@ -15,6 +15,8 @@ class ContentViewController: UIViewController {
 
     var viewModel: ContentViewModel!
     
+    private let select = BehaviorSubject<Int>(value: 0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,18 +28,15 @@ class ContentViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let select = BehaviorSubject<Int>(value: 0)
         let input = ContentViewModel.Input(onSelect: select.asDriverOnErrorJustComplete().skip(1))
         let output = viewModel.transform(input: input)
 
         output.info
             .drive(onNext: { [unowned self] info in
                 self.navigationItem.title = info.title
-
                 let header = ContentHeaderView(title: info.title,
                                                author: "Author unknown",
                                                coverUrl: info.coverImageUrl)
-
                 self.stackView.addArrangedSubview(header)
             })
             .disposed(by: rx.disposeBag)
@@ -45,19 +44,7 @@ class ContentViewController: UIViewController {
         output.chapters
             .drive(onNext: { chapters in
                 chapters.enumerated().forEach { [unowned self] arg in
-                    let model = arg.element
-                    let number = model.showNumber ? " \(Int(floor(model.orderNumber)))." : " · "
-                    let text = "\(number) \(model.title)"
-                    let label = UILabel()
-                    label.text = text
-                    label.numberOfLines = 0
-                    label.font = TextStyle.Book.h4.font
-
-                    label.rx.tapGesture()
-                        .asDriver()
-                        .map { _ in arg.offset }
-                        .drive(select)
-                        .disposed(by: self.rx.disposeBag)
+                    let label = self.buildLabel(for: arg.element, offset: arg.offset)
                     self.stackView.addArrangedSubview(label)
                 }
             })
@@ -66,5 +53,24 @@ class ContentViewController: UIViewController {
         output.open
             .drive()
             .disposed(by: rx.disposeBag)
+    }
+    
+    func buildLabel(for model: Chapter, offset: Int) -> UIView {
+        let number = model.showNumber ? "\(Int(floor(model.orderNumber))). " : ""
+        let heading = model.showHeadings ? "    " : ""
+        let text = "\(heading)\(number)\(model.title)"
+        
+        let label = Label()
+        label.textStyle = model.showHeadings ? TextStyle.Book.bodyText : TextStyle.Book.h4
+        label.text = text
+        label.numberOfLines = 0
+
+        label.rx.tapGesture()
+            .asDriver()
+            .map { _ in offset }
+            .drive(select)
+            .disposed(by: rx.disposeBag)
+        
+        return label
     }
 }

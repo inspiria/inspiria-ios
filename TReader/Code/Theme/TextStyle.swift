@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol TextStylable {
+    var font: UIFont { get }
+    var lineHeight: CGFloat { get }
+}
+
 class TextStyle {
-    enum Book: String, CaseIterable {
+    enum Book: String, TextStylable, CaseIterable {
         case h1
         case h2
         case h3
@@ -27,6 +32,18 @@ class TextStyle {
             case .bodyText: return UIFont.reading_bodyText
             case .calloutQuote: return UIFont.reading_calloutQuote
             case .captions: return UIFont.reading_captions
+            }
+        }
+        
+        var lineHeight: CGFloat {
+            switch self {
+            case .h1: return 30.0
+            case .h2: return 27.0
+            case .h3: return 24.0
+            case .h4: return 24.0
+            case .bodyText: return 21.0
+            case .calloutQuote: return 24.0
+            case .captions: return 14
             }
         }
     }

@@ -10,27 +10,27 @@ import UIKit
 
 class ContentHeaderView: UIView {
     private let coverImage: UIImageView
-    private let titleLabel: UILabel
-    private let authorLabel: UILabel
+    private let titleLabel: Label
+    private let authorLabel: Label
 
     init(title: String, author: String, coverUrl: String) {
         let width = UIScreen.main.bounds.width - 48
         let spacing: CGFloat = 12
-        let title = title + ". Some extra characters to test layout of the book name. And some mote text!"
 
         coverImage = UIImageView(frame: CGRect(x: 0, y: spacing, width: 64, height: 90))
-        titleLabel = UILabel(frame: CGRect(x: 80, y: spacing, width: width - 80, height: 90))
-        authorLabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: 21))
+        titleLabel = Label(frame: CGRect(x: 80, y: spacing, width: width - 80, height: 90))
+        authorLabel = Label(frame: CGRect(x: 0, y: 0, width: width, height: 21))
 
+        titleLabel.textStyle = TextStyle.Book.h1
         titleLabel.text = title
-        titleLabel.font = TextStyle.Book.h1.font
         titleLabel.textColor = ColorStyle.textDark.color
         titleLabel.numberOfLines = 0
         titleLabel.sizeToFit()
 
+        
         authorLabel.frame.origin.y = max(coverImage.frame.maxY, titleLabel.frame.maxY) + spacing
+        authorLabel.textStyle = TextStyle.Book.bodyText
         authorLabel.text = author
-        authorLabel.font = TextStyle.Book.bodyText.font
         authorLabel.textColor = ColorStyle.orange.color
         authorLabel.numberOfLines = 0
 

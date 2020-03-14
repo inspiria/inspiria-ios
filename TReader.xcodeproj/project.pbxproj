@@ -38,6 +38,7 @@
 		3ECF6F12241CFF310043E0D0 /* NotoSerif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F0E241CFF310043E0D0 /* NotoSerif-Medium.ttf */; };
 		3ECF6F13241CFF310043E0D0 /* NotoSerif-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F0F241CFF310043E0D0 /* NotoSerif-Italic.ttf */; };
 		3ECF6F14241CFF310043E0D0 /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F10241CFF310043E0D0 /* NotoSerif-Bold.ttf */; };
+		3ECF6F16241D208B0043E0D0 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF6F15241D208B0043E0D0 /* Label.swift */; };
 		3ED413EB23F8757C00BEC2C5 /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413EA23F8757B00BEC2C5 /* UseCaseProvider.swift */; };
 		3ED413EE23F875D700BEC2C5 /* BooksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */; };
 		3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413F223F8776000BEC2C5 /* Codable.swift */; };
@@ -83,6 +84,7 @@
 		3ECF6F0E241CFF310043E0D0 /* NotoSerif-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Medium.ttf"; sourceTree = "<group>"; };
 		3ECF6F0F241CFF310043E0D0 /* NotoSerif-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Italic.ttf"; sourceTree = "<group>"; };
 		3ECF6F10241CFF310043E0D0 /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
+		3ECF6F15241D208B0043E0D0 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		3ED413EA23F8757B00BEC2C5 /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
 		3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksUseCase.swift; sourceTree = "<group>"; };
 		3ED413F223F8776000BEC2C5 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				3EB62F8823F6BA2500C3F1D6 /* AppAppearance.swift */,
 				3EB62F8B23F6BC0400C3F1D6 /* ColorStyle.swift */,
 				3ECF6F08241CF7810043E0D0 /* TextStyle.swift */,
+				3ECF6F15241D208B0043E0D0 /* Label.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				3E9CEDAB2402A849002E8FA3 /* Storyboard.swift in Sources */,
 				3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */,
 				3E03BDC32412994000E16147 /* ContentHeaderView.swift in Sources */,
+				3ECF6F16241D208B0043E0D0 /* Label.swift in Sources */,
 				3ED413F523F8795200BEC2C5 /* BooksListViewModel.swift in Sources */,
 				3E03BDC524129FC600E16147 /* UIImageView+Kingfisher.swift in Sources */,
 				3ED413EE23F875D700BEC2C5 /* BooksUseCase.swift in Sources */,

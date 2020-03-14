@@ -16,6 +16,7 @@ struct Chapter: Codable {
     let orderNumber: Float
     let isSectionHeader: Bool
     let showNumber: Bool
+    let showHeadings: Bool
     let lastUpdated: Date
     let parentId: Int?
     let copyrightOverride: String?
