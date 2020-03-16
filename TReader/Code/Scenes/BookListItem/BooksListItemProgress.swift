@@ -63,7 +63,7 @@ class BooksListItemProgress: UIView {
         let y = rect.size.height / 2.0
         var progress = CGFloat(self.progress)
         if progress == 0 {
-            progress = 0.02
+            progress = 0.05
         }
         let floatMPI = CGFloat.pi
         context?.move(to: CGPoint(x: x, y: y))

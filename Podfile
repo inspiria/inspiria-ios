@@ -14,4 +14,5 @@ target 'TReader' do
 
   pod 'Kingfisher', '~> 5.0'
   pod 'Zip', '~> 1.1'
+  pod 'SwiftSoup'
 end

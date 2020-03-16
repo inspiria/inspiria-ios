@@ -101,9 +101,14 @@ class NetworkService {
         var req = URLRequest(url: url)
         req.httpMethod = HTTPMethod.get.rawValue
         var observation: NSKeyValueObservation?
+        
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 60.0
+        sessionConfig.timeoutIntervalForResource = 60.0
+        let session = URLSession(configuration: sessionConfig)
 
         return Observable.create { observable in
-            let task = URLSession.shared.dataTask(with: req) { data, response, error in
+            let task = session.dataTask(with: req) { data, response, error in
                 do {
                     if let error = error {
                         throw error

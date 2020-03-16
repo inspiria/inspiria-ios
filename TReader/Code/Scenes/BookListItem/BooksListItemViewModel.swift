@@ -37,6 +37,7 @@ class BooksListItemViewModel {
                 return self.useCase
                     .downloadBook(id: self.book.id)
                     .asDriver(onErrorJustReturn: -1.0)
+                    .startWith(0.0)
         }
         .do(onNext: { [unowned self] prg in
             switch prg {
