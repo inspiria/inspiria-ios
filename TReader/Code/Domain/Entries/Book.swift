@@ -19,6 +19,7 @@ struct BookInfo: Codable {
 
 struct Book: Codable {
     let info: BookInfo
+    let authors: [Author]
     let chapters: [Chapter]
 }
 

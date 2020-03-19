@@ -12,13 +12,8 @@ class AuthorSectionView: UIView {
     private let imageView: UIImageView
     private let headerLabel: Label
     private let textLabel: Label
-    
-    private static let _text = "<p>Dr. Royce Kimmons is an Assistant Professor of Instructional Psychology and Technology at Brigham Young University where he studies digital participation divides specifically in the realms of social media, open education, and classroom technology use. More information about his work may be found at <a href=\"http://roycekimmons.com\">http://roycekimmons.com</a>, and you may also dialogue with him on Twitter <a href=\"https://twitter.com/roycekimmons\">@roycekimmons<span class=\"display-url pdf-only\"> [https://twitter.com/roycekimmons]</span></a>.</p>"
-    private static let _url = "https://edtechbooks.org/author_images/1_03-07-2019_095309.jpg"
 
-    init(name: String = "Royce Kimmons",
-         text: String = AuthorSectionView._text,
-         photoUrl: String = AuthorSectionView._url) {
+    init(name: String, text: String, photoUrl: String) {
         
         let spacing: CGFloat = 12
         let width = UIScreen.main.bounds.width - spacing * 2

@@ -25,18 +25,18 @@ class ContentViewModel {
 
     func transform(input: Input) -> Output {
         let info = Driver.just(bookInfo)
-        let chapters = booksUseCase
+        let book = booksUseCase
             .book(id: bookInfo.id)
-            .map { $0.chapters }
             .asObservable()
             .asDriverOnErrorJustComplete()
-
+        let chapters = book.map { $0.chapters }
+        let authors = book.map { $0.authors }
         let open = input.onSelect
             .withLatestFrom(chapters) { $1[$0] }
             .do(onNext: navigator.to)
             .mapToVoid()
 
-        return Output(info: info, chapters: chapters, open: open)
+        return Output(info: info, chapters: chapters, authors: authors, open: open)
     }
 }
 
@@ -47,6 +47,7 @@ extension ContentViewModel {
     struct Output {
         let info: Driver<BookInfo>
         let chapters: Driver<[Chapter]>
+        let authors: Driver<[Author]>
         let open: Driver<Void>
     }
 }

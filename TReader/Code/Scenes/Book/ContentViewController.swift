@@ -53,10 +53,14 @@ class ContentViewController: UIViewController {
             })
             .disposed(by: rx.disposeBag)
         
-        output.info
-            .drive(onNext: { [unowned self] info in
-                let footer = AuthorSectionView()
-                self.stackView.addArrangedSubview(footer)
+        output.authors
+            .drive(onNext: { [unowned self] authors in
+                for author in authors {
+                    let footer = AuthorSectionView(name: author.name,
+                                                   text: author.bio,
+                                                   photoUrl: author.pictureUrl)
+                    self.stackView.addArrangedSubview(footer)
+                }
             })
             .disposed(by: rx.disposeBag)
         
