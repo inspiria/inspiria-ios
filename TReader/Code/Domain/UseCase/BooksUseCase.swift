@@ -61,7 +61,7 @@ class DefaultBooksUseCase: BooksUseCase {
                     }
                     return self.bookStorage
                         .storeBook(id: id, data: data)
-                        .map { $0*0.25 + 0.75 }
+                        .map { $0*0.15 + 0.85 }
                 }
                 return Observable.just(download.progress*0.75)
             }
