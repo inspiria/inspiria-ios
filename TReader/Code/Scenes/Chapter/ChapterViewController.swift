@@ -13,23 +13,23 @@ import SwiftSoup
 
 class ChapterViewController: UIViewController {
     var viewModel: ChapterViewModel!
-    
+
     @IBOutlet weak var textView: UITextView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         configureView()
         bindViewModel()
     }
-    
+
     func configureView() {
     }
-    
+
     private func bindViewModel() {
         let input = ChapterViewModel.Input()
         let output = viewModel.transform(input: input)
-        
+
         output.chapter
             .asObservable()
             .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
@@ -38,7 +38,7 @@ class ChapterViewController: UIViewController {
             .asDriverOnErrorJustComplete()
             .drive(textView.rx.attributedText)
             .disposed(by: rx.disposeBag)
-        
+
         output.chapter
             .map { $0.title }
             .drive(navigationItem.rx.title)
@@ -50,7 +50,7 @@ private extension String {
     func processImagesTag(bookId: Int) -> String {
         let paths = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
         let path = paths[0].appendingPathComponent("\(bookId)", isDirectory: true).absoluteString
-        
+
         do {
             let doc: Document = try SwiftSoup.parse(self)
             let img = try doc.select("img")

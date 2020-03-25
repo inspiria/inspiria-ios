@@ -33,7 +33,6 @@ class DefaultBooksUseCase: BooksUseCase {
         self.booksRelay = BehaviorRelay<[BookInfo]>.init(value: bookStorage.getBooksList())
     }
 
-
     func fetchBooks() -> Single<Void> {
         let list: Single<[BookInfo]> = networkService.request(path: "books", method: .get)
         return list.do(onSuccess: { [unowned self] books in

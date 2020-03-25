@@ -60,4 +60,3 @@ fileprivate extension UIColor {
     }
 
 }
-

@@ -332,6 +332,7 @@
 			buildConfigurationList = 3E49891223F6B16A0082322E /* Build configuration list for PBXNativeTarget "TReader" */;
 			buildPhases = (
 				C97B6EBF5E015C0FD718EE47 /* [CP] Check Pods Manifest.lock */,
+				3E839EC3242B6CB000BA993A /* Swiftlint */,
 				3E4988FA23F6B1660082322E /* Sources */,
 				3E4988FB23F6B1660082322E /* Frameworks */,
 				3E4988FC23F6B1660082322E /* Resources */,
@@ -397,6 +398,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3E839EC3242B6CB000BA993A /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		7BE57523ADEDF52E64B53109 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

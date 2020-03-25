@@ -1,0 +1,29 @@
+included: # paths to include during linting. `--path` is ignored if present.
+  - TReader/Code
+
+type_name:
+  max_length:
+    warning: 40
+    error: 60
+  min_length:
+    warning: 1
+
+function_parameter_count:
+  warning: 6
+  error: 8
+
+cyclomatic_complexity:
+  error: 30
+  
+line_length: 200
+  
+identifier_name:
+  min_length: 2
+  excluded: # excluded via string array
+    - at
+    - id
+    - URL
+    - API
+    - x
+    - y
+    - h

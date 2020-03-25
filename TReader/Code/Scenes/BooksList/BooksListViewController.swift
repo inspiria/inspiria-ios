@@ -120,4 +120,3 @@ private extension BooksListViewController {
         .observeOn(MainScheduler.instance)
     }
 }
-

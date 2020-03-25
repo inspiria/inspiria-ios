@@ -15,13 +15,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-        guard let _ = scene as? UIWindowScene else { return }
+        guard (scene as? UIWindowScene) != nil else { return }
 
         if let storyboard = session.configuration.storyboard {
-            let rootController = window?.rootViewController as! UITabBarController
-            let navigationController = storyboard.instantiateViewController(withIdentifier:
-                "BooksListNavigationController") as! UINavigationController
-            
+            guard let rootController = window?.rootViewController as? UITabBarController,
+                let navigationController = storyboard
+                    .instantiateViewController(withIdentifier: "BooksListNavigationController") as? UINavigationController else { return }
+
             rootController.setViewControllers([navigationController], animated: false)
             rootNavigator = DefaultBooksListNavigator(services: DefaultUseCaseProvider.provider,
                                                       storyboard: storyboard,

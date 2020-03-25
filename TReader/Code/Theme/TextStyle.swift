@@ -22,19 +22,19 @@ class TextStyle {
         case bodyText
         case calloutQuote
         case captions
-        
+
         var font: UIFont {
             switch self {
-            case .h1: return UIFont.reading_h1
-            case .h2: return UIFont.reading_h2
-            case .h3: return UIFont.reading_h3
-            case .h4: return UIFont.reading_h4
-            case .bodyText: return UIFont.reading_bodyText
-            case .calloutQuote: return UIFont.reading_calloutQuote
-            case .captions: return UIFont.reading_captions
+            case .h1: return UIFont.readingH1
+            case .h2: return UIFont.readingH2
+            case .h3: return UIFont.readingH3
+            case .h4: return UIFont.readingH4
+            case .bodyText: return UIFont.readingBodyText
+            case .calloutQuote: return UIFont.readingCalloutQuote
+            case .captions: return UIFont.readingCaptions
             }
         }
-        
+
         var lineHeight: CGFloat {
             switch self {
             case .h1: return 30.0
@@ -50,31 +50,31 @@ class TextStyle {
 }
 
 fileprivate extension UIFont {
-    static var reading_h1: UIFont = {
+    static var readingH1: UIFont = {
         return UIFont(name: "NotoSerif-Bold", size: 22) ?? UIFont.systemFont(ofSize: 22, weight: .bold)
     }()
 
-    static var reading_h2: UIFont = {
+    static var readingH2: UIFont = {
         return UIFont(name: "NotoSerif-Bold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .bold)
     }()
 
-    static var reading_h3: UIFont = {
+    static var readingH3: UIFont = {
         return UIFont(name: "NotoSerif-Bold", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .bold)
     }()
 
-    static var reading_h4: UIFont = {
+    static var readingH4: UIFont = {
         return UIFont(name: "NotoSerif-Medium", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .medium)
     }()
 
-    static var reading_bodyText: UIFont = {
+    static var readingBodyText: UIFont = {
         return UIFont(name: "NotoSerif-Regular", size: 14.0) ?? UIFont.systemFont(ofSize: 14, weight: .regular)
     }()
 
-    static var reading_calloutQuote: UIFont = {
+    static var readingCalloutQuote: UIFont = {
         return UIFont(name: "NotoSerif-Italic", size: 16.0) ?? UIFont.systemFont(ofSize: 14, weight: .thin)
     }()
 
-    static var reading_captions: UIFont = {
+    static var readingCaptions: UIFont = {
         return UIFont(name: "NotoSerif-Regular", size: 12.0) ?? UIFont.systemFont(ofSize: 12, weight: .regular)
     }()
 }

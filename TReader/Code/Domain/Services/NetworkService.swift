@@ -22,7 +22,6 @@ enum NetworkError: LocalizedError {
     }
 }
 
-
 class NetworkService {
     private let url: String
     private let disposeBag = DisposeBag()
@@ -101,7 +100,7 @@ class NetworkService {
         var req = URLRequest(url: url)
         req.httpMethod = HTTPMethod.get.rawValue
         var observation: NSKeyValueObservation?
-        
+
         let sessionConfig = URLSessionConfiguration.default
         sessionConfig.timeoutIntervalForRequest = 60.0
         sessionConfig.timeoutIntervalForResource = 60.0

@@ -19,7 +19,7 @@ class ContentHeaderView: UIView {
 
         imageView = UIImageView(frame: CGRect(x: spacing, y: spacing, width: 64, height: 90))
         imageView.setBookCover(url: coverUrl)
-        
+
         titleLabel = Label(frame: CGRect(x: imageView.frame.maxX + spacing, y: spacing,
                                          width: width - imageView.frame.maxX - spacing, height: 0))
         titleLabel.textStyle = TextStyle.Book.h1
@@ -27,7 +27,7 @@ class ContentHeaderView: UIView {
         titleLabel.textColor = ColorStyle.textDark.color
         titleLabel.numberOfLines = 0
         titleLabel.sizeToFit()
-        
+
         let y = max(imageView.frame.maxY, titleLabel.frame.maxY) + spacing
         authorLabel = Label(frame: CGRect(x: spacing, y: y, width: width - spacing*2, height: 0))
         authorLabel.textStyle = TextStyle.Book.bodyText

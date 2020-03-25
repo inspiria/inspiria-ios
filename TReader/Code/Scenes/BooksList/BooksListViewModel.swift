@@ -34,7 +34,7 @@ class BooksListViewModel {
             .filter { $0.1 }
             .withLatestFrom(books) { $1[$0.0] }
             .filter { $0.isDownloaded }
-            .do(onNext: { $0.state.accept($0.state.value.isSelected ? .deselected : .selected) } )
+            .do(onNext: { $0.state.accept($0.state.value.isSelected ? .deselected : .selected)})
             .mapToVoid()
 
         let enable = input.canEdit

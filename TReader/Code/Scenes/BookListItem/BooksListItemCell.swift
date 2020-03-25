@@ -52,7 +52,7 @@ extension BooksListItemCell {
         return Binder<BooksListItemViewModel.HoodState>(self, binding: { cnt, state in
             cnt.progressHud.state = state
 
-            switch (state) {
+            switch state {
             case .deselected:
                 cnt.selection.isHidden = false
                 cnt.selection.image =  #imageLiteral(resourceName: "SelectOpen")

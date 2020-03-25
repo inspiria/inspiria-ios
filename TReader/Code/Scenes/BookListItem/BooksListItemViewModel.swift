@@ -47,7 +47,7 @@ class BooksListItemViewModel {
             }
         })
 
-        return Output(book:book,
+        return Output(book: book,
                       state: state.asDriver(),
                       downloadProgress: download)
     }

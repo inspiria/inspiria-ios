@@ -24,7 +24,7 @@ extension UIImageView {
                               .onFailureImage(#imageLiteral(resourceName: "BookCover"))
         ])
     }
-    
+
     func setImage(url: String) {
         let url = URL(string: url)
         let processor = DownsamplingImageProcessor(size: self.frame.size)
