@@ -35,31 +35,32 @@ class ContentViewController: UIViewController {
             .drive(onNext: { [unowned self] info in
                 self.navigationItem.title = info.title
                 let header = ContentHeaderView(title: info.title,
-                                               author: "Author unknown",
+                                               author: info.author,
                                                coverUrl: info.coverImageUrl)
                 self.stackView.addArrangedSubview(header)
             })
             .disposed(by: rx.disposeBag)
 
         output.chapters
-            .drive(onNext: { chapters in
-                chapters.enumerated().forEach { [unowned self] arg in
+            .drive(onNext: { [unowned self] chapters in
+                chapters.enumerated().forEach { arg in
                     let label = self.buildLabel(for: arg.element, offset: arg.offset)
                     self.stackView.addArrangedSubview(label)
+                    if chapters.count - 1 == arg.offset {
+                        self.stackView.setCustomSpacing(20, after: label)
+                    }
                 }
-                let view = UIView()
-                view.heightAnchor.constraint(equalToConstant: 12).isActive = true
-                self.stackView.addArrangedSubview(view)
             })
             .disposed(by: rx.disposeBag)
         
         output.authors
             .drive(onNext: { [unowned self] authors in
-                for author in authors {
-                    let footer = AuthorSectionView(name: author.name,
-                                                   text: author.bio,
-                                                   photoUrl: author.pictureUrl)
-                    self.stackView.addArrangedSubview(footer)
+                authors.forEach { author in
+                    let view = AuthorSectionView(name: author.name,
+                                                 text: author.bio,
+                                                 photoUrl: author.pictureUrl)
+                    self.stackView.addArrangedSubview(view)
+                    self.stackView.setCustomSpacing(20, after: view)
                 }
             })
             .disposed(by: rx.disposeBag)

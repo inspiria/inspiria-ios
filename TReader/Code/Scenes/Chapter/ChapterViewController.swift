@@ -54,7 +54,7 @@ private extension String {
         do {
             let doc: Document = try SwiftSoup.parse(self)
             let img = try doc.select("img")
-            let res = try img.map { elem in
+            let res: [()] = try img.map { elem in
                 try elem.attr("src", path + (elem.getAttributes()?.get(key: "src") ?? ""))
                 try elem.attr("width", "\(UIScreen.main.bounds.width - 24)")
             }

@@ -11,6 +11,7 @@ import Foundation
 struct BookInfo: Codable {
     let id: Int
     let title: String
+    let author: String
     let subtitle: String
     let version: String
     let year: Int
