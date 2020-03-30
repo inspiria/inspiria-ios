@@ -10,8 +10,8 @@ import UIKit
 
 class ContentHeaderView: UIView {
     private let imageView: UIImageView
-    private let titleLabel: Label
-    private let authorLabel: Label
+    private let titleLabel: TRLabel
+    private let authorLabel: TRLabel
 
     init(title: String, author: String, coverUrl: String) {
         let spacing: CGFloat = 12
@@ -20,7 +20,7 @@ class ContentHeaderView: UIView {
         imageView = UIImageView(frame: CGRect(x: spacing, y: spacing, width: 64, height: 90))
         imageView.setBookCover(url: coverUrl)
 
-        titleLabel = Label(frame: CGRect(x: imageView.frame.maxX + spacing, y: spacing,
+        titleLabel = TRLabel(frame: CGRect(x: imageView.frame.maxX + spacing, y: spacing,
                                          width: width - imageView.frame.maxX - spacing, height: 0))
         titleLabel.textStyle = TextStyle.Book.h1
         titleLabel.text = title
@@ -29,7 +29,7 @@ class ContentHeaderView: UIView {
         titleLabel.sizeToFit()
 
         let y = max(imageView.frame.maxY, titleLabel.frame.maxY) + spacing
-        authorLabel = Label(frame: CGRect(x: spacing, y: y, width: width - spacing*2, height: 0))
+        authorLabel = TRLabel(frame: CGRect(x: spacing, y: y, width: width - spacing*2, height: 0))
         authorLabel.textStyle = TextStyle.Book.bodyText
         authorLabel.text = author
         authorLabel.textColor = ColorStyle.orange.color

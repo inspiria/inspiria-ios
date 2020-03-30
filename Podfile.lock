@@ -17,6 +17,7 @@ PODS:
     - RxSwift (~> 5)
   - RxSwift (5.0.1)
   - SwiftSoup (2.3.0)
+  - WordPress-Aztec-iOS (1.17.0)
   - Zip (1.1.0)
 
 DEPENDENCIES:
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - RxRelay (~> 5)
   - RxSwift (~> 5)
   - SwiftSoup
+  - WordPress-Aztec-iOS
   - Zip (~> 1.1)
 
 SPEC REPOS:
@@ -40,6 +42,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SwiftSoup
+    - WordPress-Aztec-iOS
     - Zip
 
 SPEC CHECKSUMS:
@@ -51,8 +54,9 @@ SPEC CHECKSUMS:
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   SwiftSoup: d78683f7ea0ae5733225a9e1d3bee5b256449df4
+  WordPress-Aztec-iOS: 2a9fb6c2a23284f53d6d69ada43c50b5fddc7c3b
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: edbb6af025bfff98e773e4160ed5bf4ee0d05e0d
+PODFILE CHECKSUM: fb2896216d55619b6397bae209ccda997bab79df
 
 COCOAPODS: 1.9.0

@@ -10,15 +10,15 @@ import UIKit
 
 class AuthorSectionView: UIView {
     private let imageView: UIImageView
-    private let headerLabel: Label
-    private let textLabel: Label
+    private let headerLabel: TRLabel
+    private let textView: TRTextView
 
     init(name: String, text: String, photoUrl: String?) {
 
         let spacing: CGFloat = 12
         let width = UIScreen.main.bounds.width - spacing * 2
 
-        headerLabel = Label(frame: CGRect(x: spacing, y: spacing, width: width - spacing*2, height: 0))
+        headerLabel = TRLabel(frame: CGRect(x: spacing, y: spacing, width: width - spacing*2, height: 0))
         headerLabel.textStyle = TextStyle.Book.h3
         headerLabel.text = name
         headerLabel.textColor = ColorStyle.textDark.color
@@ -33,20 +33,21 @@ class AuthorSectionView: UIView {
             imageView = UIImageView(frame: CGRect(x: spacing, y: headerLabel.frame.maxY + spacing, width: 0, height: 0))
         }
 
-        textLabel = Label(frame: CGRect(x: spacing, y: imageView.frame.maxY + spacing, width: width - spacing*2, height: 0))
-        textLabel.textStyle = TextStyle.Book.bodyText
-        textLabel.set(html: text)
-        textLabel.numberOfLines = 0
-        textLabel.sizeToFit()
+        textView = TRTextView()
+        textView.frame = CGRect(x: spacing, y: imageView.frame.maxY + spacing, width: width - spacing*2, height: 0)
+        textView.isScrollEnabled = false
+        textView.backgroundColor = .clear
+        textView.setHTML(text)
+        textView.sizeToFit()
 
         super.init(frame: CGRect.zero)
 
-        let height = textLabel.frame.maxY + spacing
+        let height = textView.frame.maxY + spacing
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
 
         addSubview(headerLabel)
         addSubview(imageView)
-        addSubview(textLabel)
+        addSubview(textView)
 
         backgroundColor = ColorStyle.iconsLight.color
         layer.shadowOpacity = 0.25

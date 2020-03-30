@@ -45,7 +45,7 @@ class DefaultBooksStorage: BooksStorage {
 
     func storeBook(id: Int, data: Data) -> Observable<Double> {
         let bookUrl = filesService.getBookUrl(id: id)
-        let bookFile = filesService.getBookFileUrl(id: id)
+//        let bookFile = filesService.getBookFileUrl(id: id)
         let zipUrl = filesService.getBookZiptUrl(id: id)
         do {
             try data.write(to: zipUrl)
@@ -56,12 +56,12 @@ class DefaultBooksStorage: BooksStorage {
             do {
                 try Zip.unzipFile(zipUrl, destination: bookUrl, overwrite: true, password: nil, progress: { progress in
                     if progress == 1 {
-                        do {
-                            let processor = BookProcessor(id: id, url: bookFile, filesService: self.filesService)
-                            try processor.process()
-                        } catch {
-                            observable.onError(error)
-                        }
+//                        do {
+//                            let processor = BookProcessor(id: id, url: bookFile, filesService: self.filesService)
+//                            try processor.process()
+//                        } catch {
+//                            observable.onError(error)
+//                        }
                         observable.onNext(progress)
                         _ = self.filesService.removeBookZip(id: id)
                     } else {

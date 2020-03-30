@@ -18,6 +18,8 @@
 		3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1C23F9D112006968D4 /* ContentViewController.swift */; };
 		3E149F2123F9D112006968D4 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1D23F9D112006968D4 /* ContentViewModel.swift */; };
 		3E149F2423F9D6F4006968D4 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F2323F9D6F4006968D4 /* Observable.swift */; };
+		3E38A9512432294800EA2E10 /* TRTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A9502432294800EA2E10 /* TRTextView.swift */; };
+		3E38A95424322EBD00EA2E10 /* TRImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A95324322EBD00EA2E10 /* TRImageProvider.swift */; };
 		3E49890223F6B1670082322E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E49890123F6B1670082322E /* AppDelegate.swift */; };
 		3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E49890323F6B1670082322E /* SceneDelegate.swift */; };
 		3E49890923F6B1670082322E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890723F6B1670082322E /* Main.storyboard */; };
@@ -41,7 +43,7 @@
 		3ECF6F12241CFF310043E0D0 /* NotoSerif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F0E241CFF310043E0D0 /* NotoSerif-Medium.ttf */; };
 		3ECF6F13241CFF310043E0D0 /* NotoSerif-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F0F241CFF310043E0D0 /* NotoSerif-Italic.ttf */; };
 		3ECF6F14241CFF310043E0D0 /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F10241CFF310043E0D0 /* NotoSerif-Bold.ttf */; };
-		3ECF6F16241D208B0043E0D0 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF6F15241D208B0043E0D0 /* Label.swift */; };
+		3ECF6F16241D208B0043E0D0 /* TRLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF6F15241D208B0043E0D0 /* TRLabel.swift */; };
 		3ECF6F19241D3FF30043E0D0 /* AuthorSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF6F18241D3FF30043E0D0 /* AuthorSectionView.swift */; };
 		3ED413EB23F8757C00BEC2C5 /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413EA23F8757B00BEC2C5 /* UseCaseProvider.swift */; };
 		3ED413EE23F875D700BEC2C5 /* BooksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */; };
@@ -66,6 +68,8 @@
 		3E149F1C23F9D112006968D4 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		3E149F1D23F9D112006968D4 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		3E149F2323F9D6F4006968D4 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		3E38A9502432294800EA2E10 /* TRTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTextView.swift; sourceTree = "<group>"; };
+		3E38A95324322EBD00EA2E10 /* TRImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRImageProvider.swift; sourceTree = "<group>"; };
 		3E4988FE23F6B1670082322E /* TReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E49890123F6B1670082322E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E49890323F6B1670082322E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +95,7 @@
 		3ECF6F0E241CFF310043E0D0 /* NotoSerif-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Medium.ttf"; sourceTree = "<group>"; };
 		3ECF6F0F241CFF310043E0D0 /* NotoSerif-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Italic.ttf"; sourceTree = "<group>"; };
 		3ECF6F10241CFF310043E0D0 /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
-		3ECF6F15241D208B0043E0D0 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		3ECF6F15241D208B0043E0D0 /* TRLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRLabel.swift; sourceTree = "<group>"; };
 		3ECF6F18241D3FF30043E0D0 /* AuthorSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorSectionView.swift; sourceTree = "<group>"; };
 		3ED413EA23F8757B00BEC2C5 /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
 		3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksUseCase.swift; sourceTree = "<group>"; };
@@ -146,6 +150,26 @@
 			path = Book;
 			sourceTree = "<group>";
 		};
+		3E38A95224322E8600EA2E10 /* TextRendering */ = {
+			isa = PBXGroup;
+			children = (
+				3ECF6F15241D208B0043E0D0 /* TRLabel.swift */,
+				3E38A9502432294800EA2E10 /* TRTextView.swift */,
+				3E38A95324322EBD00EA2E10 /* TRImageProvider.swift */,
+			);
+			path = TextRendering;
+			sourceTree = "<group>";
+		};
+		3E38A95524322F3100EA2E10 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3EC05CC723F6D22200862940 /* Extensions */,
+				3EB62F8A23F6BBE800C3F1D6 /* Theme */,
+				3E38A95224322E8600EA2E10 /* TextRendering */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		3E4988F523F6B1660082322E = {
 			isa = PBXGroup;
 			children = (
@@ -190,8 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				3ED413E623F8732E00BEC2C5 /* Application */,
-				3EC05CC723F6D22200862940 /* Extensions */,
-				3EB62F8A23F6BBE800C3F1D6 /* Theme */,
+				3E38A95524322F3100EA2E10 /* UI */,
 				3ED413E723F8734F00BEC2C5 /* Scenes */,
 				3ED413E823F8736A00BEC2C5 /* Domain */,
 			);
@@ -204,7 +227,6 @@
 				3EB62F8823F6BA2500C3F1D6 /* AppAppearance.swift */,
 				3EB62F8B23F6BC0400C3F1D6 /* ColorStyle.swift */,
 				3ECF6F08241CF7810043E0D0 /* TextStyle.swift */,
-				3ECF6F15241D208B0043E0D0 /* Label.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -287,7 +309,6 @@
 			isa = PBXGroup;
 			children = (
 				3E9CEDA724028842002E8FA3 /* Storage */,
-				3E149F1523F97497006968D4 /* Services */,
 				3ED413EF23F876E800BEC2C5 /* Entries */,
 				3ED413E923F8757100BEC2C5 /* UseCase */,
 			);
@@ -306,6 +327,7 @@
 		3ED413EF23F876E800BEC2C5 /* Entries */ = {
 			isa = PBXGroup;
 			children = (
+				3E149F1523F97497006968D4 /* Services */,
 				3EFF974A23FC2B7B000103FE /* Book.swift */,
 				3E149F1823F9CFE1006968D4 /* Chapter.swift */,
 				3E5BAADB2424222B00C3AB06 /* Author.swift */,
@@ -473,11 +495,12 @@
 				3EB97079240A93D3009AC54D /* BooksListItemViewModel.swift in Sources */,
 				3E49890223F6B1670082322E /* AppDelegate.swift in Sources */,
 				3E839EC5242B907F00BA993A /* BookProcessor.swift in Sources */,
+				3E38A9512432294800EA2E10 /* TRTextView.swift in Sources */,
 				3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */,
 				3E9CEDAB2402A849002E8FA3 /* Storyboard.swift in Sources */,
 				3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */,
 				3E03BDC32412994000E16147 /* ContentHeaderView.swift in Sources */,
-				3ECF6F16241D208B0043E0D0 /* Label.swift in Sources */,
+				3ECF6F16241D208B0043E0D0 /* TRLabel.swift in Sources */,
 				3ED413F523F8795200BEC2C5 /* BooksListViewModel.swift in Sources */,
 				3E03BDC524129FC600E16147 /* UIImageView+Kingfisher.swift in Sources */,
 				3ED413EE23F875D700BEC2C5 /* BooksUseCase.swift in Sources */,
@@ -495,6 +518,7 @@
 				3EFF974B23FC2B7B000103FE /* Book.swift in Sources */,
 				3E0A588024116C3100B09EE0 /* ChapterViewController.swift in Sources */,
 				3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */,
+				3E38A95424322EBD00EA2E10 /* TRImageProvider.swift in Sources */,
 				3EC05CC423F6CF7800862940 /* BooksListViewController.swift in Sources */,
 				3E0A587F24116C3100B09EE0 /* ChapterNavigator.swift in Sources */,
 				3ECF6F09241CF7810043E0D0 /* TextStyle.swift in Sources */,

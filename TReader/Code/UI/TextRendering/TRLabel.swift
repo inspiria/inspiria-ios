@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Label: UILabel {
+class TRLabel: UILabel {
     var textStyle: TextStylable? {
         didSet {
             font = textStyle?.font

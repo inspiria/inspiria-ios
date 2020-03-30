@@ -74,7 +74,7 @@ class ContentViewController: UIViewController {
         let number = model.showNumber ? "\(Int(floor(model.orderNumber))). " : ""
         let text = "\(number)\(model.title)"
 
-        let label = Label()
+        let label = TRLabel()
         label.textStyle = model.showHeadings ? TextStyle.Book.bodyText : TextStyle.Book.h4
         label.headIndent = model.showHeadings ? 34 : 18
         label.text = text
