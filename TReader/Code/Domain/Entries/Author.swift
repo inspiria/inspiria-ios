@@ -14,7 +14,7 @@ struct Author: Codable {
     let nameSortable: String
     let degree: String
     let affiliation: String
-    let pictureName: String
-    let pictureUrl: String
-    let bio: String
+    let pictureName: String?
+    var pictureUrl: String?
+    var bio: String
 }

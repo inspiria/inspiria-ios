@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import SwiftSoup
 
 class ChapterViewController: UIViewController {
     var viewModel: ChapterViewModel!
@@ -33,8 +32,7 @@ class ChapterViewController: UIViewController {
         output.chapter
             .asObservable()
             .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .map { $0.text.processImagesTag(bookId: $0.bookId) }
-            .map { $0.htmlAttributedString }
+            .map { $0.text.htmlAttributedString }
             .asDriverOnErrorJustComplete()
             .drive(textView.rx.attributedText)
             .disposed(by: rx.disposeBag)
@@ -43,27 +41,5 @@ class ChapterViewController: UIViewController {
             .map { $0.title }
             .drive(navigationItem.rx.title)
             .disposed(by: rx.disposeBag)
-    }
-}
-
-private extension String {
-    func processImagesTag(bookId: Int) -> String {
-        let paths = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
-        let path = paths[0].appendingPathComponent("\(bookId)", isDirectory: true).absoluteString
-
-        do {
-            let doc: Document = try SwiftSoup.parse(self)
-            let img = try doc.select("img")
-            let res: [()] = try img.map { elem in
-                try elem.attr("src", path + (elem.getAttributes()?.get(key: "src") ?? ""))
-                try elem.attr("width", "\(UIScreen.main.bounds.width - 24)")
-            }
-            print(res)
-            let result = try doc.html()
-            return result
-        } catch {
-            print(error)
-            return self
-        }
     }
 }

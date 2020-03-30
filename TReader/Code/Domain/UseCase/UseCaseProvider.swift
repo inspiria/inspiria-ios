@@ -30,6 +30,6 @@ class DefaultUseCaseProvider: UseCaseProvider {
     func booksUseCase() -> BooksUseCase {
         return DefaultBooksUseCase(networkService: mNetworkService,
                                    bookStorage: DefaultBooksStorage(userDefaults: UserDefaults.standard,
-                                                                    fileManager: FileManager.default))
+                                                                    filesService: DefaultBookFilesService(manager: FileManager.default)))
     }
 }

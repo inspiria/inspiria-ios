@@ -13,7 +13,7 @@ class AuthorSectionView: UIView {
     private let headerLabel: Label
     private let textLabel: Label
 
-    init(name: String, text: String, photoUrl: String) {
+    init(name: String, text: String, photoUrl: String?) {
 
         let spacing: CGFloat = 12
         let width = UIScreen.main.bounds.width - spacing * 2
@@ -25,9 +25,13 @@ class AuthorSectionView: UIView {
         headerLabel.numberOfLines = 0
         headerLabel.sizeToFit()
 
-        imageView = UIImageView(frame: CGRect(x: spacing, y: headerLabel.frame.maxY + spacing, width: 160, height: 160))
-        imageView.setImage(url: photoUrl)
-        imageView.contentMode = .scaleAspectFit
+        if let photoUrl = photoUrl {
+            imageView = UIImageView(frame: CGRect(x: spacing, y: headerLabel.frame.maxY + spacing, width: 160, height: 160))
+            imageView.setImage(url: photoUrl)
+            imageView.contentMode = .scaleAspectFit
+        } else {
+            imageView = UIImageView(frame: CGRect(x: spacing, y: headerLabel.frame.maxY + spacing, width: 0, height: 0))
+        }
 
         textLabel = Label(frame: CGRect(x: spacing, y: imageView.frame.maxY + spacing, width: width - spacing*2, height: 0))
         textLabel.textStyle = TextStyle.Book.bodyText

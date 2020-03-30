@@ -60,6 +60,8 @@ class DefaultBooksUseCase: BooksUseCase {
                     }
                     return self.bookStorage
                         .storeBook(id: id, data: data)
+                        .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+                        .observeOn(MainScheduler.instance)
                         .map { $0*0.15 + 0.85 }
                 }
                 return Observable.just(download.progress*0.75)

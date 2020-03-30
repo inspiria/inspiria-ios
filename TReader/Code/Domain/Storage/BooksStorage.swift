@@ -16,8 +16,8 @@ private let kBooksListStorage = "books.list.storage"
 protocol BooksStorage {
     func getBooksList() -> [BookInfo]
     func saveBooksList(books: [BookInfo])
-
     func bookFilesExists(id: Int) -> Bool
+
     func storeBook(id: Int, data: Data) -> Observable<Double>
     func getBook(id: Int) -> Single<Book>
     func remove(id: Int) -> Bool
@@ -25,11 +25,11 @@ protocol BooksStorage {
 
 class DefaultBooksStorage: BooksStorage {
     private let defaults: UserDefaults
-    private let manager: FileManager
+    private let filesService: BookFilesService
 
-    init(userDefaults: UserDefaults, fileManager: FileManager) {
+    init(userDefaults: UserDefaults, filesService: BookFilesService) {
         self.defaults = userDefaults
-        self.manager = fileManager
+        self.filesService = filesService
     }
 
     func getBooksList() -> [BookInfo] {
@@ -43,37 +43,31 @@ class DefaultBooksStorage: BooksStorage {
         }
     }
 
-    func bookFilesExists(id: Int) -> Bool {
-        do {
-            let path = getBookFileUrl(id: id)
-            return try path.checkResourceIsReachable()
-        } catch {
-            return false
-        }
-    }
-
     func storeBook(id: Int, data: Data) -> Observable<Double> {
-        let bookUrl = getBookUrl(id: id)
-        let zipUrl = bookUrl.appendingPathExtension(".zip")
+        let bookUrl = filesService.getBookUrl(id: id)
+        let bookFile = filesService.getBookFileUrl(id: id)
+        let zipUrl = filesService.getBookZiptUrl(id: id)
         do {
             try data.write(to: zipUrl)
         } catch {
             return Observable.error(error)
         }
-        return Observable.create { observable in
+        return Observable.create { [unowned self] observable in
             do {
-                try Zip.unzipFile(zipUrl,
-                                  destination: bookUrl,
-                                  overwrite: true,
-                                  password: nil,
-                                  progress: { progress in
-                                    observable.onNext(progress)
-                },
-                                  fileOutputHandler: { [unowned self] _ in
-                                    do {
-                                        try self.manager.removeItem(at: zipUrl)
-                                    } catch {}
-                })
+                try Zip.unzipFile(zipUrl, destination: bookUrl, overwrite: true, password: nil, progress: { progress in
+                    if progress == 1 {
+                        do {
+                            let processor = BookProcessor(id: id, url: bookFile, filesService: self.filesService)
+                            try processor.process()
+                        } catch {
+                            observable.onError(error)
+                        }
+                        observable.onNext(progress)
+                        _ = self.filesService.removeBookZip(id: id)
+                    } else {
+                        observable.onNext(progress*0.9)
+                    }
+                }, fileOutputHandler: nil)
             } catch {
                 observable.onError(error)
             }
@@ -82,7 +76,7 @@ class DefaultBooksStorage: BooksStorage {
     }
 
     func getBook(id: Int) -> Single<Book> {
-        let url = getBookFileUrl(id: id)
+        let url = filesService.getBookFileUrl(id: id)
         do {
             let data = try Data(contentsOf: url, options: .mappedIfSafe)
             let book = try Book(data: data)
@@ -93,24 +87,10 @@ class DefaultBooksStorage: BooksStorage {
     }
 
     func remove(id: Int) -> Bool {
-        let url = getBookUrl(id: id)
-        do {
-            try self.manager.removeItem(at: url)
-            return true
-        } catch {
-            return false
-        }
-    }
-}
-
-private extension DefaultBooksStorage {
-    func getBookUrl(id: Int) -> URL {
-        let paths = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
-        let path = paths[0].appendingPathComponent("\(id)", isDirectory: true)
-        return path
+        return filesService.removeBook(id: id)
     }
 
-    func getBookFileUrl(id: Int) -> URL {
-        return getBookUrl(id: id).appendingPathComponent("book.json")
+    func bookFilesExists(id: Int) -> Bool {
+        return filesService.bookFilesExists(id: id)
     }
 }
