@@ -35,6 +35,7 @@ class AuthorSectionView: UIView {
 
         textView = TRTextView()
         textView.frame = CGRect(x: spacing, y: imageView.frame.maxY + spacing, width: width - spacing*2, height: 0)
+        textView.isEditable = false
         textView.isScrollEnabled = false
         textView.backgroundColor = .clear
         textView.setHTML(text)

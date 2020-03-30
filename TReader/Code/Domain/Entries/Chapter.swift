@@ -22,6 +22,7 @@ struct Chapter: Codable {
     let copyrightOverride: String?
     let language: String
     let citation: String?
-    var text: String
+    let text: String
+    let textProcessed: String
     let sectionHeaders: String
 }

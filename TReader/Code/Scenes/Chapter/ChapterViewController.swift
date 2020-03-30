@@ -13,7 +13,7 @@ import RxCocoa
 class ChapterViewController: UIViewController {
     var viewModel: ChapterViewModel!
 
-    @IBOutlet weak var textView: UITextView!
+    private let textView = TRTextView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,19 @@ class ChapterViewController: UIViewController {
     }
 
     func configureView() {
+        view.addSubview(textView)
+
+        textView.isEditable = false
+        textView.backgroundColor = .clear
+        textView.tintColor = ColorStyle.orange.color
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.textContainerInset = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
+        NSLayoutConstraint.activate([
+            textView.topAnchor.constraint(equalTo: view.topAnchor),
+            textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            textView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            textView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
     }
 
     private func bindViewModel() {
@@ -30,16 +43,12 @@ class ChapterViewController: UIViewController {
         let output = viewModel.transform(input: input)
 
         output.chapter
-            .asObservable()
-            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .map { $0.text.htmlAttributedString }
-            .asDriverOnErrorJustComplete()
-            .drive(textView.rx.attributedText)
-            .disposed(by: rx.disposeBag)
+            .drive(onNext: { [unowned self] chapter in
+                self.navigationItem.title = chapter.title
 
-        output.chapter
-            .map { $0.title }
-            .drive(navigationItem.rx.title)
+                self.textView.setBookId(id: chapter.bookId)
+                self.textView.setHTML(chapter.text)
+            })
             .disposed(by: rx.disposeBag)
     }
 }

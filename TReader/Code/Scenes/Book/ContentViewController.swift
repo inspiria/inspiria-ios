@@ -65,6 +65,19 @@ class ContentViewController: UIViewController {
             })
             .disposed(by: rx.disposeBag)
 
+        output.error
+            .drive(onNext: { error in
+                let label = TRLabel()
+                label.text = "\(error.localizedDescription)\n\n\(error)"
+                label.textStyle = TextStyle.Book.h4
+                label.textColor = ColorStyle.readingUnderline.color
+                label.numberOfLines = 0
+                label.setContentCompressionResistancePriority(.required, for: .vertical)
+                label.setContentHuggingPriority(.required, for: .vertical)
+                self.stackView.addArrangedSubview(label)
+            })
+            .disposed(by: rx.disposeBag)
+
         output.open
             .drive()
             .disposed(by: rx.disposeBag)

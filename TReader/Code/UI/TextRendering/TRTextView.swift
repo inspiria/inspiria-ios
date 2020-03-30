@@ -9,15 +9,27 @@
 import UIKit
 import Aztec
 
+import RxSwift
+import RxCocoa
+
 class TRTextView: Aztec.TextView {
+    private var attachmentProvider: TextViewAttachmentDelegate?
+
     init() {
         super.init(
             defaultFont: TextStyle.Book.bodyText.font,
             defaultParagraphStyle: ParagraphStyle.default,
             defaultMissingImage: #imageLiteral(resourceName: "DownloadError"))
+
+        registerAttachmentImageProvider(TRImageProvider())
     }
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func setBookId(id bookId: Int) {
+        attachmentProvider = TRTextViewAttachmentProvider(bookId: bookId)
+        textAttachmentDelegate = attachmentProvider
     }
 }

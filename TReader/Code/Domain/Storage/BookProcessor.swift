@@ -25,8 +25,8 @@ class BookProcessor {
         var book = try Book(data: data)
 
         let chapters = try book.chapters.map { chapter -> Chapter in
-            var chapter = chapter
-            chapter.text = try processImagesTag(string: chapter.text)
+//            var chapter = chapter
+//            chapter.text = try processImagesTag(string: chapter.text)
             return chapter
         }
 

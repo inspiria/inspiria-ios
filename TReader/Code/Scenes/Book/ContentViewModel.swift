@@ -24,10 +24,11 @@ class ContentViewModel {
     }
 
     func transform(input: Input) -> Output {
+        let errorTracker = ErrorTracker()
         let info = Driver.just(bookInfo)
         let book = booksUseCase
             .book(id: bookInfo.id)
-            .asObservable()
+            .trackError(errorTracker)
             .asDriverOnErrorJustComplete()
         let chapters = book.map { $0.chapters }
         let authors = book.map { $0.authors }
@@ -36,7 +37,11 @@ class ContentViewModel {
             .do(onNext: navigator.to)
             .mapToVoid()
 
-        return Output(info: info, chapters: chapters, authors: authors, open: open)
+        return Output(info: info,
+                      chapters: chapters,
+                      authors: authors,
+                      open: open,
+                      error: errorTracker.asDriver())
     }
 }
 
@@ -49,5 +54,6 @@ extension ContentViewModel {
         let chapters: Driver<[Chapter]>
         let authors: Driver<[Author]>
         let open: Driver<Void>
+        let error: Driver<Error>
     }
 }
