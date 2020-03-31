@@ -23,6 +23,5 @@ struct Chapter: Codable {
     let language: String
     let citation: String?
     let text: String
-    let textProcessed: String
     let sectionHeaders: String
 }

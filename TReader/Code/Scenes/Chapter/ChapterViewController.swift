@@ -48,6 +48,7 @@ class ChapterViewController: UIViewController {
 
                 self.textView.setBookId(id: chapter.bookId)
                 self.textView.setHTML(chapter.text)
+//                self.textView.attributedText = chapter.text.htmlAttributedString
             })
             .disposed(by: rx.disposeBag)
     }

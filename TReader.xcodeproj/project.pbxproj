@@ -21,6 +21,8 @@
 		3E38A9512432294800EA2E10 /* TRTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A9502432294800EA2E10 /* TRTextView.swift */; };
 		3E38A95424322EBD00EA2E10 /* TRImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A95324322EBD00EA2E10 /* TRImageProvider.swift */; };
 		3E38A95724326F5300EA2E10 /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A95624326F5300EA2E10 /* ErrorTracker.swift */; };
+		3E38A95C2432890F00EA2E10 /* TRTableImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A95B2432890F00EA2E10 /* TRTableImageProvider.swift */; };
+		3E38A95E24328C0600EA2E10 /* TRTextViewAttachmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A95D24328C0600EA2E10 /* TRTextViewAttachmentProvider.swift */; };
 		3E49890223F6B1670082322E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E49890123F6B1670082322E /* AppDelegate.swift */; };
 		3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E49890323F6B1670082322E /* SceneDelegate.swift */; };
 		3E49890923F6B1670082322E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890723F6B1670082322E /* Main.storyboard */; };
@@ -72,6 +74,8 @@
 		3E38A9502432294800EA2E10 /* TRTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTextView.swift; sourceTree = "<group>"; };
 		3E38A95324322EBD00EA2E10 /* TRImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRImageProvider.swift; sourceTree = "<group>"; };
 		3E38A95624326F5300EA2E10 /* ErrorTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
+		3E38A95B2432890F00EA2E10 /* TRTableImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTableImageProvider.swift; sourceTree = "<group>"; };
+		3E38A95D24328C0600EA2E10 /* TRTextViewAttachmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTextViewAttachmentProvider.swift; sourceTree = "<group>"; };
 		3E4988FE23F6B1670082322E /* TReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E49890123F6B1670082322E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E49890323F6B1670082322E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				3ECF6F15241D208B0043E0D0 /* TRLabel.swift */,
 				3E38A9502432294800EA2E10 /* TRTextView.swift */,
 				3E38A95324322EBD00EA2E10 /* TRImageProvider.swift */,
+				3E38A95B2432890F00EA2E10 /* TRTableImageProvider.swift */,
+				3E38A95D24328C0600EA2E10 /* TRTextViewAttachmentProvider.swift */,
 			);
 			path = TextRendering;
 			sourceTree = "<group>";
@@ -518,7 +524,9 @@
 				3EB62F8923F6BA2500C3F1D6 /* AppAppearance.swift in Sources */,
 				3EC05CCB23F7F71800862940 /* BooksListItemProgress.swift in Sources */,
 				3E149F1723F974A9006968D4 /* NetworkService.swift in Sources */,
+				3E38A95C2432890F00EA2E10 /* TRTableImageProvider.swift in Sources */,
 				3EFF974B23FC2B7B000103FE /* Book.swift in Sources */,
+				3E38A95E24328C0600EA2E10 /* TRTextViewAttachmentProvider.swift in Sources */,
 				3E0A588024116C3100B09EE0 /* ChapterViewController.swift in Sources */,
 				3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */,
 				3E38A95424322EBD00EA2E10 /* TRImageProvider.swift in Sources */,

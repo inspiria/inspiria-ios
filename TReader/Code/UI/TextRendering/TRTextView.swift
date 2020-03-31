@@ -21,6 +21,7 @@ class TRTextView: Aztec.TextView {
             defaultParagraphStyle: ParagraphStyle.default,
             defaultMissingImage: #imageLiteral(resourceName: "DownloadError"))
 
+        registerAttachmentImageProvider(TRTableImageProvider())
         registerAttachmentImageProvider(TRImageProvider())
     }
 
