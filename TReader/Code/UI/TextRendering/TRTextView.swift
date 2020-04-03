@@ -23,6 +23,7 @@ class TRTextView: Aztec.TextView {
 
         registerAttachmentImageProvider(TRTableImageProvider())
         registerAttachmentImageProvider(TRImageProvider())
+        UIMenuController.shared.menuItems = []
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -1,4 +1,21 @@
 PODS:
+  - DTCoreText (1.6.23):
+    - DTCoreText/Core (= 1.6.23)
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTCoreText/Core (1.6.23):
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTFoundation/Core (1.7.14)
+  - DTFoundation/DTAnimatedGIF (1.7.14)
+  - DTFoundation/DTHTMLParser (1.7.14):
+    - DTFoundation/Core
+  - DTFoundation/UIKit (1.7.14):
+    - DTFoundation/Core
   - Kingfisher (5.13.0):
     - Kingfisher/Core (= 5.13.0)
   - Kingfisher/Core (5.13.0)
@@ -21,6 +38,7 @@ PODS:
   - Zip (1.1.0)
 
 DEPENDENCIES:
+  - DTCoreText
   - Kingfisher (~> 5.0)
   - "NSObject+Rx"
   - RxCocoa (~> 5)
@@ -34,6 +52,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - DTCoreText
+    - DTFoundation
     - Kingfisher
     - "NSObject+Rx"
     - RxCocoa
@@ -46,6 +66,8 @@ SPEC REPOS:
     - Zip
 
 SPEC CHECKSUMS:
+  DTCoreText: 67023bb51b26711d5f640c851f4845aea14c24c9
+  DTFoundation: 25aa19bb7c6e225b1dfae195604fb8cf1da0ab4c
   Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
   "NSObject+Rx": 2eb2cf51fd1c554118449a7fbc36e4cd620b9e94
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
@@ -57,6 +79,6 @@ SPEC CHECKSUMS:
   WordPress-Aztec-iOS: 2a9fb6c2a23284f53d6d69ada43c50b5fddc7c3b
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: fb2896216d55619b6397bae209ccda997bab79df
+PODFILE CHECKSUM: 15247ab2256a0cc4e53bad72c76eb41de4f67ab4
 
 COCOAPODS: 1.9.0

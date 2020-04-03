@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3E03BDC32412994000E16147 /* ContentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03BDC22412994000E16147 /* ContentHeaderView.swift */; };
 		3E03BDC524129FC600E16147 /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03BDC424129FC600E16147 /* UIImageView+Kingfisher.swift */; };
-		3E0A587F24116C3100B09EE0 /* ChapterNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A587B24116C3100B09EE0 /* ChapterNavigator.swift */; };
 		3E0A588024116C3100B09EE0 /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A587C24116C3100B09EE0 /* ChapterViewController.swift */; };
 		3E0A588124116C3100B09EE0 /* ChapterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A587D24116C3100B09EE0 /* ChapterViewModel.swift */; };
 		3E149F1723F974A9006968D4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1623F974A9006968D4 /* NetworkService.swift */; };
@@ -30,6 +29,8 @@
 		3E49890E23F6B16A0082322E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890C23F6B16A0082322E /* LaunchScreen.storyboard */; };
 		3E53649C2402E0A800C896D4 /* BooksListToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E53649B2402E0A800C896D4 /* BooksListToolbar.swift */; };
 		3E5BAADC2424222B00C3AB06 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BAADB2424222B00C3AB06 /* Author.swift */; };
+		3E72FB1424373D2B00A378FE /* ChaptersNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E72FB1024373D2B00A378FE /* ChaptersNavigator.swift */; };
+		3E72FB1524373D2B00A378FE /* ChaptersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E72FB1124373D2B00A378FE /* ChaptersViewController.swift */; };
 		3E839EC5242B907F00BA993A /* BookProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E839EC4242B907F00BA993A /* BookProcessor.swift */; };
 		3E839EC7242BC8DA00BA993A /* BookFilesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E839EC6242BC8DA00BA993A /* BookFilesService.swift */; };
 		3E9CEDA924028858002E8FA3 /* BooksStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CEDA824028858002E8FA3 /* BooksStorage.swift */; };
@@ -62,7 +63,6 @@
 		01B34655862641D9A74B762E /* Pods-TReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TReader.release.xcconfig"; path = "Target Support Files/Pods-TReader/Pods-TReader.release.xcconfig"; sourceTree = "<group>"; };
 		3E03BDC22412994000E16147 /* ContentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentHeaderView.swift; sourceTree = "<group>"; };
 		3E03BDC424129FC600E16147 /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
-		3E0A587B24116C3100B09EE0 /* ChapterNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterNavigator.swift; sourceTree = "<group>"; };
 		3E0A587C24116C3100B09EE0 /* ChapterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
 		3E0A587D24116C3100B09EE0 /* ChapterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewModel.swift; sourceTree = "<group>"; };
 		3E149F1623F974A9006968D4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -85,6 +85,8 @@
 		3E49890F23F6B16A0082322E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E53649B2402E0A800C896D4 /* BooksListToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListToolbar.swift; sourceTree = "<group>"; };
 		3E5BAADB2424222B00C3AB06 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		3E72FB1024373D2B00A378FE /* ChaptersNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersNavigator.swift; sourceTree = "<group>"; };
+		3E72FB1124373D2B00A378FE /* ChaptersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersViewController.swift; sourceTree = "<group>"; };
 		3E839EC4242B907F00BA993A /* BookProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookProcessor.swift; sourceTree = "<group>"; };
 		3E839EC6242BC8DA00BA993A /* BookFilesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFilesService.swift; sourceTree = "<group>"; };
 		3E9CEDA824028858002E8FA3 /* BooksStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksStorage.swift; sourceTree = "<group>"; };
@@ -126,16 +128,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3E0A587A24116C1500B09EE0 /* Chapter */ = {
-			isa = PBXGroup;
-			children = (
-				3E0A587C24116C3100B09EE0 /* ChapterViewController.swift */,
-				3E0A587B24116C3100B09EE0 /* ChapterNavigator.swift */,
-				3E0A587D24116C3100B09EE0 /* ChapterViewModel.swift */,
-			);
-			path = Chapter;
-			sourceTree = "<group>";
-		};
 		3E149F1523F97497006968D4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,15 +137,16 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		3E149F1A23F9D0DE006968D4 /* Book */ = {
+		3E149F1A23F9D0DE006968D4 /* Content */ = {
 			isa = PBXGroup;
 			children = (
 				3E149F1C23F9D112006968D4 /* ContentViewController.swift */,
 				3E149F1D23F9D112006968D4 /* ContentViewModel.swift */,
 				3E149F1B23F9D112006968D4 /* ContentNavigator.swift */,
 				3E03BDC22412994000E16147 /* ContentHeaderView.swift */,
+				3ECF6F17241D3F9A0043E0D0 /* Sections */,
 			);
-			path = Book;
+			path = Content;
 			sourceTree = "<group>";
 		};
 		3E38A95224322E8600EA2E10 /* TextRendering */ = {
@@ -207,6 +200,17 @@
 				3E49890F23F6B16A0082322E /* Info.plist */,
 			);
 			path = TReader;
+			sourceTree = "<group>";
+		};
+		3E72FB0F24373D0800A378FE /* Chapters */ = {
+			isa = PBXGroup;
+			children = (
+				3E0A587C24116C3100B09EE0 /* ChapterViewController.swift */,
+				3E0A587D24116C3100B09EE0 /* ChapterViewModel.swift */,
+				3E72FB1024373D2B00A378FE /* ChaptersNavigator.swift */,
+				3E72FB1124373D2B00A378FE /* ChaptersViewController.swift */,
+			);
+			path = Chapters;
 			sourceTree = "<group>";
 		};
 		3E9CEDA724028842002E8FA3 /* Storage */ = {
@@ -307,9 +311,8 @@
 			children = (
 				3EB9707A240A93DA009AC54D /* BookListItem */,
 				3EC05CC223F6CF4500862940 /* BooksList */,
-				3E149F1A23F9D0DE006968D4 /* Book */,
-				3ECF6F17241D3F9A0043E0D0 /* Sections */,
-				3E0A587A24116C1500B09EE0 /* Chapter */,
+				3E149F1A23F9D0DE006968D4 /* Content */,
+				3E72FB0F24373D0800A378FE /* Chapters */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				3E9CEDAB2402A849002E8FA3 /* Storyboard.swift in Sources */,
 				3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */,
 				3E03BDC32412994000E16147 /* ContentHeaderView.swift in Sources */,
+				3E72FB1524373D2B00A378FE /* ChaptersViewController.swift in Sources */,
 				3ECF6F16241D208B0043E0D0 /* TRLabel.swift in Sources */,
 				3ED413F523F8795200BEC2C5 /* BooksListViewModel.swift in Sources */,
 				3E03BDC524129FC600E16147 /* UIImageView+Kingfisher.swift in Sources */,
@@ -528,10 +532,10 @@
 				3EFF974B23FC2B7B000103FE /* Book.swift in Sources */,
 				3E38A95E24328C0600EA2E10 /* TRTextViewAttachmentProvider.swift in Sources */,
 				3E0A588024116C3100B09EE0 /* ChapterViewController.swift in Sources */,
+				3E72FB1424373D2B00A378FE /* ChaptersNavigator.swift in Sources */,
 				3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */,
 				3E38A95424322EBD00EA2E10 /* TRImageProvider.swift in Sources */,
 				3EC05CC423F6CF7800862940 /* BooksListViewController.swift in Sources */,
-				3E0A587F24116C3100B09EE0 /* ChapterNavigator.swift in Sources */,
 				3E38A95724326F5300EA2E10 /* ErrorTracker.swift in Sources */,
 				3ECF6F09241CF7810043E0D0 /* TextStyle.swift in Sources */,
 				3EC05CC923F6D22E00862940 /* ReusableView.swift in Sources */,
@@ -685,7 +689,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 2QUTZJ79AF;
 				INFOPLIST_FILE = TReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -705,7 +709,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 2QUTZJ79AF;
 				INFOPLIST_FILE = TReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

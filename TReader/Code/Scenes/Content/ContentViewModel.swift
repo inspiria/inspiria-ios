@@ -33,7 +33,7 @@ class ContentViewModel {
         let chapters = book.map { $0.chapters }
         let authors = book.map { $0.authors }
         let open = input.onSelect
-            .withLatestFrom(chapters) { $1[$0] }
+            .withLatestFrom(book) { ($1.chapters[$0].id, $1) }
             .do(onNext: navigator.to)
             .mapToVoid()
 

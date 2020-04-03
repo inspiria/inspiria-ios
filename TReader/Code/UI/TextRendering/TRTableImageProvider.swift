@@ -24,15 +24,11 @@ class TRTableImageProvider: TextViewAttachmentImageProvider {
     }
 
     func textView(_ textView: TextView, boundsFor attachment: NSTextAttachment, with lineFragment: CGRect) -> CGRect {
-        guard let attachment = attachment as? HTMLAttachment,
-            let text = attachment.rawHTML.htmlAttributedString else {
+        guard (attachment as? HTMLAttachment) != nil else {
                 return CGRect.zero
         }
 
-        return text.boundingRect(with: CGSize(width: UIScreen.main.bounds.width - 48,
-                                              height: CGFloat.greatestFiniteMagnitude),
-                                 options: [],
-                                 context: nil)
+        return CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 48, height: 300)
     }
 
     func textView(_ textView: TextView, imageFor attachment: NSTextAttachment, with size: CGSize) -> UIImage? {

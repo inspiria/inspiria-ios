@@ -11,12 +11,10 @@ import RxSwift
 import RxCocoa
 
 class ChapterViewModel {
-    private let navigator: ChapterNavigator
-    private let chapter: Chapter
+    let chapter: Chapter
 
-    init (chapter: Chapter, navigator: ChapterNavigator) {
+    init (chapter: Chapter) {
         self.chapter = chapter
-        self.navigator = navigator
     }
 
     func transform(input: Input) -> Output {

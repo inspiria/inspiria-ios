@@ -10,7 +10,7 @@ import UIKit
 
 protocol ContentNavigator {
     func to(book: BookInfo)
-    func to(chapter: Chapter)
+    func to(chapterId: Int, of book: Book)
 }
 
 class ContentBookNavigator: ContentNavigator {
@@ -34,8 +34,8 @@ class ContentBookNavigator: ContentNavigator {
         rootController.pushViewController(viewController, animated: true)
     }
 
-    func to(chapter: Chapter) {
-        let navigator = DefaultChapterNavigator(services: services, storyboard: storyboard, controller: rootController)
-        navigator.to(chapter: chapter)
+    func to(chapterId: Int, of book: Book) {
+        let navigator = DefaultChaptersNavigator(services: services, storyboard: storyboard, controller: rootController)
+        navigator.to(chapterId: chapterId, of: book)
     }
 }
