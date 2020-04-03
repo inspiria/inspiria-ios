@@ -22,7 +22,7 @@ class DefaultUseCaseProvider: UseCaseProvider {
         #if DEBUG
             url = "http://127.0.0.1:8080"
         #else
-            url = "http://3.127.45.134:8080"
+            url = "http://18.197.153.150:8080"
         #endif
         mNetworkService = NetworkService(url: url)
     }

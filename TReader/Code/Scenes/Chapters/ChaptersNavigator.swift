@@ -44,14 +44,16 @@ class DefaultChaptersNavigator: ChaptersNavigator {
         guard let index = book.chapters.firstIndex(where: { $0.id == chapterId }) else { return nil }
         guard index > 0 else { return nil }
         let chapter = book.chapters[index-1]
-        return chapterViewController(chapter: chapter, book: book)
+        let controller = chapterViewController(chapter: chapter, book: book)
+        return controller
     }
 
     func nextChapterViewController(chapterId: Int, book: Book) -> UIViewController? {
         guard let index = book.chapters.firstIndex(where: { $0.id == chapterId }) else { return nil }
         guard index < book.chapters.count - 1 else { return nil }
         let chapter = book.chapters[index+1]
-        return chapterViewController(chapter: chapter, book: book)
+        let controller = chapterViewController(chapter: chapter, book: book)
+        return controller
     }
 
     private func chapterViewController(chapter: Chapter, book: Book) -> ChapterViewController {

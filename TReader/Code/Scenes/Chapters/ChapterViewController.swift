@@ -39,16 +39,18 @@ class ChapterViewController: UIViewController {
     }
 
     private func bindViewModel() {
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+            .mapToVoid()
+            .asDriverOnErrorJustComplete()
+
         let input = ChapterViewModel.Input()
         let output = viewModel.transform(input: input)
 
-        output.chapter
+        Driver.combineLatest(viewWillAppear, output.chapter) { $1 }
             .drive(onNext: { [unowned self] chapter in
-                self.navigationItem.title = chapter.title
-
+                self.parent?.navigationItem.title = chapter.title
                 self.textView.setBookId(id: chapter.bookId)
                 self.textView.setHTML(chapter.text)
-//                self.textView.attributedText = chapter.text.htmlAttributedString
             })
             .disposed(by: rx.disposeBag)
     }

@@ -62,4 +62,3 @@ class TRTextViewAttachmentProvider: TextViewAttachmentDelegate {
         print("deselected: \(attachment)")
     }
 }
-
