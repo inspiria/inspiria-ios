@@ -9,33 +9,25 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import WebKit
 
 class ChapterViewController: UIViewController {
     var viewModel: ChapterViewModel!
 
-    private let textView = TRTextView()
+    // swiftlint:disable force_cast
+    private var webView: WKWebView { view as! WKWebView }
+    // swiftlint:enable force_cast
+
+    override func loadView() {
+        let webConfiguration = WebViewConfiguration()
+        let webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.navigationDelegate = self
+        view = webView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configureView()
         bindViewModel()
-    }
-
-    func configureView() {
-        view.addSubview(textView)
-
-        textView.isEditable = false
-        textView.backgroundColor = .clear
-        textView.tintColor = ColorStyle.orange.color
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.textContainerInset = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
-        NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: view.topAnchor),
-            textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            textView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            textView.rightAnchor.constraint(equalTo: view.rightAnchor)
-        ])
     }
 
     private func bindViewModel() {
@@ -49,9 +41,27 @@ class ChapterViewController: UIViewController {
         Driver.combineLatest(viewWillAppear, output.chapter) { $1 }
             .drive(onNext: { [unowned self] chapter in
                 self.parent?.navigationItem.title = chapter.title
-                self.textView.setBookId(id: chapter.bookId)
-                self.textView.setHTML(chapter.text)
+
+                let storage = DefaultBookFilesService(manager: FileManager.default)
+                let file = storage.getChapterUrl(id: chapter.bookId, chapterFile: chapter.fileName)
+                let book = storage.getBookUrl(id: chapter.bookId)
+                print(file)
+                self.webView.loadFileURL(file, allowingReadAccessTo: book)
             })
             .disposed(by: rx.disposeBag)
+    }
+}
+
+extension ChapterViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if navigationAction.navigationType == .linkActivated,
+            let url = navigationAction.request.url {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
+        }
     }
 }

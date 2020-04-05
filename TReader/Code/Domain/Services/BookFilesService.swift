@@ -13,6 +13,7 @@ protocol BookFilesService {
     func getBookUrl(id: Int) -> URL
     func getBookFileUrl(id: Int) -> URL
     func getBookZiptUrl(id: Int) -> URL
+    func getChapterUrl(id: Int, chapterFile: String) -> URL
 
     func removeBook(id: Int) -> Bool
     func removeBookZip(id: Int) -> Bool
@@ -49,6 +50,10 @@ class DefaultBookFilesService: BookFilesService {
 
     func getBookZiptUrl(id: Int) -> URL {
         return getBookUrl(id: id).appendingPathExtension(zipFileExtension)
+    }
+
+    func getChapterUrl(id: Int, chapterFile: String) -> URL {
+        return getBookUrl(id: id).appendingPathComponent(chapterFile)
     }
 
     func removeBook(id: Int) -> Bool {

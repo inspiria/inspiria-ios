@@ -11,6 +11,7 @@ import Foundation
 struct Chapter: Codable {
     let id: Int
     let bookId: Int
+    let fileName: String
     let shortName: String
     let title: String
     let orderNumber: Float
@@ -22,6 +23,4 @@ struct Chapter: Codable {
     let copyrightOverride: String?
     let language: String
     let citation: String?
-    let text: String
-    let sectionHeaders: String
 }

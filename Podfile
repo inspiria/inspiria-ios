@@ -16,5 +16,4 @@ target 'TReader' do
   pod 'Zip', '~> 1.1'
   pod 'SwiftSoup'
   pod 'WordPress-Aztec-iOS'
-  pod 'DTCoreText'
 end

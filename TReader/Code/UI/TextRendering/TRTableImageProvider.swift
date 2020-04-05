@@ -24,21 +24,24 @@ class TRTableImageProvider: TextViewAttachmentImageProvider {
     }
 
     func textView(_ textView: TextView, boundsFor attachment: NSTextAttachment, with lineFragment: CGRect) -> CGRect {
-        guard (attachment as? HTMLAttachment) != nil else {
+        guard let attachment = attachment as? HTMLAttachment, let text = attachment.rawHTML.htmlAttributedString else {
                 return CGRect.zero
         }
 
-        return CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 48, height: 300)
+//        let size = CGSize(width: lineFragment.width, height: 10000)
+//        let rect = text.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+//        return rect
+        return CGRect(x: 0, y: 0, width: lineFragment.width, height: 600)
     }
 
     func textView(_ textView: TextView, imageFor attachment: NSTextAttachment, with size: CGSize) -> UIImage? {
-        guard let attachment = attachment as? HTMLAttachment else {
+        guard let attachment = attachment as? HTMLAttachment, let text = attachment.rawHTML.htmlAttributedString else {
             return #imageLiteral(resourceName: "DownloadError")
         }
-        let rect = self.textView(textView, boundsFor: attachment, with: CGRect.zero)
+        
+        let rect = CGRect(origin: CGPoint.zero, size: size)
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
-        let text = attachment.rawHTML.htmlAttributedString
-        text?.draw(in: rect)
+        text.draw(in: rect)
         let image = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(.alwaysOriginal)
         UIGraphicsEndImageContext()
         return image
