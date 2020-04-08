@@ -29,5 +29,4 @@ class ChaptersViewController: UIPageViewController, UIPageViewControllerDataSour
         guard let viewController = viewController as? ChapterViewController else { return nil }
         return navigator.nextChapterViewController(chapterId: viewController.viewModel.chapter.id, book: book)
     }
-    
 }

@@ -18,6 +18,8 @@ class ChapterViewController: UIViewController {
     private var webView: WKWebView { view as! WKWebView }
     // swiftlint:enable force_cast
 
+    private var openChapterSubject = PublishSubject<(Int, Int)>()
+
     override func loadView() {
         let webConfiguration = WebViewConfiguration()
         let webView = WKWebView(frame: .zero, configuration: webConfiguration)
@@ -31,14 +33,15 @@ class ChapterViewController: UIViewController {
     }
 
     private func bindViewModel() {
+        let openChapter = openChapterSubject.asDriverOnErrorJustComplete()
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .mapToVoid()
             .asDriverOnErrorJustComplete()
 
-        let input = ChapterViewModel.Input()
+        let input = ChapterViewModel.Input(trigger: viewWillAppear, openChapter: openChapter)
         let output = viewModel.transform(input: input)
 
-        Driver.combineLatest(viewWillAppear, output.chapter) { $1 }
+        output.chapter
             .drive(onNext: { [unowned self] chapter in
                 self.parent?.navigationItem.title = chapter.title
 
@@ -49,6 +52,10 @@ class ChapterViewController: UIViewController {
                 self.webView.loadFileURL(file, allowingReadAccessTo: book)
             })
             .disposed(by: rx.disposeBag)
+
+        output.openChapter
+            .drive()
+            .disposed(by: rx.disposeBag)
     }
 }
 
@@ -56,7 +63,10 @@ extension ChapterViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if navigationAction.navigationType == .linkActivated,
             let url = navigationAction.request.url {
-            if UIApplication.shared.canOpenURL(url) {
+            if let deepLink = DeepLink(url: url),
+                case DeepLink.chapter(let bookId, let chapterId) = deepLink {
+                openChapterSubject.onNext((bookId, chapterId))
+            } else if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             }
             decisionHandler(.cancel)
