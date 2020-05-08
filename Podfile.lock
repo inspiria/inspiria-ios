@@ -1,23 +1,22 @@
 PODS:
-  - Kingfisher (5.13.0):
-    - Kingfisher/Core (= 5.13.0)
-  - Kingfisher/Core (5.13.0)
-  - "NSObject+Rx (5.0.2)":
-    - RxSwift (~> 5.0)
-  - RxCocoa (5.0.1):
+  - Kingfisher (5.13.4):
+    - Kingfisher/Core (= 5.13.4)
+  - Kingfisher/Core (5.13.4)
+  - "NSObject+Rx (5.1.0)":
+    - RxSwift (~> 5.1)
+  - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxGesture (3.0.1):
-    - RxCocoa (~> 5.0)
-    - RxSwift (~> 5.0)
+  - RxGesture (3.0.2):
+    - RxCocoa (~> 5.1)
+    - RxSwift (~> 5.1)
   - RxOptional (4.1.0):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
-  - RxRelay (5.0.1):
+  - RxRelay (5.1.1):
     - RxSwift (~> 5)
-  - RxSwift (5.0.1)
-  - SwiftSoup (2.3.0)
-  - WordPress-Aztec-iOS (1.17.0)
+  - RxSwift (5.1.1)
+  - WordPress-Aztec-iOS (1.19.0)
   - Zip (1.1.0)
 
 DEPENDENCIES:
@@ -28,7 +27,6 @@ DEPENDENCIES:
   - RxOptional
   - RxRelay (~> 5)
   - RxSwift (~> 5)
-  - SwiftSoup
   - WordPress-Aztec-iOS
   - Zip (~> 1.1)
 
@@ -41,22 +39,20 @@ SPEC REPOS:
     - RxOptional
     - RxRelay
     - RxSwift
-    - SwiftSoup
     - WordPress-Aztec-iOS
     - Zip
 
 SPEC CHECKSUMS:
-  Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
-  "NSObject+Rx": 2eb2cf51fd1c554118449a7fbc36e4cd620b9e94
-  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxGesture: a3f8dd6adf078110ed5e1c9c30d09d705a09852e
+  Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
+  "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
   RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
-  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
-  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
-  SwiftSoup: d78683f7ea0ae5733225a9e1d3bee5b256449df4
-  WordPress-Aztec-iOS: 2a9fb6c2a23284f53d6d69ada43c50b5fddc7c3b
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  WordPress-Aztec-iOS: fb6ea6409a5228292568f665eb22ea0a0aa7ad7e
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: c3c04ae4531fe44c431748d87f2aefa7390977ec
+PODFILE CHECKSUM: 81c61f66a3b5d25a646c631cc87b61c16a03af48
 
-COCOAPODS: 1.9.0
+COCOAPODS: 1.9.1
