@@ -29,7 +29,6 @@
 		3E5BAADC2424222B00C3AB06 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BAADB2424222B00C3AB06 /* Author.swift */; };
 		3E72FB1424373D2B00A378FE /* ChaptersNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E72FB1024373D2B00A378FE /* ChaptersNavigator.swift */; };
 		3E72FB1524373D2B00A378FE /* ChaptersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E72FB1124373D2B00A378FE /* ChaptersViewController.swift */; };
-		3E839EC5242B907F00BA993A /* BookProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E839EC4242B907F00BA993A /* BookProcessor.swift */; };
 		3E839EC7242BC8DA00BA993A /* BookFilesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E839EC6242BC8DA00BA993A /* BookFilesService.swift */; };
 		3E97C1A0243A6B2C00B3A399 /* WebViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E97C19F243A6B2C00B3A399 /* WebViewConfiguration.swift */; };
 		3E9CEDA924028858002E8FA3 /* BooksStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CEDA824028858002E8FA3 /* BooksStorage.swift */; };
@@ -85,7 +84,6 @@
 		3E5BAADB2424222B00C3AB06 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		3E72FB1024373D2B00A378FE /* ChaptersNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersNavigator.swift; sourceTree = "<group>"; };
 		3E72FB1124373D2B00A378FE /* ChaptersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersViewController.swift; sourceTree = "<group>"; };
-		3E839EC4242B907F00BA993A /* BookProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookProcessor.swift; sourceTree = "<group>"; };
 		3E839EC6242BC8DA00BA993A /* BookFilesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFilesService.swift; sourceTree = "<group>"; };
 		3E97C19F243A6B2C00B3A399 /* WebViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewConfiguration.swift; sourceTree = "<group>"; };
 		3E9CEDA824028858002E8FA3 /* BooksStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksStorage.swift; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				3E9CEDA824028858002E8FA3 /* BooksStorage.swift */,
-				3E839EC4242B907F00BA993A /* BookProcessor.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -506,7 +503,6 @@
 				3ECF6F19241D3FF30043E0D0 /* AuthorSectionView.swift in Sources */,
 				3EB97079240A93D3009AC54D /* BooksListItemViewModel.swift in Sources */,
 				3E49890223F6B1670082322E /* AppDelegate.swift in Sources */,
-				3E839EC5242B907F00BA993A /* BookProcessor.swift in Sources */,
 				3E38A9512432294800EA2E10 /* TRTextView.swift in Sources */,
 				3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */,
 				3E9CEDAB2402A849002E8FA3 /* Storyboard.swift in Sources */,

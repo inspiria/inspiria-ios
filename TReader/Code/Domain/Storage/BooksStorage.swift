@@ -56,12 +56,6 @@ class DefaultBooksStorage: BooksStorage {
             do {
                 try Zip.unzipFile(zipUrl, destination: bookUrl, overwrite: true, password: nil, progress: { progress in
                     if progress == 1 {
-//                        do {
-//                            let processor = BookProcessor(id: id, url: bookFile, filesService: self.filesService)
-//                            try processor.process()
-//                        } catch {
-//                            observable.onError(error)
-//                        }
                         observable.onNext(progress)
                         _ = self.filesService.removeBookZip(id: id)
                     } else {
