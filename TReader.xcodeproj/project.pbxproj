@@ -73,7 +73,7 @@
 		3E38A9502432294800EA2E10 /* TRTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTextView.swift; sourceTree = "<group>"; };
 		3E38A95324322EBD00EA2E10 /* TRImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRImageProvider.swift; sourceTree = "<group>"; };
 		3E38A95624326F5300EA2E10 /* ErrorTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
-		3E4988FE23F6B1670082322E /* TReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E4988FE23F6B1670082322E /* Inspiria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inspiria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E49890123F6B1670082322E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E49890323F6B1670082322E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3E49890823F6B1670082322E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 		3E4988FF23F6B1670082322E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3E4988FE23F6B1670082322E /* TReader.app */,
+				3E4988FE23F6B1670082322E /* Inspiria.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -381,7 +381,7 @@
 			);
 			name = TReader;
 			productName = TReader;
-			productReference = 3E4988FE23F6B1670082322E /* TReader.app */;
+			productReference = 3E4988FE23F6B1670082322E /* Inspiria.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -693,7 +693,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tech9.treader;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Inspiria;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -713,7 +713,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tech9.treader;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Inspiria;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
