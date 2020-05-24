@@ -14,13 +14,13 @@ struct Chapter: Codable {
     let fileName: String
     let shortName: String
     let title: String
-    let orderNumber: Float
+    let orderNumber: String?
     let isSectionHeader: Bool
     let showNumber: Bool
     let showHeadings: Bool
     let lastUpdated: Date
     let parentId: Int?
     let copyrightOverride: String?
-    let language: String
+    let language: String?
     let citation: String?
 }

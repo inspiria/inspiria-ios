@@ -13,7 +13,7 @@ class ContentHeaderView: UIView {
     private let titleLabel: TRLabel
     private let authorLabel: TRLabel
 
-    init(title: String, author: String, coverUrl: String) {
+    init(title: String, authors: [String], coverUrl: String) {
         let spacing: CGFloat = 12
         let width = UIScreen.main.bounds.width - spacing * 2
 
@@ -31,7 +31,7 @@ class ContentHeaderView: UIView {
         let y = max(imageView.frame.maxY, titleLabel.frame.maxY) + spacing
         authorLabel = TRLabel(frame: CGRect(x: spacing, y: y, width: width - spacing*2, height: 0))
         authorLabel.textStyle = TextStyle.Book.bodyText
-        authorLabel.text = author
+        authorLabel.text = authors.count > 1 ? authors.joined(separator: " & ") : (authors.first ?? "")
         authorLabel.textColor = ColorStyle.orange.color
         authorLabel.numberOfLines = 0
         authorLabel.sizeToFit()

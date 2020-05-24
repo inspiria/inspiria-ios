@@ -31,12 +31,12 @@ class ContentViewController: UIViewController {
         let input = ContentViewModel.Input(onSelect: select.asDriverOnErrorJustComplete().skip(1))
         let output = viewModel.transform(input: input)
 
-        output.info
-            .drive(onNext: { [unowned self] info in
-                self.navigationItem.title = info.title
-                let header = ContentHeaderView(title: info.title,
-                                               author: info.author,
-                                               coverUrl: info.coverImageUrl)
+        Driver.combineLatest(output.info, output.authors) {($0, $1)}
+            .drive(onNext: { [unowned self] data in
+                self.navigationItem.title = data.0.title
+                let header = ContentHeaderView(title: data.0.title,
+                                               authors: data.1.map { $0.name },
+                                               coverUrl: data.0.coverImageUrl)
                 self.stackView.addArrangedSubview(header)
             })
             .disposed(by: rx.disposeBag)
@@ -84,7 +84,7 @@ class ContentViewController: UIViewController {
     }
 
     func buildLabel(for model: Chapter, offset: Int) -> UIView {
-        let number = model.showNumber ? "\(Int(floor(model.orderNumber))). " : ""
+        let number = model.showNumber ? "\(model.orderNumber ?? ""). " : ""
         let text = "\(number)\(model.title)"
 
         let label = TRLabel()

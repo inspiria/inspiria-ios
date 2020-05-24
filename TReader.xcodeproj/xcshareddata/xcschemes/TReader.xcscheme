@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3E4988FD23F6B1660082322E"
-               BuildableName = "TReader.app"
+               BuildableName = "Inspiria.app"
                BlueprintName = "TReader"
                ReferencedContainer = "container:TReader.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3E4988FD23F6B1660082322E"
-            BuildableName = "TReader.app"
+            BuildableName = "Inspiria.app"
             BlueprintName = "TReader"
             ReferencedContainer = "container:TReader.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3E4988FD23F6B1660082322E"
-            BuildableName = "TReader.app"
+            BuildableName = "Inspiria.app"
             BlueprintName = "TReader"
             ReferencedContainer = "container:TReader.xcodeproj">
          </BuildableReference>
