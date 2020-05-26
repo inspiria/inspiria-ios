@@ -54,6 +54,11 @@
 		3ED413F523F8795200BEC2C5 /* BooksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413F423F8795200BEC2C5 /* BooksListViewModel.swift */; };
 		3ED413F823F87D7000BEC2C5 /* BooksListNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413F723F87D7000BEC2C5 /* BooksListNavigator.swift */; };
 		3ED413FA23F8863100BEC2C5 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413F923F8863100BEC2C5 /* Identifiable.swift */; };
+		3EE0561A247D87BA004F3D13 /* TabBatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE05619247D87BA004F3D13 /* TabBatViewController.swift */; };
+		3EE05620247DACCB004F3D13 /* NotesNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE0561C247DACCB004F3D13 /* NotesNavigator.swift */; };
+		3EE05621247DACCB004F3D13 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE0561D247DACCB004F3D13 /* NotesViewController.swift */; };
+		3EE05622247DACCB004F3D13 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE0561E247DACCB004F3D13 /* NotesViewModel.swift */; };
+		3EE05623247DACCB004F3D13 /* NotesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE0561F247DACCB004F3D13 /* NotesViewController.xib */; };
 		3EFF974B23FC2B7B000103FE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF974A23FC2B7B000103FE /* Book.swift */; };
 		AAA5DDD24CC0A2A5CE5DB2E0 /* Pods_TReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */; };
 /* End PBXBuildFile section */
@@ -109,6 +114,11 @@
 		3ED413F423F8795200BEC2C5 /* BooksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListViewModel.swift; sourceTree = "<group>"; };
 		3ED413F723F87D7000BEC2C5 /* BooksListNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListNavigator.swift; sourceTree = "<group>"; };
 		3ED413F923F8863100BEC2C5 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		3EE05619247D87BA004F3D13 /* TabBatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBatViewController.swift; sourceTree = "<group>"; };
+		3EE0561C247DACCB004F3D13 /* NotesNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesNavigator.swift; sourceTree = "<group>"; };
+		3EE0561D247DACCB004F3D13 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		3EE0561E247DACCB004F3D13 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
+		3EE0561F247DACCB004F3D13 /* NotesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesViewController.xib; sourceTree = "<group>"; };
 		3EFF974A23FC2B7B000103FE /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		591C195EBB897077DA992FD1 /* Pods-TReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TReader.debug.xcconfig"; path = "Target Support Files/Pods-TReader/Pods-TReader.debug.xcconfig"; sourceTree = "<group>"; };
 		91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,7 +317,9 @@
 			children = (
 				3EB9707A240A93DA009AC54D /* BookListItem */,
 				3EC05CC223F6CF4500862940 /* BooksList */,
+				3EE05618247D87A3004F3D13 /* Tabs */,
 				3E149F1A23F9D0DE006968D4 /* Content */,
+				3EE0561B247DAC80004F3D13 /* Notes */,
 				3E72FB0F24373D0800A378FE /* Chapters */,
 			);
 			path = Scenes;
@@ -342,6 +354,25 @@
 				3EA675F9243E0EE5001413A7 /* DeepLink.swift */,
 			);
 			path = Entries;
+			sourceTree = "<group>";
+		};
+		3EE05618247D87A3004F3D13 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				3EE05619247D87BA004F3D13 /* TabBatViewController.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		3EE0561B247DAC80004F3D13 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				3EE0561C247DACCB004F3D13 /* NotesNavigator.swift */,
+				3EE0561D247DACCB004F3D13 /* NotesViewController.swift */,
+				3EE0561E247DACCB004F3D13 /* NotesViewModel.swift */,
+				3EE0561F247DACCB004F3D13 /* NotesViewController.xib */,
+			);
+			path = Notes;
 			sourceTree = "<group>";
 		};
 		5856FAAC2FBD469472309118 /* Pods */ = {
@@ -422,6 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EE05623247DACCB004F3D13 /* NotesViewController.xib in Resources */,
 				3E49890E23F6B16A0082322E /* LaunchScreen.storyboard in Resources */,
 				3ECF6F14241CFF310043E0D0 /* NotoSerif-Bold.ttf in Resources */,
 				3ECF6F11241CFF310043E0D0 /* NotoSerif-Regular.ttf in Resources */,
@@ -509,6 +541,7 @@
 				3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */,
 				3E03BDC32412994000E16147 /* ContentHeaderView.swift in Sources */,
 				3E72FB1524373D2B00A378FE /* ChaptersViewController.swift in Sources */,
+				3EE05620247DACCB004F3D13 /* NotesNavigator.swift in Sources */,
 				3ECF6F16241D208B0043E0D0 /* TRLabel.swift in Sources */,
 				3ED413F523F8795200BEC2C5 /* BooksListViewModel.swift in Sources */,
 				3E03BDC524129FC600E16147 /* UIImageView+Kingfisher.swift in Sources */,
@@ -521,6 +554,8 @@
 				3E149F1F23F9D112006968D4 /* ContentNavigator.swift in Sources */,
 				3E0A588124116C3100B09EE0 /* ChapterViewModel.swift in Sources */,
 				3E149F2423F9D6F4006968D4 /* Observable.swift in Sources */,
+				3EE0561A247D87BA004F3D13 /* TabBatViewController.swift in Sources */,
+				3EE05621247DACCB004F3D13 /* NotesViewController.swift in Sources */,
 				3E839EC7242BC8DA00BA993A /* BookFilesService.swift in Sources */,
 				3EB62F8923F6BA2500C3F1D6 /* AppAppearance.swift in Sources */,
 				3EC05CCB23F7F71800862940 /* BooksListItemProgress.swift in Sources */,
@@ -537,6 +572,7 @@
 				3EC05CC923F6D22E00862940 /* ReusableView.swift in Sources */,
 				3ED413EB23F8757C00BEC2C5 /* UseCaseProvider.swift in Sources */,
 				3E149F1923F9CFE1006968D4 /* Chapter.swift in Sources */,
+				3EE05622247DACCB004F3D13 /* NotesViewModel.swift in Sources */,
 				3ED413FA23F8863100BEC2C5 /* Identifiable.swift in Sources */,
 				3EC05CC623F6D0C300862940 /* BooksListItemCell.swift in Sources */,
 				3E9CEDA924028858002E8FA3 /* BooksStorage.swift in Sources */,

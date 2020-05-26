@@ -17,6 +17,7 @@ PODS:
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
   - WordPress-Aztec-iOS (1.19.0)
+  - XLPagerTabStrip (9.0.0)
   - Zip (1.1.0)
 
 DEPENDENCIES:
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - RxRelay (~> 5)
   - RxSwift (~> 5)
   - WordPress-Aztec-iOS
+  - XLPagerTabStrip (~> 9.0)
   - Zip (~> 1.1)
 
 SPEC REPOS:
@@ -40,6 +42,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - WordPress-Aztec-iOS
+    - XLPagerTabStrip
     - Zip
 
 SPEC CHECKSUMS:
@@ -51,8 +54,9 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   WordPress-Aztec-iOS: fb6ea6409a5228292568f665eb22ea0a0aa7ad7e
+  XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 81c61f66a3b5d25a646c631cc87b61c16a03af48
+PODFILE CHECKSUM: e90aa780f12579f286be0d6a8946deedc7d1565b
 
 COCOAPODS: 1.9.1

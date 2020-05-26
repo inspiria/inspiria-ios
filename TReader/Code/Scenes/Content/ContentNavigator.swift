@@ -27,11 +27,22 @@ class ContentBookNavigator: ContentNavigator {
     }
 
     func to(book: BookInfo) {
-        let viewController: ContentViewController = storyboard.instantiateViewController()
-        viewController.viewModel = ContentViewModel(booksUseCase: self.services.booksUseCase(),
-                                                 navigator: self,
-                                                 bookInfo: book)
-        rootController.pushViewController(viewController, animated: true)
+        let contentController: ContentViewController = storyboard.instantiateViewController()
+        contentController.viewModel = ContentViewModel(booksUseCase: self.services.booksUseCase(),
+                                                       navigator: self,
+                                                       bookInfo: book)
+        let vc2 = UITableViewController()
+        let vc3 = UIViewController()
+
+        vc2.view.backgroundColor = .white
+        vc3.view.backgroundColor = .white
+
+        contentController.tabBarItem = UITabBarItem(title: "Outline", image: nil, tag: 0)
+        vc2.tabBarItem = UITabBarItem(title: "Notes", image: nil, tag: 0)
+        vc3.tabBarItem = UITabBarItem(title: "Bookmarks", image: nil, tag: 0)
+
+        let tabController = TabBatViewController([contentController, vc2, vc3])
+        rootController.pushViewController(tabController, animated: true)
     }
 
     func to(chapterId: Int, of book: Book) {
