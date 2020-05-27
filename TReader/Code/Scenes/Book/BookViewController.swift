@@ -1,5 +1,5 @@
 //
-//  TabBatViewController.swift
+//  BookViewController.swift
 //  TReader
 //
 //  Created by tadas on 2020-05-26.
@@ -9,7 +9,7 @@
 import Foundation
 import XLPagerTabStrip
 
-class TabBatViewController: ButtonBarPagerTabStripViewController {
+class BookViewController: ButtonBarPagerTabStripViewController {
     private let controllers: [UIViewController]
 
     init(_ controllers: [UIViewController]) {
