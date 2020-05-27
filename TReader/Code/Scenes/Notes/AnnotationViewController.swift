@@ -1,5 +1,5 @@
 //
-//  NotesViewController.swift
+//  AnnotationViewController.swift
 //  TReader
 //
 //  Created by tadas on 2020-05-26.
@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 class AnnotationViewController: UITableViewController {
-    var viewModel: NotesViewModel!
+    var viewModel: AnnotationViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +26,10 @@ class AnnotationViewController: UITableViewController {
     }
 
     private func bindViewModel() {
-        let input = NotesViewModel.Input()
+        let input = AnnotationViewModel.Input()
 
-        let cellIdentifier = NotesTableViewCell.reuseIdentifier
-        let cellType = NotesTableViewCell.self
+        let cellIdentifier = AnnotationTableViewCell.reuseIdentifier
+        let cellType = AnnotationTableViewCell.self
 
         Observable.just(["1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3"])
             .bind(to: tableView.rx

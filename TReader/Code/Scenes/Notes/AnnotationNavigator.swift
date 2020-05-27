@@ -1,5 +1,5 @@
 //
-//  NotesNavigator.swift
+//  AnnotationNavigator.swift
 //  TReader
 //
 //  Created by tadas on 2020-05-26.

@@ -1,5 +1,5 @@
 //
-//  NotesViewModel.swift
+//  AnnotationViewModel.swift
 //  TReader
 //
 //  Created by tadas on 2020-05-26.
@@ -10,10 +10,10 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class NotesViewModel {
-    let navigator: NotesNavigator
+class AnnotationViewModel {
+    let navigator: AnnotationNavigator
 
-    init (navigator: NotesNavigator) {
+    init (navigator: AnnotationNavigator) {
         self.navigator = navigator
     }
 
@@ -22,7 +22,7 @@ class NotesViewModel {
     }
 }
 
-extension NotesViewModel {
+extension AnnotationViewModel {
     struct Input {
     }
     struct Output {

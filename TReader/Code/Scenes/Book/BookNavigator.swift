@@ -12,7 +12,7 @@ protocol BookNavigator {
     func to(book: BookInfo)
 }
 
-class DefaultBookNavigator: BookNavigator, ContentNavigator, NotesNavigator {
+class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator {
     private let services: UseCaseProvider
     private let storyboard: UIStoryboard
     private let rootController: UINavigationController
@@ -31,8 +31,8 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, NotesNavigator {
                                                        navigator: self,
                                                        bookInfo: book)
 
-        let notesController = NotesViewController()
-        notesController.viewModel = NotesViewModel(navigator: self)
+        let notesController: AnnotationViewController = storyboard.instantiateViewController()
+        notesController.viewModel = AnnotationViewModel(navigator: self)
 
         let bookmarksController = UITableViewController()
 
@@ -50,8 +50,8 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, NotesNavigator {
     }
 
     func toNotes() {
-        let viewController = NotesViewController()
-        viewController.viewModel = NotesViewModel(navigator: self)
+        let viewController = AnnotationViewController()
+        viewController.viewModel = AnnotationViewModel(navigator: self)
         //PRESENT VIEW CONTROLLER
     }
 }
