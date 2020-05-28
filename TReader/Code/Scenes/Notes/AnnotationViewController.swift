@@ -33,7 +33,17 @@ class AnnotationViewController: UITableViewController {
             .asDriver(onErrorJustReturn: "")
             .debounce(0.2)
 
-        let input = AnnotationViewModel.Input(searchTrigger: search)
+        let sort = headerView.sortButton
+            .rx.tap
+            .asDriver()
+            .flatMap { [unowned self] _ -> Driver<SortView.Order> in
+                let x = self.headerView.sortButton.center.x
+                let y = self.headerView.sortButton.frame.maxY
+                let point = self.headerView.convert(CGPoint(x: x, y: y), to: self.view)
+                return SortView.show(in: self.view, at: point)
+        }
+
+        let input = AnnotationViewModel.Input(searchTrigger: search, sortTrigger: sort.startWith(.newest))
         let output = viewModel.transform(input: input)
         let cellIdentifier = AnnotationTableViewCell.reuseIdentifier
         let cellType = AnnotationTableViewCell.self

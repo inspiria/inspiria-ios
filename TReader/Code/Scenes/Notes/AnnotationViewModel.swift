@@ -10,12 +10,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct Annotation {
-    let date: Date
-    let quote: String
-    let text: String?
-}
-
 class AnnotationViewModel {
     let navigator: AnnotationNavigator
 
@@ -40,9 +34,8 @@ class AnnotationViewModel {
         ])
 
         let annotations = Driver<[Annotation]>
-            .combineLatest(data, input.searchTrigger) { data, str in
-            if str.isEmpty { return data }
-                return data.filter { $0.quote.lowercased().contains(str.lowercased()) || ($0.text?.lowercased().contains(str.lowercased()) ?? false) }
+            .combineLatest(data, input.searchTrigger, input.sortTrigger) { data, str, order in
+                return data.filter(by: str).sorted(by: order)
         }
 
         return Output(annotations: annotations)
@@ -52,8 +45,32 @@ class AnnotationViewModel {
 extension AnnotationViewModel {
     struct Input {
         let searchTrigger: Driver<String>
+        let sortTrigger: Driver<SortView.Order>
     }
     struct Output {
         let annotations: Driver<[Annotation]>
+    }
+}
+
+struct Annotation {
+    let date: Date
+    let quote: String
+    let text: String?
+}
+
+extension Array where Element == Annotation {
+    func filter(by str: String) -> Self {
+        if str.isEmpty { return self }
+        let str = str.lowercased()
+        return filter { $0.quote.lowercased().contains(str) || ($0.text?.lowercased().contains(str) ?? false)}
+    }
+
+    func sorted(by order: SortView.Order) -> Self {
+        switch order {
+        case .newest: return sorted { $0.date > $1.date }
+        case .oldest: return sorted { $0.date < $1.date }
+        case .ascending: return sorted { $0.quote < $1.quote }
+        case .descending: return sorted { $0.quote > $1.quote }
+        }
     }
 }

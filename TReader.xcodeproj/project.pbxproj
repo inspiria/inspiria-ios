@@ -62,6 +62,9 @@
 		3EE05622247DACCB004F3D13 /* AnnotationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE0561E247DACCB004F3D13 /* AnnotationViewModel.swift */; };
 		3EE2AA0F247F796300885EBE /* AnnotationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */; };
 		3EE2AA11247F972100885EBE /* UISearchBar+RX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2AA10247F972100885EBE /* UISearchBar+RX.swift */; };
+		3EE2AA14247FA9B000885EBE /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2AA13247FA9B000885EBE /* SortView.swift */; };
+		3EE2AA16247FA9C200885EBE /* SortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE2AA15247FA9C200885EBE /* SortView.xib */; };
+		3EE2AA18247FB4DD00885EBE /* UIView+NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2AA17247FB4DD00885EBE /* UIView+NibLoadable.swift */; };
 		3EFF974B23FC2B7B000103FE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF974A23FC2B7B000103FE /* Book.swift */; };
 		AAA5DDD24CC0A2A5CE5DB2E0 /* Pods_TReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */; };
 /* End PBXBuildFile section */
@@ -125,6 +128,9 @@
 		3EE0561E247DACCB004F3D13 /* AnnotationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationViewModel.swift; sourceTree = "<group>"; };
 		3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationHeaderView.swift; sourceTree = "<group>"; };
 		3EE2AA10247F972100885EBE /* UISearchBar+RX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+RX.swift"; sourceTree = "<group>"; };
+		3EE2AA13247FA9B000885EBE /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
+		3EE2AA15247FA9C200885EBE /* SortView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortView.xib; sourceTree = "<group>"; };
+		3EE2AA17247FB4DD00885EBE /* UIView+NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+NibLoadable.swift"; sourceTree = "<group>"; };
 		3EFF974A23FC2B7B000103FE /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		591C195EBB897077DA992FD1 /* Pods-TReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TReader.debug.xcconfig"; path = "Target Support Files/Pods-TReader/Pods-TReader.debug.xcconfig"; sourceTree = "<group>"; };
 		91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,6 +293,7 @@
 				3E9CEDAA2402A849002E8FA3 /* Storyboard.swift */,
 				3E03BDC424129FC600E16147 /* UIImageView+Kingfisher.swift */,
 				3EE2AA10247F972100885EBE /* UISearchBar+RX.swift */,
+				3EE2AA17247FB4DD00885EBE /* UIView+NibLoadable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -375,13 +382,23 @@
 		3EE0561B247DAC80004F3D13 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				3EE2AA12247FA97400885EBE /* Views */,
 				3EE0561D247DACCB004F3D13 /* AnnotationViewController.swift */,
 				3EE0561E247DACCB004F3D13 /* AnnotationViewModel.swift */,
 				3EE0561C247DACCB004F3D13 /* AnnotationNavigator.swift */,
-				3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */,
-				3EC8306B247E707D008E0597 /* AnnotationTableViewCell.swift */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		3EE2AA12247FA97400885EBE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */,
+				3EC8306B247E707D008E0597 /* AnnotationTableViewCell.swift */,
+				3EE2AA13247FA9B000885EBE /* SortView.swift */,
+				3EE2AA15247FA9C200885EBE /* SortView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		5856FAAC2FBD469472309118 /* Pods */ = {
@@ -462,6 +479,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EE2AA16247FA9C200885EBE /* SortView.xib in Resources */,
 				3E49890E23F6B16A0082322E /* LaunchScreen.storyboard in Resources */,
 				3ECF6F14241CFF310043E0D0 /* NotoSerif-Bold.ttf in Resources */,
 				3ECF6F11241CFF310043E0D0 /* NotoSerif-Regular.ttf in Resources */,
@@ -543,6 +561,7 @@
 				3ECF6F19241D3FF30043E0D0 /* AuthorSectionView.swift in Sources */,
 				3EB97079240A93D3009AC54D /* BooksListItemViewModel.swift in Sources */,
 				3E49890223F6B1670082322E /* AppDelegate.swift in Sources */,
+				3EE2AA14247FA9B000885EBE /* SortView.swift in Sources */,
 				3E38A9512432294800EA2E10 /* TRTextView.swift in Sources */,
 				3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */,
 				3E9CEDAB2402A849002E8FA3 /* Storyboard.swift in Sources */,
@@ -556,6 +575,7 @@
 				3E03BDC524129FC600E16147 /* UIImageView+Kingfisher.swift in Sources */,
 				3ED413EE23F875D700BEC2C5 /* BooksUseCase.swift in Sources */,
 				3EA675FA243E0EE5001413A7 /* DeepLink.swift in Sources */,
+				3EE2AA18247FB4DD00885EBE /* UIView+NibLoadable.swift in Sources */,
 				3E53649C2402E0A800C896D4 /* BooksListToolbar.swift in Sources */,
 				3E149F2123F9D112006968D4 /* ContentViewModel.swift in Sources */,
 				3ED413F823F87D7000BEC2C5 /* BooksListNavigator.swift in Sources */,

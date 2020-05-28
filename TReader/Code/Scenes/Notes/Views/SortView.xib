@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="9DZ-2x-Mre" customClass="SortView" customModule="Inspiria" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="138"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="std-i2-RHN">
+                    <rect key="frame" x="4" y="14" width="112" height="120"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="OwE-ng-gVM">
+                            <rect key="frame" x="8" y="8" width="96" height="104"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFt-eJ-Yia">
+                                    <rect key="frame" x="0.0" y="0.0" width="96" height="26"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="26" id="6kM-tA-Hqh"/>
+                                        <constraint firstAttribute="width" constant="96" id="VYT-wp-Dwc"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="Newest">
+                                        <color key="titleColor" name="MenuDark"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q11-d9-flH">
+                                    <rect key="frame" x="0.0" y="26" width="96" height="26"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="96" id="6bK-94-nnk"/>
+                                        <constraint firstAttribute="height" constant="26" id="is5-un-qAr"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="Oldest">
+                                        <color key="titleColor" name="MenuDark"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RuD-8d-GhW">
+                                    <rect key="frame" x="0.0" y="52" width="96" height="26"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="26" id="OhW-CM-eBY"/>
+                                        <constraint firstAttribute="width" constant="96" id="o4a-HL-5pH"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="A - Z">
+                                        <color key="titleColor" name="MenuDark"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQj-RQ-i5h">
+                                    <rect key="frame" x="0.0" y="78" width="96" height="26"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="96" id="CA8-WC-OGB"/>
+                                        <constraint firstAttribute="height" constant="26" id="DcW-33-65S"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="Z - A">
+                                        <color key="titleColor" name="MenuDark"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" name="IconsLight"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="OwE-ng-gVM" secondAttribute="bottom" constant="8" id="Fs0-Y9-5me"/>
+                        <constraint firstItem="OwE-ng-gVM" firstAttribute="leading" secondItem="std-i2-RHN" secondAttribute="leading" constant="8" id="MXl-Fd-wng"/>
+                        <constraint firstItem="OwE-ng-gVM" firstAttribute="top" secondItem="std-i2-RHN" secondAttribute="top" constant="8" id="X7W-yW-Rq1"/>
+                        <constraint firstAttribute="trailing" secondItem="OwE-ng-gVM" secondAttribute="trailing" constant="8" id="e9b-qU-x6N"/>
+                    </constraints>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Anchor" translatesAutoresizingMaskIntoConstraints="NO" id="qFn-ha-acE">
+                    <rect key="frame" x="92" y="4" width="17" height="10"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="17" id="KfW-E7-fgD"/>
+                        <constraint firstAttribute="height" constant="10" id="css-uM-fl3"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="d5v-7H-Fym" firstAttribute="bottom" secondItem="std-i2-RHN" secondAttribute="bottom" constant="4" id="1qh-hK-t5A"/>
+                <constraint firstItem="qFn-ha-acE" firstAttribute="top" secondItem="d5v-7H-Fym" secondAttribute="top" constant="4" id="Rdb-y9-MRi"/>
+                <constraint firstItem="std-i2-RHN" firstAttribute="trailing" secondItem="qFn-ha-acE" secondAttribute="trailing" constant="7" id="UgZ-Wf-5Fg"/>
+                <constraint firstItem="d5v-7H-Fym" firstAttribute="trailing" secondItem="std-i2-RHN" secondAttribute="trailing" constant="4" id="YTZ-l0-85q"/>
+                <constraint firstItem="std-i2-RHN" firstAttribute="top" secondItem="qFn-ha-acE" secondAttribute="bottom" id="Z54-wn-kG8"/>
+                <constraint firstItem="std-i2-RHN" firstAttribute="leading" secondItem="d5v-7H-Fym" secondAttribute="leading" constant="4" id="uGs-xx-XTF"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="d5v-7H-Fym"/>
+            <connections>
+                <outlet property="anchor" destination="qFn-ha-acE" id="vCY-l0-h9z"/>
+                <outlet property="ascendingButton" destination="RuD-8d-GhW" id="QjI-VX-Tiv"/>
+                <outlet property="container" destination="std-i2-RHN" id="6iX-Cl-Vgm"/>
+                <outlet property="descendingButton" destination="FQj-RQ-i5h" id="8aG-on-2iN"/>
+                <outlet property="newestButton" destination="hFt-eJ-Yia" id="7dx-eM-eAD"/>
+                <outlet property="oldestButton" destination="Q11-d9-flH" id="SDY-ug-jZj"/>
+            </connections>
+            <point key="canvasLocation" x="-40" y="-18"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Anchor" width="15" height="9"/>
+        <namedColor name="IconsLight">
+            <color red="0.93699997663497925" green="0.94099998474121094" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MenuDark">
+            <color red="0.27500000596046448" green="0.28600001335144043" blue="0.29800000786781311" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
