@@ -13,6 +13,8 @@ import RxCocoa
 class AnnotationViewController: UITableViewController {
     var viewModel: AnnotationViewModel!
 
+    @IBOutlet var headerView: AnnotationHeaderView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +28,12 @@ class AnnotationViewController: UITableViewController {
     }
 
     private func bindViewModel() {
-        let input = AnnotationViewModel.Input()
+        let search = headerView.searchBar
+            .rx.textChanged
+            .asDriver(onErrorJustReturn: "")
+            .debounce(0.2)
+
+        let input = AnnotationViewModel.Input(searchTrigger: search)
         let output = viewModel.transform(input: input)
         let cellIdentifier = AnnotationTableViewCell.reuseIdentifier
         let cellType = AnnotationTableViewCell.self

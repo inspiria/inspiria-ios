@@ -379,6 +379,9 @@
                             <outlet property="delegate" destination="GRW-hX-Y6h" id="a6X-Dt-1gq"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="headerView" destination="djE-HK-2Ie" id="D3a-Fr-EHg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l68-Ni-pFE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

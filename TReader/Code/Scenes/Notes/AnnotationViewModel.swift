@@ -24,7 +24,7 @@ class AnnotationViewModel {
     }
 
     func transform(input: Input) -> Output {
-        let annotations = Driver.just([
+        let data = Driver.just([
             Annotation(date: Date(), quote: "Felis piece gravida nisi, adipiscing risus cras gravida. Id nisl nullam ut commodo", text: nil),
             Annotation(date: Date().addingTimeInterval(-108000),
                        quote: "Habitant integer proin sit velit, in in turpis. Ut fermentum urna sed est posuere vel.",
@@ -39,12 +39,19 @@ class AnnotationViewModel {
                        text: "I agree with the above plus this")
         ])
 
+        let annotations = Driver<[Annotation]>
+            .combineLatest(data, input.searchTrigger) { data, str in
+            if str.isEmpty { return data }
+                return data.filter { $0.quote.lowercased().contains(str.lowercased()) || ($0.text?.lowercased().contains(str.lowercased()) ?? false) }
+        }
+
         return Output(annotations: annotations)
     }
 }
 
 extension AnnotationViewModel {
     struct Input {
+        let searchTrigger: Driver<String>
     }
     struct Output {
         let annotations: Driver<[Annotation]>
