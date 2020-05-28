@@ -48,9 +48,10 @@ class AnnotationViewController: UITableViewController {
         let cellIdentifier = AnnotationTableViewCell.reuseIdentifier
         let cellType = AnnotationTableViewCell.self
 
-        output.annotations.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: cellType)) { _, model, cell in
-                cell.set(model: model)
+        output.annotations
+            .asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: cellType)) { [unowned self] _, model, cell in
+                cell.set(model: model, highlight: self.headerView.searchBar.text)
             }.disposed(by: rx.disposeBag)
     }
 }

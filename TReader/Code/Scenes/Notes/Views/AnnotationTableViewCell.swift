@@ -32,10 +32,16 @@ class AnnotationTableViewCell: UITableViewCell {
         containerView.layer.cornerRadius = cornerRadius
     }
 
-    func set(model: Annotation) {
+    func set(model: Annotation, highlight: String? = nil) {
         dateLabel.text = dateString(from: model.date)
-        quoteLabel.text = model.quote
-        userTextLabel.text = model.text
+
+        if let str = highlight, !str.isEmpty {
+            quoteLabel.attributedText = model.quote.highlight(text: str)
+            userTextLabel.attributedText = model.text?.highlight(text: str)
+        } else {
+            quoteLabel.text = model.quote
+            userTextLabel.text = model.text
+        }
     }
 
     func dateString(from date: Date) -> String {
@@ -55,5 +61,21 @@ class AnnotationTableViewCell: UITableViewCell {
         }
 
         return formatter.string(from: date)
+    }
+}
+
+extension String {
+    func highlight(text: String) -> NSAttributedString? {
+        guard let regex = try? NSRegularExpression(pattern: text, options: .caseInsensitive) else { return nil }
+        let string = NSMutableAttributedString(string: self)
+        let range = NSRange(location: 0, length: self.utf16.count)
+        let matches = regex.matches(in: self, options: [], range: range)
+
+        matches.forEach {
+            string.addAttribute(NSAttributedString.Key.foregroundColor,
+                                          value: ColorStyle.orange.color,
+                                          range: $0.range)
+        }
+        return string
     }
 }
