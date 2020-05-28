@@ -282,7 +282,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBn-QZ-wNa">
-                                                    <rect key="frame" x="10" y="51" width="3" height="33"/>
+                                                    <rect key="frame" x="10" y="51" width="3" height="28"/>
                                                     <color key="backgroundColor" name="IconsLight"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="3" id="7Pd-Vs-OrF"/>
@@ -295,13 +295,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habitant integer proin sit velit, in in turpis. Ut fermentum urna sed est posuere vel." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZs-1b-Ey9">
-                                                    <rect key="frame" x="25" y="51" width="353" height="33"/>
+                                                    <rect key="frame" x="25" y="51" width="353" height="28"/>
                                                     <fontDescription key="fontDescription" name="NotoSerif-Italic" family="Noto Serif" pointSize="12"/>
                                                     <color key="textColor" name="DarkGray"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nx-Ml-LHp">
-                                                    <rect key="frame" x="291" y="141" width="31" height="12"/>
+                                                    <rect key="frame" x="291" y="138.5" width="31" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <inset key="imageEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="Edit" image="Edit">
@@ -309,7 +309,7 @@
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k70-Vv-sOM">
-                                                    <rect key="frame" x="336" y="135.5" width="42" height="22.5"/>
+                                                    <rect key="frame" x="336" y="130.5" width="42" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <inset key="imageEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="Delete" image="Delete">
@@ -317,7 +317,7 @@
                                                     </state>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is the note about the piece of text above that I highlighted on the page. Here is my opinion. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBq-Gy-rI2">
-                                                    <rect key="frame" x="10" y="94" width="370" height="33.5"/>
+                                                    <rect key="frame" x="10" y="89" width="370" height="33.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" name="DarkGray"/>
                                                     <nil key="highlightedColor"/>

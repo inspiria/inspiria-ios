@@ -10,6 +10,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+struct Annotation {
+    let date: Date
+    let quote: String
+    let text: String?
+}
+
 class AnnotationViewModel {
     let navigator: AnnotationNavigator
 
@@ -18,7 +24,22 @@ class AnnotationViewModel {
     }
 
     func transform(input: Input) -> Output {
-        return Output(disposableDrivers: [])
+        let annotations = Driver.just([
+            Annotation(date: Date(), quote: "Felis piece gravida nisi, adipiscing risus cras gravida. Id nisl nullam ut commodo", text: nil),
+            Annotation(date: Date().addingTimeInterval(-108000),
+                       quote: "Habitant integer proin sit velit, in in turpis. Ut fermentum urna sed est posuere vel.",
+                       text: "Here is the note about the piece of text above that I highlighted on the page. Here is my opinion. "),
+            Annotation(date: Date().addingTimeInterval(-300000),
+                       quote: "Pretium nibh ornare orci element pretium ornare. Pellente auctor  enim, neque sit non, elit. In sed sit.",
+                       text: "Group, what do you think? "),
+            Annotation(date: Date().addingTimeInterval(-500000),
+                       quote: "Convallis tincidunt arcu, posuere platea. Ut sit at nulla vitae. Nibh vulputate ante tellus facilisis lorem quisque.", text: nil),
+            Annotation(date: Date().addingTimeInterval(-2000000),
+                       quote: "Tincidunt arcu, posuere platea. Ut sit at nulla vitae. Nibh ante tellus facilisis lorem quisque vulputate. ",
+                       text: "I agree with the above plus this")
+        ])
+
+        return Output(annotations: annotations)
     }
 }
 
@@ -26,6 +47,6 @@ extension AnnotationViewModel {
     struct Input {
     }
     struct Output {
-        let disposableDrivers: [Driver<Void>]
+        let annotations: Driver<[Annotation]>
     }
 }

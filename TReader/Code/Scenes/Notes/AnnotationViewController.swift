@@ -27,17 +27,13 @@ class AnnotationViewController: UITableViewController {
 
     private func bindViewModel() {
         let input = AnnotationViewModel.Input()
-
+        let output = viewModel.transform(input: input)
         let cellIdentifier = AnnotationTableViewCell.reuseIdentifier
         let cellType = AnnotationTableViewCell.self
 
-        Observable.just(["1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3"])
-            .bind(to: tableView.rx
-                .items(cellIdentifier: cellIdentifier, cellType: cellType)) { _, model, cell in
-//                    cell.set(viewModel: model)
-        }.disposed(by: rx.disposeBag)
-
-        let output = viewModel.transform(input: input)
-        output.disposableDrivers.forEach { $0.drive().disposed(by: rx.disposeBag) }
+        output.annotations.asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: cellType)) { _, model, cell in
+                cell.set(model: model)
+            }.disposed(by: rx.disposeBag)
     }
 }

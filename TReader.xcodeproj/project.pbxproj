@@ -373,10 +373,10 @@
 			isa = PBXGroup;
 			children = (
 				3EE0561D247DACCB004F3D13 /* AnnotationViewController.swift */,
-				3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */,
-				3EC8306B247E707D008E0597 /* AnnotationTableViewCell.swift */,
 				3EE0561E247DACCB004F3D13 /* AnnotationViewModel.swift */,
 				3EE0561C247DACCB004F3D13 /* AnnotationNavigator.swift */,
+				3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */,
+				3EC8306B247E707D008E0597 /* AnnotationTableViewCell.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";

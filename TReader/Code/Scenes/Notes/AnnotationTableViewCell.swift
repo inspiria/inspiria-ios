@@ -31,4 +31,29 @@ class AnnotationTableViewCell: UITableViewCell {
         containerView.layer.shadowRadius = 2
         containerView.layer.cornerRadius = cornerRadius
     }
+
+    func set(model: Annotation) {
+        dateLabel.text = dateString(from: model.date)
+        quoteLabel.text = model.quote
+        userTextLabel.text = model.text
+    }
+
+    func dateString(from date: Date) -> String {
+        let calendar = Calendar.autoupdatingCurrent
+        let formatter = DateFormatter()
+        formatter.doesRelativeDateFormatting = true
+
+        if calendar.isDateInToday(date) {
+            formatter.timeStyle = .short
+            formatter.dateStyle = .none
+        } else if calendar.isDateInYesterday(date) {
+            formatter.timeStyle = .short
+            formatter.dateStyle = .medium
+        } else {
+            formatter.timeStyle = .none
+            formatter.dateStyle = .medium
+        }
+
+        return formatter.string(from: date)
+    }
 }
