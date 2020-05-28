@@ -42,6 +42,9 @@ class AnnotationHeaderView: UIStackView {
 
         if show {
             searchBar.becomeFirstResponder()
+        } else {
+            searchBar.text = nil
+            searchBar.resignFirstResponder()
         }
     }
 
