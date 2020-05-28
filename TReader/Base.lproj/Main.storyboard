@@ -183,9 +183,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="BkgrndWhite"/>
+                        <stackView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" id="djE-HK-2Ie" customClass="AnnotationHeaderView" customModule="Inspiria" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PC-bR-E9g">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                    <subviews>
+                                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search by word" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AB0-bh-CtG">
+                                            <rect key="frame" x="4" y="6" width="407" height="36"/>
+                                            <color key="tintColor" name="Orange"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </searchBar>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstItem="AB0-bh-CtG" firstAttribute="leading" secondItem="8PC-bR-E9g" secondAttribute="leading" constant="4" id="8y5-7x-9pn"/>
+                                        <constraint firstAttribute="bottom" secondItem="AB0-bh-CtG" secondAttribute="bottom" constant="6" id="BtB-Y4-cce"/>
+                                        <constraint firstAttribute="trailing" secondItem="AB0-bh-CtG" secondAttribute="trailing" constant="3" id="drd-2U-ApL"/>
+                                        <constraint firstAttribute="height" constant="48" id="v0B-OZ-rUI"/>
+                                        <constraint firstItem="AB0-bh-CtG" firstAttribute="top" secondItem="8PC-bR-E9g" secondAttribute="top" constant="6" id="xIG-h2-4zT"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RoJ-YM-uBO">
+                                    <rect key="frame" x="0.0" y="58" width="414" height="28"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XI9-PJ-RZd">
+                                            <rect key="frame" x="12" y="8" width="77" height="12"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="12" id="eZl-OX-QcS"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
+                                            <state key="normal" title="Search notes" image="Search">
+                                                <color key="titleColor" name="DarkGray"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxf-bh-iB8">
+                                            <rect key="frame" x="361" y="8" width="41" height="12"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="12" id="ywP-R3-Jg9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
+                                            <state key="normal" title="Sort " image="Sort">
+                                                <color key="titleColor" name="DarkGray"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstItem="XI9-PJ-RZd" firstAttribute="leading" secondItem="RoJ-YM-uBO" secondAttribute="leading" constant="12" id="32r-Vx-w3V"/>
+                                        <constraint firstAttribute="bottom" secondItem="XI9-PJ-RZd" secondAttribute="bottom" constant="8" id="Agh-N9-RS6"/>
+                                        <constraint firstItem="Vxf-bh-iB8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XI9-PJ-RZd" secondAttribute="trailing" constant="8" symbolic="YES" id="E9s-E5-Osu"/>
+                                        <constraint firstItem="Vxf-bh-iB8" firstAttribute="centerY" secondItem="XI9-PJ-RZd" secondAttribute="centerY" id="Ro2-rf-ZSW"/>
+                                        <constraint firstItem="XI9-PJ-RZd" firstAttribute="top" secondItem="RoJ-YM-uBO" secondAttribute="top" constant="8" id="UhA-CF-6Q8"/>
+                                        <constraint firstAttribute="trailing" secondItem="Vxf-bh-iB8" secondAttribute="trailing" constant="12" id="reV-7b-YDV"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <connections>
+                                <outlet property="defaultBar" destination="RoJ-YM-uBO" id="8c7-Pq-TYi"/>
+                                <outlet property="searchBar" destination="AB0-bh-CtG" id="f1M-B9-e1T"/>
+                                <outlet property="searchButton" destination="XI9-PJ-RZd" id="foF-Fd-kWR"/>
+                                <outlet property="searchContainer" destination="8PC-bR-E9g" id="bpK-aU-DSn"/>
+                                <outlet property="sortButton" destination="Vxf-bh-iB8" id="9Is-ah-vgS"/>
+                            </connections>
+                        </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AnnotationTableViewCell" rowHeight="180" id="wcF-EO-eF1" customClass="AnnotationTableViewCell" customModule="Inspiria" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="180"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="180"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wcF-EO-eF1" id="SSs-f5-KWY">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
@@ -273,6 +340,7 @@
                                                 <constraint firstItem="k1c-HC-ePY" firstAttribute="leading" secondItem="E33-bt-xsp" secondAttribute="trailing" constant="6" id="a79-Yv-GRx"/>
                                                 <constraint firstAttribute="bottom" secondItem="k70-Vv-sOM" secondAttribute="bottom" constant="10" id="c5s-pq-NhU"/>
                                                 <constraint firstItem="tBn-QZ-wNa" firstAttribute="bottom" secondItem="ZZs-1b-Ey9" secondAttribute="bottom" id="eV8-Vr-ADF"/>
+                                                <constraint firstItem="0nx-Ml-LHp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DJi-2c-HzS" secondAttribute="leading" constant="20" symbolic="YES" id="fke-fg-paw"/>
                                                 <constraint firstItem="E33-bt-xsp" firstAttribute="top" secondItem="bAT-x8-us4" secondAttribute="bottom" constant="5" id="l5g-BA-Bfh"/>
                                                 <constraint firstItem="fG7-d3-pbp" firstAttribute="centerY" secondItem="E33-bt-xsp" secondAttribute="centerY" id="mPa-6D-Gfk"/>
                                                 <constraint firstItem="tBn-QZ-wNa" firstAttribute="top" secondItem="ZZs-1b-Ey9" secondAttribute="top" id="n12-IG-fdL"/>
@@ -281,6 +349,7 @@
                                                 <constraint firstItem="bAT-x8-us4" firstAttribute="leading" secondItem="DJi-2c-HzS" secondAttribute="leading" constant="10" id="rLk-JV-EpB"/>
                                                 <constraint firstAttribute="trailing" secondItem="bAT-x8-us4" secondAttribute="trailing" constant="10" id="rf9-AC-pCc"/>
                                                 <constraint firstItem="ZZs-1b-Ey9" firstAttribute="leading" secondItem="tBn-QZ-wNa" secondAttribute="trailing" constant="12" id="sUW-Hl-eF7"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fG7-d3-pbp" secondAttribute="trailing" constant="20" symbolic="YES" id="v1q-f7-dnF"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -321,7 +390,9 @@
         <image name="Delete" width="10" height="12"/>
         <image name="Edit" width="12" height="12"/>
         <image name="Library" width="20" height="18"/>
+        <image name="Search" width="13" height="12"/>
         <image name="SelectOpen" width="28" height="28"/>
+        <image name="Sort" width="17" height="10"/>
         <namedColor name="BkgrndWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

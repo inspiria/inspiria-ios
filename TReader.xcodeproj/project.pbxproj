@@ -60,6 +60,7 @@
 		3EE05620247DACCB004F3D13 /* AnnotationNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE0561C247DACCB004F3D13 /* AnnotationNavigator.swift */; };
 		3EE05621247DACCB004F3D13 /* AnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE0561D247DACCB004F3D13 /* AnnotationViewController.swift */; };
 		3EE05622247DACCB004F3D13 /* AnnotationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE0561E247DACCB004F3D13 /* AnnotationViewModel.swift */; };
+		3EE2AA0F247F796300885EBE /* AnnotationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */; };
 		3EFF974B23FC2B7B000103FE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF974A23FC2B7B000103FE /* Book.swift */; };
 		AAA5DDD24CC0A2A5CE5DB2E0 /* Pods_TReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */; };
 /* End PBXBuildFile section */
@@ -121,6 +122,7 @@
 		3EE0561C247DACCB004F3D13 /* AnnotationNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationNavigator.swift; sourceTree = "<group>"; };
 		3EE0561D247DACCB004F3D13 /* AnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationViewController.swift; sourceTree = "<group>"; };
 		3EE0561E247DACCB004F3D13 /* AnnotationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationViewModel.swift; sourceTree = "<group>"; };
+		3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationHeaderView.swift; sourceTree = "<group>"; };
 		3EFF974A23FC2B7B000103FE /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		591C195EBB897077DA992FD1 /* Pods-TReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TReader.debug.xcconfig"; path = "Target Support Files/Pods-TReader/Pods-TReader.debug.xcconfig"; sourceTree = "<group>"; };
 		91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -371,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				3EE0561D247DACCB004F3D13 /* AnnotationViewController.swift */,
+				3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */,
 				3EC8306B247E707D008E0597 /* AnnotationTableViewCell.swift */,
 				3EE0561E247DACCB004F3D13 /* AnnotationViewModel.swift */,
 				3EE0561C247DACCB004F3D13 /* AnnotationNavigator.swift */,
@@ -553,6 +556,7 @@
 				3E53649C2402E0A800C896D4 /* BooksListToolbar.swift in Sources */,
 				3E149F2123F9D112006968D4 /* ContentViewModel.swift in Sources */,
 				3ED413F823F87D7000BEC2C5 /* BooksListNavigator.swift in Sources */,
+				3EE2AA0F247F796300885EBE /* AnnotationHeaderView.swift in Sources */,
 				3EB62F8C23F6BC0400C3F1D6 /* ColorStyle.swift in Sources */,
 				3E149F1F23F9D112006968D4 /* ContentNavigator.swift in Sources */,
 				3E0A588124116C3100B09EE0 /* ChapterViewModel.swift in Sources */,
