@@ -1,7 +1,7 @@
 PODS:
-  - Kingfisher (5.13.4):
-    - Kingfisher/Core (= 5.13.4)
-  - Kingfisher/Core (5.13.4)
+  - Kingfisher (5.14.0):
+    - Kingfisher/Core (= 5.14.0)
+  - Kingfisher/Core (5.14.0)
   - "NSObject+Rx (5.1.0)":
     - RxSwift (~> 5.1)
   - RxCocoa (5.1.1):
@@ -16,7 +16,7 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
-  - WordPress-Aztec-iOS (1.19.0)
+  - WordPress-Aztec-iOS (1.19.2)
   - XLPagerTabStrip (9.0.0)
   - Zip (1.1.0)
 
@@ -46,14 +46,14 @@ SPEC REPOS:
     - Zip
 
 SPEC CHECKSUMS:
-  Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
+  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
   RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
-  WordPress-Aztec-iOS: fb6ea6409a5228292568f665eb22ea0a0aa7ad7e
+  WordPress-Aztec-iOS: d01bf0c5e150ae6a046f06ba63b7cc2762061c0b
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 

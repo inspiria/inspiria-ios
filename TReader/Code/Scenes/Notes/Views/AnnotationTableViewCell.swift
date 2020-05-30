@@ -33,7 +33,7 @@ class AnnotationTableViewCell: UITableViewCell {
     }
 
     func set(model: Annotation, highlight: String? = nil) {
-        dateLabel.text = dateString(from: model.date)
+        dateLabel.text = model.date.formatedString()
 
         if let str = highlight, !str.isEmpty {
             quoteLabel.attributedText = model.quote.highlight(text: str)
@@ -42,25 +42,6 @@ class AnnotationTableViewCell: UITableViewCell {
             quoteLabel.text = model.quote
             userTextLabel.text = model.text
         }
-    }
-
-    func dateString(from date: Date) -> String {
-        let calendar = Calendar.autoupdatingCurrent
-        let formatter = DateFormatter()
-        formatter.doesRelativeDateFormatting = true
-
-        if calendar.isDateInToday(date) {
-            formatter.timeStyle = .short
-            formatter.dateStyle = .none
-        } else if calendar.isDateInYesterday(date) {
-            formatter.timeStyle = .short
-            formatter.dateStyle = .medium
-        } else {
-            formatter.timeStyle = .none
-            formatter.dateStyle = .medium
-        }
-
-        return formatter.string(from: date)
     }
 }
 
