@@ -17,6 +17,8 @@
 		3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1C23F9D112006968D4 /* ContentViewController.swift */; };
 		3E149F2123F9D112006968D4 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1D23F9D112006968D4 /* ContentViewModel.swift */; };
 		3E149F2423F9D6F4006968D4 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F2323F9D6F4006968D4 /* Observable.swift */; };
+		3E2ECDD02482F60700247B09 /* BookmarkStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ECDCF2482F60700247B09 /* BookmarkStorage.swift */; };
+		3E2ECDD22482F72700247B09 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ECDD12482F72700247B09 /* Bookmark.swift */; };
 		3E38A9512432294800EA2E10 /* TRTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A9502432294800EA2E10 /* TRTextView.swift */; };
 		3E38A95424322EBD00EA2E10 /* TRImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A95324322EBD00EA2E10 /* TRImageProvider.swift */; };
 		3E38A95724326F5300EA2E10 /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A95624326F5300EA2E10 /* ErrorTracker.swift */; };
@@ -86,6 +88,8 @@
 		3E149F1C23F9D112006968D4 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		3E149F1D23F9D112006968D4 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		3E149F2323F9D6F4006968D4 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		3E2ECDCF2482F60700247B09 /* BookmarkStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkStorage.swift; sourceTree = "<group>"; };
+		3E2ECDD12482F72700247B09 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		3E38A9502432294800EA2E10 /* TRTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTextView.swift; sourceTree = "<group>"; };
 		3E38A95324322EBD00EA2E10 /* TRImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRImageProvider.swift; sourceTree = "<group>"; };
 		3E38A95624326F5300EA2E10 /* ErrorTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
@@ -234,9 +238,9 @@
 			isa = PBXGroup;
 			children = (
 				3E0A587C24116C3100B09EE0 /* ChapterViewController.swift */,
+				3E72FB1124373D2B00A378FE /* ChaptersViewController.swift */,
 				3E0A587D24116C3100B09EE0 /* ChapterViewModel.swift */,
 				3E72FB1024373D2B00A378FE /* ChaptersNavigator.swift */,
-				3E72FB1124373D2B00A378FE /* ChaptersViewController.swift */,
 				3E97C19F243A6B2C00B3A399 /* WebViewConfiguration.swift */,
 			);
 			path = Chapters;
@@ -257,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				3E9CEDA824028858002E8FA3 /* BooksStorage.swift */,
+				3E2ECDCF2482F60700247B09 /* BookmarkStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -389,6 +394,7 @@
 				3E149F1823F9CFE1006968D4 /* Chapter.swift */,
 				3E5BAADB2424222B00C3AB06 /* Author.swift */,
 				3EA675F9243E0EE5001413A7 /* DeepLink.swift */,
+				3E2ECDD12482F72700247B09 /* Bookmark.swift */,
 			);
 			path = Entries;
 			sourceTree = "<group>";
@@ -591,6 +597,7 @@
 				3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */,
 				3EC8306A247E5A05008E0597 /* BookNavigator.swift in Sources */,
 				3E03BDC32412994000E16147 /* ContentHeaderView.swift in Sources */,
+				3E2ECDD02482F60700247B09 /* BookmarkStorage.swift in Sources */,
 				3E72FB1524373D2B00A378FE /* ChaptersViewController.swift in Sources */,
 				3EE05620247DACCB004F3D13 /* AnnotationNavigator.swift in Sources */,
 				3ECF6F16241D208B0043E0D0 /* TRLabel.swift in Sources */,
@@ -612,6 +619,7 @@
 				3E0A588124116C3100B09EE0 /* ChapterViewModel.swift in Sources */,
 				3E149F2423F9D6F4006968D4 /* Observable.swift in Sources */,
 				3EE0561A247D87BA004F3D13 /* BookViewController.swift in Sources */,
+				3E2ECDD22482F72700247B09 /* Bookmark.swift in Sources */,
 				3EE05621247DACCB004F3D13 /* AnnotationViewController.swift in Sources */,
 				3E839EC7242BC8DA00BA993A /* BookFilesService.swift in Sources */,
 				3EB62F8923F6BA2500C3F1D6 /* AppAppearance.swift in Sources */,

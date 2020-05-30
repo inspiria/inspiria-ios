@@ -17,6 +17,6 @@ class BookmarksTableViewCell: UITableViewCell {
     func set(model: Bookmark) {
         titleLabel.text = model.title
         dateLabel.text = model.date.formatedString()
-        pageLabel.text = String(model.pageNumber)
+        pageLabel.text = String(model.chapterId)
     }
 }

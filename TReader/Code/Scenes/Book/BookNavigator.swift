@@ -35,7 +35,9 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
         notesController.viewModel = AnnotationViewModel(navigator: self)
 
         let bookmarksController: BookmarksViewController = storyboard.instantiateViewController()
-        bookmarksController.viewModel = BookmarksViewModel(navigator: self)
+        bookmarksController.viewModel = BookmarksViewModel(bookId: book.id,
+                                                           storage: services.bookmarkStorage(),
+                                                           navigator: self)
 
         contentController.tabBarItem = UITabBarItem(title: "Outline", image: nil, tag: 0)
         notesController.tabBarItem = UITabBarItem(title: "Notes", image: nil, tag: 0)
@@ -46,20 +48,19 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
     }
 
     func to(chapterId: Int, of book: Book) {
-        let navigator = DefaultChaptersNavigator(services: services, storyboard: storyboard, controller: rootController)
+        let navigator = DefaultChaptersNavigator(services: services,
+                                                 storyboard: storyboard,
+                                                 controller: rootController)
         navigator.to(chapterId: chapterId, of: book)
     }
 
     func toNotes() {
-        let viewController = AnnotationViewController()
-        viewController.viewModel = AnnotationViewModel(navigator: self)
         //PRESENT VIEW CONTROLLER
+        fatalError("Not implemented")
     }
 
     func toBookmarks() {
-        let viewController = BookmarksViewController()
-        viewController.viewModel = BookmarksViewModel(navigator: self)
-
         //PRESENT VIEW CONTROLLER
+        fatalError("Not implemented")
     }
 }

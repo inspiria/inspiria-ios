@@ -9,6 +9,8 @@
 import UIKit
 
 protocol ChaptersNavigator {
+    func toBook()
+    func toSearch()
     func to(chapterId: Int, of book: Book)
     func previousChapterViewController(chapterId: Int, book: Book) -> UIViewController?
     func nextChapterViewController(chapterId: Int, book: Book) -> UIViewController?
@@ -25,6 +27,16 @@ class DefaultChaptersNavigator: ChaptersNavigator {
         self.services = services
         self.storyboard = storyboard
         self.rootController = controller
+    }
+
+    func toBook() {
+        rootController.popViewController(animated: true)
+    }
+
+    func toSearch() {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .systemOrange
+        rootController.present(vc, animated: true, completion: nil)
     }
 
     func to(chapterId: Int, of book: Book) {

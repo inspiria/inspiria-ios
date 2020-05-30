@@ -43,7 +43,7 @@ class ChapterViewController: UIViewController {
 
         output.chapter
             .drive(onNext: { [unowned self] chapter in
-                self.parent?.navigationItem.title = chapter.title
+//                self.parent?.navigationItem.title = chapter.title
 
                 let storage = DefaultBookFilesService(manager: FileManager.default)
                 let file = storage.getChapterUrl(id: chapter.bookId, chapterFile: chapter.fileName)

@@ -10,6 +10,7 @@ import Foundation
 
 protocol UseCaseProvider {
     func booksUseCase() -> BooksUseCase
+    func bookmarkStorage() -> BookmarkStorage
 }
 
 class DefaultUseCaseProvider: UseCaseProvider {
@@ -31,5 +32,9 @@ class DefaultUseCaseProvider: UseCaseProvider {
         return DefaultBooksUseCase(networkService: mNetworkService,
                                    bookStorage: DefaultBooksStorage(userDefaults: UserDefaults.standard,
                                                                     filesService: DefaultBookFilesService(manager: FileManager.default)))
+    }
+
+    func bookmarkStorage() -> BookmarkStorage {
+        return DefaultBookmarkStorage()
     }
 }
