@@ -27,7 +27,11 @@ class BookmarksViewController: UITableViewController {
     }
 
     private func bindViewModel() {
-        let input = BookmarksViewModel.Input()
+        let itemSelected = tableView
+            .rx.itemSelected
+            .map { $0.row }
+            .asDriverOnErrorJustComplete()
+        let input = BookmarksViewModel.Input(itemSelected: itemSelected)
         let output = viewModel.transform(input: input)
         let cellIdentifier = BookmarksTableViewCell.reuseIdentifier
         let cellType = BookmarksTableViewCell.self

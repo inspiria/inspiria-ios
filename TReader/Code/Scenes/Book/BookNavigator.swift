@@ -54,6 +54,13 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
         navigator.to(chapterId: chapterId, of: book)
     }
 
+    func to(chapterId: Int) {
+        let navigator = DefaultChaptersNavigator(services: services,
+                                                 storyboard: storyboard,
+                                                 controller: rootController)
+//        navigator.to(chapterId: chapterId, of: <#Book#>)
+    }
+
     func toNotes() {
         //PRESENT VIEW CONTROLLER
         fatalError("Not implemented")

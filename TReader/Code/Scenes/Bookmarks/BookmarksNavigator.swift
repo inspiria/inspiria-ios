@@ -10,5 +10,5 @@ import UIKit
 
 protocol BookmarksNavigator {
     func toBookmarks()
-    func to(chapterId: Int, of book: Book)
+    func to(chapterId: Int)
 }

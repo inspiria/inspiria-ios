@@ -24,15 +24,20 @@ class BookmarksViewModel {
     func transform(input: Input) -> Output {
         let bookmarks = useCase.getBookmarks(book: bookId)
             .asDriver(onErrorJustReturn: [])
+        let selected = input.itemSelected
+            .do(onNext: { _ in })
+            .mapToVoid()
 
-        return Output(bookmarks: bookmarks)
+        return Output(bookmarks: bookmarks, selected: selected)
     }
 }
 
 extension BookmarksViewModel {
     struct Input {
+        let itemSelected: Driver<Int>
     }
     struct Output {
         let bookmarks: Driver<[Bookmark]>
+        let selected: Driver<Void>
     }
 }
