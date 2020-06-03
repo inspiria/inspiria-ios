@@ -13,4 +13,5 @@ struct Bookmark {
     let date: Date
     let bookId: Int
     let chapterId: Int
+    let page: Int
 }

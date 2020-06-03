@@ -36,7 +36,7 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
 
         let bookmarksController: BookmarksViewController = storyboard.instantiateViewController()
         bookmarksController.viewModel = BookmarksViewModel(bookId: book.id,
-                                                           storage: services.bookmarkStorage(),
+                                                           useCase: services.bookmarkUseCase(),
                                                            navigator: self)
 
         contentController.tabBarItem = UITabBarItem(title: "Outline", image: nil, tag: 0)

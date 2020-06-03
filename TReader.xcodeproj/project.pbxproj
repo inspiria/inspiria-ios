@@ -17,7 +17,7 @@
 		3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1C23F9D112006968D4 /* ContentViewController.swift */; };
 		3E149F2123F9D112006968D4 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1D23F9D112006968D4 /* ContentViewModel.swift */; };
 		3E149F2423F9D6F4006968D4 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F2323F9D6F4006968D4 /* Observable.swift */; };
-		3E2ECDD02482F60700247B09 /* BookmarkStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ECDCF2482F60700247B09 /* BookmarkStorage.swift */; };
+		3E2ECDD02482F60700247B09 /* BookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ECDCF2482F60700247B09 /* BookmarkUseCase.swift */; };
 		3E2ECDD22482F72700247B09 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ECDD12482F72700247B09 /* Bookmark.swift */; };
 		3E38A9512432294800EA2E10 /* TRTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A9502432294800EA2E10 /* TRTextView.swift */; };
 		3E38A95424322EBD00EA2E10 /* TRImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A95324322EBD00EA2E10 /* TRImageProvider.swift */; };
@@ -27,6 +27,7 @@
 		3E49890923F6B1670082322E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890723F6B1670082322E /* Main.storyboard */; };
 		3E49890B23F6B16A0082322E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890A23F6B16A0082322E /* Assets.xcassets */; };
 		3E49890E23F6B16A0082322E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890C23F6B16A0082322E /* LaunchScreen.storyboard */; };
+		3E5335002487A25600D69182 /* ChaptersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5334FF2487A25600D69182 /* ChaptersViewModel.swift */; };
 		3E53649C2402E0A800C896D4 /* BooksListToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E53649B2402E0A800C896D4 /* BooksListToolbar.swift */; };
 		3E5BAADC2424222B00C3AB06 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BAADB2424222B00C3AB06 /* Author.swift */; };
 		3E72FB1424373D2B00A378FE /* ChaptersNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E72FB1024373D2B00A378FE /* ChaptersNavigator.swift */; };
@@ -88,7 +89,7 @@
 		3E149F1C23F9D112006968D4 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		3E149F1D23F9D112006968D4 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		3E149F2323F9D6F4006968D4 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		3E2ECDCF2482F60700247B09 /* BookmarkStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkStorage.swift; sourceTree = "<group>"; };
+		3E2ECDCF2482F60700247B09 /* BookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUseCase.swift; sourceTree = "<group>"; };
 		3E2ECDD12482F72700247B09 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		3E38A9502432294800EA2E10 /* TRTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTextView.swift; sourceTree = "<group>"; };
 		3E38A95324322EBD00EA2E10 /* TRImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRImageProvider.swift; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 		3E49890A23F6B16A0082322E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E49890D23F6B16A0082322E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E49890F23F6B16A0082322E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E5334FF2487A25600D69182 /* ChaptersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersViewModel.swift; sourceTree = "<group>"; };
 		3E53649B2402E0A800C896D4 /* BooksListToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListToolbar.swift; sourceTree = "<group>"; };
 		3E5BAADB2424222B00C3AB06 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		3E72FB1024373D2B00A378FE /* ChaptersNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersNavigator.swift; sourceTree = "<group>"; };
@@ -183,6 +185,16 @@
 			path = Content;
 			sourceTree = "<group>";
 		};
+		3E2ECDD32483034F00247B09 /* Chapter */ = {
+			isa = PBXGroup;
+			children = (
+				3E0A587C24116C3100B09EE0 /* ChapterViewController.swift */,
+				3E0A587D24116C3100B09EE0 /* ChapterViewModel.swift */,
+				3E97C19F243A6B2C00B3A399 /* WebViewConfiguration.swift */,
+			);
+			path = Chapter;
+			sourceTree = "<group>";
+		};
 		3E38A95224322E8600EA2E10 /* TextRendering */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,11 +249,9 @@
 		3E72FB0F24373D0800A378FE /* Chapters */ = {
 			isa = PBXGroup;
 			children = (
-				3E0A587C24116C3100B09EE0 /* ChapterViewController.swift */,
 				3E72FB1124373D2B00A378FE /* ChaptersViewController.swift */,
-				3E0A587D24116C3100B09EE0 /* ChapterViewModel.swift */,
+				3E5334FF2487A25600D69182 /* ChaptersViewModel.swift */,
 				3E72FB1024373D2B00A378FE /* ChaptersNavigator.swift */,
-				3E97C19F243A6B2C00B3A399 /* WebViewConfiguration.swift */,
 			);
 			path = Chapters;
 			sourceTree = "<group>";
@@ -261,7 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				3E9CEDA824028858002E8FA3 /* BooksStorage.swift */,
-				3E2ECDCF2482F60700247B09 /* BookmarkStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -362,6 +371,7 @@
 				3E149F1A23F9D0DE006968D4 /* Content */,
 				3EE0561B247DAC80004F3D13 /* Notes */,
 				3E8A1FC92482497C00A266D7 /* Bookmarks */,
+				3E2ECDD32483034F00247B09 /* Chapter */,
 				3E72FB0F24373D0800A378FE /* Chapters */,
 			);
 			path = Scenes;
@@ -381,8 +391,9 @@
 		3ED413E923F8757100BEC2C5 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */,
 				3ED413EA23F8757B00BEC2C5 /* UseCaseProvider.swift */,
+				3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */,
+				3E2ECDCF2482F60700247B09 /* BookmarkUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -597,7 +608,7 @@
 				3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */,
 				3EC8306A247E5A05008E0597 /* BookNavigator.swift in Sources */,
 				3E03BDC32412994000E16147 /* ContentHeaderView.swift in Sources */,
-				3E2ECDD02482F60700247B09 /* BookmarkStorage.swift in Sources */,
+				3E2ECDD02482F60700247B09 /* BookmarkUseCase.swift in Sources */,
 				3E72FB1524373D2B00A378FE /* ChaptersViewController.swift in Sources */,
 				3EE05620247DACCB004F3D13 /* AnnotationNavigator.swift in Sources */,
 				3ECF6F16241D208B0043E0D0 /* TRLabel.swift in Sources */,
@@ -629,6 +640,7 @@
 				3EFF974B23FC2B7B000103FE /* Book.swift in Sources */,
 				3E0A588024116C3100B09EE0 /* ChapterViewController.swift in Sources */,
 				3E72FB1424373D2B00A378FE /* ChaptersNavigator.swift in Sources */,
+				3E5335002487A25600D69182 /* ChaptersViewModel.swift in Sources */,
 				3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */,
 				3E38A95424322EBD00EA2E10 /* TRImageProvider.swift in Sources */,
 				3E97C1A0243A6B2C00B3A399 /* WebViewConfiguration.swift in Sources */,

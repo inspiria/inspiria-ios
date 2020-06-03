@@ -12,17 +12,17 @@ import RxCocoa
 
 class BookmarksViewModel {
     let navigator: BookmarksNavigator
-    let storage: BookmarkStorage
+    let useCase: BookmarkUseCase
     let bookId: Int
 
-    init (bookId: Int, storage: BookmarkStorage, navigator: BookmarksNavigator) {
+    init (bookId: Int, useCase: BookmarkUseCase, navigator: BookmarksNavigator) {
         self.bookId = bookId
-        self.storage = storage
+        self.useCase = useCase
         self.navigator = navigator
     }
 
     func transform(input: Input) -> Output {
-        let bookmarks = storage.getBookmarks(for: bookId)
+        let bookmarks = useCase.getBookmarks(book: bookId)
             .asDriver(onErrorJustReturn: [])
 
         return Output(bookmarks: bookmarks)
