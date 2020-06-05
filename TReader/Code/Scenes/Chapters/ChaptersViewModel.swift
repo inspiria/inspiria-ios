@@ -34,19 +34,21 @@ class ChaptersViewModel {
             .do(onNext: navigator.toBook)
         let search = input.search
             .do(onNext: navigator.toSearch)
+        let bookmarkValue = input.chapter.debug()
+            .map { [unowned self] in self.bookmarkUseCase.hasBookmark(book: self.book.info.id, chapter: $0) }
         let bookmarkAction = input.addBookmark
             .withLatestFrom(input.chapter)
             .map { [unowned self] in (self.book.info.id, $0) }
             .map { [unowned self] in ($0, self.bookmarkUseCase.hasBookmark(book: $0.0, chapter: $0.1)) }
-            .map { [unowned self] arg in
+            .map { [unowned self] arg -> Bool in
                 if arg.1 {
                     self.bookmarkUseCase.removeBookmark(book: arg.0.0, chapter: arg.0.1)
                 } else if let bookmark = self.bookmark(arg.0.1) {
                     self.bookmarkUseCase.add(bookmark: bookmark)
-                }}
-        let hasBookmark = Driver.combineLatest(input.chapter, bookmarkAction) { cap, _ in cap }
-            .map { [unowned self] in self.bookmarkUseCase.hasBookmark(book: self.book.info.id, chapter: $0) }
-            .startWith(self.bookmarkUseCase.hasBookmark(book: book.info.id, chapter: chapterId))
+                }
+                return self.bookmarkUseCase.hasBookmark(book: arg.0.0, chapter: arg.0.1)
+        }
+        let hasBookmark = Driver.merge(bookmarkValue, bookmarkAction)
 
         return Output(initChapter: chapterId,
                       hasBookmark: hasBookmark,
