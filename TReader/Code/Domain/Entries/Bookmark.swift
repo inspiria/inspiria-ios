@@ -8,10 +8,12 @@
 
 import Foundation
 
-struct Bookmark {
+struct Bookmark: Codable {
     let title: String
     let date: Date
     let bookId: Int
     let chapterId: Int
     let page: Int
+
+    var id: String { "\(bookId)-\(chapterId)" }
 }
