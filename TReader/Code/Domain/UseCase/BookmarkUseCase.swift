@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import CoreData
 import RxSwift
 import RxCocoa
+import RxCoreData
 
 protocol BookmarkUseCase {
     func getBookmarks(book: Int) -> Observable<[Bookmark]>
@@ -19,6 +21,11 @@ protocol BookmarkUseCase {
 
 class DefaultBookmarkUseCase: BookmarkUseCase {
     private let bookmarks = BehaviorRelay<[Bookmark]>(value: [])
+    private let managedObjectContext: NSManagedObjectContext
+
+    init(managedObjectContext: NSManagedObjectContext) {
+        self.managedObjectContext = managedObjectContext
+    }
 
     func getBookmarks(book: Int) -> Observable<[Bookmark]> {
         return bookmarks.map { $0.filter { $0.bookId == book } }

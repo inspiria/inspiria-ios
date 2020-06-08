@@ -15,9 +15,9 @@ protocol UseCaseProvider {
 
 class DefaultUseCaseProvider: UseCaseProvider {
     static var provider = DefaultUseCaseProvider()
-    private let mBookmarkUseCase = DefaultBookmarkUseCase()
+    private let mNetworkService: NetworkService
+    private let mCoreDataContext = CoreDataContext()
 
-    private  let mNetworkService: NetworkService
 
     init() {
         let url: String
@@ -36,6 +36,6 @@ class DefaultUseCaseProvider: UseCaseProvider {
     }
 
     func bookmarkUseCase() -> BookmarkUseCase {
-        return mBookmarkUseCase
+        return DefaultBookmarkUseCase(managedObjectContext: mCoreDataContext.managedObjectContext)
     }
 }
