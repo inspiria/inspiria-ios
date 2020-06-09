@@ -34,7 +34,7 @@ class AnnotationViewController: UITableViewController {
         Observable.just(["1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3"])
             .bind(to: tableView.rx
                 .items(cellIdentifier: cellIdentifier, cellType: cellType)) { _, model, cell in
-//                    cell.set(viewModel: model)
+                    cell.set(viewModel: model)
         }.disposed(by: rx.disposeBag)
 
         let output = viewModel.transform(input: input)

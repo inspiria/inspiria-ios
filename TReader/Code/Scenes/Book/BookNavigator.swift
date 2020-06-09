@@ -10,6 +10,7 @@ import UIKit
 
 protocol BookNavigator {
     func to(book: BookInfo)
+    func loaded(book: Book) -> [UIViewController]
 }
 
 class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator, BookmarksNavigator {
@@ -25,17 +26,17 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
         self.rootController = controller
     }
 
-    func to(book: BookInfo) {
+    func loaded(book: Book) -> [UIViewController] {
         let contentController: ContentViewController = storyboard.instantiateViewController()
         contentController.viewModel = ContentViewModel(booksUseCase: self.services.booksUseCase(),
                                                        navigator: self,
-                                                       bookInfo: book)
+                                                       book: book)
 
         let notesController: AnnotationViewController = storyboard.instantiateViewController()
         notesController.viewModel = AnnotationViewModel(navigator: self)
 
         let bookmarksController: BookmarksViewController = storyboard.instantiateViewController()
-        bookmarksController.viewModel = BookmarksViewModel(bookId: book.id,
+        bookmarksController.viewModel = BookmarksViewModel(book: book,
                                                            useCase: services.bookmarkUseCase(),
                                                            navigator: self)
 
@@ -43,7 +44,14 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
         notesController.tabBarItem = UITabBarItem(title: "Notes", image: nil, tag: 0)
         bookmarksController.tabBarItem = UITabBarItem(title: "Bookmarks", image: nil, tag: 0)
 
-        let tabController = BookViewController([contentController, notesController, bookmarksController])
+        return [contentController, notesController, bookmarksController]
+    }
+
+    func to(book info: BookInfo) {
+        let tabController = BookViewController()
+        tabController.viewModel = BookViewModel(booksUseCase: self.services.booksUseCase(),
+                                                navigator: self,
+                                                bookInfo: info)
         rootController.pushViewController(tabController, animated: true)
     }
 
@@ -54,19 +62,7 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
         navigator.to(chapterId: chapterId, of: book)
     }
 
-    func to(chapterId: Int) {
-        let navigator = DefaultChaptersNavigator(services: services,
-                                                 storyboard: storyboard,
-                                                 controller: rootController)
-//        navigator.to(chapterId: chapterId, of: <#Book#>)
-    }
-
     func toNotes() {
-        //PRESENT VIEW CONTROLLER
-        fatalError("Not implemented")
-    }
-
-    func toBookmarks() {
         //PRESENT VIEW CONTROLLER
         fatalError("Not implemented")
     }

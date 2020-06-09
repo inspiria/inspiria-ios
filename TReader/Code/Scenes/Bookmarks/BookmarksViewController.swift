@@ -28,7 +28,7 @@ class BookmarksViewController: UITableViewController {
 
     private func bindViewModel() {
         let itemSelected = tableView
-            .rx.itemSelected
+            .rx.itemSelected.debug()
             .map { $0.row }
             .asDriverOnErrorJustComplete()
         let input = BookmarksViewModel.Input(itemSelected: itemSelected)
@@ -41,6 +41,10 @@ class BookmarksViewController: UITableViewController {
             .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: cellType)) { _, model, cell in
                 cell.set(model: model)
             }
+            .disposed(by: rx.disposeBag)
+
+        output.selected
+            .drive()
             .disposed(by: rx.disposeBag)
     }
 }

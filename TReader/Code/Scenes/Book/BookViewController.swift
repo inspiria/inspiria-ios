@@ -10,18 +10,51 @@ import Foundation
 import XLPagerTabStrip
 
 class BookViewController: ButtonBarPagerTabStripViewController {
-    private let controllers: [UIViewController]
-
-    init(_ controllers: [UIViewController]) {
-        self.controllers = controllers
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var controllers: [UIViewController] = [UIViewController()]
+    var viewModel: BookViewModel!
 
     override func viewDidLoad() {
+        setStyle()
+        super.viewDidLoad()
+        configureView()
+        bindViewModel()
+    }
+
+    func configureView() {
+        view.backgroundColor = ColorStyle.iconsLight.color
+        self.edgesForExtendedLayout = UIRectEdge()
+    }
+
+    private func bindViewModel() {
+        let output = viewModel.transform()
+
+        output.title
+            .drive(self.navigationItem.rx.title)
+            .disposed(by: rx.disposeBag)
+
+        output.controllers
+            .drive(onNext: { [unowned self] controllers in
+                self.controllers = controllers
+                self.reloadPagerTabStripView()
+            })
+            .disposed(by: rx.disposeBag)
+
+        output.error
+            .drive(onNext: { [unowned self] error in
+                let alert = UIAlertController(title: "Failed to load book",
+                                              message: error.localizedDescription,
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                self.present(alert, animated: true, completion: nil)
+            })
+            .disposed(by: rx.disposeBag)
+    }
+
+    /*
+    / ======== Tabs and style ========
+    */
+
+    func setStyle() {
         settings.style.buttonBarBackgroundColor = .clear
         settings.style.buttonBarItemBackgroundColor = .clear
         settings.style.buttonBarLeftContentInset = 27
@@ -36,9 +69,6 @@ class BookViewController: ButtonBarPagerTabStripViewController {
             oldCell?.imageView.image = nil
             newCell?.imageView.image = #imageLiteral(resourceName: "Tab")
         }
-        super.viewDidLoad()
-        view.backgroundColor = ColorStyle.iconsLight.color
-        self.edgesForExtendedLayout = UIRectEdge()
     }
 
     override func configureCell(_ cell: ButtonBarViewCell, indicatorInfo: IndicatorInfo) {

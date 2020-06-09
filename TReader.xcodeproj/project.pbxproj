@@ -40,6 +40,7 @@
 		3E8A1FD0248249BB00A266D7 /* BookmarksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A1FCC248249BB00A266D7 /* BookmarksViewModel.swift */; };
 		3E8A1FD324824B2B00A266D7 /* BookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A1FD224824B2B00A266D7 /* BookmarksTableViewCell.swift */; };
 		3E8A1FD524824D5D00A266D7 /* Date+format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A1FD424824D5D00A266D7 /* Date+format.swift */; };
+		3E8B4F10248FBDA700F0CB52 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8B4F0F248FBDA700F0CB52 /* BookViewModel.swift */; };
 		3E97C1A0243A6B2C00B3A399 /* WebViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E97C19F243A6B2C00B3A399 /* WebViewConfiguration.swift */; };
 		3E9CEDA924028858002E8FA3 /* BooksStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CEDA824028858002E8FA3 /* BooksStorage.swift */; };
 		3E9CEDAB2402A849002E8FA3 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CEDAA2402A849002E8FA3 /* Storyboard.swift */; };
@@ -117,6 +118,7 @@
 		3E8A1FCC248249BB00A266D7 /* BookmarksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewModel.swift; sourceTree = "<group>"; };
 		3E8A1FD224824B2B00A266D7 /* BookmarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewCell.swift; sourceTree = "<group>"; };
 		3E8A1FD424824D5D00A266D7 /* Date+format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+format.swift"; sourceTree = "<group>"; };
+		3E8B4F0F248FBDA700F0CB52 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		3E97C19F243A6B2C00B3A399 /* WebViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewConfiguration.swift; sourceTree = "<group>"; };
 		3E9CEDA824028858002E8FA3 /* BooksStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksStorage.swift; sourceTree = "<group>"; };
 		3E9CEDAA2402A849002E8FA3 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				3EE05619247D87BA004F3D13 /* BookViewController.swift */,
+				3E8B4F0F248FBDA700F0CB52 /* BookViewModel.swift */,
 				3EC83069247E5A05008E0597 /* BookNavigator.swift */,
 			);
 			path = Book;
@@ -664,6 +667,7 @@
 				3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */,
 				3E38A95424322EBD00EA2E10 /* TRImageProvider.swift in Sources */,
 				3E97C1A0243A6B2C00B3A399 /* WebViewConfiguration.swift in Sources */,
+				3E8B4F10248FBDA700F0CB52 /* BookViewModel.swift in Sources */,
 				3EC05CC423F6CF7800862940 /* BooksListViewController.swift in Sources */,
 				3E38A95724326F5300EA2E10 /* ErrorTracker.swift in Sources */,
 				3E8A1FCE248249BB00A266D7 /* BookmarksNavigator.swift in Sources */,

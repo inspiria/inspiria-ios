@@ -18,7 +18,6 @@ class DefaultUseCaseProvider: UseCaseProvider {
     private let mNetworkService: NetworkService
     private let mCoreDataContext = CoreDataContext()
 
-
     init() {
         let url: String
         #if DEBUG
