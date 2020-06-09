@@ -9,29 +9,23 @@
 import Foundation
 import CoreData
 import RxCoreData
-import RxDataSources
 
 func == (lhs: Bookmark, rhs: Bookmark) -> Bool {
     return lhs.id == lhs.id
-}
-
-extension Bookmark: Equatable { }
-
-extension Bookmark: IdentifiableType {
-    typealias Identity = String
-    var identity: Identity { return id }
 }
 
 extension Bookmark: Persistable {
     typealias T = NSManagedObject
 
     static var entityName: String {
-        return "Event"
+        return "Bookmark"
     }
 
     static var primaryAttributeName: String {
         return "id"
     }
+
+    var identity: String { return id }
 
     init(entity: T) {
         // swiftlint:disable force_cast
