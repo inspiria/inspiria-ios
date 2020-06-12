@@ -22,10 +22,17 @@ struct Annotation: Codable {
     let text: String
     let tags: [String]
     let group: String
-//    let target: AnnotationTarget
+    let target: [AnnotationTarget]
 
     var quote: String {
-        return "quote"
+        for tar in target {
+            for sel in tar.selector {
+                if let quote = sel.exact {
+                    return quote
+                }
+            }
+        }
+        return ""
     }
 }
 
@@ -37,35 +44,18 @@ struct AnnotationSearch: Codable {
 
 struct AnnotationTarget: Codable {
     let source: String
-//    let range: RangeSelector?
-//    let position: TextPositionSelector?
-//    let quote: TextQuoteSelector?
-//
-//    enum CodingKeys: String, CodingKey {
-//      case source
-//      case selector
-//    }
-//
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        self.source = try container.decode(String.self, forKey: .source)
-//
-//        let selectors = try container.decode([String.self: AnyObject], forKey: .selector)
-//    }
-//
-//    func encode(to encoder: Encoder) throws {
-//      var container = encoder.container(keyedBy: CodingKeys.self)
-//      var response = container.nestedContainer(keyedBy: CodingKeys.self, forKey: .response)
-//      try response.encode(self.bar, forKey: .bar)
-//      try response.encode(self.baz, forKey: .baz)
-//      try response.encode(self.friends, forKey: .friends)
-//     }
+    let selector: [AnnotationSelector]
+
 }
 
-enum AnnotationSelectorType: String {
-    case range = "RangeSelector"
-    case position = "TextPositionSelector"
-    case quote = "TextQuoteSelector"
+struct AnnotationSelector: Codable {
+    enum `Type`: String, Codable {
+        case range = "RangeSelector"
+        case position = "TextPositionSelector"
+        case quote = "TextQuoteSelector"
+    }
+    let type: `Type`
+    let exact: String?
 }
 
 struct RangeSelector: Codable {
