@@ -15,7 +15,7 @@ public protocol NibLoadable: class {
 // MARK: - From Nib
 
 public extension NibLoadable where Self: UIView {
-    
+
     static var nibName: String {
          return String(describing: self)
     }

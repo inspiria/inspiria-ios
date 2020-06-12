@@ -7,35 +7,52 @@
 //
 
 import Foundation
+import CoreData
 import RxSwift
 import RxCocoa
+import RxCoreData
 
 protocol BookmarkUseCase {
     func getBookmarks(book: Int) -> Observable<[Bookmark]>
     func add(bookmark: Bookmark)
-    func hasBookmark(book: Int, chapter: Int) -> Bool
-    func removeBookmark(book: Int, chapter: Int)
+    func remove(bookmark: Bookmark)
+    func bookmark(book: Int, chapter: Int) -> Bookmark?
 }
 
 class DefaultBookmarkUseCase: BookmarkUseCase {
-    private let bookmarks = BehaviorRelay<[Bookmark]>(value: [])
+    private let managedObjectContext: NSManagedObjectContext
+
+    init(managedObjectContext: NSManagedObjectContext) {
+        self.managedObjectContext = managedObjectContext
+    }
 
     func getBookmarks(book: Int) -> Observable<[Bookmark]> {
-        return bookmarks.map { $0.filter { $0.bookId == book } }
+        let predicate = NSPredicate(format: "bookId = \(book)")
+        let descriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        return managedObjectContext.rx
+            .entities(Bookmark.self, predicate: predicate, sortDescriptors: descriptors)
     }
 
     func add(bookmark: Bookmark) {
-        bookmarks.accept(bookmarks.value + [bookmark])
+        do {
+            try managedObjectContext.rx.update(bookmark)
+        } catch {
+            print(error)
+        }
     }
 
-    func hasBookmark(book: Int, chapter: Int) -> Bool {
-        let val = bookmarks.value.first { $0.bookId == book && $0.chapterId == chapter } != nil
-        return val
+    func remove(bookmark: Bookmark) {
+        do {
+            try managedObjectContext.rx.delete(bookmark)
+        } catch {
+            print(error)
+        }
     }
 
-    func removeBookmark(book: Int, chapter: Int) {
-        var values = bookmarks.value
-        values.removeAll { $0.bookId == book && $0.chapterId == chapter }
-        bookmarks.accept(values)
+    func bookmark(book: Int, chapter: Int) -> Bookmark? {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Bookmark.entityName)
+        fetchRequest.predicate = NSPredicate(format: "%K = %@", Bookmark.primaryAttributeName, "\(book)-\(chapter)")
+        let result = (try? managedObjectContext.execute(fetchRequest)) as? NSAsynchronousFetchResult<NSManagedObject>
+        return result?.finalResult?.first.flatMap { Bookmark(entity: $0) }
     }
 }

@@ -13,19 +13,21 @@ import RxCocoa
 class BookmarksViewModel {
     let navigator: BookmarksNavigator
     let useCase: BookmarkUseCase
-    let bookId: Int
+    let book: Book
 
-    init (bookId: Int, useCase: BookmarkUseCase, navigator: BookmarksNavigator) {
-        self.bookId = bookId
+    init (book: Book, useCase: BookmarkUseCase, navigator: BookmarksNavigator) {
+        self.book = book
         self.useCase = useCase
         self.navigator = navigator
     }
 
     func transform(input: Input) -> Output {
-        let bookmarks = useCase.getBookmarks(book: bookId)
+        let bookmarks = useCase.getBookmarks(book: book.info.id)
             .asDriver(onErrorJustReturn: [])
-        let selected = input.itemSelected
-            .do(onNext: { _ in })
+        let selected = input.itemSelected.debug()
+            .withLatestFrom(bookmarks) { $1[$0] }
+            .map { [unowned self] in ($0.chapterId, self.book) }
+            .do(onNext: navigator.to)
             .mapToVoid()
 
         return Output(bookmarks: bookmarks, selected: selected)

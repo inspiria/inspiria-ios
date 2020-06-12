@@ -38,7 +38,7 @@ class TRTableImageProvider: TextViewAttachmentImageProvider {
         guard let attachment = attachment as? HTMLAttachment, let text = attachment.rawHTML.htmlAttributedString else {
             return #imageLiteral(resourceName: "DownloadError")
         }
-        
+
         let rect = CGRect(origin: CGPoint.zero, size: size)
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
         text.draw(in: rect)
