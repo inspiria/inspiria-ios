@@ -33,11 +33,11 @@ class AnnotationTableViewCell: UITableViewCell {
     }
 
     func set(model: Annotation, highlight: String? = nil) {
-        dateLabel.text = model.date.formatedString()
+        dateLabel.text = model.updated.formatedString()
 
         if let str = highlight, !str.isEmpty {
             quoteLabel.attributedText = model.quote.highlight(text: str)
-            userTextLabel.attributedText = model.text?.highlight(text: str)
+            userTextLabel.attributedText = model.text.highlight(text: str)
         } else {
             quoteLabel.text = model.quote
             userTextLabel.text = model.text

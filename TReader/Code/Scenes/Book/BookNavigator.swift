@@ -33,7 +33,7 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
                                                        book: book)
 
         let notesController: AnnotationViewController = storyboard.instantiateViewController()
-        notesController.viewModel = AnnotationViewModel(navigator: self)
+        notesController.viewModel = AnnotationViewModel(navigator: self, hypothesisUseCase: services.hypothesisUseCase())
 
         let bookmarksController: BookmarksViewController = storyboard.instantiateViewController()
         bookmarksController.viewModel = BookmarksViewModel(book: book,

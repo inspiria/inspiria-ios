@@ -1,0 +1,37 @@
+//
+//  HypothesisUseCase.swift
+//  TReader
+//
+//  Created by tadas on 2020-06-12.
+//  Copyright © 2020 Scale3C. All rights reserved.
+//
+
+import Foundation
+import RxSwift
+import RxCocoa
+
+protocol HypothesisUseCase {
+    func getUserProfile() -> Single<UserProfile>
+    func getAnnotations(quote: String?) -> Single<[Annotation]>
+}
+
+class DefaultHypothesisUseCase: HypothesisUseCase {
+    private let networkService: NetworkService
+
+    init(networkService: NetworkService) {
+        self.networkService = networkService
+    }
+
+    func getUserProfile() -> Single<UserProfile> {
+        return networkService.request(path: "profile", method: .get)
+    }
+
+    func getAnnotations(quote: String? = nil) -> Single<[Annotation]> {
+        let data = AnnotationSearch(limit: 200,
+                                    user: "acct:tadas@hypothes.is",
+                                    quote: quote)
+
+        let response: Single<AnnotationResponse> = networkService.request(path: "search", method: .get, data: data)
+        return response.map { $0.rows }
+    }
+}

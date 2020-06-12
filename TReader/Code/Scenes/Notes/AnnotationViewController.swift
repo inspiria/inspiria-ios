@@ -30,7 +30,8 @@ class AnnotationViewController: UITableViewController {
     private func bindViewModel() {
         let search = headerView.searchBar
             .rx.textChanged
-            .asDriver(onErrorJustReturn: "")
+            .map { $0.count > 0 ? $0 : nil }
+            .asDriver(onErrorJustReturn: nil)
             .debounce(0.2)
 
         let sort = headerView.sortButton

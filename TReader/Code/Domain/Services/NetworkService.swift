@@ -25,9 +25,11 @@ enum NetworkError: LocalizedError {
 class NetworkService {
     private let url: String
     private let disposeBag = DisposeBag()
+    private let authorization: Authorization?
 
-    init(url: String) {
+    init(url: String, authorization: Authorization? = nil) {
         self.url = url
+        self.authorization = authorization
     }
 
     enum HTTPMethod: String {
@@ -45,6 +47,9 @@ class NetworkService {
         var req = URLRequest(url: urlComponents.url!)
         req.setValue("application/json", forHTTPHeaderField: "Accept")
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if let token = authorization?.token {
+            req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
         req.httpMethod = method.rawValue
 
         switch method {

@@ -15,6 +15,12 @@ private let dateFormatterUTF: DateFormatter = {
     return frm
 }()
 
+private let dateFormatter: DateFormatter = {
+    let frm = DateFormatter()
+    frm.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+    return frm
+}()
+
 private let dateFormatterLocal: DateFormatter = {
     let frm = DateFormatter()
     frm.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -75,11 +81,12 @@ extension Decodable {
             let container = try decoder.singleValueContainer()
             let dateString = try container.decode(String.self)
 
-            if let date = dateFormatterUTF.date(from: dateString) { return date }
+            if let date = ISO8601DateFormatter().date(from: dateString) { return date }
             if let date = dateFormatterLocal.date(from: dateString) { return date }
+            if let date = dateFormatterUTF.date(from: dateString) { return date }
+            if let date = dateFormatter.date(from: dateString) { return date }
 
-            throw DecodingError.dataCorruptedError(in: container,
-                                                   debugDescription: "Cannot decode date string \(dateString)")
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "Cannot decode date string \(dateString)")
         }
         self = try decoder.decode(Self.self, from: data)
     }
