@@ -20,15 +20,16 @@ class AnnotationViewModel {
     }
 
     func transform(input: Input) -> Output {
+        let activity = ActivityIndicator()
         let annotations = Driver
-            .combineLatest(input.searchTrigger.debug(), input.sortTrigger)
-            .flatMap { str, order in
+            .combineLatest(input.searchTrigger.debug(), input.sortTrigger, input.refreshTrigger)
+            .flatMap { str, order, _ in
                 self.hypothesisUseCase.getAnnotations(quote: str)
                     .map { $0.sorted(by: order) }
-                    .debug()
+                    .trackActivity(activity)
                     .asDriver(onErrorJustReturn: [])
         }
-        return Output(annotations: annotations)
+        return Output(annotations: annotations, activity: activity.asDriver())
     }
 }
 
@@ -36,9 +37,11 @@ extension AnnotationViewModel {
     struct Input {
         let searchTrigger: Driver<String?>
         let sortTrigger: Driver<SortView.Order>
+        let refreshTrigger: Driver<Void>
     }
     struct Output {
         let annotations: Driver<[Annotation]>
+        let activity: Driver<Bool>
     }
 }
 

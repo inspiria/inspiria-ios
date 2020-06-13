@@ -25,6 +25,8 @@ class AnnotationViewController: UITableViewController {
     func configureView() {
         tableView.dataSource = nil
         tableView.delegate = nil
+
+        tableView.refreshControl = UIRefreshControl()
     }
 
     private func bindViewModel() {
@@ -32,7 +34,12 @@ class AnnotationViewController: UITableViewController {
             .rx.textChanged
             .map { $0.count > 0 ? $0 : nil }
             .asDriver(onErrorJustReturn: nil)
-            .debounce(0.2)
+            .debounce(0.5)
+
+        let refresh = tableView.refreshControl!
+            .rx.controlEvent(.valueChanged)
+            .asDriver()
+            .startWith(())
 
         let sort = headerView.sortButton
             .rx.tap
@@ -42,9 +49,11 @@ class AnnotationViewController: UITableViewController {
                 let y = self.headerView.sortButton.frame.maxY
                 let point = self.headerView.convert(CGPoint(x: x, y: y), to: self.view)
                 return SortView.show(in: self.view, at: point)
-        }
+        }.startWith(.newest)
 
-        let input = AnnotationViewModel.Input(searchTrigger: search, sortTrigger: sort.startWith(.newest))
+        let input = AnnotationViewModel.Input(searchTrigger: search,
+                                              sortTrigger: sort,
+                                              refreshTrigger: refresh)
         let output = viewModel.transform(input: input)
         let cellIdentifier = AnnotationTableViewCell.reuseIdentifier
         let cellType = AnnotationTableViewCell.self
@@ -53,6 +62,7 @@ class AnnotationViewController: UITableViewController {
             .asObservable()
             .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: cellType)) { [unowned self] _, model, cell in
                 cell.set(model: model, highlight: self.headerView.searchBar.text)
-            }.disposed(by: rx.disposeBag)
+        }
+        .disposed(by: rx.disposeBag)
     }
 }

@@ -11,6 +11,8 @@
 		3E03BDC524129FC600E16147 /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03BDC424129FC600E16147 /* UIImageView+Kingfisher.swift */; };
 		3E0A588024116C3100B09EE0 /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A587C24116C3100B09EE0 /* ChapterViewController.swift */; };
 		3E0A588124116C3100B09EE0 /* ChapterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A587D24116C3100B09EE0 /* ChapterViewModel.swift */; };
+		3E1002892494EFF300FB2AE3 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1002882494EFF300FB2AE3 /* ActivityIndicator.swift */; };
+		3E10028B2494F1AC00FB2AE3 /* UIViewController+loadingHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E10028A2494F1AC00FB2AE3 /* UIViewController+loadingHud.swift */; };
 		3E149F1723F974A9006968D4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1623F974A9006968D4 /* NetworkService.swift */; };
 		3E149F1923F9CFE1006968D4 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1823F9CFE1006968D4 /* Chapter.swift */; };
 		3E149F1F23F9D112006968D4 /* ContentNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1B23F9D112006968D4 /* ContentNavigator.swift */; };
@@ -91,6 +93,8 @@
 		3E03BDC424129FC600E16147 /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		3E0A587C24116C3100B09EE0 /* ChapterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
 		3E0A587D24116C3100B09EE0 /* ChapterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewModel.swift; sourceTree = "<group>"; };
+		3E1002882494EFF300FB2AE3 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		3E10028A2494F1AC00FB2AE3 /* UIViewController+loadingHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+loadingHud.swift"; sourceTree = "<group>"; };
 		3E149F1623F974A9006968D4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3E149F1823F9CFE1006968D4 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		3E149F1B23F9D112006968D4 /* ContentNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentNavigator.swift; sourceTree = "<group>"; };
@@ -377,6 +381,8 @@
 				3EE2AA10247F972100885EBE /* UISearchBar+RX.swift */,
 				3EE2AA17247FB4DD00885EBE /* UIView+NibLoadable.swift */,
 				3E8A1FD424824D5D00A266D7 /* Date+format.swift */,
+				3E1002882494EFF300FB2AE3 /* ActivityIndicator.swift */,
+				3E10028A2494F1AC00FB2AE3 /* UIViewController+loadingHud.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -661,6 +667,7 @@
 				3E2ECDD02482F60700247B09 /* BookmarkUseCase.swift in Sources */,
 				3E72FB1524373D2B00A378FE /* ChaptersViewController.swift in Sources */,
 				3E18F4022493C6C3002EBDEF /* Authorization.swift in Sources */,
+				3E1002892494EFF300FB2AE3 /* ActivityIndicator.swift in Sources */,
 				3EE05620247DACCB004F3D13 /* AnnotationNavigator.swift in Sources */,
 				3ECF6F16241D208B0043E0D0 /* TRLabel.swift in Sources */,
 				3E8A1FD524824D5D00A266D7 /* Date+format.swift in Sources */,
@@ -671,6 +678,7 @@
 				3EA675FA243E0EE5001413A7 /* DeepLink.swift in Sources */,
 				3EE2AA18247FB4DD00885EBE /* UIView+NibLoadable.swift in Sources */,
 				3E53649C2402E0A800C896D4 /* BooksListToolbar.swift in Sources */,
+				3E10028B2494F1AC00FB2AE3 /* UIViewController+loadingHud.swift in Sources */,
 				3E8A1FD0248249BB00A266D7 /* BookmarksViewModel.swift in Sources */,
 				3E149F2123F9D112006968D4 /* ContentViewModel.swift in Sources */,
 				3ED413F823F87D7000BEC2C5 /* BooksListNavigator.swift in Sources */,
