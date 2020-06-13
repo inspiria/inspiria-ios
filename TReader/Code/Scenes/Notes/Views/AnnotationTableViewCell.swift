@@ -36,8 +36,9 @@ class AnnotationTableViewCell: UITableViewCell {
         dateLabel.text = model.updated.formatedString()
 
         if let str = highlight, !str.isEmpty {
-            quoteLabel.attributedText = model.quote.highlight(text: str)
-            userTextLabel.attributedText = model.text.highlight(text: str)
+            let strings = str.components(separatedBy: " ")
+            quoteLabel.attributedText = model.quote.highlight(text: strings)
+            userTextLabel.attributedText = model.text.highlight(text: strings)
         } else {
             quoteLabel.text = model.quote
             userTextLabel.text = model.text
@@ -46,12 +47,14 @@ class AnnotationTableViewCell: UITableViewCell {
 }
 
 extension String {
-    func highlight(text: String) -> NSAttributedString? {
-        guard let regex = try? NSRegularExpression(pattern: text, options: .caseInsensitive) else { return nil }
-        let string = NSMutableAttributedString(string: self)
-        let range = NSRange(location: 0, length: self.utf16.count)
-        let matches = regex.matches(in: self, options: [], range: range)
+    func highlight(text: [String]) -> NSAttributedString? {
+        let matches: [NSTextCheckingResult] = text.flatMap { text -> [NSTextCheckingResult] in
+            guard let regex = try? NSRegularExpression(pattern: text, options: .caseInsensitive) else { return [] }
+            let range = NSRange(location: 0, length: self.utf16.count)
+            return regex.matches(in: self, options: [], range: range)
+        }
 
+        let string = NSMutableAttributedString(string: self)
         matches.forEach {
             string.addAttribute(NSAttributedString.Key.foregroundColor,
                                           value: ColorStyle.orange.color,

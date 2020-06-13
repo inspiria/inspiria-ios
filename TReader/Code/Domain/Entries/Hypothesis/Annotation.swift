@@ -25,14 +25,16 @@ struct Annotation: Codable {
     let target: [AnnotationTarget]
 
     var quote: String {
-        for tar in target {
-            for sel in tar.selector {
-                if let quote = sel.exact {
-                    return quote
+        let res = target.flatMap { ann -> [String] in
+            let res = ann.selector.compactMap { sel -> String? in
+                if case let AnnotationSelector.quote(selector) = sel {
+                    return selector.exact
                 }
+                return nil
             }
+            return res
         }
-        return ""
+        return res.first ?? ""
     }
 }
 
@@ -48,17 +50,42 @@ struct AnnotationTarget: Codable {
 
 }
 
-struct AnnotationSelector: Codable {
+enum AnnotationSelector: Codable {
+    case range(RangeSelector)
+    case quote(TextQuoteSelector)
+    case position(TextPositionSelector)
+
     enum `Type`: String, Codable {
         case range = "RangeSelector"
-        case position = "TextPositionSelector"
         case quote = "TextQuoteSelector"
+        case position = "TextPositionSelector"
     }
-    let type: `Type`
-    let exact: String?
+
+    enum CodingKeys: String, CodingKey {
+        case type
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let type = try values.decode(Type.self, forKey: .type)
+        switch type {
+        case .range:    self = try .range(RangeSelector(from: decoder))
+        case .quote:    self = try .quote(TextQuoteSelector(from: decoder))
+        case .position: self = try .position(TextPositionSelector(from: decoder))
+        }
+    }
+
+    func encode(to encoder: Encoder) throws {
+        switch self {
+        case .range(let selector): try selector.encode(to: encoder)
+        case .quote(let selector): try selector.encode(to: encoder)
+        case .position(let selector): try selector.encode(to: encoder)
+        }
+    }
 }
 
 struct RangeSelector: Codable {
+    let type: AnnotationSelector.`Type`
     let endOffset: Int
     let startOffset: Int
     let endContainer: String
@@ -66,11 +93,13 @@ struct RangeSelector: Codable {
 }
 
 struct TextPositionSelector: Codable {
+    let type: AnnotationSelector.`Type`
     let end: Int
     let start: Int
 }
 
 struct TextQuoteSelector: Codable {
+    let type: AnnotationSelector.`Type`
     let exact: String
     let prefix: String
     let suffix: String

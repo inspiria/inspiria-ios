@@ -21,7 +21,7 @@ class AnnotationViewModel {
 
     func transform(input: Input) -> Output {
         let annotations = Driver
-            .combineLatest(input.searchTrigger, input.sortTrigger)
+            .combineLatest(input.searchTrigger.debug(), input.sortTrigger)
             .flatMap { str, order in
                 self.hypothesisUseCase.getAnnotations(quote: str)
                     .map { $0.sorted(by: order) }
