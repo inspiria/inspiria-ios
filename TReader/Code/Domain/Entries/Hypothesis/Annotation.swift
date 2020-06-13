@@ -8,6 +8,18 @@
 
 import Foundation
 
+struct AnnotationSearch: Codable {
+    let limit: Int
+    let user: String
+    let quote: String?
+    let wildcardUri: String?
+
+    enum CodingKeys: String, CodingKey {
+        case limit, user, quote
+        case wildcardUri = "wildcard_uri"
+    }
+}
+
 struct AnnotationResponse: Codable {
     let total: Int
     let rows: [Annotation]
@@ -36,12 +48,6 @@ struct Annotation: Codable {
         }
         return res.first ?? ""
     }
-}
-
-struct AnnotationSearch: Codable {
-    let limit: Int
-    let user: String
-    let quote: String?
 }
 
 struct AnnotationTarget: Codable {

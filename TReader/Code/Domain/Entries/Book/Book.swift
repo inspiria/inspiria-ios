@@ -12,6 +12,7 @@ struct BookInfo: Codable {
     let id: Int
     let title: String
     let subtitle: String
+    let shortName: String
     let version: String
     let coverImageUrl: String
 }

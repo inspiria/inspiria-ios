@@ -15,9 +15,9 @@ class ContentViewModel {
     private let navigator: ContentNavigator
     private let book: Book
 
-    init (booksUseCase: BooksUseCase,
-          navigator: ContentNavigator,
-          book: Book) {
+    init (book: Book,
+          booksUseCase: BooksUseCase,
+          navigator: ContentNavigator) {
         self.booksUseCase = booksUseCase
         self.navigator = navigator
         self.book = book

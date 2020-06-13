@@ -12,7 +12,7 @@ import RxCocoa
 
 protocol HypothesisUseCase {
     func getUserProfile() -> Single<UserProfile>
-    func getAnnotations(quote: String?) -> Single<[Annotation]>
+    func getAnnotations(shortName: String, quote: String?) -> Single<[Annotation]>
 }
 
 class DefaultHypothesisUseCase: HypothesisUseCase {
@@ -26,10 +26,11 @@ class DefaultHypothesisUseCase: HypothesisUseCase {
         return networkService.request(path: "profile", method: .get)
     }
 
-    func getAnnotations(quote: String? = nil) -> Single<[Annotation]> {
+    func getAnnotations(shortName: String, quote: String?) -> Single<[Annotation]> {
         let data = AnnotationSearch(limit: 200,
                                     user: "acct:tadas@hypothes.is",
-                                    quote: quote)
+                                    quote: quote,
+                                    wildcardUri: "https://edtechbooks.org/\(shortName)/*")
 
         let response: Single<AnnotationResponse> = networkService.request(path: "search", method: .get, data: data)
         return response.map { $0.rows }

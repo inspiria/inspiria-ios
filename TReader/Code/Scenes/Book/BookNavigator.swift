@@ -28,12 +28,14 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
 
     func loaded(book: Book) -> [UIViewController] {
         let contentController: ContentViewController = storyboard.instantiateViewController()
-        contentController.viewModel = ContentViewModel(booksUseCase: self.services.booksUseCase(),
-                                                       navigator: self,
-                                                       book: book)
+        contentController.viewModel = ContentViewModel(book: book,
+                                                       booksUseCase: self.services.booksUseCase(),
+                                                       navigator: self)
 
         let notesController: AnnotationViewController = storyboard.instantiateViewController()
-        notesController.viewModel = AnnotationViewModel(navigator: self, hypothesisUseCase: services.hypothesisUseCase())
+        notesController.viewModel = AnnotationViewModel(book: book,
+                                                        hypothesisUseCase: services.hypothesisUseCase(),
+                                                        navigator: self)
 
         let bookmarksController: BookmarksViewController = storyboard.instantiateViewController()
         bookmarksController.viewModel = BookmarksViewModel(book: book,

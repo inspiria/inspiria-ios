@@ -13,8 +13,10 @@ import RxCocoa
 class AnnotationViewModel {
     private let navigator: AnnotationNavigator
     private let hypothesisUseCase: HypothesisUseCase
+    private let book: Book
 
-    init (navigator: AnnotationNavigator, hypothesisUseCase: HypothesisUseCase) {
+    init (book: Book, hypothesisUseCase: HypothesisUseCase, navigator: AnnotationNavigator) {
+        self.book = book
         self.navigator = navigator
         self.hypothesisUseCase = hypothesisUseCase
     }
@@ -24,7 +26,7 @@ class AnnotationViewModel {
         let annotations = Driver
             .combineLatest(input.searchTrigger.debug(), input.sortTrigger, input.refreshTrigger)
             .flatMap { str, order, _ in
-                self.hypothesisUseCase.getAnnotations(quote: str)
+                self.hypothesisUseCase.getAnnotations(shortName: self.book.info.shortName, quote: str)
                     .map { $0.sorted(by: order) }
                     .trackActivity(activity)
                     .asDriver(onErrorJustReturn: [])
