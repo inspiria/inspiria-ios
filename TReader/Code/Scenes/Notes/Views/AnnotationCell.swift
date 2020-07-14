@@ -1,5 +1,5 @@
 //
-//  AnnotationTableViewCell.swift
+//  AnnotationCell.swift
 //  TReader
 //
 //  Created by tadas on 2020-05-27.
@@ -7,8 +7,25 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-class AnnotationTableViewCell: UITableViewCell {
+struct AnnotationCellModel {
+    fileprivate var deletePS = PublishSubject<String>()
+    fileprivate var editPS = PublishSubject<Annotation>()
+    var delete: Driver<String> { return deletePS.asDriverOnErrorJustComplete() }
+    var edit: Driver<Annotation> { return editPS.asDriverOnErrorJustComplete() }
+
+    let annotation: Annotation
+    let highlight: String?
+
+    init(annotation: Annotation, highlight: String? = nil) {
+        self.annotation = annotation
+        self.highlight = highlight
+    }
+}
+
+class AnnotationCell: UITableViewCell {
 
     @IBOutlet var containerView: UIView!
 
@@ -19,6 +36,8 @@ class AnnotationTableViewCell: UITableViewCell {
     @IBOutlet var userTextLabel: UILabel!
     @IBOutlet var editButton: UIButton!
     @IBOutlet var deleteButton: UIButton!
+
+    private var disposeBag = DisposeBag()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,17 +51,32 @@ class AnnotationTableViewCell: UITableViewCell {
         containerView.layer.cornerRadius = cornerRadius
     }
 
-    func set(model: Annotation, highlight: String? = nil) {
-        dateLabel.text = model.updated.formatedString()
+    func set(model: AnnotationCellModel) {
+        dateLabel.text = model.annotation.updated.formatedString()
 
-        if let str = highlight, !str.isEmpty {
+        if let str = model.highlight, !str.isEmpty {
             let strings = str.components(separatedBy: " ")
-            quoteLabel.attributedText = model.quote.highlight(text: strings)
-            userTextLabel.attributedText = model.text.highlight(text: strings)
+            quoteLabel.attributedText = model.annotation.quote.highlight(text: strings)
+            userTextLabel.attributedText = model.annotation.text.highlight(text: strings)
         } else {
-            quoteLabel.text = model.quote
-            userTextLabel.text = model.text
+            quoteLabel.text = model.annotation.quote
+            userTextLabel.text = model.annotation.text
         }
+
+        disposeBag = DisposeBag()
+        editButton.rx
+            .tap
+            .asDriver()
+            .map { model.annotation }
+            .drive(model.editPS)
+            .disposed(by: disposeBag)
+
+        deleteButton.rx
+            .tap
+            .asDriver()
+            .map { model.annotation.id }
+            .drive(model.deletePS)
+            .disposed(by: disposeBag)
     }
 }
 

@@ -25,6 +25,11 @@ struct AnnotationResponse: Codable {
     let rows: [Annotation]
 }
 
+struct DeleteAnnotationResponse: Codable {
+    let deleted: Bool
+    let id: String
+}
+
 struct Annotation: Codable {
     let id: String
     let created: Date

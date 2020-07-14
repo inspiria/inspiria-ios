@@ -142,7 +142,7 @@
                         <color key="separatorColor" name="MenuGray"/>
                         <inset key="separatorInset" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="BookmarksTableViewCell" id="Hpx-r9-8fw" customClass="BookmarksTableViewCell" customModule="Inspiria" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="BookmarksCell" id="Hpx-r9-8fw" customClass="BookmarksCell" customModule="Inspiria" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="60.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hpx-r9-8fw" id="SpC-ax-17z">
@@ -316,7 +316,7 @@
                             </connections>
                         </stackView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AnnotationTableViewCell" rowHeight="180" id="wcF-EO-eF1" customClass="AnnotationTableViewCell" customModule="Inspiria" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AnnotationCell" rowHeight="180" id="wcF-EO-eF1" customClass="AnnotationCell" customModule="Inspiria" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="114" width="414" height="180"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wcF-EO-eF1" id="SSs-f5-KWY">

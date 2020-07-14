@@ -24,14 +24,19 @@ class AnnotationViewModel {
     func transform(input: Input) -> Output {
         let activity = ActivityIndicator()
         let annotations = Driver
-            .combineLatest(input.searchTrigger.debug(), input.sortTrigger, input.refreshTrigger)
+            .combineLatest(input.searchTrigger, input.sortTrigger, input.refreshTrigger)
             .flatMap { str, order, _ in
                 self.hypothesisUseCase.getAnnotations(shortName: self.book.info.shortName, quote: str)
                     .map { $0.sorted(by: order) }
                     .trackActivity(activity)
                     .asDriver(onErrorJustReturn: [])
+                    .map { $0.map { AnnotationCellModel(annotation: $0, highlight: str) } }
         }
-        return Output(annotations: annotations, activity: activity.asDriver())
+
+        let delete = annotations.map { $0.map { $0.delete.mapToVoid() } }
+        let edit = annotations.map { $0.map { $0.edit.do(onNext: self.navigator.toEdit).mapToVoid() } }
+
+        return Output(annotations: annotations, deletions: delete, edits: edit, activity: activity.asDriver())
     }
 }
 
@@ -41,8 +46,11 @@ extension AnnotationViewModel {
         let sortTrigger: Driver<SortView.Order>
         let refreshTrigger: Driver<Void>
     }
+
     struct Output {
-        let annotations: Driver<[Annotation]>
+        let annotations: Driver<[AnnotationCellModel]>
+        let deletions: Driver<[Driver<Void>]>
+        let edits: Driver<[Driver<Void>]>
         let activity: Driver<Bool>
     }
 }

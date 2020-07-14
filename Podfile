@@ -17,4 +17,5 @@ target 'TReader' do
   pod 'Zip', '~> 1.1'
   pod 'WordPress-Aztec-iOS'
   pod 'XLPagerTabStrip', '~> 9.0'
+  pod 'SideMenu'
 end

@@ -55,14 +55,22 @@ class AnnotationViewController: UITableViewController {
                                               sortTrigger: sort,
                                               refreshTrigger: refresh)
         let output = viewModel.transform(input: input)
-        let cellIdentifier = AnnotationTableViewCell.reuseIdentifier
-        let cellType = AnnotationTableViewCell.self
+        let cellIdentifier = AnnotationCell.reuseIdentifier
+        let cellType = AnnotationCell.self
 
         output.annotations
             .asObservable()
             .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: cellType)) { [unowned self] _, model, cell in
-                cell.set(model: model, highlight: self.headerView.searchBar.text)
+                cell.set(model: model)
+                self.tableView.refreshControl?.endRefreshing()
         }
         .disposed(by: rx.disposeBag)
+
+        output.deletions
+            .drive(onNext: { [unowned self] in $0.forEach { $0.drive().disposed(by: self.rx.disposeBag)}})
+            .disposed(by: rx.disposeBag)
+        output.edits
+            .drive(onNext: { [unowned self] in $0.forEach { $0.drive().disposed(by: self.rx.disposeBag)}})
+            .disposed(by: rx.disposeBag)
     }
 }

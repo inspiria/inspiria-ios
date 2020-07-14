@@ -1,5 +1,5 @@
 //
-//  BookmarksTableViewCell.swift
+//  BookmarksCell.swift
 //  TReader
 //
 //  Created by tadas on 2020-05-30.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookmarksTableViewCell: UITableViewCell {
+class BookmarksCell: UITableViewCell {
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!

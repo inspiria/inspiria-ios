@@ -14,6 +14,7 @@ protocol BookNavigator {
 }
 
 class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator, BookmarksNavigator {
+
     private let services: UseCaseProvider
     private let storyboard: UIStoryboard
     private let rootController: UINavigationController
@@ -67,5 +68,10 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
     func toNotes() {
         //PRESENT VIEW CONTROLLER
         fatalError("Not implemented")
+    }
+
+    func toEdit(annotation: Annotation) {
+        let navigator = DefaultEditNoteNavigator(services: services, controller: rootController)
+        navigator.toEditNote()
     }
 }

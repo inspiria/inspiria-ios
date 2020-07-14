@@ -33,8 +33,8 @@ class BookmarksViewController: UITableViewController {
             .asDriverOnErrorJustComplete()
         let input = BookmarksViewModel.Input(itemSelected: itemSelected)
         let output = viewModel.transform(input: input)
-        let cellIdentifier = BookmarksTableViewCell.reuseIdentifier
-        let cellType = BookmarksTableViewCell.self
+        let cellIdentifier = BookmarksCell.reuseIdentifier
+        let cellType = BookmarksCell.self
 
         output.bookmarks
             .asObservable()

@@ -13,6 +13,7 @@ import RxCocoa
 protocol HypothesisUseCase {
     func getUserProfile() -> Single<UserProfile>
     func getAnnotations(shortName: String, quote: String?) -> Single<[Annotation]>
+    func dalateAnnotation(id: String) -> Single<Bool>
 }
 
 class DefaultHypothesisUseCase: HypothesisUseCase {
@@ -34,5 +35,10 @@ class DefaultHypothesisUseCase: HypothesisUseCase {
 
         let response: Single<AnnotationResponse> = networkService.request(path: "search", method: .get, data: data)
         return response.map { $0.rows }
+    }
+
+    func dalateAnnotation(id: String) -> Single<Bool> {
+        let response: Single<DeleteAnnotationResponse> = networkService.request(path: "dalate/\(id)", method: .delete)
+        return response.map { $0.deleted }
     }
 }

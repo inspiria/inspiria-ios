@@ -10,4 +10,5 @@ import UIKit
 
 protocol AnnotationNavigator {
     func toNotes()
+    func toEdit(annotation: Annotation)
 }
