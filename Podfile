@@ -15,7 +15,10 @@ target 'TReader' do
 
   pod 'Kingfisher', '~> 5.0'
   pod 'Zip', '~> 1.1'
-  pod 'WordPress-Aztec-iOS'
+  pod "WordPress-Aztec-iOS"
+  pod 'Marklight'
+  pod 'DTRichTextEditor'
   pod 'XLPagerTabStrip', '~> 9.0'
   pod 'SideMenu'
+  pod 'MenuItemKit'
 end

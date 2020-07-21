@@ -8,18 +8,41 @@
 
 import WebKit
 
-class WebViewConfiguration: WKWebViewConfiguration {
+class WebViewConfiguration: WKWebViewConfiguration, WKScriptMessageHandler {
     override init() {
         super.init()
 
-        let cssString = ""
-        let source = "var style = document.createElement('style'); style.innerHTML = '\(cssString)'; document.head.appendChild(style); "
+        let controller = WKUserContentController()
 
-        let userScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-        let userContentController = WKUserContentController()
-        userContentController.addUserScript(userScript)
+        if let js = Self.script(with: "error") {
+            let userScript = WKUserScript(source: js, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+            controller.addUserScript(userScript)
 
-        self.userContentController = userContentController
+            controller.add(self, name: "error")
+            controller.add(self, name: "log")
+        }
+        if let js = Self.script(with: "highlight") {
+            let userScript = WKUserScript(source: js, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+            controller.addUserScript(userScript)
+        }
+
+        self.userContentController = controller
+        self.preferences.javaScriptEnabled = true
+    }
+
+    static func script(with name: String) -> String? {
+        guard let path = Bundle.main.path(forResource: name, ofType: "js") else { return nil }
+        return try? String(contentsOfFile: path)
+    }
+
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        switch message.name {
+        case "error":
+            print(message.body)
+        default:
+            print(message.name)
+            print(message.body)
+        }
     }
 
     required init?(coder: NSCoder) {

@@ -1,7 +1,38 @@
 PODS:
-  - Kingfisher (5.14.0):
-    - Kingfisher/Core (= 5.14.0)
-  - Kingfisher/Core (5.14.0)
+  - DTCoreText (1.6.23):
+    - DTCoreText/Core (= 1.6.23)
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTCoreText/Core (1.6.23):
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTFoundation/Core (1.7.14)
+  - DTFoundation/DTAnimatedGIF (1.7.14)
+  - DTFoundation/DTHTMLParser (1.7.14):
+    - DTFoundation/Core
+  - DTFoundation/UIKit (1.7.14):
+    - DTFoundation/Core
+  - DTLoupe (1.5.9)
+  - DTRichTextEditor (1.6.12):
+    - DTCoreText (~> 1.6.16)
+    - DTFoundation/Core (~> 1.7.8)
+    - DTLoupe (~> 1.5.8)
+    - DTWebArchive (~> 0.0.2)
+  - DTWebArchive (0.0.3):
+    - DTWebArchive/Core (= 0.0.3)
+    - DTWebArchive/iOS (= 0.0.3)
+  - DTWebArchive/Core (0.0.3)
+  - DTWebArchive/iOS (0.0.3):
+    - DTWebArchive/Core
+  - Kingfisher (5.14.1):
+    - Kingfisher/Core (= 5.14.1)
+  - Kingfisher/Core (5.14.1)
+  - Marklight (1.4.0)
+  - MenuItemKit (4.0.1)
   - "NSObject+Rx (5.1.0)":
     - RxSwift (~> 5.1)
   - RxCocoa (5.1.1):
@@ -20,12 +51,15 @@ PODS:
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
   - SideMenu (6.4.8)
-  - WordPress-Aztec-iOS (1.19.2)
+  - WordPress-Aztec-iOS (1.19.3)
   - XLPagerTabStrip (9.0.0)
   - Zip (1.1.0)
 
 DEPENDENCIES:
+  - DTRichTextEditor
   - Kingfisher (~> 5.0)
+  - Marklight
+  - MenuItemKit
   - "NSObject+Rx"
   - RxCocoa (~> 5)
   - RxCoreData (~> 1.0.0)
@@ -40,7 +74,14 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - DTCoreText
+    - DTFoundation
+    - DTLoupe
+    - DTRichTextEditor
+    - DTWebArchive
     - Kingfisher
+    - Marklight
+    - MenuItemKit
     - "NSObject+Rx"
     - RxCocoa
     - RxCoreData
@@ -54,7 +95,14 @@ SPEC REPOS:
     - Zip
 
 SPEC CHECKSUMS:
-  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
+  DTCoreText: 67023bb51b26711d5f640c851f4845aea14c24c9
+  DTFoundation: 25aa19bb7c6e225b1dfae195604fb8cf1da0ab4c
+  DTLoupe: f0877effe8d5527ce7a408bed5315fb07a6704a5
+  DTRichTextEditor: 255827297ff7fb173fea47945cb97a4890eff74d
+  DTWebArchive: 2029610e2e2fda5b6d51a386b13b1484b7b197ba
+  Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
+  Marklight: 2489d376cd3d3e7b1d109cd7d6d248fd9b8e0bee
+  MenuItemKit: 1459920e984d823e1bcc858b7a964f94e6bfa0f6
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxCoreData: 1ed5f83e80facccc90fc054eb7f39a44177de56a
@@ -63,10 +111,10 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
-  WordPress-Aztec-iOS: d01bf0c5e150ae6a046f06ba63b7cc2762061c0b
+  WordPress-Aztec-iOS: b7ac8b30f746992e85d9668453ac87c2cdcecf4f
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 708416e9e8bf1b6ff48e618ad9e132a2c4cb6ce5
+PODFILE CHECKSUM: ad3abe4834514d0fd59e3dab1a1157087fdd5550
 
 COCOAPODS: 1.9.1

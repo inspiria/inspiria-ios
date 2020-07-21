@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import DTRichTextEditor
 
 struct AnnotationCellModel {
     fileprivate var deletePS = PublishSubject<String>()
@@ -33,7 +34,7 @@ class AnnotationCell: UITableViewCell {
     @IBOutlet var chapterLabel: UILabel!
     @IBOutlet var pageLabel: UILabel!
     @IBOutlet var quoteLabel: UILabel!
-    @IBOutlet var userTextLabel: UILabel!
+    @IBOutlet var userTextLabel: DTAttributedLabel!
     @IBOutlet var editButton: UIButton!
     @IBOutlet var deleteButton: UIButton!
 
@@ -57,10 +58,10 @@ class AnnotationCell: UITableViewCell {
         if let str = model.highlight, !str.isEmpty {
             let strings = str.components(separatedBy: " ")
             quoteLabel.attributedText = model.annotation.quote.highlight(text: strings)
-            userTextLabel.attributedText = model.annotation.text.highlight(text: strings)
+            userTextLabel.attributedString = model.annotation.text.highlight(text: strings)
         } else {
             quoteLabel.text = model.annotation.quote
-            userTextLabel.text = model.annotation.text
+            userTextLabel.attributedString = model.annotation.text.highlight(text: [])
         }
 
         disposeBag = DisposeBag()

@@ -23,6 +23,8 @@
 		3E18F4022493C6C3002EBDEF /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E18F4012493C6C3002EBDEF /* Authorization.swift */; };
 		3E18F4042493C9E1002EBDEF /* HypothesisUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E18F4032493C9E1002EBDEF /* HypothesisUseCase.swift */; };
 		3E18F4062493D838002EBDEF /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E18F4052493D838002EBDEF /* Annotation.swift */; };
+		3E29484A24C606E100A65318 /* error.js in Resources */ = {isa = PBXBuildFile; fileRef = 3E29484924C606E100A65318 /* error.js */; };
+		3E29484C24C6078200A65318 /* mouseup.js in Resources */ = {isa = PBXBuildFile; fileRef = 3E29484B24C6078100A65318 /* mouseup.js */; };
 		3E2ECDD02482F60700247B09 /* BookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ECDCF2482F60700247B09 /* BookmarkUseCase.swift */; };
 		3E2ECDD22482F72700247B09 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ECDD12482F72700247B09 /* Bookmark.swift */; };
 		3E38A9512432294800EA2E10 /* TRTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A9502432294800EA2E10 /* TRTextView.swift */; };
@@ -86,6 +88,7 @@
 		3EE3C10524BE4F7B0047FC4D /* EditNoteNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10124BE4F7B0047FC4D /* EditNoteNavigator.swift */; };
 		3EE3C10624BE4F7B0047FC4D /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10224BE4F7B0047FC4D /* EditNoteViewController.swift */; };
 		3EE3C10724BE4F7B0047FC4D /* EditNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10324BE4F7B0047FC4D /* EditNoteViewModel.swift */; };
+		3EF457B824C1989100EC57BA /* highlight.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EF457B624C1989100EC57BA /* highlight.js */; };
 		3EFF974B23FC2B7B000103FE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF974A23FC2B7B000103FE /* Book.swift */; };
 		AAA5DDD24CC0A2A5CE5DB2E0 /* Pods_TReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */; };
 /* End PBXBuildFile section */
@@ -108,6 +111,8 @@
 		3E18F4012493C6C3002EBDEF /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		3E18F4032493C9E1002EBDEF /* HypothesisUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HypothesisUseCase.swift; sourceTree = "<group>"; };
 		3E18F4052493D838002EBDEF /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		3E29484924C606E100A65318 /* error.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = error.js; sourceTree = "<group>"; };
+		3E29484B24C6078100A65318 /* mouseup.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mouseup.js; sourceTree = "<group>"; };
 		3E2ECDCF2482F60700247B09 /* BookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUseCase.swift; sourceTree = "<group>"; };
 		3E2ECDD12482F72700247B09 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		3E38A9502432294800EA2E10 /* TRTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTextView.swift; sourceTree = "<group>"; };
@@ -173,6 +178,7 @@
 		3EE3C10124BE4F7B0047FC4D /* EditNoteNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteNavigator.swift; sourceTree = "<group>"; };
 		3EE3C10224BE4F7B0047FC4D /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
 		3EE3C10324BE4F7B0047FC4D /* EditNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewModel.swift; sourceTree = "<group>"; };
+		3EF457B624C1989100EC57BA /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.js; sourceTree = "<group>"; };
 		3EFF974A23FC2B7B000103FE /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		591C195EBB897077DA992FD1 /* Pods-TReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TReader.debug.xcconfig"; path = "Target Support Files/Pods-TReader/Pods-TReader.debug.xcconfig"; sourceTree = "<group>"; };
 		91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				3EB62F8623F6B9F000C3F1D6 /* Code */,
+				3EF457B524C1986E00EC57BA /* JS */,
 				3E49890723F6B1670082322E /* Main.storyboard */,
 				3E49890C23F6B16A0082322E /* LaunchScreen.storyboard */,
 				3E49890A23F6B16A0082322E /* Assets.xcassets */,
@@ -512,6 +519,16 @@
 			path = EditNote;
 			sourceTree = "<group>";
 		};
+		3EF457B524C1986E00EC57BA /* JS */ = {
+			isa = PBXGroup;
+			children = (
+				3E29484924C606E100A65318 /* error.js */,
+				3EF457B624C1989100EC57BA /* highlight.js */,
+				3E29484B24C6078100A65318 /* mouseup.js */,
+			);
+			path = JS;
+			sourceTree = "<group>";
+		};
 		5856FAAC2FBD469472309118 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -590,14 +607,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E29484C24C6078200A65318 /* mouseup.js in Resources */,
 				3EE2AA16247FA9C200885EBE /* SortView.xib in Resources */,
 				3E49890E23F6B16A0082322E /* LaunchScreen.storyboard in Resources */,
 				3ECF6F14241CFF310043E0D0 /* NotoSerif-Bold.ttf in Resources */,
+				3EF457B824C1989100EC57BA /* highlight.js in Resources */,
 				3ECF6F11241CFF310043E0D0 /* NotoSerif-Regular.ttf in Resources */,
 				3ECF6F13241CFF310043E0D0 /* NotoSerif-Italic.ttf in Resources */,
 				3ECF6F12241CFF310043E0D0 /* NotoSerif-Medium.ttf in Resources */,
 				3E49890B23F6B16A0082322E /* Assets.xcassets in Resources */,
 				3E49890923F6B1670082322E /* Main.storyboard in Resources */,
+				3E29484A24C606E100A65318 /* error.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
