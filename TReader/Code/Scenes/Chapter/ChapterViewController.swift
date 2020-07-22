@@ -87,18 +87,27 @@ extension ChapterViewController: WKNavigationDelegate {
 extension ChapterViewController: WKScriptMessageHandler {
     func registerJSCallbacks() {
         webView.configuration.userContentController.add(self, name: "error")
-        webView.configuration.userContentController.add(self, name: "log")
-        webView.configuration.userContentController.add(self, name: "addnote")
+        webView.configuration.userContentController.add(self, name: "annotate")
+        webView.configuration.userContentController.add(self, name: "highlight")
+        webView.configuration.userContentController.add(self, name: "select")
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         switch message.name {
         case "error":
             print("js error: \(message.body)")
-        case "addnote":
-            print("js add note: \(message.body)")
+        case "annotate":
+            print("js annotate: \(message.body)")
             guard let ann = message.body as? String else { return }
-            viewModel.create(annotation: ann)
+            viewModel.addAnnotatation(annotation: ann)
+        case "highlight":
+            print("js highlight: \(message.body)")
+            guard let ann = message.body as? String else { return }
+            viewModel.addHighlight(annotation: ann)
+        case "select":
+            print("js select: \(message.body)")
+            guard let ann = message.body as? String else { return }
+            viewModel.edit(annotation: ann)
         default:
             print(message.name)
             print(message.body)

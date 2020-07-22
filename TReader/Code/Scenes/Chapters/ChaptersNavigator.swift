@@ -14,7 +14,7 @@ protocol ChaptersNavigator {
     func toSearch()
     func to(chapterId: Int, of book: Book)
     func toEdit(annotation: Annotation)
-    func toCreate(text: String)
+    func toCreate(annotation: String)
     func chapterViewController(chapter: Chapter, book: Book) -> ChapterViewController
 }
 
@@ -79,7 +79,7 @@ class DefaultChaptersNavigator: ChaptersNavigator {
         navigator.toEditNote()
     }
 
-    func toCreate(text: String) {
+    func toCreate(annotation: String) {
         let navigator = DefaultEditNoteNavigator(services: services, controller: rootController)
         navigator.toEditNote()
     }

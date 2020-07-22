@@ -1,4 +1,4 @@
-function highlight(colour) {
+function selectText(colour) {
   var range, text, sel = window.getSelection();
   if (sel.rangeCount && sel.getRangeAt) {
     range = sel.getRangeAt(0);
@@ -13,5 +13,17 @@ function highlight(colour) {
     document.execCommand("BackColor", false, colour);
   }
   document.designMode = "off";
-  window.webkit.messageHandlers.addnote.postMessage(text);
+  window.getSelection().removeAllRanges();
+  return text;
+}
+
+
+function highlight(colour) {
+  let text = selectText(colour);
+  window.webkit.messageHandlers.highlight.postMessage(text);
+}
+
+function annotate(colour) {
+  let text = selectText(colour);
+  window.webkit.messageHandlers.annotate.postMessage(text);
 }

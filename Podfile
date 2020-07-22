@@ -20,5 +20,4 @@ target 'TReader' do
   pod 'DTRichTextEditor'
   pod 'XLPagerTabStrip', '~> 9.0'
   pod 'SideMenu'
-  pod 'MenuItemKit'
 end
