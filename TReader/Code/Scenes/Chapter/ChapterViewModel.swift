@@ -38,6 +38,18 @@ class ChapterViewModel {
 
         return Output(chapter: chapter, openChapter: openChapter)
     }
+
+    func create(annotation: String) {
+        navigator.toCreate(text: annotation)
+    }
+
+    func add(annotation: String) {
+
+    }
+
+    func edit(annotation: String) {
+
+    }
 }
 
 extension ChapterViewModel {

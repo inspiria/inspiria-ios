@@ -24,7 +24,6 @@
 		3E18F4042493C9E1002EBDEF /* HypothesisUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E18F4032493C9E1002EBDEF /* HypothesisUseCase.swift */; };
 		3E18F4062493D838002EBDEF /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E18F4052493D838002EBDEF /* Annotation.swift */; };
 		3E29484A24C606E100A65318 /* error.js in Resources */ = {isa = PBXBuildFile; fileRef = 3E29484924C606E100A65318 /* error.js */; };
-		3E29484C24C6078200A65318 /* mouseup.js in Resources */ = {isa = PBXBuildFile; fileRef = 3E29484B24C6078100A65318 /* mouseup.js */; };
 		3E2ECDD02482F60700247B09 /* BookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ECDCF2482F60700247B09 /* BookmarkUseCase.swift */; };
 		3E2ECDD22482F72700247B09 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ECDD12482F72700247B09 /* Bookmark.swift */; };
 		3E38A9512432294800EA2E10 /* TRTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38A9502432294800EA2E10 /* TRTextView.swift */; };
@@ -113,7 +112,6 @@
 		3E18F4032493C9E1002EBDEF /* HypothesisUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HypothesisUseCase.swift; sourceTree = "<group>"; };
 		3E18F4052493D838002EBDEF /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		3E29484924C606E100A65318 /* error.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = error.js; sourceTree = "<group>"; };
-		3E29484B24C6078100A65318 /* mouseup.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mouseup.js; sourceTree = "<group>"; };
 		3E2ECDCF2482F60700247B09 /* BookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUseCase.swift; sourceTree = "<group>"; };
 		3E2ECDD12482F72700247B09 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		3E38A9502432294800EA2E10 /* TRTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRTextView.swift; sourceTree = "<group>"; };
@@ -527,7 +525,6 @@
 			children = (
 				3E29484924C606E100A65318 /* error.js */,
 				3EF457B624C1989100EC57BA /* highlight.js */,
-				3E29484B24C6078100A65318 /* mouseup.js */,
 			);
 			path = JS;
 			sourceTree = "<group>";
@@ -610,7 +607,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E29484C24C6078200A65318 /* mouseup.js in Resources */,
 				3EE2AA16247FA9C200885EBE /* SortView.xib in Resources */,
 				3E49890E23F6B16A0082322E /* LaunchScreen.storyboard in Resources */,
 				3ECF6F14241CFF310043E0D0 /* NotoSerif-Bold.ttf in Resources */,

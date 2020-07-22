@@ -31,6 +31,8 @@ class ChapterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        registerJSCallbacks()
         bindViewModel()
     }
 
@@ -78,6 +80,28 @@ extension ChapterViewController: WKNavigationDelegate {
             decisionHandler(.cancel)
         } else {
             decisionHandler(.allow)
+        }
+    }
+}
+
+extension ChapterViewController: WKScriptMessageHandler {
+    func registerJSCallbacks() {
+        webView.configuration.userContentController.add(self, name: "error")
+        webView.configuration.userContentController.add(self, name: "log")
+        webView.configuration.userContentController.add(self, name: "addnote")
+    }
+
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        switch message.name {
+        case "error":
+            print("js error: \(message.body)")
+        case "addnote":
+            print("js add note: \(message.body)")
+            guard let ann = message.body as? String else { return }
+            viewModel.create(annotation: ann)
+        default:
+            print(message.name)
+            print(message.body)
         }
     }
 }

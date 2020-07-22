@@ -13,6 +13,8 @@ protocol ChaptersNavigator {
     func toBook()
     func toSearch()
     func to(chapterId: Int, of book: Book)
+    func toEdit(annotation: Annotation)
+    func toCreate(text: String)
     func chapterViewController(chapter: Chapter, book: Book) -> ChapterViewController
 }
 
@@ -70,5 +72,15 @@ class DefaultChaptersNavigator: ChaptersNavigator {
                                                     navigator: self,
                                                     booksUseCase: services.booksUseCase())
         return viewController
+    }
+
+    func toEdit(annotation: Annotation) {
+        let navigator = DefaultEditNoteNavigator(services: services, controller: rootController)
+        navigator.toEditNote()
+    }
+
+    func toCreate(text: String) {
+        let navigator = DefaultEditNoteNavigator(services: services, controller: rootController)
+        navigator.toEditNote()
     }
 }

@@ -1,7 +1,8 @@
-function makeEditableAndHighlight(colour) {
-  var range, sel = window.getSelection();
+function highlight(colour) {
+  var range, text, sel = window.getSelection();
   if (sel.rangeCount && sel.getRangeAt) {
     range = sel.getRangeAt(0);
+    text = sel.toString();
   }
   document.designMode = "on";
   if (range) {
@@ -12,17 +13,5 @@ function makeEditableAndHighlight(colour) {
     document.execCommand("BackColor", false, colour);
   }
   document.designMode = "off";
-}
-
-function highlight(colour) {
-  var range, sel;
-  if (window.getSelection) {
-    try {
-      if (!document.execCommand("BackColor", false, colour)) {
-        makeEditableAndHighlight(colour);
-      }
-    } catch (ex) {
-      makeEditableAndHighlight(colour);
-    }
-  }
+  window.webkit.messageHandlers.addnote.postMessage(text);
 }
