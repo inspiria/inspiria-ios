@@ -36,8 +36,8 @@ class WebView: WKWebView {
 
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         switch action {
-        case #selector(self.highlight): return true
         case #selector(self.note): return true
+        case #selector(self.highlight): return true
         case #selector(self.copy(_:)): return (UIMenuController.shared.menuItems?.count ?? 0 > 2 ? false : true)
         default: return false
         }
@@ -49,7 +49,7 @@ class WebView: WKWebView {
         UIMenuController.shared.menuItems = [highlight, note]
     }
 
-    @objc private func highlight() {
+    @objc private func note() {
         let js = javaScript(defaultColor)
         evaluateJavaScript(js) { (obj, err) in
             if let err = err { print(err) }
@@ -58,7 +58,7 @@ class WebView: WKWebView {
         UIMenuController.shared.hideMenu()
     }
 
-    @objc private func note() {
+    @objc private func highlight() {
         var rect = UIMenuController.shared.menuFrame
         rect.origin.y = rect.maxY
         UIMenuController.shared.hideMenu()
