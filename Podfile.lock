@@ -32,7 +32,6 @@ PODS:
     - Kingfisher/Core (= 5.14.1)
   - Kingfisher/Core (5.14.1)
   - Marklight (1.4.0)
-  - MenuItemKit (4.0.1)
   - "NSObject+Rx (5.1.0)":
     - RxSwift (~> 5.1)
   - RxCocoa (5.1.1):
@@ -59,7 +58,6 @@ DEPENDENCIES:
   - DTRichTextEditor
   - Kingfisher (~> 5.0)
   - Marklight
-  - MenuItemKit
   - "NSObject+Rx"
   - RxCocoa (~> 5)
   - RxCoreData (~> 1.0.0)
@@ -81,7 +79,6 @@ SPEC REPOS:
     - DTWebArchive
     - Kingfisher
     - Marklight
-    - MenuItemKit
     - "NSObject+Rx"
     - RxCocoa
     - RxCoreData
@@ -102,7 +99,6 @@ SPEC CHECKSUMS:
   DTWebArchive: 2029610e2e2fda5b6d51a386b13b1484b7b197ba
   Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
   Marklight: 2489d376cd3d3e7b1d109cd7d6d248fd9b8e0bee
-  MenuItemKit: 1459920e984d823e1bcc858b7a964f94e6bfa0f6
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxCoreData: 1ed5f83e80facccc90fc054eb7f39a44177de56a
@@ -115,6 +111,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: ad3abe4834514d0fd59e3dab1a1157087fdd5550
+PODFILE CHECKSUM: 40c76be2166558d79dd8027d17cc794cab60c36d
 
 COCOAPODS: 1.9.1
