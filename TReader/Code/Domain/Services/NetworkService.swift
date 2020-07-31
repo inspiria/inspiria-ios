@@ -23,7 +23,7 @@ enum NetworkError: LocalizedError {
 }
 
 class NetworkService {
-    private let url: String
+    let url: String
     private let disposeBag = DisposeBag()
     private let authorization: Authorization?
 

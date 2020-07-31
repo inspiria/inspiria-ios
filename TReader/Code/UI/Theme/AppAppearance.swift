@@ -53,11 +53,11 @@ struct AppAppearance {
             .defaultTextAttributes = [NSAttributedString.Key.foregroundColor: ColorStyle.darkGray.color,
                                       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]
 
-        let barButton = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-        barButton.style = .done
-        barButton.setTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: 2), for: .default)
-        barButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: ColorStyle.orange.color,
-                                          NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)],
-                                         for: UIControl.State())
+//        let barButton = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
+//        barButton.style = .done
+//        barButton.setTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: 2), for: .default)
+//        barButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: ColorStyle.orange.color,
+//                                          NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)],
+//                                         for: UIControl.State())
     }
 }

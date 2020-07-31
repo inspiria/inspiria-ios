@@ -12,6 +12,9 @@
         <array key="NotoSerif-Italic.ttf">
             <string>NotoSerif-Italic</string>
         </array>
+        <array key="NotoSerif-Regular.ttf">
+            <string>NotoSerif</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Tab Bar Controller-->
@@ -472,11 +475,118 @@
             </objects>
             <point key="canvasLocation" x="-52.173913043478265" y="-236.38392857142856"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="SfT-cL-ROl">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="TIc-Fm-R7S" customClass="LoginViewController" customModule="Inspiria" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="999-vb-8hj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bkgrnd" translatesAutoresizingMaskIntoConstraints="NO" id="fCT-5C-gQU">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="URq-Oc-v92">
+                                <rect key="frame" x="67" y="297" width="280" height="302"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hypothesis-logo" translatesAutoresizingMaskIntoConstraints="NO" id="z1i-m6-0b5">
+                                        <rect key="frame" x="30" y="252" width="92" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="92" id="KIg-6v-J2K"/>
+                                            <constraint firstAttribute="height" constant="20" id="SMY-6L-sNu"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Highlighter" translatesAutoresizingMaskIntoConstraints="NO" id="7E2-jJ-Ett">
+                                        <rect key="frame" x="121" y="24" width="38" height="38"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="38" id="JyT-qe-pjm"/>
+                                            <constraint firstAttribute="height" constant="38" id="YvC-KU-fEc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6m3-NQ-ilY">
+                                        <rect key="frame" x="24" y="80" width="232" height="82"/>
+                                        <string key="text">Textbook Reader uses Hypothes.is to annotate text within the app.
+
+Login with your Hypothes.is account to use this feature.</string>
+                                        <fontDescription key="fontDescription" name="NotoSerif" family="Noto Serif" pointSize="14"/>
+                                        <color key="textColor" name="LightBackground"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3Z-OP-jTV">
+                                        <rect key="frame" x="24" y="186" width="232" height="28"/>
+                                        <color key="backgroundColor" name="Orange"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="Wxd-ve-vHz"/>
+                                        </constraints>
+                                        <state key="normal" title="Log in">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Don’t have a Hypothes.is account? Sign up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGj-fF-40K">
+                                        <rect key="frame" x="134" y="250" width="122" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" name="MenuGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="MenuDark"/>
+                                <constraints>
+                                    <constraint firstItem="7E2-jJ-Ett" firstAttribute="centerX" secondItem="URq-Oc-v92" secondAttribute="centerX" id="5QJ-pC-s89"/>
+                                    <constraint firstItem="xGj-fF-40K" firstAttribute="leading" secondItem="z1i-m6-0b5" secondAttribute="trailing" constant="12" id="Cyg-oZ-kDZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="f3Z-OP-jTV" secondAttribute="trailing" constant="24" id="FrS-VG-fvD"/>
+                                    <constraint firstItem="6m3-NQ-ilY" firstAttribute="top" secondItem="7E2-jJ-Ett" secondAttribute="bottom" constant="18" id="HPj-bN-Jez"/>
+                                    <constraint firstItem="xGj-fF-40K" firstAttribute="centerY" secondItem="z1i-m6-0b5" secondAttribute="centerY" id="Jd8-rk-jtP"/>
+                                    <constraint firstItem="f3Z-OP-jTV" firstAttribute="top" secondItem="6m3-NQ-ilY" secondAttribute="bottom" constant="24" id="Kaf-pV-GIy"/>
+                                    <constraint firstAttribute="bottom" secondItem="z1i-m6-0b5" secondAttribute="bottom" constant="30" id="bSO-q9-XcA"/>
+                                    <constraint firstAttribute="width" constant="280" id="bZ5-g4-BA7"/>
+                                    <constraint firstItem="z1i-m6-0b5" firstAttribute="leading" secondItem="URq-Oc-v92" secondAttribute="leading" constant="30" id="dtj-eF-nRm"/>
+                                    <constraint firstItem="f3Z-OP-jTV" firstAttribute="leading" secondItem="URq-Oc-v92" secondAttribute="leading" constant="24" id="f1i-AV-HK5"/>
+                                    <constraint firstAttribute="trailing" secondItem="xGj-fF-40K" secondAttribute="trailing" constant="24" id="hrc-tr-Pz2"/>
+                                    <constraint firstItem="z1i-m6-0b5" firstAttribute="top" secondItem="f3Z-OP-jTV" secondAttribute="bottom" constant="38" id="jgF-r2-6KU"/>
+                                    <constraint firstItem="7E2-jJ-Ett" firstAttribute="top" secondItem="URq-Oc-v92" secondAttribute="top" constant="24" id="pmh-38-S64"/>
+                                    <constraint firstItem="6m3-NQ-ilY" firstAttribute="leading" secondItem="URq-Oc-v92" secondAttribute="leading" constant="24" id="qAo-SA-sS0"/>
+                                    <constraint firstAttribute="trailing" secondItem="6m3-NQ-ilY" secondAttribute="trailing" constant="24" id="vSc-Qv-bLr"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jv-Mc-fbE">
+                                <rect key="frame" x="141.5" y="784" width="131" height="27"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
+                                <state key="normal" title="Continue without log in">
+                                    <color key="titleColor" name="Orange"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="clH-J8-Hhf" firstAttribute="bottom" secondItem="3Jv-Mc-fbE" secondAttribute="bottom" constant="51" id="5T0-H5-HVu"/>
+                            <constraint firstItem="fCT-5C-gQU" firstAttribute="top" secondItem="999-vb-8hj" secondAttribute="top" id="8ez-M0-xd1"/>
+                            <constraint firstAttribute="bottom" secondItem="fCT-5C-gQU" secondAttribute="bottom" id="EMC-wg-wNg"/>
+                            <constraint firstItem="URq-Oc-v92" firstAttribute="centerY" secondItem="fCT-5C-gQU" secondAttribute="centerY" id="GJn-Bv-JgM"/>
+                            <constraint firstAttribute="trailing" secondItem="fCT-5C-gQU" secondAttribute="trailing" id="GQY-SO-aOc"/>
+                            <constraint firstItem="URq-Oc-v92" firstAttribute="centerX" secondItem="fCT-5C-gQU" secondAttribute="centerX" id="YTQ-Gq-fD3"/>
+                            <constraint firstItem="fCT-5C-gQU" firstAttribute="leading" secondItem="999-vb-8hj" secondAttribute="leading" id="jzq-NX-u7x"/>
+                            <constraint firstItem="3Jv-Mc-fbE" firstAttribute="centerX" secondItem="fCT-5C-gQU" secondAttribute="centerX" id="uvm-9n-EyM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="clH-J8-Hhf"/>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="3Jv-Mc-fbE" id="jeC-ez-FVx"/>
+                        <outlet property="logInButton" destination="f3Z-OP-jTV" id="5VC-PM-B8V"/>
+                        <outlet property="signUpLabel" destination="xGj-fF-40K" id="gtM-cu-vVG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LY1-F6-Xjq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3049.275362318841" y="-920.08928571428567"/>
+        </scene>
     </scenes>
     <color key="tintColor" name="BkgrndWhite"/>
     <resources>
+        <image name="Bkgrnd" width="312" height="568"/>
         <image name="Delete" width="10" height="12"/>
         <image name="Edit" width="12" height="12"/>
+        <image name="Highlighter" width="38" height="38"/>
+        <image name="Hypothesis-logo" width="92" height="20"/>
         <image name="Library" width="20" height="18"/>
         <image name="Search" width="13" height="12"/>
         <image name="SelectOpen" width="28" height="28"/>
@@ -490,11 +600,17 @@
         <namedColor name="IconsLight">
             <color red="0.93699997663497925" green="0.94099998474121094" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="LightBackground">
+            <color red="0.93725490196078431" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MenuDark">
+            <color red="0.27450980392156865" green="0.28235294117647058" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="MenuGray">
             <color red="0.72941176470588232" green="0.74509803921568629" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange">
-            <color red="0.87800002098083496" green="0.62400001287460327" blue="0.21600000560283661" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.87450980392156863" green="0.62352941176470589" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextDark">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

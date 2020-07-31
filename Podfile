@@ -12,7 +12,8 @@ target 'TReader' do
   pod 'NSObject+Rx'
   pod 'RxGesture'
   pod 'RxCoreData', '~> 1.0.0'
-  pod "RxAlertController"
+  pod 'RxAlertController'
+  pod 'RxViewController'
 
   pod 'Kingfisher', '~> 5.0'
   pod 'Zip', '~> 1.1'

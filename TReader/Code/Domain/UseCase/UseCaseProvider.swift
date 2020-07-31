@@ -11,7 +11,8 @@ import Foundation
 protocol UseCaseProvider {
     func booksUseCase() -> BooksUseCase
     func bookmarkUseCase() -> BookmarkUseCase
-    func hypothesisUseCase() -> HypothesisUseCase
+    func annotationsUseCase() -> AnnotationsUseCase
+    func authUseCase() -> OAuthUseCase
 }
 
 class DefaultUseCaseProvider: UseCaseProvider {
@@ -19,11 +20,11 @@ class DefaultUseCaseProvider: UseCaseProvider {
     private let mNetworkService: NetworkService
     private let mHypothesisNetworkService: NetworkService
     private let mCoreDataContext = CoreDataContext()
+    private let mOAuthUseCase = HypothesisOAuthUseCase(networkService: NetworkService(url: "https://hypothes.is/"))
 
     init() {
         let url: String
         let auth = HypothesisAuthorization()
-        auth.logIn(token: "6879-9ufmPdyfHY9OKOjP3nYoPpfx8AdKPwDG5YseyoDNGIg")
 
         #if DEBUG
             url = "http://127.0.0.1:8080"
@@ -44,7 +45,11 @@ class DefaultUseCaseProvider: UseCaseProvider {
         return DefaultBookmarkUseCase(managedObjectContext: mCoreDataContext.managedObjectContext)
     }
 
-    func hypothesisUseCase() -> HypothesisUseCase {
-        return DefaultHypothesisUseCase(networkService: mHypothesisNetworkService)
+    func annotationsUseCase() -> AnnotationsUseCase {
+        return HypothesisAnnotationsUseCase(networkService: mHypothesisNetworkService)
+    }
+
+    func authUseCase() -> OAuthUseCase {
+        return mOAuthUseCase
     }
 }

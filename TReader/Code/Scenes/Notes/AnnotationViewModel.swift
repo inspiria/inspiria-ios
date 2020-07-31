@@ -12,13 +12,13 @@ import RxCocoa
 
 class AnnotationViewModel {
     private let navigator: AnnotationNavigator
-    private let hypothesisUseCase: HypothesisUseCase
+    private let annotationsUseCase: AnnotationsUseCase
     private let book: Book
 
-    init (book: Book, hypothesisUseCase: HypothesisUseCase, navigator: AnnotationNavigator) {
+    init (book: Book, annotationsUseCase: AnnotationsUseCase, navigator: AnnotationNavigator) {
         self.book = book
         self.navigator = navigator
-        self.hypothesisUseCase = hypothesisUseCase
+        self.annotationsUseCase = annotationsUseCase
     }
 
     func transform(input: Input) -> Output {
@@ -26,7 +26,7 @@ class AnnotationViewModel {
 
         let delete = input.deleteTrigger
             .flatMap {
-                self.hypothesisUseCase
+                self.annotationsUseCase
                     .deleteAnnotation(id: $0)
                     .trackActivity(activity)
                     .asDriver(onErrorJustReturn: false)
@@ -36,7 +36,7 @@ class AnnotationViewModel {
         let annotations = Driver
             .combineLatest(input.searchTrigger, input.sortTrigger, input.refreshTrigger, delete)
             .flatMap { str, order, _, _ in
-                self.hypothesisUseCase.getAnnotations(shortName: self.book.info.shortName, quote: str)
+                self.annotationsUseCase.getAnnotations(shortName: self.book.info.shortName, quote: str)
                     .map { $0.sorted(by: order) }
                     .trackActivity(activity)
                     .asDriver(onErrorJustReturn: [])

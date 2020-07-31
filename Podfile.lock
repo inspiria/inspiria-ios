@@ -51,6 +51,9 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - RxViewController (1.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
   - SideMenu (6.4.8)
   - WordPress-Aztec-iOS (1.19.3)
   - XLPagerTabStrip (9.0.0)
@@ -68,6 +71,7 @@ DEPENDENCIES:
   - RxOptional
   - RxRelay (~> 5)
   - RxSwift (~> 5)
+  - RxViewController
   - SideMenu
   - WordPress-Aztec-iOS
   - XLPagerTabStrip (~> 9.0)
@@ -90,6 +94,7 @@ SPEC REPOS:
     - RxOptional
     - RxRelay
     - RxSwift
+    - RxViewController
     - SideMenu
     - WordPress-Aztec-iOS
     - XLPagerTabStrip
@@ -111,11 +116,12 @@ SPEC CHECKSUMS:
   RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
   WordPress-Aztec-iOS: b7ac8b30f746992e85d9668453ac87c2cdcecf4f
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 504010fc66d3a81395ab6d68c70a2b05b72bbd0c
+PODFILE CHECKSUM: 2f0a98e87f863e55cfd3bf258835d406be6c2659
 
 COCOAPODS: 1.9.3

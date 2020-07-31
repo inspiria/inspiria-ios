@@ -1,5 +1,5 @@
 //
-//  HypothesisUseCase.swift
+//  AnnotationsUseCase.swift
 //  TReader
 //
 //  Created by tadas on 2020-06-12.
@@ -16,7 +16,7 @@ protocol AnnotationsUseCase {
     func deleteAnnotation(id: String) -> Single<Bool>
 }
 
-class DefaultHypothesisUseCase: AnnotationsUseCase {
+class HypothesisAnnotationsUseCase: AnnotationsUseCase {
     private let networkService: NetworkService
 
     init(networkService: NetworkService) {
