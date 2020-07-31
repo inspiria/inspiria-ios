@@ -34,6 +34,8 @@ PODS:
   - Marklight (1.4.0)
   - "NSObject+Rx (5.1.0)":
     - RxSwift (~> 5.1)
+  - RxAlertController (5.0.0):
+    - RxSwift (~> 5.0)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -59,6 +61,7 @@ DEPENDENCIES:
   - Kingfisher (~> 5.0)
   - Marklight
   - "NSObject+Rx"
+  - RxAlertController
   - RxCocoa (~> 5)
   - RxCoreData (~> 1.0.0)
   - RxGesture
@@ -80,6 +83,7 @@ SPEC REPOS:
     - Kingfisher
     - Marklight
     - "NSObject+Rx"
+    - RxAlertController
     - RxCocoa
     - RxCoreData
     - RxGesture
@@ -100,6 +104,7 @@ SPEC CHECKSUMS:
   Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
   Marklight: 2489d376cd3d3e7b1d109cd7d6d248fd9b8e0bee
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
+  RxAlertController: ef75925a2a002f0f1fd03378ddeceaa9c1c5558f
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxCoreData: 1ed5f83e80facccc90fc054eb7f39a44177de56a
   RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
@@ -111,6 +116,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 40c76be2166558d79dd8027d17cc794cab60c36d
+PODFILE CHECKSUM: 504010fc66d3a81395ab6d68c70a2b05b72bbd0c
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxAlertController
 
 class AnnotationViewController: UITableViewController {
     var viewModel: AnnotationViewModel!
@@ -41,6 +42,8 @@ class AnnotationViewController: UITableViewController {
             .asDriver()
             .startWith(())
 
+        let delete = PublishSubject<String>()
+
         let sort = headerView.sortButton
             .rx.tap
             .asDriver()
@@ -53,6 +56,7 @@ class AnnotationViewController: UITableViewController {
 
         let input = AnnotationViewModel.Input(searchTrigger: search,
                                               sortTrigger: sort,
+                                              deleteTrigger: delete.asDriverOnErrorJustComplete(),
                                               refreshTrigger: refresh)
         let output = viewModel.transform(input: input)
         let cellIdentifier = AnnotationCell.reuseIdentifier
@@ -66,11 +70,35 @@ class AnnotationViewController: UITableViewController {
         }
         .disposed(by: rx.disposeBag)
 
-        output.deletions
-            .drive(onNext: { [unowned self] in $0.forEach { $0.drive().disposed(by: self.rx.disposeBag)}})
+        output.annotations
+            .map { $0.map { $0.delete } }
+            .drive(onNext: { [unowned self] in
+                $0.forEach {
+                    $0.flatMap { id -> Driver<String> in
+                        UIAlertController.rx.show(in: self,
+                                                  title: nil,
+                                                  message: "Are you sure you want to delete this note?",
+                                                  buttonTitles: ["Confirm", "Cancel"])
+                            .asDriver(onErrorJustReturn: 1)
+                            .filter { $0 == 0 }
+                            .map { _ in id }
+                    }
+                    .drive(onNext: delete.onNext)
+                    .disposed(by: self.rx.disposeBag)
+                }
+            })
             .disposed(by: rx.disposeBag)
+
         output.edits
-            .drive(onNext: { [unowned self] in $0.forEach { $0.drive().disposed(by: self.rx.disposeBag)}})
+            .drive(onNext: { [unowned self] in
+                $0.forEach {
+                    $0.drive().disposed(by: self.rx.disposeBag)
+                }
+            })
+            .disposed(by: rx.disposeBag)
+
+        output.delete
+            .drive()
             .disposed(by: rx.disposeBag)
     }
 }

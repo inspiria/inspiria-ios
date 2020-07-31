@@ -23,9 +23,19 @@ class AnnotationViewModel {
 
     func transform(input: Input) -> Output {
         let activity = ActivityIndicator()
+
+        let delete = input.deleteTrigger
+            .flatMap {
+                self.hypothesisUseCase
+                    .deleteAnnotation(id: $0)
+                    .trackActivity(activity)
+                    .asDriver(onErrorJustReturn: false)
+                    .mapToVoid()
+        }.startWith(())
+
         let annotations = Driver
-            .combineLatest(input.searchTrigger, input.sortTrigger, input.refreshTrigger)
-            .flatMap { str, order, _ in
+            .combineLatest(input.searchTrigger, input.sortTrigger, input.refreshTrigger, delete)
+            .flatMap { str, order, _, _ in
                 self.hypothesisUseCase.getAnnotations(shortName: self.book.info.shortName, quote: str)
                     .map { $0.sorted(by: order) }
                     .trackActivity(activity)
@@ -33,10 +43,8 @@ class AnnotationViewModel {
                     .map { $0.map { AnnotationCellModel(annotation: $0, highlight: str) } }
         }
 
-        let delete = annotations.map { $0.map { $0.delete.mapToVoid() } }
         let edit = annotations.map { $0.map { $0.edit.do(onNext: self.navigator.toEdit).mapToVoid() } }
-
-        return Output(annotations: annotations, deletions: delete, edits: edit, activity: activity.asDriver())
+        return Output(annotations: annotations, edits: edit, delete: delete, activity: activity.asDriver())
     }
 }
 
@@ -44,13 +52,14 @@ extension AnnotationViewModel {
     struct Input {
         let searchTrigger: Driver<String?>
         let sortTrigger: Driver<SortView.Order>
+        let deleteTrigger: Driver<String>
         let refreshTrigger: Driver<Void>
     }
 
     struct Output {
         let annotations: Driver<[AnnotationCellModel]>
-        let deletions: Driver<[Driver<Void>]>
         let edits: Driver<[Driver<Void>]>
+        let delete: Driver<Void>
         let activity: Driver<Bool>
     }
 }
