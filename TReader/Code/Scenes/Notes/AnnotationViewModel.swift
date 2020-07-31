@@ -44,6 +44,7 @@ class AnnotationViewModel {
         }
 
         let edit = annotations.map { $0.map { $0.edit.do(onNext: self.navigator.toEdit).mapToVoid() } }
+
         return Output(annotations: annotations, edits: edit, delete: delete, activity: activity.asDriver())
     }
 }

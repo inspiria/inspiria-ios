@@ -26,9 +26,12 @@ class DefaultEditNoteNavigator: EditNoteNavigator {
     func toEditNote() {
         let viewController = EditNoteViewController()
         viewController.viewModel = EditNoteViewModel(navigator: self)
+
         let menu = SideMenuNavigationController(rootViewController: viewController)
         menu.presentationStyle = .menuDissolveIn
-        menu.menuWidth = UIScreen.main.bounds.width - 40.0
+        menu.presentationStyle.presentingEndAlpha = 0.65
+        menu.settings.menuWidth = UIScreen.main.bounds.width - 40.0
+        menu.settings.statusBarEndAlpha = 0
 
         rootController.present(menu, animated: true, completion: nil)
     }

@@ -26,6 +26,8 @@ class EditNoteViewController: UITableViewController {
 
         navigationItem.title = "Notes"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "x"), style: .done, target: nil, action: nil)
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.view.backgroundColor = .red
     }
 
     private func bindViewModel() {
