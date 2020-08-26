@@ -39,14 +39,20 @@ class NetworkService {
         case delete = "DELETE"
     }
 
+    enum ContentType: String {
+        case json = "application/json"
+        case urlencoded = "application/x-www-form-urlencoded"
+    }
+
     func request<T>(path: String,
                     method: HTTPMethod = .get,
+                    contentType: ContentType = .json,
                     data: Encodable? = nil) -> Single<T> where T: Decodable {
 
         var urlComponents = URLComponents(string: "\(self.url)/\(path)")!
         var req = URLRequest(url: urlComponents.url!)
         req.setValue("application/json", forHTTPHeaderField: "Accept")
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.setValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
         if let token = authorization?.token {
             req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
@@ -54,14 +60,17 @@ class NetworkService {
 
         switch method {
         case .post, .put, .delete:
-            req.httpBody = data?.jsonDataOrNil()
-        case .get:
-            let data = try? data?.asDictionary()
-            let queryItems = data?.compactMap { pair -> URLQueryItem? in
-                guard let value = String.fromAny(any: pair.value) else { return nil }
-                return URLQueryItem(name: pair.key, value: value)
+            switch contentType {
+            case .json:
+                req.httpBody = data?.jsonDataOrNil()
+            case .urlencoded:
+                var components = URLComponents()
+                components.queryItems = data?.asQueryItems()
+                let str = components.url?.absoluteString.dropFirst()
+                req.httpBody = str?.data(using: .utf8)
             }
-            urlComponents.queryItems = queryItems
+        case .get:
+            urlComponents.queryItems = data?.asQueryItems()
             req.url = urlComponents.url!
         }
 
@@ -156,6 +165,16 @@ extension String {
         case let any as Bool: return String(any)
         case let any as String: return any
         default: return nil
+        }
+    }
+}
+
+extension Encodable {
+    func asQueryItems() -> [URLQueryItem]? {
+        let data = try? self.asDictionary()
+        return data?.compactMap { pair -> URLQueryItem? in
+            guard let value = String.fromAny(any: pair.value) else { return nil }
+            return URLQueryItem(name: pair.key, value: value)
         }
     }
 }

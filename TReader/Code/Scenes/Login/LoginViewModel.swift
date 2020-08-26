@@ -9,10 +9,13 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxOptional
 
 class LoginViewModel {
     let navigator: LoginNavigator
     let authUseCase: OAuthUseCase
+
+    private let codeRelay = BehaviorRelay<String?>(value: nil)
 
     init (navigator: LoginNavigator, authUseCase: OAuthUseCase) {
         self.navigator = navigator
@@ -20,13 +23,34 @@ class LoginViewModel {
     }
 
     func transform(input: Input) -> Output {
+        let errorTracker = ErrorTracker()
+
         let authorize = input.authorize
             .do(onNext: navigator.toOAuth)
 
-        let skipAuthorize = input.skipAuthorize
-            .do(onNext: navigator.toApp)
+        let getToken = codeRelay
+            .asDriver()
+            .filterNil()
+            .flatMap { code in
+                self.authUseCase.getToken(with: code)
+                    .trackError(errorTracker)
+                    .mapToVoid()
+                    .asDriver(onErrorJustReturn: ())
+        }
 
-        return Output(authorize: authorize, skipAuthorize: skipAuthorize)
+        let skipAuthorize = input.skipAuthorize
+            .do(onNext: { [unowned self] in
+                self.authUseCase.skipLogin()
+            })
+
+        return Output(authorize: authorize,
+                      getToken: getToken,
+                      skipAuthorize: skipAuthorize,
+                      error: errorTracker.asDriver())
+    }
+
+    func logIn(code: String) {
+        codeRelay.accept(code)
     }
 }
 
@@ -37,6 +61,8 @@ extension LoginViewModel {
     }
     struct Output {
         let authorize: Driver<Void>
+        let getToken: Driver<Void>
         let skipAuthorize: Driver<Void>
+        let error: Driver<Error>
     }
 }

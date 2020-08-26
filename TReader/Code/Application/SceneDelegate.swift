@@ -37,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     navigator.toLogin()
                     self.rootNavigator = navigator
                 } else {
+                    rootController.dismiss(animated: true, completion: nil)
                     let navigator  = DefaultBooksListNavigator(services: DefaultUseCaseProvider.provider,
                                                                storyboard: storyboard,
                                                                controller: navigationController)
@@ -70,7 +71,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         switch components.host {
         case "oauth":
             if let code = components.queryItems?.filter({ $0.name == "code" }).first?.value {
-                print(code)
                 guard let navigator  = rootNavigator as? DefaultLoginNavigator else { return }
                 navigator.toApp(with: code)
             }

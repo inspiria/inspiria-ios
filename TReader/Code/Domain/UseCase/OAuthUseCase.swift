@@ -11,65 +11,91 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-enum TokenType: String {
-    case refresh, access
+enum OAuthError: LocalizedError {
+    case emptyCode
+
+    var errorDescription: String? {
+        switch self {
+        case .emptyCode: return "Authentication code should not be empty!"
+        }
+    }
 }
 
 protocol OAuthUseCase {
     var loggedIn: Driver <Bool> { get }
     var showLogIn: Driver <Bool> { get }
-    var refreshToken: Driver <String?> { get }
     var accessToken: Driver <String?> { get }
 
     var oAuthUrl: URL { get }
 
-    func getToken(code: String)
+    func skipLogin()
+    func getToken(with code: String) -> Single<AccessToken>
 }
 
 class HypothesisOAuthUseCase: OAuthUseCase {
-    fileprivate lazy var refreshTokenRelay = BehaviorRelay<String?>(value: latestValue(.refresh))
-    fileprivate lazy var accessTokenRelay = BehaviorRelay<String?>(value: latestValue(.access))
-    fileprivate lazy var loggedInRelay = BehaviorRelay<Bool>(value: false)
-    fileprivate lazy var showLogInRelay = BehaviorRelay<Bool>(value: true)
+    private let clientId = "4af80306-d349-11ea-9e36-ef8ded55ca92"
+    fileprivate lazy var accessTokenRelay = BehaviorRelay<AccessToken?>(value: latestAccessToken())
+    fileprivate lazy var showLogInRelay = BehaviorRelay<Bool>(value: latestShowLogIn())
 
     private let networkService: NetworkService
+    private let disposeBag = DisposeBag()
 
     init(networkService: NetworkService) {
         self.networkService = networkService
     }
 
-    var refreshToken: Driver<String?> { return refreshTokenRelay.asDriver() }
-    var accessToken: Driver<String?> { return accessTokenRelay.asDriver() }
-    var loggedIn: Driver<Bool> { return loggedInRelay.asDriver() }
+    var accessToken: Driver<String?> { return accessTokenRelay.asDriver().map { $0?.accessToken } }
+    var loggedIn: Driver<Bool> { return accessTokenRelay.asDriver().map { $0 != nil } }
     var showLogIn: Driver<Bool> { return showLogInRelay.asDriver() }
 
-    private func latestValue(_ type: TokenType) -> String? {
-        return UserDefaults.standard.string(forKey: type.rawValue)
-    }
-
-    fileprivate func set(_ type: TokenType, token: String?) {
-        switch type {
-        case .access:
-            accessTokenRelay.accept(token)
-        case .refresh:
-            refreshTokenRelay.accept(token)
-        }
-
-        UserDefaults.standard.set(token, forKey: type.rawValue)
-        UserDefaults.standard.synchronize()
-    }
-
     var oAuthUrl: URL {
-        let clientId = "4af80306-d349-11ea-9e36-ef8ded55ca92"
-        let str = "\(networkService.url)oauth/authorize?client_id=\(clientId)&response_type=code"
+        let str = "\(networkService.url)/oauth/authorize?client_id=\(clientId)&response_type=code"
         return URL(string: str)!
     }
 
-    func getToken(code: String) {
-        showLogInRelay.accept(false)
+    func skipLogin() {
+        set(showLogIn: false)
+    }
+
+    func getToken(with code: String) -> Single<AccessToken> {
+        guard code.count > 0 else { return Single<AccessToken>.error(OAuthError.emptyCode) }
+        let body = AccessTokenBody(code: code, clientId: clientId)
+        let response: Single<AccessToken> = networkService.request(path: "api/token", method: .post, contentType: .urlencoded, data: body)
+        return response.do( onSuccess: { [unowned self] token in
+            self.set(token: token)
+            self.set(showLogIn: false)
+        })
     }
 
     func refreshToken(accessToke: String) {
 
+    }
+}
+
+fileprivate extension HypothesisOAuthUseCase {
+    private static let kSessionDataKey = "session-data-key"
+    private static let kShowLogInKey = "show-log-in-key"
+
+    func latestAccessToken() -> AccessToken? {
+        guard let data = UserDefaults.standard.data(forKey: HypothesisOAuthUseCase.kSessionDataKey) else { return nil }
+        return try? AccessToken(data: data)
+    }
+
+    func set(token: AccessToken?) {
+        accessTokenRelay.accept(token)
+        let data = token?.jsonDataOrNil()
+        UserDefaults.standard.set(data, forKey: HypothesisOAuthUseCase.kSessionDataKey)
+        UserDefaults.standard.synchronize()
+    }
+
+    func latestShowLogIn() -> Bool {
+        guard UserDefaults.standard.value(forKey: HypothesisOAuthUseCase.kShowLogInKey) != nil else { return true }
+        return UserDefaults.standard.bool(forKey: HypothesisOAuthUseCase.kShowLogInKey)
+    }
+
+    func set(showLogIn: Bool) {
+        showLogInRelay.accept(showLogIn)
+        UserDefaults.standard.set(showLogIn, forKey: HypothesisOAuthUseCase.kShowLogInKey)
+        UserDefaults.standard.synchronize()
     }
 }

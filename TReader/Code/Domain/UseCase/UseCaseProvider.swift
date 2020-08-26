@@ -20,7 +20,7 @@ class DefaultUseCaseProvider: UseCaseProvider {
     private let mNetworkService: NetworkService
     private let mHypothesisNetworkService: NetworkService
     private let mCoreDataContext = CoreDataContext()
-    private let mOAuthUseCase = HypothesisOAuthUseCase(networkService: NetworkService(url: "https://hypothes.is/"))
+    private let mOAuthUseCase = HypothesisOAuthUseCase(networkService: NetworkService(url: "https://hypothes.is"))
 
     init() {
         let url: String

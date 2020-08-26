@@ -16,7 +16,6 @@ import RxViewController
 protocol LoginNavigator {
     func toLogin()
     func toOAuth()
-    func toApp()
     func toApp(with code: String)
 }
 
@@ -58,14 +57,12 @@ class DefaultLoginNavigator: NSObject, LoginNavigator {
         rootController.presentedViewController?.present(safari, animated: true, completion: nil)
     }
 
-    func toApp() {
-        services.authUseCase().getToken(code: "")
-        rootController.dismiss(animated: true, completion: nil)
-    }
-
     func toApp(with code: String) {
-        services.authUseCase().getToken(code: code)
-        rootController.dismiss(animated: true, completion: nil)
+        guard let controller = rootController.presentedViewController as? LoginViewController else { return }
+        if rootController.presentedViewController?.presentedViewController != nil {
+            controller.dismiss(animated: true, completion: nil)
+        }
+        controller.viewModel.logIn(code: code)
     }
 }
 
