@@ -20,7 +20,6 @@
 		3E149F2123F9D112006968D4 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F1D23F9D112006968D4 /* ContentViewModel.swift */; };
 		3E149F2423F9D6F4006968D4 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E149F2323F9D6F4006968D4 /* Observable.swift */; };
 		3E18F4002493C44C002EBDEF /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E18F3FF2493C44C002EBDEF /* UserProfile.swift */; };
-		3E18F4022493C6C3002EBDEF /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E18F4012493C6C3002EBDEF /* Authorization.swift */; };
 		3E18F4042493C9E1002EBDEF /* AnnotationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E18F4032493C9E1002EBDEF /* AnnotationsUseCase.swift */; };
 		3E18F4062493D838002EBDEF /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E18F4052493D838002EBDEF /* Annotation.swift */; };
 		3E29484A24C606E100A65318 /* error.js in Resources */ = {isa = PBXBuildFile; fileRef = 3E29484924C606E100A65318 /* error.js */; };
@@ -112,7 +111,6 @@
 		3E149F1D23F9D112006968D4 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		3E149F2323F9D6F4006968D4 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		3E18F3FF2493C44C002EBDEF /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		3E18F4012493C6C3002EBDEF /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		3E18F4032493C9E1002EBDEF /* AnnotationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationsUseCase.swift; sourceTree = "<group>"; };
 		3E18F4052493D838002EBDEF /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		3E18FB7524C8BFEB00579F9E /* BridgeDoc.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = BridgeDoc.md; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 		3E149F1523F97497006968D4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				3E18F4012493C6C3002EBDEF /* Authorization.swift */,
 				3E839EC6242BC8DA00BA993A /* BookFilesService.swift */,
 				3E149F1623F974A9006968D4 /* NetworkService.swift */,
 			);
@@ -727,7 +724,6 @@
 				3E03BDC32412994000E16147 /* ContentHeaderView.swift in Sources */,
 				3E2ECDD02482F60700247B09 /* BookmarkUseCase.swift in Sources */,
 				3E72FB1524373D2B00A378FE /* ChaptersViewController.swift in Sources */,
-				3E18F4022493C6C3002EBDEF /* Authorization.swift in Sources */,
 				3E1002892494EFF300FB2AE3 /* ActivityIndicator.swift in Sources */,
 				3EE05620247DACCB004F3D13 /* AnnotationNavigator.swift in Sources */,
 				3EE3C10724BE4F7B0047FC4D /* EditNoteViewModel.swift in Sources */,

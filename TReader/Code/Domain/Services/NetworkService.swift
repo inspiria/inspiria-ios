@@ -48,30 +48,34 @@ class NetworkService {
                     method: HTTPMethod = .get,
                     contentType: ContentType = .json,
                     data: Encodable? = nil) -> Single<T> where T: Decodable {
+        if let auth = authorization {
+            return auth.accessToken()
+                .flatMap { token -> Single<T> in
+                    self.request(path: path,
+                                 method: method,
+                                 contentType: contentType,
+                                 data: data,
+                                 authorizationToken: token)
+            }
+        } else {
+            return request(path: path, method: method, contentType: contentType, data: data, authorizationToken: nil)
+        }
+    }
 
-        var urlComponents = URLComponents(string: "\(self.url)/\(path)")!
+    func request<T>(path: String,
+                    method: HTTPMethod,
+                    contentType: ContentType,
+                    data: Encodable?,
+                    authorizationToken: String?) -> Single<T> where T: Decodable {
+
+        let urlComponents = URLComponents(string: "\(self.url)/\(path)", method: method, data: data)!
         var req = URLRequest(url: urlComponents.url!)
+        req.httpMethod = method.rawValue
+        req.httpBody = data?.httpBody(method: method, contentType: contentType)
         req.setValue("application/json", forHTTPHeaderField: "Accept")
         req.setValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
-        if let token = authorization?.token {
+        if let token = authorizationToken {
             req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        }
-        req.httpMethod = method.rawValue
-
-        switch method {
-        case .post, .put, .delete:
-            switch contentType {
-            case .json:
-                req.httpBody = data?.jsonDataOrNil()
-            case .urlencoded:
-                var components = URLComponents()
-                components.queryItems = data?.asQueryItems()
-                let str = components.url?.absoluteString.dropFirst()
-                req.httpBody = str?.data(using: .utf8)
-            }
-        case .get:
-            urlComponents.queryItems = data?.asQueryItems()
-            req.url = urlComponents.url!
         }
 
         return Single.create { single in
@@ -156,8 +160,8 @@ class NetworkService {
     }
 }
 
-extension String {
-    fileprivate static func fromAny(any: Any) -> String? {
+fileprivate extension String {
+    static func fromAny(any: Any) -> String? {
         switch any {
         case let any as Int: return String(any)
         case let any as Double: return String(any)
@@ -169,12 +173,41 @@ extension String {
     }
 }
 
-extension Encodable {
+fileprivate extension Encodable {
+    func httpBody(method: NetworkService.HTTPMethod, contentType: NetworkService.ContentType) -> Data? {
+        switch method {
+        case .post, .put, .delete:
+            switch contentType {
+            case .json:
+                return self.jsonDataOrNil()
+            case .urlencoded:
+                var components = URLComponents()
+                components.queryItems = self.asQueryItems()
+                let str = components.url?.absoluteString.dropFirst()
+                return str?.data(using: .utf8)
+            }
+        default:
+            return nil
+        }
+    }
+
     func asQueryItems() -> [URLQueryItem]? {
         let data = try? self.asDictionary()
         return data?.compactMap { pair -> URLQueryItem? in
             guard let value = String.fromAny(any: pair.value) else { return nil }
             return URLQueryItem(name: pair.key, value: value)
+        }
+    }
+}
+
+fileprivate extension URLComponents {
+    init?(string: String, method: NetworkService.HTTPMethod, data: Encodable?) {
+        self.init(string: string)
+        switch method {
+        case .get:
+            self.queryItems = data?.asQueryItems()
+        default:
+            break
         }
     }
 }

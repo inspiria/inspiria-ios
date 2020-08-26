@@ -13,26 +13,32 @@ import RxCocoa
 
 enum OAuthError: LocalizedError {
     case emptyCode
+    case invalidSession
 
     var errorDescription: String? {
         switch self {
         case .emptyCode: return "Authentication code should not be empty!"
+        case .invalidSession: return "No login session is stored"
         }
     }
+}
+
+protocol Authorization {
+    func accessToken() -> Single<String?>
 }
 
 protocol OAuthUseCase {
     var loggedIn: Driver <Bool> { get }
     var showLogIn: Driver <Bool> { get }
-    var accessToken: Driver <String?> { get }
 
     var oAuthUrl: URL { get }
 
     func skipLogin()
     func getToken(with code: String) -> Single<AccessToken>
+    func accessToken() -> Single<String?>
 }
 
-class HypothesisOAuthUseCase: OAuthUseCase {
+class HypothesisOAuthUseCase: OAuthUseCase, Authorization {
     private let clientId = "4af80306-d349-11ea-9e36-ef8ded55ca92"
     fileprivate lazy var accessTokenRelay = BehaviorRelay<AccessToken?>(value: latestAccessToken())
     fileprivate lazy var showLogInRelay = BehaviorRelay<Bool>(value: latestShowLogIn())
@@ -44,7 +50,6 @@ class HypothesisOAuthUseCase: OAuthUseCase {
         self.networkService = networkService
     }
 
-    var accessToken: Driver<String?> { return accessTokenRelay.asDriver().map { $0?.accessToken } }
     var loggedIn: Driver<Bool> { return accessTokenRelay.asDriver().map { $0 != nil } }
     var showLogIn: Driver<Bool> { return showLogInRelay.asDriver() }
 
@@ -67,8 +72,26 @@ class HypothesisOAuthUseCase: OAuthUseCase {
         })
     }
 
-    func refreshToken(accessToke: String) {
+    private func refreshToken(with refreshToken: String) -> Single<AccessToken> {
+        let body = RefreshAccessTokenBody(refreshToken: refreshToken)
+        let response: Single<AccessToken> = networkService.request(path: "api/token", method: .post, contentType: .urlencoded, data: body)
+        return response
+            .do(onSuccess: { [unowned self] token in
+                self.set(token: token)
+                }, onError: {[unowned self] _ in
+                    //TODO: Handle token refresh failure
+                    self.set(token: nil)
+                    self.set(showLogIn: true)
+            })
+    }
 
+    func accessToken() -> Single<String?> {
+        guard let token = accessTokenRelay.value  else { return Single<String?>.just(nil) }
+        if token.isValid() {
+            return Single<String?>.just(token.accessToken)
+        }
+        return refreshToken(with: token.accessToken)
+            .map { $0.accessToken }
     }
 }
 
