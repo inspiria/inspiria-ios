@@ -18,6 +18,10 @@ class WebViewConfiguration: WKWebViewConfiguration {
             let userScript = WKUserScript(source: js, injectionTime: .atDocumentStart, forMainFrameOnly: true)
             controller.addUserScript(userScript)
         }
+        if let js = Self.script(with: "anchoring") {
+            let userScript = WKUserScript(source: js, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+            controller.addUserScript(userScript)
+        }
         if let js = Self.script(with: "highlight") {
             let userScript = WKUserScript(source: js, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
             controller.addUserScript(userScript)

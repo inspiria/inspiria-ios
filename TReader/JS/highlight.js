@@ -1,20 +1,38 @@
 function selectText(colour) {
-  var range, text, sel = window.getSelection();
-  if (sel.rangeCount && sel.getRangeAt) {
-    range = sel.getRangeAt(0);
-    text = sel.toString();
+
+  const selection = document.getSelection()
+  if (! selection.rangeCount ) {
+    alert("Please select some text.")
+    return
   }
-  document.designMode = "on";
-  if (range) {
-    sel.removeAllRanges();
-    sel.addRange(range);
+
+  const range = selection.getRangeAt(0)
+  const quoteSelector = anchoring.TextQuoteAnchor.fromRange(document.body, range)
+  const exact = quoteSelector.exact
+  const prefix = quoteSelector.prefix
+  const suffix = quoteSelector.suffix
+
+  const positionSelector = anchoring.TextPositionAnchor.fromRange(document.body, range)
+  const start = positionSelector.start
+  const end = positionSelector.end
+
+  const titleElement = document.querySelector('head title')
+  const title = titleElement ? titleElement.innerText : location.href
+
+  const data = {
+    uri: location.href,
+    title: title,
+    exact: exact,
+    prefix: prefix,
+    suffix: suffix,
+    start: start,
+    end: end,
   }
-  if (!document.execCommand("HiliteColor", false, colour)) {
-    document.execCommand("BackColor", false, colour);
-  }
-  document.designMode = "off";
-  window.getSelection().removeAllRanges();
-  return text;
+
+  selection.removeAllRanges();
+
+  const encodedData = JSON.stringify(data)
+  return encodedData;
 }
 
 

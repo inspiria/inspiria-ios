@@ -38,6 +38,7 @@
 		3E49890B23F6B16A0082322E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890A23F6B16A0082322E /* Assets.xcassets */; };
 		3E49890E23F6B16A0082322E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890C23F6B16A0082322E /* LaunchScreen.storyboard */; };
 		3E4A0A4424C773A100D5D563 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A0A4324C773A100D5D563 /* WebView.swift */; };
+		3E52755224F90F9C0043BA7E /* anchoring.js in Resources */ = {isa = PBXBuildFile; fileRef = 3E52755124F90F9C0043BA7E /* anchoring.js */; };
 		3E5335002487A25600D69182 /* ChaptersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5334FF2487A25600D69182 /* ChaptersViewModel.swift */; };
 		3E53649C2402E0A800C896D4 /* BooksListToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E53649B2402E0A800C896D4 /* BooksListToolbar.swift */; };
 		3E5BAADC2424222B00C3AB06 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BAADB2424222B00C3AB06 /* Author.swift */; };
@@ -132,6 +133,7 @@
 		3E49890D23F6B16A0082322E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E49890F23F6B16A0082322E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E4A0A4324C773A100D5D563 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		3E52755124F90F9C0043BA7E /* anchoring.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = anchoring.js; sourceTree = "<group>"; };
 		3E5334FF2487A25600D69182 /* ChaptersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersViewModel.swift; sourceTree = "<group>"; };
 		3E53649B2402E0A800C896D4 /* BooksListToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListToolbar.swift; sourceTree = "<group>"; };
 		3E5BAADB2424222B00C3AB06 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 			children = (
 				3E18FB7524C8BFEB00579F9E /* BridgeDoc.md */,
 				3E29484924C606E100A65318 /* error.js */,
+				3E52755124F90F9C0043BA7E /* anchoring.js */,
 				3EF457B624C1989100EC57BA /* highlight.js */,
 			);
 			path = JS;
@@ -633,6 +636,7 @@
 				3ECF6F11241CFF310043E0D0 /* NotoSerif-Regular.ttf in Resources */,
 				3ECF6F13241CFF310043E0D0 /* NotoSerif-Italic.ttf in Resources */,
 				3ECF6F12241CFF310043E0D0 /* NotoSerif-Medium.ttf in Resources */,
+				3E52755224F90F9C0043BA7E /* anchoring.js in Resources */,
 				3E49890B23F6B16A0082322E /* Assets.xcassets in Resources */,
 				3E49890923F6B1670082322E /* Main.storyboard in Resources */,
 				3E29484A24C606E100A65318 /* error.js in Resources */,
