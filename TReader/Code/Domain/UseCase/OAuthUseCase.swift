@@ -90,8 +90,7 @@ class HypothesisOAuthUseCase: OAuthUseCase, Authorization {
         if token.isValid() {
             return Single<String?>.just(token.accessToken)
         }
-        return refreshToken(with: token.accessToken)
-            .map { $0.accessToken }
+        return refreshToken(with: token.refreshToken).map { $0.accessToken }
     }
 }
 
