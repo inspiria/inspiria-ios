@@ -100,5 +100,15 @@ class AnnotationViewController: UITableViewController {
         output.delete
             .drive()
             .disposed(by: rx.disposeBag)
+
+        output.error
+            .drive(onNext: { [unowned self] error in
+                let alert = UIAlertController(title: "Failed to load book",
+                                              message: error.localizedDescription,
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                self.present(alert, animated: true, completion: nil)
+            })
+            .disposed(by: rx.disposeBag)
     }
 }

@@ -9,6 +9,34 @@
 import UIKit
 
 protocol AnnotationNavigator {
-    func toNotes()
     func toEdit(annotation: Annotation)
+}
+
+protocol AnnotationsLibratyNavigator {
+    func toAnnotations()
+}
+
+class DefaultAnnotationsLibratyNavigator: AnnotationsLibratyNavigator, AnnotationNavigator {
+    private let services: UseCaseProvider
+    private let storyboard: UIStoryboard
+    private let rootController: UINavigationController
+
+    init(services: UseCaseProvider,
+         storyboard: UIStoryboard,
+         controller: UINavigationController) {
+        self.services = services
+        self.storyboard = storyboard
+        self.rootController = controller
+    }
+
+    func toAnnotations() {
+        let notesController: AnnotationViewController = storyboard.instantiateViewController()
+        notesController.viewModel = AnnotationViewModel(annotationsUseCase: services.annotationsUseCase(),
+                                                        navigator: self)
+        rootController.viewControllers = [notesController]
+    }
+
+    func toEdit(annotation: Annotation) {
+        fatalError("Not implemented")
+    }
 }

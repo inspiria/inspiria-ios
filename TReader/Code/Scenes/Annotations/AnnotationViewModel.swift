@@ -13,9 +13,9 @@ import RxCocoa
 class AnnotationViewModel {
     private let navigator: AnnotationNavigator
     private let annotationsUseCase: AnnotationsUseCase
-    private let book: Book
+    private let book: Book?
 
-    init (book: Book, annotationsUseCase: AnnotationsUseCase, navigator: AnnotationNavigator) {
+    init (book: Book? = nil, annotationsUseCase: AnnotationsUseCase, navigator: AnnotationNavigator) {
         self.book = book
         self.navigator = navigator
         self.annotationsUseCase = annotationsUseCase
@@ -23,11 +23,13 @@ class AnnotationViewModel {
 
     func transform(input: Input) -> Output {
         let activity = ActivityIndicator()
+        let error = ErrorTracker()
 
         let delete = input.deleteTrigger
             .flatMap {
                 self.annotationsUseCase
                     .deleteAnnotation(id: $0)
+                    .trackError(error)
                     .trackActivity(activity)
                     .asDriver(onErrorJustReturn: false)
                     .mapToVoid()
@@ -36,8 +38,12 @@ class AnnotationViewModel {
         let annotations = Driver
             .combineLatest(input.searchTrigger, input.sortTrigger, input.refreshTrigger, delete)
             .flatMap { str, order, _, _ in
-                self.annotationsUseCase.getAnnotations(shortName: self.book.info.shortName, quote: str)
-                    .map { $0.sorted(by: order) }
+                self.annotationsUseCase
+                    .getAnnotations(shortName: self.book?.info.shortName, quote: str)
+                    .map {
+                        $0.sorted(by: order)
+                    }
+                    .trackError(error)
                     .trackActivity(activity)
                     .asDriver(onErrorJustReturn: [])
                     .map { $0.map { AnnotationCellModel(annotation: $0, highlight: str) } }
@@ -45,7 +51,7 @@ class AnnotationViewModel {
 
         let edit = annotations.map { $0.map { $0.edit.do(onNext: self.navigator.toEdit).mapToVoid() } }
 
-        return Output(annotations: annotations, edits: edit, delete: delete, activity: activity.asDriver())
+        return Output(annotations: annotations, edits: edit, delete: delete, activity: activity.asDriver(), error: error.asDriver())
     }
 }
 
@@ -62,6 +68,7 @@ extension AnnotationViewModel {
         let edits: Driver<[Driver<Void>]>
         let delete: Driver<Void>
         let activity: Driver<Bool>
+        let error: Driver<Error>
     }
 }
 

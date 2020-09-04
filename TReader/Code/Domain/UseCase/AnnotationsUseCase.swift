@@ -24,7 +24,7 @@ protocol AnnotationsUseCase {
     var userProfile: Driver<UserProfile?> { get }
 
     func getUserProfile() -> Single<UserProfile>
-    func getAnnotations(shortName: String, quote: String?) -> Single<[Annotation]>
+    func getAnnotations(shortName: String?, quote: String?) -> Single<[Annotation]>
     func deleteAnnotation(id: String) -> Single<Bool>
 }
 
@@ -42,15 +42,21 @@ class HypothesisAnnotationsUseCase: AnnotationsUseCase {
             .do(onSuccess: set(userProfile:), onError: deleteUserProfile)
     }
 
-    func getAnnotations(shortName: String, quote: String?) -> Single<[Annotation]> {
+    func getAnnotations(shortName: String?, quote: String?) -> Single<[Annotation]> {
         guard let userId = userProfileRelay.value?.userId else { return Single.error(AnnotationsError.noUserProfile) }
+        let shortName = shortName.flatMap { "\($0)/*" } ?? "*"
         let data = AnnotationSearch(limit: 200,
                                     user: userId,
                                     quote: quote,
-                                    wildcardUri: "https://edtechbooks.org/\(shortName)/*")
+                                    wildcardUri: "https://edtechbooks.org/\(shortName)")
 
         let response: Single<AnnotationResponse> = networkService.request(path: "search", method: .get, data: data)
-        return response.map { $0.rows }
+        return response.do(onSuccess: { ann in
+            print(ann)
+        }, onError: { err in
+            print(err)
+        })
+            .map { $0.rows }
     }
 
     func deleteAnnotation(id: String) -> Single<Bool> {

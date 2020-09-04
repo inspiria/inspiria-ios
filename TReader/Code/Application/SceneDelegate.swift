@@ -14,42 +14,38 @@ import RxSwift
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var rootNavigator: Any?
+    var navigators: [Any]?
 
     private let auth = DefaultUseCaseProvider.provider.authUseCase()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-        guard (scene as? UIWindowScene) != nil else { return }
         guard let storyboard = session.configuration.storyboard else { return }
+        guard (scene as? UIWindowScene) != nil else { return }
         guard let rootController = window?.rootViewController as? UITabBarController else { return }
-        guard let navigationController = storyboard
-            .instantiateViewController(withIdentifier: "BooksListNavigationController") as? UINavigationController else { return }
 
-        let provider = DefaultUseCaseProvider.provider
+        let booksController = UINavigationController()
+        let annotationsController = UINavigationController()
 
-        rootController.setViewControllers([navigationController], animated: false)
+        booksController.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "Library"), tag: 0)
+        annotationsController.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "Notes"), tag: 1)
+
+        rootController.setViewControllers([booksController, annotationsController], animated: false)
 
         auth.showLogIn
             .do(onNext: { [unowned self] show in
                 if show {
-                    let navigator = DefaultLoginNavigator(services: provider,
-                                                          storyboard: storyboard,
-                                                          controller: rootController)
-                    navigator.toLogin()
-                    self.rootNavigator = navigator
+                    self.loadLogin(with: storyboard, rootController: rootController)
                 } else {
                     rootController.dismiss(animated: true, completion: nil)
-                    let navigator  = DefaultBooksListNavigator(services: provider,
-                                                               storyboard: storyboard,
-                                                               controller: navigationController)
-                    navigator.toList()
-                    self.rootNavigator = navigator
+                    self.loadMain(with: storyboard,
+                                  booksController: booksController,
+                                  annotationsController: annotationsController)
                 }
             })
             .flatMap { show -> Driver<Void> in
                 if !show {
-                    return provider
+                    return DefaultUseCaseProvider.provider
                         .annotationsUseCase()
                         .getUserProfile()
                         .asObservable()
@@ -61,6 +57,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         .drive()
         .disposed(by: rx.disposeBag)
+    }
+
+    func loadLogin(with storyboard: UIStoryboard, rootController: UITabBarController) {
+        let provider = DefaultUseCaseProvider.provider
+        let navigator = DefaultLoginNavigator(services: provider,
+                                              storyboard: storyboard,
+                                              controller: rootController)
+        navigator.toLogin()
+        self.navigators = [navigator]
+    }
+
+    func loadMain(with storyboard: UIStoryboard,
+                  booksController: UINavigationController,
+                  annotationsController: UINavigationController) {
+
+        let provider = DefaultUseCaseProvider.provider
+        let booksNavigator  = DefaultBooksListNavigator(services: provider,
+                                                   storyboard: storyboard,
+                                                   controller: booksController)
+        booksNavigator.toList()
+
+        let annotationsNavigator  = DefaultAnnotationsLibratyNavigator(services: provider,
+                                                                           storyboard: storyboard,
+                                                                           controller: annotationsController)
+        annotationsNavigator.toAnnotations()
+
+        self.navigators = [booksNavigator, annotationsNavigator]
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -86,12 +109,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         switch components.host {
         case "oauth":
             if let code = components.queryItems?.filter({ $0.name == "code" }).first?.value {
-                guard let navigator  = rootNavigator as? DefaultLoginNavigator else { return }
+                guard let navigator  = navigators?.compactMap({ $0 as? LoginNavigator }).first else { return }
                 navigator.toApp(with: code)
             }
         default:
             print("nothing to do")
         }
     }
-
 }
