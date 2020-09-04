@@ -10,8 +10,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class EditNoteViewController: UITableViewController {
-    var viewModel: EditNoteViewModel!
+class EditAnnotationViewController: UITableViewController {
+    var viewModel: EditAnnontationViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class EditNoteViewController: UITableViewController {
 
     private func bindViewModel() {
 
-        let input = EditNoteViewModel.Input()
+        let input = EditAnnontationViewModel.Input()
         let output = viewModel.transform(input: input)
         output.disposableDrivers.forEach { $0.drive().disposed(by: rx.disposeBag) }
 

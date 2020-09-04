@@ -89,9 +89,9 @@
 		3EE2AA14247FA9B000885EBE /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2AA13247FA9B000885EBE /* SortView.swift */; };
 		3EE2AA16247FA9C200885EBE /* SortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE2AA15247FA9C200885EBE /* SortView.xib */; };
 		3EE2AA18247FB4DD00885EBE /* UIView+NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2AA17247FB4DD00885EBE /* UIView+NibLoadable.swift */; };
-		3EE3C10524BE4F7B0047FC4D /* EditNoteNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10124BE4F7B0047FC4D /* EditNoteNavigator.swift */; };
-		3EE3C10624BE4F7B0047FC4D /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10224BE4F7B0047FC4D /* EditNoteViewController.swift */; };
-		3EE3C10724BE4F7B0047FC4D /* EditNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10324BE4F7B0047FC4D /* EditNoteViewModel.swift */; };
+		3EE3C10524BE4F7B0047FC4D /* EditAnnotationNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10124BE4F7B0047FC4D /* EditAnnotationNavigator.swift */; };
+		3EE3C10624BE4F7B0047FC4D /* EditAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10224BE4F7B0047FC4D /* EditAnnotationViewController.swift */; };
+		3EE3C10724BE4F7B0047FC4D /* EditAnnontationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10324BE4F7B0047FC4D /* EditAnnontationViewModel.swift */; };
 		3EE50E5624F93D230097886A /* higlight.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EE50E5524F93D230097886A /* higlight.js */; };
 		3EE50E5824F943260097886A /* JS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE50E5724F943260097886A /* JS.swift */; };
 		3EE50E5A24F946EA0097886A /* anchoring_standalone.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EE50E5924F946EA0097886A /* anchoring_standalone.js */; };
@@ -187,9 +187,9 @@
 		3EE2AA13247FA9B000885EBE /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
 		3EE2AA15247FA9C200885EBE /* SortView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortView.xib; sourceTree = "<group>"; };
 		3EE2AA17247FB4DD00885EBE /* UIView+NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+NibLoadable.swift"; sourceTree = "<group>"; };
-		3EE3C10124BE4F7B0047FC4D /* EditNoteNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteNavigator.swift; sourceTree = "<group>"; };
-		3EE3C10224BE4F7B0047FC4D /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
-		3EE3C10324BE4F7B0047FC4D /* EditNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewModel.swift; sourceTree = "<group>"; };
+		3EE3C10124BE4F7B0047FC4D /* EditAnnotationNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnnotationNavigator.swift; sourceTree = "<group>"; };
+		3EE3C10224BE4F7B0047FC4D /* EditAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnnotationViewController.swift; sourceTree = "<group>"; };
+		3EE3C10324BE4F7B0047FC4D /* EditAnnontationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnnontationViewModel.swift; sourceTree = "<group>"; };
 		3EE50E5524F93D230097886A /* higlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = higlight.js; sourceTree = "<group>"; };
 		3EE50E5724F943260097886A /* JS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JS.swift; sourceTree = "<group>"; };
 		3EE50E5924F946EA0097886A /* anchoring_standalone.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = anchoring_standalone.js; sourceTree = "<group>"; };
@@ -462,8 +462,8 @@
 				3EC05CC223F6CF4500862940 /* BooksList */,
 				3EE05618247D87A3004F3D13 /* Book */,
 				3E149F1A23F9D0DE006968D4 /* Content */,
-				3EE0561B247DAC80004F3D13 /* Notes */,
-				3EE3C10024BE4F600047FC4D /* EditNote */,
+				3EE0561B247DAC80004F3D13 /* Annotations */,
+				3EE3C10024BE4F600047FC4D /* EditAnnotation */,
 				3E8A1FC92482497C00A266D7 /* Bookmarks */,
 				3E2ECDD32483034F00247B09 /* Chapter */,
 				3E72FB0F24373D0800A378FE /* Chapters */,
@@ -515,7 +515,7 @@
 			path = Book;
 			sourceTree = "<group>";
 		};
-		3EE0561B247DAC80004F3D13 /* Notes */ = {
+		3EE0561B247DAC80004F3D13 /* Annotations */ = {
 			isa = PBXGroup;
 			children = (
 				3EE2AA12247FA97400885EBE /* Views */,
@@ -523,7 +523,7 @@
 				3EE0561E247DACCB004F3D13 /* AnnotationViewModel.swift */,
 				3EE0561C247DACCB004F3D13 /* AnnotationNavigator.swift */,
 			);
-			path = Notes;
+			path = Annotations;
 			sourceTree = "<group>";
 		};
 		3EE2AA12247FA97400885EBE /* Views */ = {
@@ -537,14 +537,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3EE3C10024BE4F600047FC4D /* EditNote */ = {
+		3EE3C10024BE4F600047FC4D /* EditAnnotation */ = {
 			isa = PBXGroup;
 			children = (
-				3EE3C10224BE4F7B0047FC4D /* EditNoteViewController.swift */,
-				3EE3C10324BE4F7B0047FC4D /* EditNoteViewModel.swift */,
-				3EE3C10124BE4F7B0047FC4D /* EditNoteNavigator.swift */,
+				3EE3C10224BE4F7B0047FC4D /* EditAnnotationViewController.swift */,
+				3EE3C10324BE4F7B0047FC4D /* EditAnnontationViewModel.swift */,
+				3EE3C10124BE4F7B0047FC4D /* EditAnnotationNavigator.swift */,
 			);
-			path = EditNote;
+			path = EditAnnotation;
 			sourceTree = "<group>";
 		};
 		3EF457B524C1986E00EC57BA /* JS */ = {
@@ -741,7 +741,7 @@
 				3E72FB1524373D2B00A378FE /* ChaptersViewController.swift in Sources */,
 				3E1002892494EFF300FB2AE3 /* ActivityIndicator.swift in Sources */,
 				3EE05620247DACCB004F3D13 /* AnnotationNavigator.swift in Sources */,
-				3EE3C10724BE4F7B0047FC4D /* EditNoteViewModel.swift in Sources */,
+				3EE3C10724BE4F7B0047FC4D /* EditAnnontationViewModel.swift in Sources */,
 				3ECF6F16241D208B0043E0D0 /* TRLabel.swift in Sources */,
 				3E8A1FD524824D5D00A266D7 /* Date+format.swift in Sources */,
 				3EE50E5824F943260097886A /* JS.swift in Sources */,
@@ -751,7 +751,7 @@
 				3ED413EE23F875D700BEC2C5 /* BooksUseCase.swift in Sources */,
 				3EA675FA243E0EE5001413A7 /* DeepLink.swift in Sources */,
 				3EE2AA18247FB4DD00885EBE /* UIView+NibLoadable.swift in Sources */,
-				3EE3C10624BE4F7B0047FC4D /* EditNoteViewController.swift in Sources */,
+				3EE3C10624BE4F7B0047FC4D /* EditAnnotationViewController.swift in Sources */,
 				3E53649C2402E0A800C896D4 /* BooksListToolbar.swift in Sources */,
 				3E10028B2494F1AC00FB2AE3 /* UIViewController+loadingHud.swift in Sources */,
 				3E8A1FD0248249BB00A266D7 /* BookmarksViewModel.swift in Sources */,
@@ -782,7 +782,7 @@
 				3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */,
 				3E38A95424322EBD00EA2E10 /* TRImageProvider.swift in Sources */,
 				3E97C1A0243A6B2C00B3A399 /* WebViewConfiguration.swift in Sources */,
-				3EE3C10524BE4F7B0047FC4D /* EditNoteNavigator.swift in Sources */,
+				3EE3C10524BE4F7B0047FC4D /* EditAnnotationNavigator.swift in Sources */,
 				3E8B4F10248FBDA700F0CB52 /* BookViewModel.swift in Sources */,
 				3EC05CC423F6CF7800862940 /* BooksListViewController.swift in Sources */,
 				3E38A95724326F5300EA2E10 /* ErrorTracker.swift in Sources */,

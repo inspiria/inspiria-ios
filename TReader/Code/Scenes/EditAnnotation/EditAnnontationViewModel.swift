@@ -10,8 +10,8 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class EditNoteViewModel {
-    private let navigator: EditNoteNavigator
+class EditAnnontationViewModel {
+    private let navigator: EditAnnotationNavigator
     private let annotation: Annotationable
 
     private let finalTextBehaviorRelay = BehaviorRelay<String>(value: "")
@@ -21,7 +21,7 @@ class EditNoteViewModel {
             .asSingle()
     }
 
-    init (navigator: EditNoteNavigator, annotation: Annotationable) {
+    init (navigator: EditAnnotationNavigator, annotation: Annotationable) {
         self.navigator = navigator
         self.annotation = annotation
     }
@@ -31,7 +31,7 @@ class EditNoteViewModel {
     }
 }
 
-extension EditNoteViewModel {
+extension EditAnnontationViewModel {
     struct Input {
     }
     struct Output {

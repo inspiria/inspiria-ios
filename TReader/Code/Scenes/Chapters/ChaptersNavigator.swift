@@ -76,7 +76,7 @@ class DefaultChaptersNavigator: ChaptersNavigator {
     }
 
     func toEdit(annotation: Annotation) -> Single<String> {
-        let navigator = DefaultEditNoteNavigator(services: services, controller: rootController)
+        let navigator = DefaultEditAnnotationNavigator(services: services, controller: rootController)
         return navigator.toEditNote(annotation: annotation)
     }
 }

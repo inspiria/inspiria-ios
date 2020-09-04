@@ -12,11 +12,11 @@ import SideMenu
 import RxSwift
 import RxCocoa
 
-protocol EditNoteNavigator {
+protocol EditAnnotationNavigator {
     func toEditNote(annotation: Annotationable) -> Single<String>
 }
 
-class DefaultEditNoteNavigator: EditNoteNavigator {
+class DefaultEditAnnotationNavigator: EditAnnotationNavigator {
     private let services: UseCaseProvider
     private let rootController: UINavigationController
 
@@ -27,8 +27,8 @@ class DefaultEditNoteNavigator: EditNoteNavigator {
     }
 
     func toEditNote(annotation: Annotationable) -> Single<String> {
-        let viewController = EditNoteViewController()
-        viewController.viewModel = EditNoteViewModel(navigator: self, annotation: annotation)
+        let viewController = EditAnnotationViewController()
+        viewController.viewModel = EditAnnontationViewModel(navigator: self, annotation: annotation)
 
         let menu = SideMenuNavigationController(rootViewController: viewController)
         menu.presentationStyle = .menuDissolveIn
