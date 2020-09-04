@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol ChaptersNavigator {
     func back()
     func toBook()
     func toSearch()
     func to(chapterId: Int, of book: Book)
-    func toEdit(annotation: Annotation)
-    func toCreate(annotation: String)
+    func toEdit(annotation: Annotation) -> Single<String>
     func chapterViewController(chapter: Chapter, book: Book) -> ChapterViewController
 }
 
@@ -74,13 +75,8 @@ class DefaultChaptersNavigator: ChaptersNavigator {
         return viewController
     }
 
-    func toEdit(annotation: Annotation) {
+    func toEdit(annotation: Annotation) -> Single<String> {
         let navigator = DefaultEditNoteNavigator(services: services, controller: rootController)
-        navigator.toEditNote()
-    }
-
-    func toCreate(annotation: String) {
-        let navigator = DefaultEditNoteNavigator(services: services, controller: rootController)
-        navigator.toEditNote()
+        return navigator.toEditNote(annotation: annotation)
     }
 }

@@ -39,15 +39,27 @@ class ChapterViewModel {
         return Output(chapter: chapter, openChapter: openChapter)
     }
 
-    func addAnnotatation(annotation: String) {
-        navigator.toCreate(annotation: annotation)
+    func add(annotation: JSAnnotation) {
+        let selector = AnnotationSelector.quote(TextQuoteSelector(exact: annotation.exact,
+                                                                  prefix: annotation.prefix,
+                                                                  suffix: annotation.suffix))
+        let target = AnnotationTarget(source: "", selector: [selector])
+        let ann = Annotation(id: "0",
+                             created: Date(),
+                             updated: Date(), user: "tadas",
+                             uri: "",
+                             text: "",
+                             tags: [],
+                             group: "",
+                             target: [target])
+        navigator.toEdit(annotation: ann)
     }
 
-    func addHighlight(annotation: String) {
+    func add(highlight: JSAnnotation) {
     }
 
-    func edit(annotation: String) {
-        navigator.toCreate(annotation: annotation)
+    func edit(annotation id: String) {
+//        navigator.toCreate(annotation: annotation)
     }
 }
 

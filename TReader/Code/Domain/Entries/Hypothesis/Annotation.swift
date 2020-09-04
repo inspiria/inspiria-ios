@@ -30,7 +30,14 @@ struct DeleteAnnotationResponse: Codable {
     let id: String
 }
 
-struct Annotation: Codable {
+protocol Annotationable {
+    var uri: String { get }
+    var text: String { get }
+    var created: Date { get }
+    var target: [AnnotationTarget] { get }
+}
+
+struct Annotation: Codable, Annotationable {
     let id: String
     let created: Date
     let updated: Date
@@ -53,6 +60,13 @@ struct Annotation: Codable {
         }
         return res.first ?? ""
     }
+}
+
+struct NewAnnotation: Codable, Annotationable {
+    let uri: String
+    let text: String
+    let created: Date
+    let target: [AnnotationTarget]
 }
 
 struct AnnotationTarget: Codable {
@@ -96,7 +110,7 @@ enum AnnotationSelector: Codable {
 }
 
 struct RangeSelector: Codable {
-    let type: AnnotationSelector.`Type`
+    let type: AnnotationSelector.`Type` = .range
     let endOffset: Int
     let startOffset: Int
     let endContainer: String
@@ -104,13 +118,13 @@ struct RangeSelector: Codable {
 }
 
 struct TextPositionSelector: Codable {
-    let type: AnnotationSelector.`Type`
+    let type: AnnotationSelector.`Type` = .position
     let end: Int
     let start: Int
 }
 
 struct TextQuoteSelector: Codable {
-    let type: AnnotationSelector.`Type`
+    let type: AnnotationSelector.`Type` = .quote
     let exact: String
     let prefix: String
     let suffix: String

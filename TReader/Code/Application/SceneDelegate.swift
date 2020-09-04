@@ -26,26 +26,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let navigationController = storyboard
             .instantiateViewController(withIdentifier: "BooksListNavigationController") as? UINavigationController else { return }
 
+        let provider = DefaultUseCaseProvider.provider
+
         rootController.setViewControllers([navigationController], animated: false)
 
         auth.showLogIn
-            .drive(onNext: { [unowned self] show in
+            .do(onNext: { [unowned self] show in
                 if show {
-                    let navigator = DefaultLoginNavigator(services: DefaultUseCaseProvider.provider,
+                    let navigator = DefaultLoginNavigator(services: provider,
                                                           storyboard: storyboard,
                                                           controller: rootController)
                     navigator.toLogin()
                     self.rootNavigator = navigator
                 } else {
                     rootController.dismiss(animated: true, completion: nil)
-                    let navigator  = DefaultBooksListNavigator(services: DefaultUseCaseProvider.provider,
+                    let navigator  = DefaultBooksListNavigator(services: provider,
                                                                storyboard: storyboard,
                                                                controller: navigationController)
                     navigator.toList()
                     self.rootNavigator = navigator
                 }
             })
-            .disposed(by: rx.disposeBag)
+            .flatMap { show -> Driver<Void> in
+                if !show {
+                    return provider
+                        .annotationsUseCase()
+                        .getUserProfile()
+                        .asObservable()
+                        .mapToVoid()
+                        .asDriver(onErrorJustReturn: ())
+                } else {
+                    return Driver.just(())
+                }
+        }
+        .drive()
+        .disposed(by: rx.disposeBag)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

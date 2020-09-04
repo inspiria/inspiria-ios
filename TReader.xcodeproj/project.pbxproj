@@ -31,7 +31,7 @@
 		3E38D9C024D48921007F473D /* LoginNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38D9BC24D48921007F473D /* LoginNavigator.swift */; };
 		3E38D9C124D48921007F473D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38D9BD24D48921007F473D /* LoginViewController.swift */; };
 		3E38D9C224D48921007F473D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38D9BE24D48921007F473D /* LoginViewModel.swift */; };
-		3E38D9C524D489CC007F473D /* OAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38D9C424D489CC007F473D /* OAuthUseCase.swift */; };
+		3E38D9C524D489CC007F473D /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E38D9C424D489CC007F473D /* UserUseCase.swift */; };
 		3E49890223F6B1670082322E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E49890123F6B1670082322E /* AppDelegate.swift */; };
 		3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E49890323F6B1670082322E /* SceneDelegate.swift */; };
 		3E49890923F6B1670082322E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E49890723F6B1670082322E /* Main.storyboard */; };
@@ -92,7 +92,10 @@
 		3EE3C10524BE4F7B0047FC4D /* EditNoteNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10124BE4F7B0047FC4D /* EditNoteNavigator.swift */; };
 		3EE3C10624BE4F7B0047FC4D /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10224BE4F7B0047FC4D /* EditNoteViewController.swift */; };
 		3EE3C10724BE4F7B0047FC4D /* EditNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10324BE4F7B0047FC4D /* EditNoteViewModel.swift */; };
-		3EF457B824C1989100EC57BA /* highlight.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EF457B624C1989100EC57BA /* highlight.js */; };
+		3EE50E5624F93D230097886A /* higlight.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EE50E5524F93D230097886A /* higlight.js */; };
+		3EE50E5824F943260097886A /* JS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE50E5724F943260097886A /* JS.swift */; };
+		3EE50E5A24F946EA0097886A /* anchoring_standalone.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EE50E5924F946EA0097886A /* anchoring_standalone.js */; };
+		3EF457B824C1989100EC57BA /* select.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EF457B624C1989100EC57BA /* select.js */; };
 		3EFF974B23FC2B7B000103FE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF974A23FC2B7B000103FE /* Book.swift */; };
 		AAA5DDD24CC0A2A5CE5DB2E0 /* Pods_TReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */; };
 /* End PBXBuildFile section */
@@ -124,7 +127,7 @@
 		3E38D9BC24D48921007F473D /* LoginNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigator.swift; sourceTree = "<group>"; };
 		3E38D9BD24D48921007F473D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3E38D9BE24D48921007F473D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		3E38D9C424D489CC007F473D /* OAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthUseCase.swift; sourceTree = "<group>"; };
+		3E38D9C424D489CC007F473D /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		3E4988FE23F6B1670082322E /* Inspiria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inspiria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E49890123F6B1670082322E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E49890323F6B1670082322E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,7 +190,10 @@
 		3EE3C10124BE4F7B0047FC4D /* EditNoteNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteNavigator.swift; sourceTree = "<group>"; };
 		3EE3C10224BE4F7B0047FC4D /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
 		3EE3C10324BE4F7B0047FC4D /* EditNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewModel.swift; sourceTree = "<group>"; };
-		3EF457B624C1989100EC57BA /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.js; sourceTree = "<group>"; };
+		3EE50E5524F93D230097886A /* higlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = higlight.js; sourceTree = "<group>"; };
+		3EE50E5724F943260097886A /* JS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JS.swift; sourceTree = "<group>"; };
+		3EE50E5924F946EA0097886A /* anchoring_standalone.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = anchoring_standalone.js; sourceTree = "<group>"; };
+		3EF457B624C1989100EC57BA /* select.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = select.js; sourceTree = "<group>"; };
 		3EFF974A23FC2B7B000103FE /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		591C195EBB897077DA992FD1 /* Pods-TReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TReader.debug.xcconfig"; path = "Target Support Files/Pods-TReader/Pods-TReader.debug.xcconfig"; sourceTree = "<group>"; };
 		91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +237,7 @@
 			children = (
 				3E18F3FF2493C44C002EBDEF /* UserProfile.swift */,
 				3E18F4052493D838002EBDEF /* Annotation.swift */,
+				3EE50E5724F943260097886A /* JS.swift */,
 			);
 			path = Hypothesis;
 			sourceTree = "<group>";
@@ -483,7 +490,7 @@
 				3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */,
 				3E2ECDCF2482F60700247B09 /* BookmarkUseCase.swift */,
 				3E18F4032493C9E1002EBDEF /* AnnotationsUseCase.swift */,
-				3E38D9C424D489CC007F473D /* OAuthUseCase.swift */,
+				3E38D9C424D489CC007F473D /* UserUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -546,7 +553,9 @@
 				3E18FB7524C8BFEB00579F9E /* BridgeDoc.md */,
 				3E29484924C606E100A65318 /* error.js */,
 				3E52755124F90F9C0043BA7E /* anchoring.js */,
-				3EF457B624C1989100EC57BA /* highlight.js */,
+				3EE50E5924F946EA0097886A /* anchoring_standalone.js */,
+				3EF457B624C1989100EC57BA /* select.js */,
+				3EE50E5524F93D230097886A /* higlight.js */,
 			);
 			path = JS;
 			sourceTree = "<group>";
@@ -632,13 +641,15 @@
 				3EE2AA16247FA9C200885EBE /* SortView.xib in Resources */,
 				3E49890E23F6B16A0082322E /* LaunchScreen.storyboard in Resources */,
 				3ECF6F14241CFF310043E0D0 /* NotoSerif-Bold.ttf in Resources */,
-				3EF457B824C1989100EC57BA /* highlight.js in Resources */,
+				3EF457B824C1989100EC57BA /* select.js in Resources */,
 				3ECF6F11241CFF310043E0D0 /* NotoSerif-Regular.ttf in Resources */,
 				3ECF6F13241CFF310043E0D0 /* NotoSerif-Italic.ttf in Resources */,
 				3ECF6F12241CFF310043E0D0 /* NotoSerif-Medium.ttf in Resources */,
 				3E52755224F90F9C0043BA7E /* anchoring.js in Resources */,
 				3E49890B23F6B16A0082322E /* Assets.xcassets in Resources */,
 				3E49890923F6B1670082322E /* Main.storyboard in Resources */,
+				3EE50E5624F93D230097886A /* higlight.js in Resources */,
+				3EE50E5A24F946EA0097886A /* anchoring_standalone.js in Resources */,
 				3E29484A24C606E100A65318 /* error.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,7 +730,7 @@
 				3E49890223F6B1670082322E /* AppDelegate.swift in Sources */,
 				3E5C5884248E457E00851F9C /* CoreDataContext.swift in Sources */,
 				3EE2AA14247FA9B000885EBE /* SortView.swift in Sources */,
-				3E38D9C524D489CC007F473D /* OAuthUseCase.swift in Sources */,
+				3E38D9C524D489CC007F473D /* UserUseCase.swift in Sources */,
 				3E38A9512432294800EA2E10 /* TRTextView.swift in Sources */,
 				3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */,
 				3E9CEDAB2402A849002E8FA3 /* Storyboard.swift in Sources */,
@@ -733,6 +744,7 @@
 				3EE3C10724BE4F7B0047FC4D /* EditNoteViewModel.swift in Sources */,
 				3ECF6F16241D208B0043E0D0 /* TRLabel.swift in Sources */,
 				3E8A1FD524824D5D00A266D7 /* Date+format.swift in Sources */,
+				3EE50E5824F943260097886A /* JS.swift in Sources */,
 				3ED413F523F8795200BEC2C5 /* BooksListViewModel.swift in Sources */,
 				3E03BDC524129FC600E16147 /* UIImageView+Kingfisher.swift in Sources */,
 				3E8A1FD324824B2B00A266D7 /* BookmarksCell.swift in Sources */,

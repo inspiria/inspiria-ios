@@ -11,10 +11,19 @@ import RxSwift
 import RxCocoa
 
 class EditNoteViewModel {
-    let navigator: EditNoteNavigator
+    private let navigator: EditNoteNavigator
+    private let annotation: Annotationable
 
-    init (navigator: EditNoteNavigator) {
+    private let finalTextBehaviorRelay = BehaviorRelay<String>(value: "")
+    var updatedText: Single<String> {
+        finalTextBehaviorRelay
+            .asObservable().skip(1)
+            .asSingle()
+    }
+
+    init (navigator: EditNoteNavigator, annotation: Annotationable) {
         self.navigator = navigator
+        self.annotation = annotation
     }
 
     func transform(input: Input) -> Output {

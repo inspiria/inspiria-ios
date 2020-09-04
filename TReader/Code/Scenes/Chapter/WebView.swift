@@ -24,20 +24,20 @@ class WebView: WKWebView {
 
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         switch action {
-        case #selector(self.annotate): return true
-        case #selector(self.highlight): return true
+        case #selector(self.annotateSelection): return true
+        case #selector(self.highlightSelection): return true
         case #selector(self.copy(_:)): return (UIMenuController.shared.menuItems?.count ?? 0 > 2 ? false : true)
         default: return false
         }
     }
 
     private func setDefaultMenu() {
-        let annotate = UIMenuItem(title: "Annotate", action: #selector(self.annotate))
-        let highlight = UIMenuItem(title: "Highlight", action: #selector(self.highlight))
+        let annotate = UIMenuItem(title: "Annotate", action: #selector(self.annotateSelection))
+        let highlight = UIMenuItem(title: "Highlight", action: #selector(self.highlightSelection))
         UIMenuController.shared.menuItems = [annotate, highlight]
     }
 
-    @objc private func annotate() {
+    @objc private func annotateSelection() {
         let js = "annotate(\"\(defaultColor)\");"
         evaluateJavaScript(js) { (obj, err) in
             if let err = err { print(err) }
@@ -46,12 +46,21 @@ class WebView: WKWebView {
         UIMenuController.shared.hideMenu()
     }
 
-    @objc private func highlight() {
+    @objc private func highlightSelection() {
         let js = "highlight(\"\(defaultColor)\");"
         evaluateJavaScript(js) { (obj, err) in
             if let err = err { print(err) }
             if let obj = obj { print(obj) }
         }
         UIMenuController.shared.hideMenu()
+    }
+
+    func add(annontation: JSAnnotation) {
+        //            let js = "attach_annotation(\"\(annotation.exact)\",\"\(annotation.prefix)\");"
+        //            print("js : \(js)")
+        //            webView.evaluateJavaScript(js) { (obj, err) in
+        //                if let err = err { print(err) }
+        //                if let obj = obj { print(obj) }
+        //            }
     }
 }

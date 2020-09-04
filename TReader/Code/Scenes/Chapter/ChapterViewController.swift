@@ -97,13 +97,15 @@ extension ChapterViewController: WKScriptMessageHandler {
         case "error":
             print("js error: \(message.body)")
         case "annotate":
-            print("js annotate: \(message.body)")
-            guard let ann = message.body as? String else { return }
-            viewModel.addAnnotatation(annotation: ann)
+            guard let str = message.body as? String else { return }
+            guard let annotation = try? JSAnnotation(json: str) else { return }
+            webView.add(annontation: annotation)
+            viewModel.add(annotation: annotation)
         case "highlight":
-            print("js highlight: \(message.body)")
-            guard let ann = message.body as? String else { return }
-            viewModel.addHighlight(annotation: ann)
+            guard let str = message.body as? String else { return }
+            guard let annotation = try? JSAnnotation(json: str) else { return }
+            webView.add(annontation: annotation)
+            viewModel.add(highlight: annotation)
         case "select":
             print("js select: \(message.body)")
             guard let ann = message.body as? String else { return }

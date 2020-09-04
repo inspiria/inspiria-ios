@@ -72,6 +72,6 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
 
     func toEdit(annotation: Annotation) {
         let navigator = DefaultEditNoteNavigator(services: services, controller: rootController)
-        navigator.toEditNote()
+        navigator.toEditNote(annotation: annotation)
     }
 }

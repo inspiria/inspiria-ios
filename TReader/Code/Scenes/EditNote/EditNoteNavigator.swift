@@ -9,8 +9,11 @@
 import UIKit
 import SideMenu
 
+import RxSwift
+import RxCocoa
+
 protocol EditNoteNavigator {
-    func toEditNote()
+    func toEditNote(annotation: Annotationable) -> Single<String>
 }
 
 class DefaultEditNoteNavigator: EditNoteNavigator {
@@ -23,9 +26,9 @@ class DefaultEditNoteNavigator: EditNoteNavigator {
         self.rootController = controller
     }
 
-    func toEditNote() {
+    func toEditNote(annotation: Annotationable) -> Single<String> {
         let viewController = EditNoteViewController()
-        viewController.viewModel = EditNoteViewModel(navigator: self)
+        viewController.viewModel = EditNoteViewModel(navigator: self, annotation: annotation)
 
         let menu = SideMenuNavigationController(rootViewController: viewController)
         menu.presentationStyle = .menuDissolveIn
@@ -34,5 +37,7 @@ class DefaultEditNoteNavigator: EditNoteNavigator {
         menu.settings.statusBarEndAlpha = 0
 
         rootController.present(menu, animated: true, completion: nil)
+
+        return viewController.viewModel.updatedText
     }
 }

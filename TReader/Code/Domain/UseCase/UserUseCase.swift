@@ -27,7 +27,7 @@ protocol Authorization {
     func accessToken() -> Single<String?>
 }
 
-protocol OAuthUseCase {
+protocol UserUseCase {
     var loggedIn: Driver <Bool> { get }
     var showLogIn: Driver <Bool> { get }
 
@@ -38,7 +38,7 @@ protocol OAuthUseCase {
     func accessToken() -> Single<String?>
 }
 
-class HypothesisOAuthUseCase: OAuthUseCase, Authorization {
+class HypothesisUserUseCase: UserUseCase, Authorization {
     private let clientId = "4af80306-d349-11ea-9e36-ef8ded55ca92"
     fileprivate lazy var accessTokenRelay = BehaviorRelay<AccessToken?>(value: latestAccessToken())
     fileprivate lazy var showLogInRelay = BehaviorRelay<Bool>(value: latestShowLogIn())
@@ -50,8 +50,8 @@ class HypothesisOAuthUseCase: OAuthUseCase, Authorization {
         self.networkService = networkService
     }
 
-    var loggedIn: Driver<Bool> { return accessTokenRelay.asDriver().map { $0 != nil } }
-    var showLogIn: Driver<Bool> { return showLogInRelay.asDriver() }
+    var loggedIn: Driver<Bool> { accessTokenRelay.asDriver().map { $0 != nil } }
+    var showLogIn: Driver<Bool> { showLogInRelay.asDriver() }
 
     var oAuthUrl: URL {
         let str = "\(networkService.url)/oauth/authorize?client_id=\(clientId)&response_type=code"
@@ -66,10 +66,11 @@ class HypothesisOAuthUseCase: OAuthUseCase, Authorization {
         guard code.count > 0 else { return Single<AccessToken>.error(OAuthError.emptyCode) }
         let body = AccessTokenBody(code: code, clientId: clientId)
         let response: Single<AccessToken> = networkService.request(path: "api/token", method: .post, contentType: .urlencoded, data: body)
-        return response.do( onSuccess: { [unowned self] token in
-            self.set(token: token)
-            self.set(showLogIn: false)
-        })
+        return response
+            .do(onSuccess: { [unowned self] token in
+                self.set(token: token)
+                self.set(showLogIn: false)
+            })
     }
 
     private func refreshToken(with refreshToken: String) -> Single<AccessToken> {
@@ -82,7 +83,7 @@ class HypothesisOAuthUseCase: OAuthUseCase, Authorization {
                     //TODO: Handle token refresh failure
                     self.set(token: nil)
                     self.set(showLogIn: true)
-            })
+                })
     }
 
     func accessToken() -> Single<String?> {
@@ -94,30 +95,30 @@ class HypothesisOAuthUseCase: OAuthUseCase, Authorization {
     }
 }
 
-fileprivate extension HypothesisOAuthUseCase {
+fileprivate extension HypothesisUserUseCase {
     private static let kSessionDataKey = "session-data-key"
     private static let kShowLogInKey = "show-log-in-key"
 
     func latestAccessToken() -> AccessToken? {
-        guard let data = UserDefaults.standard.data(forKey: HypothesisOAuthUseCase.kSessionDataKey) else { return nil }
+        guard let data = UserDefaults.standard.data(forKey: HypothesisUserUseCase.kSessionDataKey) else { return nil }
         return try? AccessToken(data: data)
     }
 
     func set(token: AccessToken?) {
         accessTokenRelay.accept(token)
         let data = token?.jsonDataOrNil()
-        UserDefaults.standard.set(data, forKey: HypothesisOAuthUseCase.kSessionDataKey)
+        UserDefaults.standard.set(data, forKey: HypothesisUserUseCase.kSessionDataKey)
         UserDefaults.standard.synchronize()
     }
 
     func latestShowLogIn() -> Bool {
-        guard UserDefaults.standard.value(forKey: HypothesisOAuthUseCase.kShowLogInKey) != nil else { return true }
-        return UserDefaults.standard.bool(forKey: HypothesisOAuthUseCase.kShowLogInKey)
+        guard UserDefaults.standard.value(forKey: HypothesisUserUseCase.kShowLogInKey) != nil else { return true }
+        return UserDefaults.standard.bool(forKey: HypothesisUserUseCase.kShowLogInKey)
     }
 
     func set(showLogIn: Bool) {
         showLogInRelay.accept(showLogIn)
-        UserDefaults.standard.set(showLogIn, forKey: HypothesisOAuthUseCase.kShowLogInKey)
+        UserDefaults.standard.set(showLogIn, forKey: HypothesisUserUseCase.kShowLogInKey)
         UserDefaults.standard.synchronize()
     }
 }

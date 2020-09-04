@@ -13,11 +13,11 @@ import RxOptional
 
 class LoginViewModel {
     let navigator: LoginNavigator
-    let authUseCase: OAuthUseCase
+    let authUseCase: UserUseCase
 
     private let codeRelay = BehaviorRelay<String?>(value: nil)
 
-    init (navigator: LoginNavigator, authUseCase: OAuthUseCase) {
+    init (navigator: LoginNavigator, authUseCase: UserUseCase) {
         self.navigator = navigator
         self.authUseCase = authUseCase
     }

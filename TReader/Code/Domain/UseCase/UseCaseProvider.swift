@@ -12,7 +12,7 @@ protocol UseCaseProvider {
     func booksUseCase() -> BooksUseCase
     func bookmarkUseCase() -> BookmarkUseCase
     func annotationsUseCase() -> AnnotationsUseCase
-    func authUseCase() -> OAuthUseCase
+    func authUseCase() -> UserUseCase
 }
 
 class DefaultUseCaseProvider: UseCaseProvider {
@@ -20,7 +20,7 @@ class DefaultUseCaseProvider: UseCaseProvider {
     private let mNetworkService: NetworkService
     private let mHypothesisNetworkService: NetworkService
     private let mCoreDataContext = CoreDataContext()
-    private let mOAuthUseCase = HypothesisOAuthUseCase(networkService: NetworkService(url: "https://hypothes.is"))
+    private let mOAuthUseCase = HypothesisUserUseCase(networkService: NetworkService(url: "https://hypothes.is"))
 
     init() {
         let url: String
@@ -48,7 +48,7 @@ class DefaultUseCaseProvider: UseCaseProvider {
         return HypothesisAnnotationsUseCase(networkService: mHypothesisNetworkService)
     }
 
-    func authUseCase() -> OAuthUseCase {
+    func authUseCase() -> UserUseCase {
         return mOAuthUseCase
     }
 }

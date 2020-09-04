@@ -13,19 +13,10 @@ class WebViewConfiguration: WKWebViewConfiguration {
         super.init()
 
         let controller = WKUserContentController()
-
-        if let js = Self.script(with: "error") {
-            let userScript = WKUserScript(source: js, injectionTime: .atDocumentStart, forMainFrameOnly: true)
-            controller.addUserScript(userScript)
-        }
-        if let js = Self.script(with: "anchoring") {
-            let userScript = WKUserScript(source: js, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-            controller.addUserScript(userScript)
-        }
-        if let js = Self.script(with: "highlight") {
-            let userScript = WKUserScript(source: js, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-            controller.addUserScript(userScript)
-        }
+        let scripts = ["error", "anchoring", "anchoring_standalone", "higlight", "select"]
+        scripts
+            .compactMap { WebViewConfiguration.script(with: $0) }
+            .forEach { controller.addUserScript($0) }
 
         self.userContentController = controller
         self.preferences.javaScriptEnabled = true
@@ -35,8 +26,9 @@ class WebViewConfiguration: WKWebViewConfiguration {
         fatalError("init(coder:) has not been implemented")
     }
 
-    static func script(with name: String) -> String? {
+    static func script(with name: String) -> WKUserScript? {
         guard let path = Bundle.main.path(forResource: name, ofType: "js") else { return nil }
-        return try? String(contentsOfFile: path)
+        guard let js = try? String(contentsOfFile: path) else { return nil }
+        return WKUserScript(source: js, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
     }
 }

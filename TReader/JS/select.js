@@ -1,5 +1,4 @@
 function selectText(colour) {
-
   const selection = document.getSelection()
   if (! selection.rangeCount ) {
     alert("Please select some text.")
@@ -20,8 +19,6 @@ function selectText(colour) {
   const title = titleElement ? titleElement.innerText : location.href
 
   const data = {
-    uri: location.href,
-    title: title,
     exact: exact,
     prefix: prefix,
     suffix: suffix,
