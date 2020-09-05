@@ -13,8 +13,7 @@ import RxAlertController
 
 class AnnotationViewController: UITableViewController {
     var viewModel: AnnotationViewModel!
-
-    @IBOutlet var headerView: AnnotationHeaderView!
+    var headerView: AnnotationHeaderView = AnnotationHeaderView.view()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +27,7 @@ class AnnotationViewController: UITableViewController {
         tableView.delegate = nil
 
         tableView.refreshControl = UIRefreshControl()
+        tableView.tableHeaderView = headerView
     }
 
     private func bindViewModel() {

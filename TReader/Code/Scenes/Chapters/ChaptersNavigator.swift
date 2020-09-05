@@ -13,7 +13,7 @@ import RxCocoa
 protocol ChaptersNavigator {
     func back()
     func toBook()
-    func toSearch()
+    func toSearch(book: Book)
     func to(chapterId: Int, of book: Book)
     func toEdit(annotation: Annotation) -> Single<String>
     func chapterViewController(chapter: Chapter, book: Book) -> ChapterViewController
@@ -40,10 +40,11 @@ class DefaultChaptersNavigator: ChaptersNavigator {
         rootController.popViewController(animated: true)
     }
 
-    func toSearch() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemOrange
-        rootController.present(vc, animated: true, completion: nil)
+    func toSearch(book: Book) {
+        let navigator = DefaultSearchBookNavigator(services: services,
+                                                   storyboard: storyboard,
+                                                   controller: rootController)
+        navigator.toSearch(book: book)
     }
 
     func to(chapterId: Int, of book: Book) {

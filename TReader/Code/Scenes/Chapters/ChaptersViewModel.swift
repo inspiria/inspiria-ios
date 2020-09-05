@@ -33,7 +33,9 @@ class ChaptersViewModel {
         let toContent = input.toContent
             .do(onNext: navigator.toBook)
         let search = input.search
+            .map { _ in self.book }
             .do(onNext: navigator.toSearch)
+            .mapToVoid()
         let bookmarkValue = input.chapter
             .map { [unowned self] in self.bookmarkUseCase.bookmark(book: self.book.info.id, chapter: $0) != nil }
         let bookmarkAction = input.addBookmark

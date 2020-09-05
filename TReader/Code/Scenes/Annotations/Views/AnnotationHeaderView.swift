@@ -10,13 +10,17 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class AnnotationHeaderView: UIStackView {
+class AnnotationHeaderView: UIStackView, NibLoadable {
 
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var searchContainer: UIView!
     @IBOutlet var defaultBar: UIView!
     @IBOutlet var searchButton: UIButton!
     @IBOutlet var sortButton: UIButton!
+
+    class func view() -> AnnotationHeaderView {
+        return AnnotationHeaderView.fromNib()
+    }
 
     override func awakeFromNib() {
         showSearchBar(false)

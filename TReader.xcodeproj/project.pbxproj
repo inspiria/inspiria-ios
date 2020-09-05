@@ -54,6 +54,10 @@
 		3E8A1FD524824D5D00A266D7 /* Date+format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A1FD424824D5D00A266D7 /* Date+format.swift */; };
 		3E8B4F10248FBDA700F0CB52 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8B4F0F248FBDA700F0CB52 /* BookViewModel.swift */; };
 		3E97C1A0243A6B2C00B3A399 /* WebViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E97C19F243A6B2C00B3A399 /* WebViewConfiguration.swift */; };
+		3E9C857E2502B0D500FA8E7D /* SearchBookNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9C857A2502B0D500FA8E7D /* SearchBookNavigator.swift */; };
+		3E9C857F2502B0D500FA8E7D /* SearchBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9C857B2502B0D500FA8E7D /* SearchBookViewController.swift */; };
+		3E9C85802502B0D500FA8E7D /* SearchBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9C857C2502B0D500FA8E7D /* SearchBookViewModel.swift */; };
+		3E9C85832503587B00FA8E7D /* AnnotationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9C85822503587B00FA8E7D /* AnnotationHeaderView.xib */; };
 		3E9CEDA924028858002E8FA3 /* BooksStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CEDA824028858002E8FA3 /* BooksStorage.swift */; };
 		3E9CEDAB2402A849002E8FA3 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CEDAA2402A849002E8FA3 /* Storyboard.swift */; };
 		3EA675FA243E0EE5001413A7 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA675F9243E0EE5001413A7 /* DeepLink.swift */; };
@@ -152,6 +156,10 @@
 		3E8A1FD424824D5D00A266D7 /* Date+format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+format.swift"; sourceTree = "<group>"; };
 		3E8B4F0F248FBDA700F0CB52 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		3E97C19F243A6B2C00B3A399 /* WebViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewConfiguration.swift; sourceTree = "<group>"; };
+		3E9C857A2502B0D500FA8E7D /* SearchBookNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookNavigator.swift; sourceTree = "<group>"; };
+		3E9C857B2502B0D500FA8E7D /* SearchBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewController.swift; sourceTree = "<group>"; };
+		3E9C857C2502B0D500FA8E7D /* SearchBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewModel.swift; sourceTree = "<group>"; };
+		3E9C85822503587B00FA8E7D /* AnnotationHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnotationHeaderView.xib; sourceTree = "<group>"; };
 		3E9CEDA824028858002E8FA3 /* BooksStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksStorage.swift; sourceTree = "<group>"; };
 		3E9CEDAA2402A849002E8FA3 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		3EA675F9243E0EE5001413A7 /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
@@ -357,6 +365,16 @@
 			path = Bookmarks;
 			sourceTree = "<group>";
 		};
+		3E9C85792502B0BA00FA8E7D /* SearchBook */ = {
+			isa = PBXGroup;
+			children = (
+				3E9C857B2502B0D500FA8E7D /* SearchBookViewController.swift */,
+				3E9C857C2502B0D500FA8E7D /* SearchBookViewModel.swift */,
+				3E9C857A2502B0D500FA8E7D /* SearchBookNavigator.swift */,
+			);
+			path = SearchBook;
+			sourceTree = "<group>";
+		};
 		3E9CEDA724028842002E8FA3 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +485,7 @@
 				3E8A1FC92482497C00A266D7 /* Bookmarks */,
 				3E2ECDD32483034F00247B09 /* Chapter */,
 				3E72FB0F24373D0800A378FE /* Chapters */,
+				3E9C85792502B0BA00FA8E7D /* SearchBook */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -530,6 +549,7 @@
 			isa = PBXGroup;
 			children = (
 				3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */,
+				3E9C85822503587B00FA8E7D /* AnnotationHeaderView.xib */,
 				3EC8306B247E707D008E0597 /* AnnotationCell.swift */,
 				3EE2AA13247FA9B000885EBE /* SortView.swift */,
 				3EE2AA15247FA9C200885EBE /* SortView.xib */,
@@ -646,6 +666,7 @@
 				3ECF6F13241CFF310043E0D0 /* NotoSerif-Italic.ttf in Resources */,
 				3ECF6F12241CFF310043E0D0 /* NotoSerif-Medium.ttf in Resources */,
 				3E52755224F90F9C0043BA7E /* anchoring.js in Resources */,
+				3E9C85832503587B00FA8E7D /* AnnotationHeaderView.xib in Resources */,
 				3E49890B23F6B16A0082322E /* Assets.xcassets in Resources */,
 				3E49890923F6B1670082322E /* Main.storyboard in Resources */,
 				3EE50E5624F93D230097886A /* higlight.js in Resources */,
@@ -722,6 +743,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E4A0A4424C773A100D5D563 /* WebView.swift in Sources */,
+				3E9C85802502B0D500FA8E7D /* SearchBookViewModel.swift in Sources */,
 				3E18F4062493D838002EBDEF /* Annotation.swift in Sources */,
 				3E5BAADC2424222B00C3AB06 /* Author.swift in Sources */,
 				3E38D9C024D48921007F473D /* LoginNavigator.swift in Sources */,
@@ -778,6 +800,7 @@
 				3EFF974B23FC2B7B000103FE /* Book.swift in Sources */,
 				3E0A588024116C3100B09EE0 /* ChapterViewController.swift in Sources */,
 				3E72FB1424373D2B00A378FE /* ChaptersNavigator.swift in Sources */,
+				3E9C857F2502B0D500FA8E7D /* SearchBookViewController.swift in Sources */,
 				3E5335002487A25600D69182 /* ChaptersViewModel.swift in Sources */,
 				3E149F2023F9D112006968D4 /* ContentViewController.swift in Sources */,
 				3E38A95424322EBD00EA2E10 /* TRImageProvider.swift in Sources */,
@@ -785,6 +808,7 @@
 				3EE3C10524BE4F7B0047FC4D /* EditAnnotationNavigator.swift in Sources */,
 				3E8B4F10248FBDA700F0CB52 /* BookViewModel.swift in Sources */,
 				3EC05CC423F6CF7800862940 /* BooksListViewController.swift in Sources */,
+				3E9C857E2502B0D500FA8E7D /* SearchBookNavigator.swift in Sources */,
 				3E38A95724326F5300EA2E10 /* ErrorTracker.swift in Sources */,
 				3E38D9C124D48921007F473D /* LoginViewController.swift in Sources */,
 				3E8A1FCE248249BB00A266D7 /* BookmarksNavigator.swift in Sources */,
