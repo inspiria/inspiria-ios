@@ -27,7 +27,7 @@ class DefaultSearchBookNavigator: SearchBookNavigator {
 
     func toSearch(book: Book) {
         let viewController: SearchBookViewController = storyboard.instantiateViewController()
-        viewController.viewModel = SearchBookViewModel(navigator: self)
+        viewController.viewModel = SearchBookViewModel(book: book, searchUseCase: services.bookSearchUseCase(), navigator: self)
         rootController.present(viewController, animated: true, completion: nil)
     }
 }

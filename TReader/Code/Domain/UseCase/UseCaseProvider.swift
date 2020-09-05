@@ -10,6 +10,8 @@ import Foundation
 
 protocol UseCaseProvider {
     func booksUseCase() -> BooksUseCase
+    func bookSearchUseCase() -> BookSearchUseCase
+    func bookFilesService() -> BookFilesService
     func bookmarkUseCase() -> BookmarkUseCase
     func annotationsUseCase() -> AnnotationsUseCase
     func authUseCase() -> UserUseCase
@@ -37,7 +39,15 @@ class DefaultUseCaseProvider: UseCaseProvider {
     func booksUseCase() -> BooksUseCase {
         return DefaultBooksUseCase(networkService: mNetworkService,
                                    bookStorage: DefaultBooksStorage(userDefaults: UserDefaults.standard,
-                                                                    filesService: DefaultBookFilesService(manager: FileManager.default)))
+                                                                    filesService: bookFilesService()))
+    }
+
+    func bookSearchUseCase() -> BookSearchUseCase {
+        return DefaultBookSearchUseCase(filesService: bookFilesService())
+    }
+
+    func bookFilesService() -> BookFilesService {
+        return DefaultBookFilesService(manager: FileManager.default)
     }
 
     func bookmarkUseCase() -> BookmarkUseCase {
@@ -51,4 +61,5 @@ class DefaultUseCaseProvider: UseCaseProvider {
     func authUseCase() -> UserUseCase {
         return mOAuthUseCase
     }
+    
 }

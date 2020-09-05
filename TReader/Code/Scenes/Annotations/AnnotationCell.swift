@@ -57,8 +57,8 @@ class AnnotationCell: UITableViewCell {
 
         if let str = model.highlight, !str.isEmpty {
             let strings = str.components(separatedBy: " ")
-            quoteLabel.attributedText = model.annotation.quote.highlight(text: strings)
-            userTextLabel.attributedString = model.annotation.text.highlight(text: strings)
+            quoteLabel.attributedText = model.annotation.quote.highlight(text: strings, color: ColorStyle.orange.color)
+            userTextLabel.attributedString = model.annotation.text.highlight(text: strings, color: ColorStyle.orange.color)
         } else {
             quoteLabel.text = model.annotation.quote
             userTextLabel.attributedString = model.annotation.text.highlight(text: [])
@@ -82,7 +82,7 @@ class AnnotationCell: UITableViewCell {
 }
 
 extension String {
-    func highlight(text: [String]) -> NSAttributedString? {
+    func highlight(text: [String], color: UIColor? = nil, font: UIFont? = nil) -> NSAttributedString? {
         let matches: [NSTextCheckingResult] = text.flatMap { text -> [NSTextCheckingResult] in
             guard let regex = try? NSRegularExpression(pattern: text, options: .caseInsensitive) else { return [] }
             let range = NSRange(location: 0, length: self.utf16.count)
@@ -91,9 +91,12 @@ extension String {
 
         let string = NSMutableAttributedString(string: self)
         matches.forEach {
-            string.addAttribute(NSAttributedString.Key.foregroundColor,
-                                          value: ColorStyle.orange.color,
-                                          range: $0.range)
+            if let color = color {
+                string.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: $0.range)
+            }
+            if let font = font {
+                string.addAttribute(NSAttributedString.Key.font, value: font, range: $0.range)
+            }
         }
         return string
     }

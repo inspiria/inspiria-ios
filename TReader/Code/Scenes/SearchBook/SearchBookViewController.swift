@@ -26,12 +26,32 @@ class SearchBookViewController: UITableViewController {
     func configureView() {
         tableView.dataSource = nil
         tableView.delegate = nil
+        tableView.tableFooterView = UIView()
+        tableView.register(SubtitleCell.nib(), forCellReuseIdentifier: SubtitleCell.reuseIdentifier)
     }
 
     private func bindViewModel() {
-        let input = SearchBookViewModel.Input()
+        let search = searchBar.rx.textChanged
+            .map { $0.count > 0 ? $0 : nil }
+            .asDriver(onErrorJustReturn: nil)
+            .debounce(0.5)
+
+        let itemSelected = tableView
+            .rx.itemSelected.debug()
+            .map { $0.row }
+            .asDriverOnErrorJustComplete()
+
+        let input = SearchBookViewModel.Input(searchTrigger: search, itemSelected: itemSelected)
         let output = viewModel.transform(input: input)
-        output.disposableDrivers.forEach { $0.drive().disposed(by: rx.disposeBag) }
+        let cellIdentifier = SubtitleCell.reuseIdentifier
+        let cellType = SubtitleCell.self
+
+        output.items
+            .asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: cellType)) { _, model, cell in
+                cell.set(model: model)
+        }
+        .disposed(by: rx.disposeBag)
 
         rx.viewWillAppear
             .subscribe(onNext: showKeyboard(show:))

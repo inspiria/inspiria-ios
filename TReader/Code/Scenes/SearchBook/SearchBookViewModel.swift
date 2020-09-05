@@ -10,22 +10,44 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class SearchBookViewModel {
-    let navigator: SearchBookNavigator
+struct SearchItem {
+    let model: BookSearchResult
+    let highlight: String?
+}
 
-    init (navigator: SearchBookNavigator) {
+class SearchBookViewModel {
+    let book: Book
+    let navigator: SearchBookNavigator
+    let searchUseCase: BookSearchUseCase
+
+    init (book: Book, searchUseCase: BookSearchUseCase, navigator: SearchBookNavigator) {
+        self.book = book
+        self.searchUseCase = searchUseCase
         self.navigator = navigator
     }
 
     func transform(input: Input) -> Output {
-        return Output(disposableDrivers: [])
+        let items = input.searchTrigger
+            .flatMap { query -> Driver<[SearchItem]> in
+                guard let query = query, query.count > 0 else { return Driver.just([]) }
+                return self.searchUseCase
+                    .search(query: query, in: self.book)
+                    .asDriver(onErrorJustReturn: [])
+                    .map { $0.map { SearchItem(model: $0, highlight: query) } }
+            }
+        let selected = input.itemSelected.mapToVoid()
+
+        return Output(items: items, selected: selected)
     }
 }
 
 extension SearchBookViewModel {
     struct Input {
+        let searchTrigger: Driver<String?>
+        let itemSelected: Driver<Int>
     }
     struct Output {
-        let disposableDrivers: [Driver<Void>]
+        let items: Driver<[SearchItem]>
+        let selected: Driver<Void>
     }
 }
