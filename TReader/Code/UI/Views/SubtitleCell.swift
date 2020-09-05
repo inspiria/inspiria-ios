@@ -1,5 +1,5 @@
 //
-//  BookmarksCell.swift
+//  SubtitleCell.swift
 //  TReader
 //
 //  Created by tadas on 2020-05-30.

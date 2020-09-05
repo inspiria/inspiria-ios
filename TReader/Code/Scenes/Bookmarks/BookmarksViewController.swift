@@ -24,6 +24,7 @@ class BookmarksViewController: UITableViewController {
         tableView.dataSource = nil
         tableView.delegate = nil
         tableView.tableFooterView = UIView()
+        tableView.register(SubtitleCell.nib(), forCellReuseIdentifier: SubtitleCell.reuseIdentifier)
     }
 
     private func bindViewModel() {
@@ -33,8 +34,8 @@ class BookmarksViewController: UITableViewController {
             .asDriverOnErrorJustComplete()
         let input = BookmarksViewModel.Input(itemSelected: itemSelected)
         let output = viewModel.transform(input: input)
-        let cellIdentifier = BookmarksCell.reuseIdentifier
-        let cellType = BookmarksCell.self
+        let cellIdentifier = SubtitleCell.reuseIdentifier
+        let cellType = SubtitleCell.self
 
         output.bookmarks
             .asObservable()

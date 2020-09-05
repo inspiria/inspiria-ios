@@ -13,7 +13,7 @@ import RxAlertController
 
 class AnnotationViewController: UITableViewController {
     var viewModel: AnnotationViewModel!
-    var headerView: AnnotationHeaderView = AnnotationHeaderView.view()
+    var headerView: SearchHeaderView = SearchHeaderView.view()
 
     override func viewDidLoad() {
         super.viewDidLoad()

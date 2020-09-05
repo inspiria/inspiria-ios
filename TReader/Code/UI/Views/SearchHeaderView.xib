@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" id="OAP-rY-eVW" userLabel="AnnotationHeaderView" customClass="AnnotationHeaderView" customModule="Inspiria" customModuleProvider="target">
+        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" id="OAP-rY-eVW" userLabel="SearchHeaderView" customClass="SearchHeaderView" customModule="Inspiria" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>

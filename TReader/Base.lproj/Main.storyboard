@@ -130,52 +130,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="separatorColor" name="MenuGray"/>
                         <inset key="separatorInset" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="BookmarksCell" id="Hpx-r9-8fw" customClass="BookmarksCell" customModule="Inspiria" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="60.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hpx-r9-8fw" id="SpC-ax-17z">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOO-Zp-jLo">
-                                            <rect key="frame" x="12" y="12" width="31" height="17"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                            <color key="textColor" name="TextDark"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiM-AD-9Qq">
-                                            <rect key="frame" x="12" y="33" width="26.5" height="15"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bc6-m8-JFJ">
-                                            <rect key="frame" x="373.5" y="23" width="28.5" height="14.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" name="DarkGray"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="KiM-AD-9Qq" firstAttribute="top" secondItem="LOO-Zp-jLo" secondAttribute="bottom" constant="4" id="0eM-Zw-b6H"/>
-                                        <constraint firstItem="bc6-m8-JFJ" firstAttribute="centerY" secondItem="SpC-ax-17z" secondAttribute="centerY" id="3Yb-3y-nVu"/>
-                                        <constraint firstItem="KiM-AD-9Qq" firstAttribute="leading" secondItem="LOO-Zp-jLo" secondAttribute="leading" id="3oy-iI-AwZ"/>
-                                        <constraint firstItem="bc6-m8-JFJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LOO-Zp-jLo" secondAttribute="trailing" id="Iih-SD-Tae"/>
-                                        <constraint firstItem="LOO-Zp-jLo" firstAttribute="top" secondItem="SpC-ax-17z" secondAttribute="top" constant="12" id="LTf-Z5-hCJ"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KiM-AD-9Qq" secondAttribute="bottom" constant="12" id="Lo9-Dk-XDm"/>
-                                        <constraint firstItem="bc6-m8-JFJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KiM-AD-9Qq" secondAttribute="trailing" id="MKX-hk-UJb"/>
-                                        <constraint firstItem="LOO-Zp-jLo" firstAttribute="leading" secondItem="SpC-ax-17z" secondAttribute="leading" constant="12" id="Oj9-ID-rmV"/>
-                                        <constraint firstAttribute="trailing" secondItem="bc6-m8-JFJ" secondAttribute="trailing" constant="12" id="qg4-oK-FZR"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="dateLabel" destination="KiM-AD-9Qq" id="Ftl-TC-Q9z"/>
-                                    <outlet property="pageLabel" destination="bc6-m8-JFJ" id="HdC-7r-eHc"/>
-                                    <outlet property="titleLabel" destination="LOO-Zp-jLo" id="66Q-2b-rgI"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="NqH-Ag-mFb" id="9Pl-tQ-pyo"/>
                             <outlet property="delegate" destination="NqH-Ag-mFb" id="30j-vp-VX9"/>
@@ -539,16 +493,6 @@ Login with your Hypothes.is account to use this feature.</string>
                                 <constraint firstItem="oDr-ze-Eyt" firstAttribute="top" secondItem="BeW-OB-Yyf" secondAttribute="top" constant="14" id="mJg-nW-8oV"/>
                             </constraints>
                         </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="miO-Oc-D3r">
-                                <rect key="frame" x="0.0" y="123" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="miO-Oc-D3r" id="tLK-hd-wDv">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="R6J-FW-57t" id="lRE-LR-qgk"/>
                             <outlet property="delegate" destination="R6J-FW-57t" id="uu7-AT-NkI"/>

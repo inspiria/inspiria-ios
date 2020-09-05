@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="SubtitleCell" id="d9X-Ca-mPd" userLabel="SubtitleCell" customClass="SubtitleCell" customModule="Inspiria" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d9X-Ca-mPd" id="8C4-M2-at1">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCp-PK-pBr">
+                        <rect key="frame" x="12" y="12" width="31" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <color key="textColor" name="TextDark"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r33-qb-q4F">
+                        <rect key="frame" x="12" y="33" width="26.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cj0-No-Zqo">
+                        <rect key="frame" x="373.5" y="23" width="28.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" name="DarkGray"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="r33-qb-q4F" firstAttribute="leading" secondItem="hCp-PK-pBr" secondAttribute="leading" id="0re-ha-7EU"/>
+                    <constraint firstItem="hCp-PK-pBr" firstAttribute="top" secondItem="8C4-M2-at1" secondAttribute="top" constant="12" id="3lb-nU-sBf"/>
+                    <constraint firstItem="hCp-PK-pBr" firstAttribute="leading" secondItem="8C4-M2-at1" secondAttribute="leading" constant="12" id="8OK-Bi-Wuo"/>
+                    <constraint firstAttribute="trailing" secondItem="cj0-No-Zqo" secondAttribute="trailing" constant="12" id="AgN-lg-SkO"/>
+                    <constraint firstItem="cj0-No-Zqo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="r33-qb-q4F" secondAttribute="trailing" id="EEv-3i-PhU"/>
+                    <constraint firstItem="r33-qb-q4F" firstAttribute="top" secondItem="hCp-PK-pBr" secondAttribute="bottom" constant="4" id="U2b-qm-0am"/>
+                    <constraint firstItem="cj0-No-Zqo" firstAttribute="centerY" secondItem="8C4-M2-at1" secondAttribute="centerY" id="eiD-ZG-Xvi"/>
+                    <constraint firstItem="cj0-No-Zqo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hCp-PK-pBr" secondAttribute="trailing" id="fRT-01-wAl"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="r33-qb-q4F" secondAttribute="bottom" constant="12" id="g9v-Lk-H61"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="subtitleLabel" destination="r33-qb-q4F" id="yYt-11-NCF"/>
+                <outlet property="sufixLabel" destination="cj0-No-Zqo" id="oph-cY-jbm"/>
+                <outlet property="titleLabel" destination="hCp-PK-pBr" id="3A1-w7-PXJ"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="90"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="DarkGray">
+            <color red="0.46274509803921571" green="0.47450980392156861" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextDark">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

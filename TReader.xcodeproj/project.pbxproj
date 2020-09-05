@@ -50,14 +50,15 @@
 		3E8A1FCE248249BB00A266D7 /* BookmarksNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A1FCA248249BB00A266D7 /* BookmarksNavigator.swift */; };
 		3E8A1FCF248249BB00A266D7 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A1FCB248249BB00A266D7 /* BookmarksViewController.swift */; };
 		3E8A1FD0248249BB00A266D7 /* BookmarksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A1FCC248249BB00A266D7 /* BookmarksViewModel.swift */; };
-		3E8A1FD324824B2B00A266D7 /* BookmarksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A1FD224824B2B00A266D7 /* BookmarksCell.swift */; };
+		3E8A1FD324824B2B00A266D7 /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A1FD224824B2B00A266D7 /* SubtitleCell.swift */; };
 		3E8A1FD524824D5D00A266D7 /* Date+format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A1FD424824D5D00A266D7 /* Date+format.swift */; };
 		3E8B4F10248FBDA700F0CB52 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8B4F0F248FBDA700F0CB52 /* BookViewModel.swift */; };
 		3E97C1A0243A6B2C00B3A399 /* WebViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E97C19F243A6B2C00B3A399 /* WebViewConfiguration.swift */; };
 		3E9C857E2502B0D500FA8E7D /* SearchBookNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9C857A2502B0D500FA8E7D /* SearchBookNavigator.swift */; };
 		3E9C857F2502B0D500FA8E7D /* SearchBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9C857B2502B0D500FA8E7D /* SearchBookViewController.swift */; };
 		3E9C85802502B0D500FA8E7D /* SearchBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9C857C2502B0D500FA8E7D /* SearchBookViewModel.swift */; };
-		3E9C85832503587B00FA8E7D /* AnnotationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9C85822503587B00FA8E7D /* AnnotationHeaderView.xib */; };
+		3E9C85832503587B00FA8E7D /* SearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9C85822503587B00FA8E7D /* SearchHeaderView.xib */; };
+		3E9C8585250365E900FA8E7D /* SubtitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9C8584250365E900FA8E7D /* SubtitleCell.xib */; };
 		3E9CEDA924028858002E8FA3 /* BooksStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CEDA824028858002E8FA3 /* BooksStorage.swift */; };
 		3E9CEDAB2402A849002E8FA3 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CEDAA2402A849002E8FA3 /* Storyboard.swift */; };
 		3EA675FA243E0EE5001413A7 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA675F9243E0EE5001413A7 /* DeepLink.swift */; };
@@ -88,7 +89,7 @@
 		3EE05620247DACCB004F3D13 /* AnnotationNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE0561C247DACCB004F3D13 /* AnnotationNavigator.swift */; };
 		3EE05621247DACCB004F3D13 /* AnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE0561D247DACCB004F3D13 /* AnnotationViewController.swift */; };
 		3EE05622247DACCB004F3D13 /* AnnotationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE0561E247DACCB004F3D13 /* AnnotationViewModel.swift */; };
-		3EE2AA0F247F796300885EBE /* AnnotationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */; };
+		3EE2AA0F247F796300885EBE /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2AA0E247F796300885EBE /* SearchHeaderView.swift */; };
 		3EE2AA11247F972100885EBE /* UISearchBar+RX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2AA10247F972100885EBE /* UISearchBar+RX.swift */; };
 		3EE2AA14247FA9B000885EBE /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2AA13247FA9B000885EBE /* SortView.swift */; };
 		3EE2AA16247FA9C200885EBE /* SortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE2AA15247FA9C200885EBE /* SortView.xib */; };
@@ -152,14 +153,15 @@
 		3E8A1FCA248249BB00A266D7 /* BookmarksNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksNavigator.swift; sourceTree = "<group>"; };
 		3E8A1FCB248249BB00A266D7 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		3E8A1FCC248249BB00A266D7 /* BookmarksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewModel.swift; sourceTree = "<group>"; };
-		3E8A1FD224824B2B00A266D7 /* BookmarksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCell.swift; sourceTree = "<group>"; };
+		3E8A1FD224824B2B00A266D7 /* SubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleCell.swift; sourceTree = "<group>"; };
 		3E8A1FD424824D5D00A266D7 /* Date+format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+format.swift"; sourceTree = "<group>"; };
 		3E8B4F0F248FBDA700F0CB52 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		3E97C19F243A6B2C00B3A399 /* WebViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewConfiguration.swift; sourceTree = "<group>"; };
 		3E9C857A2502B0D500FA8E7D /* SearchBookNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookNavigator.swift; sourceTree = "<group>"; };
 		3E9C857B2502B0D500FA8E7D /* SearchBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewController.swift; sourceTree = "<group>"; };
 		3E9C857C2502B0D500FA8E7D /* SearchBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewModel.swift; sourceTree = "<group>"; };
-		3E9C85822503587B00FA8E7D /* AnnotationHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnotationHeaderView.xib; sourceTree = "<group>"; };
+		3E9C85822503587B00FA8E7D /* SearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHeaderView.xib; sourceTree = "<group>"; };
+		3E9C8584250365E900FA8E7D /* SubtitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubtitleCell.xib; sourceTree = "<group>"; };
 		3E9CEDA824028858002E8FA3 /* BooksStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksStorage.swift; sourceTree = "<group>"; };
 		3E9CEDAA2402A849002E8FA3 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		3EA675F9243E0EE5001413A7 /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
@@ -190,7 +192,7 @@
 		3EE0561C247DACCB004F3D13 /* AnnotationNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationNavigator.swift; sourceTree = "<group>"; };
 		3EE0561D247DACCB004F3D13 /* AnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationViewController.swift; sourceTree = "<group>"; };
 		3EE0561E247DACCB004F3D13 /* AnnotationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationViewModel.swift; sourceTree = "<group>"; };
-		3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationHeaderView.swift; sourceTree = "<group>"; };
+		3EE2AA0E247F796300885EBE /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		3EE2AA10247F972100885EBE /* UISearchBar+RX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+RX.swift"; sourceTree = "<group>"; };
 		3EE2AA13247FA9B000885EBE /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
 		3EE2AA15247FA9C200885EBE /* SortView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortView.xib; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 		3E38A95524322F3100EA2E10 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3E9C85862503660B00FA8E7D /* Views */,
 				3EC05CC723F6D22200862940 /* Extensions */,
 				3EB62F8A23F6BBE800C3F1D6 /* Theme */,
 				3E38A95224322E8600EA2E10 /* TextRendering */,
@@ -358,7 +361,6 @@
 			isa = PBXGroup;
 			children = (
 				3E8A1FCB248249BB00A266D7 /* BookmarksViewController.swift */,
-				3E8A1FD224824B2B00A266D7 /* BookmarksCell.swift */,
 				3E8A1FCC248249BB00A266D7 /* BookmarksViewModel.swift */,
 				3E8A1FCA248249BB00A266D7 /* BookmarksNavigator.swift */,
 			);
@@ -373,6 +375,19 @@
 				3E9C857A2502B0D500FA8E7D /* SearchBookNavigator.swift */,
 			);
 			path = SearchBook;
+			sourceTree = "<group>";
+		};
+		3E9C85862503660B00FA8E7D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3E8A1FD224824B2B00A266D7 /* SubtitleCell.swift */,
+				3E9C8584250365E900FA8E7D /* SubtitleCell.xib */,
+				3EE2AA13247FA9B000885EBE /* SortView.swift */,
+				3EE2AA15247FA9C200885EBE /* SortView.xib */,
+				3EE2AA0E247F796300885EBE /* SearchHeaderView.swift */,
+				3E9C85822503587B00FA8E7D /* SearchHeaderView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3E9CEDA724028842002E8FA3 /* Storage */ = {
@@ -537,24 +552,12 @@
 		3EE0561B247DAC80004F3D13 /* Annotations */ = {
 			isa = PBXGroup;
 			children = (
-				3EE2AA12247FA97400885EBE /* Views */,
+				3EC8306B247E707D008E0597 /* AnnotationCell.swift */,
 				3EE0561D247DACCB004F3D13 /* AnnotationViewController.swift */,
 				3EE0561E247DACCB004F3D13 /* AnnotationViewModel.swift */,
 				3EE0561C247DACCB004F3D13 /* AnnotationNavigator.swift */,
 			);
 			path = Annotations;
-			sourceTree = "<group>";
-		};
-		3EE2AA12247FA97400885EBE /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3EE2AA0E247F796300885EBE /* AnnotationHeaderView.swift */,
-				3E9C85822503587B00FA8E7D /* AnnotationHeaderView.xib */,
-				3EC8306B247E707D008E0597 /* AnnotationCell.swift */,
-				3EE2AA13247FA9B000885EBE /* SortView.swift */,
-				3EE2AA15247FA9C200885EBE /* SortView.xib */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		3EE3C10024BE4F600047FC4D /* EditAnnotation */ = {
@@ -666,9 +669,10 @@
 				3ECF6F13241CFF310043E0D0 /* NotoSerif-Italic.ttf in Resources */,
 				3ECF6F12241CFF310043E0D0 /* NotoSerif-Medium.ttf in Resources */,
 				3E52755224F90F9C0043BA7E /* anchoring.js in Resources */,
-				3E9C85832503587B00FA8E7D /* AnnotationHeaderView.xib in Resources */,
+				3E9C85832503587B00FA8E7D /* SearchHeaderView.xib in Resources */,
 				3E49890B23F6B16A0082322E /* Assets.xcassets in Resources */,
 				3E49890923F6B1670082322E /* Main.storyboard in Resources */,
+				3E9C8585250365E900FA8E7D /* SubtitleCell.xib in Resources */,
 				3EE50E5624F93D230097886A /* higlight.js in Resources */,
 				3EE50E5A24F946EA0097886A /* anchoring_standalone.js in Resources */,
 				3E29484A24C606E100A65318 /* error.js in Resources */,
@@ -769,7 +773,7 @@
 				3EE50E5824F943260097886A /* JS.swift in Sources */,
 				3ED413F523F8795200BEC2C5 /* BooksListViewModel.swift in Sources */,
 				3E03BDC524129FC600E16147 /* UIImageView+Kingfisher.swift in Sources */,
-				3E8A1FD324824B2B00A266D7 /* BookmarksCell.swift in Sources */,
+				3E8A1FD324824B2B00A266D7 /* SubtitleCell.swift in Sources */,
 				3ED413EE23F875D700BEC2C5 /* BooksUseCase.swift in Sources */,
 				3EA675FA243E0EE5001413A7 /* DeepLink.swift in Sources */,
 				3EE2AA18247FB4DD00885EBE /* UIView+NibLoadable.swift in Sources */,
@@ -782,7 +786,7 @@
 				3E5C588A248E482D00851F9C /* Bookmark+Extensions.swift in Sources */,
 				3E38D9C224D48921007F473D /* LoginViewModel.swift in Sources */,
 				3E18F4002493C44C002EBDEF /* UserProfile.swift in Sources */,
-				3EE2AA0F247F796300885EBE /* AnnotationHeaderView.swift in Sources */,
+				3EE2AA0F247F796300885EBE /* SearchHeaderView.swift in Sources */,
 				3EB62F8C23F6BC0400C3F1D6 /* ColorStyle.swift in Sources */,
 				3EE2AA11247F972100885EBE /* UISearchBar+RX.swift in Sources */,
 				3E149F1F23F9D112006968D4 /* ContentNavigator.swift in Sources */,
