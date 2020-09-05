@@ -12,7 +12,7 @@ struct AppAppearance {
     func setup() {
         AppAppearance.setupTabbarAppearance(UITabBar.appearance())
         AppAppearance.setupNavBarAppearance(UINavigationBar.appearance())
-        AppAppearance.setupSearchBarAppearance(searchBar: UISearchBar.appearance())
+//        AppAppearance.setupSearchBarAppearance(searchBar: UISearchBar.appearance())
     }
 
     static func setupTabbarAppearance(_ tabBar: UITabBar) {

@@ -25,6 +25,8 @@ class SearchHeaderView: UIStackView, NibLoadable {
     override func awakeFromNib() {
         showSearchBar(false)
 
+        AppAppearance.setupSearchBarAppearance(searchBar: searchBar)
+
         searchButton.rx
             .tap
             .asDriver()

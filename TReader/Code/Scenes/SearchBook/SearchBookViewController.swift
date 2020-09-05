@@ -28,6 +28,8 @@ class SearchBookViewController: UITableViewController {
         tableView.delegate = nil
         tableView.tableFooterView = UIView()
         tableView.register(SubtitleCell.nib(), forCellReuseIdentifier: SubtitleCell.reuseIdentifier)
+
+        AppAppearance.setupSearchBarAppearance(searchBar: searchBar)
     }
 
     private func bindViewModel() {
