@@ -43,7 +43,8 @@ class DefaultChaptersNavigator: ChaptersNavigator {
     func toSearch(book: Book) {
         let navigator = DefaultSearchBookNavigator(services: services,
                                                    storyboard: storyboard,
-                                                   controller: rootController)
+                                                   controller: rootController,
+                                                   chaptersNavigator: self)
         navigator.toSearch(book: book)
     }
 

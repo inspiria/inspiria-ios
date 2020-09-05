@@ -43,9 +43,9 @@ class DefaultBookSearchUseCase: BookSearchUseCase {
                         let subString = text[start..<end]
                         let model = BookSearchResult(chapterId: chapter.id, chapterTitle: chapter.title, text: String(subString))
                         result.append(model)
-                        observer.onNext(result)
                     }
                 }
+                observer.onNext(result)
             } catch {
                 observer.onError(error)
             }

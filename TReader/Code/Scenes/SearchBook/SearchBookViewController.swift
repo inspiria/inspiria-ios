@@ -31,14 +31,13 @@ class SearchBookViewController: UITableViewController {
     }
 
     private func bindViewModel() {
-        let search = searchBar.rx.textChanged
-            .map { $0.count > 0 ? $0 : nil }
-            .asDriver(onErrorJustReturn: nil)
-            .debounce(0.5)
+        let search = searchBar.rx
+            .textChanged
+            .asDriver(onErrorJustReturn: "")
+            .debounce(1)
 
         let itemSelected = tableView
-            .rx.itemSelected.debug()
-            .map { $0.row }
+            .rx.modelSelected(SearchItem.self)
             .asDriverOnErrorJustComplete()
 
         let input = SearchBookViewModel.Input(searchTrigger: search, itemSelected: itemSelected)
@@ -52,6 +51,14 @@ class SearchBookViewController: UITableViewController {
                 cell.set(model: model)
         }
         .disposed(by: rx.disposeBag)
+
+        output.title
+            .drive(bookTitle.rx.text)
+            .disposed(by: rx.disposeBag)
+
+        output.selected
+            .drive()
+            .disposed(by: rx.disposeBag)
 
         rx.viewWillAppear
             .subscribe(onNext: showKeyboard(show:))

@@ -60,7 +60,7 @@ class HypothesisAnnotationsUseCase: AnnotationsUseCase {
     }
 
     func deleteAnnotation(id: String) -> Single<Bool> {
-        let response: Single<DeleteAnnotationResponse> = networkService.request(path: "annotations/\(id)", method: .delete).debug()
+        let response: Single<DeleteAnnotationResponse> = networkService.request(path: "annotations/\(id)", method: .delete)
         return response.map { $0.deleted }
     }
 }

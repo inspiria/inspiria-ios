@@ -24,7 +24,7 @@ class BookmarksViewModel {
     func transform(input: Input) -> Output {
         let bookmarks = useCase.getBookmarks(book: book.info.id)
             .asDriver(onErrorJustReturn: [])
-        let selected = input.itemSelected.debug()
+        let selected = input.itemSelected
             .withLatestFrom(bookmarks) { $1[$0] }
             .map { [unowned self] in ($0.chapterId, self.book) }
             .do(onNext: navigator.to)

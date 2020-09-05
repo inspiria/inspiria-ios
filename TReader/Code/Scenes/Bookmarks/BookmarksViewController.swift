@@ -29,7 +29,7 @@ class BookmarksViewController: UITableViewController {
 
     private func bindViewModel() {
         let itemSelected = tableView
-            .rx.itemSelected.debug()
+            .rx.itemSelected
             .map { $0.row }
             .asDriverOnErrorJustComplete()
         let input = BookmarksViewModel.Input(itemSelected: itemSelected)

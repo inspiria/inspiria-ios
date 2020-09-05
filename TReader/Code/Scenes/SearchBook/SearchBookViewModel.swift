@@ -28,25 +28,32 @@ class SearchBookViewModel {
 
     func transform(input: Input) -> Output {
         let items = input.searchTrigger
+            .distinctUntilChanged()
             .flatMap { query -> Driver<[SearchItem]> in
-                guard let query = query, query.count > 0 else { return Driver.just([]) }
+                guard query.count > 3 else { return Driver.just([]) }
                 return self.searchUseCase
                     .search(query: query, in: self.book)
                     .asDriver(onErrorJustReturn: [])
                     .map { $0.map { SearchItem(model: $0, highlight: query) } }
             }
-        let selected = input.itemSelected.mapToVoid()
+        let selected = input.itemSelected
+            .map { ($0.model.chapterId, self.book) }
+            .do(onNext: navigator.to)
+            .mapToVoid()
 
-        return Output(items: items, selected: selected)
+        let title = Driver.just(book.info.title)
+
+        return Output(title: title, items: items, selected: selected)
     }
 }
 
 extension SearchBookViewModel {
     struct Input {
-        let searchTrigger: Driver<String?>
-        let itemSelected: Driver<Int>
+        let searchTrigger: Driver<String>
+        let itemSelected: Driver<SearchItem>
     }
     struct Output {
+        let title: Driver<String>
         let items: Driver<[SearchItem]>
         let selected: Driver<Void>
     }
