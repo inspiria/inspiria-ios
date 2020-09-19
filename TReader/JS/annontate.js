@@ -3188,18 +3188,18 @@
             highlight.setAttribute('data-hypothesis', JSON.stringify(data));
             highlight.title = payload;
             highlight.className = 'hypothesis_annotation';
-            highlight.style.background = '#FFE1EC';
-//            highlight.addEventListener('touchstart', event => {
-//                var data = event.target.getAttribute('data-hypothesis');
-//                var annotation = JSON.parse(data);
-//                console.log('HERE IS', annotation);
-//                window.webkit.messageHandlers.select.postMessage(annotation);
-//            });
+            highlight.style.background = '#FFFACD';
 
             wrap(highlight, range);
         }
 
+        function clear_annotations() {
+            var anns = document.querySelectorAll('mark-hypothesis-annotation');
+            anns.forEach(el => { el.style.background = 'none'; });
+        }
+
         function attach_annotations(rows) {
+            clear_annotations();
             rows.sort(compare);
 
             for ( var i=0; i < rows.length; i++ ) {
@@ -3213,12 +3213,10 @@
                 catch (e) {	console.log('attach_annotation: ' + anno.id + ': ' + e.message); }
             }
 
-            var divs = document.querySelectorAll('mark-hypothesis-annotation');
-            divs.forEach(el => el.addEventListener('click', event => {
+            var anns = document.querySelectorAll('mark-hypothesis-annotation');
+            anns.forEach(el => el.addEventListener('touchstart', event => {
                 var data = event.target.getAttribute('data-hypothesis');
-                var annotation = JSON.parse(data);
-                console.log('HERE IS', annotation);
-                window.webkit.messageHandlers.select.postMessage(annotation);
+                window.webkit.messageHandlers.select.postMessage(data);
             }));
         }
 

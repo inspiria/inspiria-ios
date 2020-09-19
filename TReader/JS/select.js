@@ -19,7 +19,6 @@ function selectText(colour) {
   const title = titleElement ? titleElement.innerText : location.href
 
   const data = {
-    id: 'create-new-annontation',
     exact: exact,
     prefix: prefix,
     suffix: suffix,

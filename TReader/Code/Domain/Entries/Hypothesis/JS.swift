@@ -9,6 +9,7 @@
 import Swift
 
 struct JSAnnotation: Codable {
+    let id: String?
     let exact: String
     let prefix: String
     let suffix: String
