@@ -19,12 +19,15 @@ function selectText(colour) {
   const title = titleElement ? titleElement.innerText : location.href
 
   const data = {
+    id: 'create-new-annontation',
     exact: exact,
     prefix: prefix,
     suffix: suffix,
     start: start,
     end: end,
   }
+
+  attach_annotations([data]);
 
   selection.removeAllRanges();
 

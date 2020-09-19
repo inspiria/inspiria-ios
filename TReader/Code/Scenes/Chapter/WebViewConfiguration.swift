@@ -13,7 +13,7 @@ class WebViewConfiguration: WKWebViewConfiguration {
         super.init()
 
         let controller = WKUserContentController()
-        let scripts = ["error", "anchoring", "anchoring_standalone", "higlight", "select"]
+        let scripts = ["error", "anchoring", "annontate", "higlight", "select"]
         scripts
             .compactMap { WebViewConfiguration.script(with: $0) }
             .forEach { controller.addUserScript($0) }

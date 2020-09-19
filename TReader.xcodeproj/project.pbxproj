@@ -81,6 +81,7 @@
 		3ECF6F14241CFF310043E0D0 /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF6F10241CFF310043E0D0 /* NotoSerif-Bold.ttf */; };
 		3ECF6F16241D208B0043E0D0 /* TRLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF6F15241D208B0043E0D0 /* TRLabel.swift */; };
 		3ECF6F19241D3FF30043E0D0 /* AuthorSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF6F18241D3FF30043E0D0 /* AuthorSectionView.swift */; };
+		3ED21E9B2515DC07008A2D7F /* annontate.js in Resources */ = {isa = PBXBuildFile; fileRef = 3ED21E9A2515DC07008A2D7F /* annontate.js */; };
 		3ED413EB23F8757C00BEC2C5 /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413EA23F8757B00BEC2C5 /* UseCaseProvider.swift */; };
 		3ED413EE23F875D700BEC2C5 /* BooksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */; };
 		3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED413F223F8776000BEC2C5 /* Codable.swift */; };
@@ -99,9 +100,7 @@
 		3EE3C10524BE4F7B0047FC4D /* EditAnnotationNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10124BE4F7B0047FC4D /* EditAnnotationNavigator.swift */; };
 		3EE3C10624BE4F7B0047FC4D /* EditAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10224BE4F7B0047FC4D /* EditAnnotationViewController.swift */; };
 		3EE3C10724BE4F7B0047FC4D /* EditAnnontationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10324BE4F7B0047FC4D /* EditAnnontationViewModel.swift */; };
-		3EE50E5624F93D230097886A /* higlight.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EE50E5524F93D230097886A /* higlight.js */; };
 		3EE50E5824F943260097886A /* JS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE50E5724F943260097886A /* JS.swift */; };
-		3EE50E5A24F946EA0097886A /* anchoring_standalone.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EE50E5924F946EA0097886A /* anchoring_standalone.js */; };
 		3EF457B824C1989100EC57BA /* select.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EF457B624C1989100EC57BA /* select.js */; };
 		3EFF974B23FC2B7B000103FE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF974A23FC2B7B000103FE /* Book.swift */; };
 		AAA5DDD24CC0A2A5CE5DB2E0 /* Pods_TReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */; };
@@ -186,6 +185,7 @@
 		3ECF6F10241CFF310043E0D0 /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
 		3ECF6F15241D208B0043E0D0 /* TRLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRLabel.swift; sourceTree = "<group>"; };
 		3ECF6F18241D3FF30043E0D0 /* AuthorSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorSectionView.swift; sourceTree = "<group>"; };
+		3ED21E9A2515DC07008A2D7F /* annontate.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = annontate.js; sourceTree = "<group>"; };
 		3ED413EA23F8757B00BEC2C5 /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
 		3ED413ED23F875D700BEC2C5 /* BooksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksUseCase.swift; sourceTree = "<group>"; };
 		3ED413F223F8776000BEC2C5 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
@@ -204,9 +204,7 @@
 		3EE3C10124BE4F7B0047FC4D /* EditAnnotationNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnnotationNavigator.swift; sourceTree = "<group>"; };
 		3EE3C10224BE4F7B0047FC4D /* EditAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnnotationViewController.swift; sourceTree = "<group>"; };
 		3EE3C10324BE4F7B0047FC4D /* EditAnnontationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnnontationViewModel.swift; sourceTree = "<group>"; };
-		3EE50E5524F93D230097886A /* higlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = higlight.js; sourceTree = "<group>"; };
 		3EE50E5724F943260097886A /* JS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JS.swift; sourceTree = "<group>"; };
-		3EE50E5924F946EA0097886A /* anchoring_standalone.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = anchoring_standalone.js; sourceTree = "<group>"; };
 		3EF457B624C1989100EC57BA /* select.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = select.js; sourceTree = "<group>"; };
 		3EFF974A23FC2B7B000103FE /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		591C195EBB897077DA992FD1 /* Pods-TReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TReader.debug.xcconfig"; path = "Target Support Files/Pods-TReader/Pods-TReader.debug.xcconfig"; sourceTree = "<group>"; };
@@ -582,9 +580,8 @@
 				3E18FB7524C8BFEB00579F9E /* BridgeDoc.md */,
 				3E29484924C606E100A65318 /* error.js */,
 				3E52755124F90F9C0043BA7E /* anchoring.js */,
-				3EE50E5924F946EA0097886A /* anchoring_standalone.js */,
+				3ED21E9A2515DC07008A2D7F /* annontate.js */,
 				3EF457B624C1989100EC57BA /* select.js */,
-				3EE50E5524F93D230097886A /* higlight.js */,
 			);
 			path = JS;
 			sourceTree = "<group>";
@@ -674,13 +671,12 @@
 				3ECF6F11241CFF310043E0D0 /* NotoSerif-Regular.ttf in Resources */,
 				3ECF6F13241CFF310043E0D0 /* NotoSerif-Italic.ttf in Resources */,
 				3ECF6F12241CFF310043E0D0 /* NotoSerif-Medium.ttf in Resources */,
+				3ED21E9B2515DC07008A2D7F /* annontate.js in Resources */,
 				3E52755224F90F9C0043BA7E /* anchoring.js in Resources */,
 				3E9C85832503587B00FA8E7D /* SearchHeaderView.xib in Resources */,
 				3E49890B23F6B16A0082322E /* Assets.xcassets in Resources */,
 				3E49890923F6B1670082322E /* Main.storyboard in Resources */,
 				3E9C8585250365E900FA8E7D /* SubtitleCell.xib in Resources */,
-				3EE50E5624F93D230097886A /* higlight.js in Resources */,
-				3EE50E5A24F946EA0097886A /* anchoring_standalone.js in Resources */,
 				3E29484A24C606E100A65318 /* error.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
