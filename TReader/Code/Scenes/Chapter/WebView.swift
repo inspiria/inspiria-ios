@@ -58,7 +58,6 @@ class WebView: WKWebView {
     func add(annontations: [JSAnnotation]) {
         guard let str = try? annontations.json() else { return }
         let js = "attach_annotations(\(str));"
-        print("js : \(js)")
         evaluateJavaScript(js) { (obj, err) in
             if let err = err { print(err) }
             if let obj = obj { print(obj) }

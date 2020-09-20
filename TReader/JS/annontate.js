@@ -3200,7 +3200,6 @@
 
         function attach_annotations(rows) {
             clear_annotations();
-            rows.sort(compare);
 
             for ( var i=0; i < rows.length; i++ ) {
                 var anno = rows[i];
