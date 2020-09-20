@@ -104,6 +104,8 @@
 		3EE50E5A24F946EA0097886A /* anchoring_standalone.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EE50E5924F946EA0097886A /* anchoring_standalone.js */; };
 		3EF457B824C1989100EC57BA /* select.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EF457B624C1989100EC57BA /* select.js */; };
 		3EFF974B23FC2B7B000103FE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF974A23FC2B7B000103FE /* Book.swift */; };
+		9505AB1B251782B20074D3D3 /* EditAnnotationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9505AB19251782B20074D3D3 /* EditAnnotationCell.swift */; };
+		9505AB1C251782B20074D3D3 /* EditAnnotationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9505AB1A251782B20074D3D3 /* EditAnnotationCell.xib */; };
 		AAA5DDD24CC0A2A5CE5DB2E0 /* Pods_TReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */; };
 /* End PBXBuildFile section */
 
@@ -211,6 +213,8 @@
 		3EFF974A23FC2B7B000103FE /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		591C195EBB897077DA992FD1 /* Pods-TReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TReader.debug.xcconfig"; path = "Target Support Files/Pods-TReader/Pods-TReader.debug.xcconfig"; sourceTree = "<group>"; };
 		91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9505AB19251782B20074D3D3 /* EditAnnotationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnnotationCell.swift; sourceTree = "<group>"; };
+		9505AB1A251782B20074D3D3 /* EditAnnotationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditAnnotationCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -572,6 +576,8 @@
 				3EE3C10224BE4F7B0047FC4D /* EditAnnotationViewController.swift */,
 				3EE3C10324BE4F7B0047FC4D /* EditAnnontationViewModel.swift */,
 				3EE3C10124BE4F7B0047FC4D /* EditAnnotationNavigator.swift */,
+				9505AB19251782B20074D3D3 /* EditAnnotationCell.swift */,
+				9505AB1A251782B20074D3D3 /* EditAnnotationCell.xib */,
 			);
 			path = EditAnnotation;
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 				3ECF6F13241CFF310043E0D0 /* NotoSerif-Italic.ttf in Resources */,
 				3ECF6F12241CFF310043E0D0 /* NotoSerif-Medium.ttf in Resources */,
 				3E52755224F90F9C0043BA7E /* anchoring.js in Resources */,
+				9505AB1C251782B20074D3D3 /* EditAnnotationCell.xib in Resources */,
 				3E9C85832503587B00FA8E7D /* SearchHeaderView.xib in Resources */,
 				3E49890B23F6B16A0082322E /* Assets.xcassets in Resources */,
 				3E49890923F6B1670082322E /* Main.storyboard in Resources */,
@@ -766,6 +773,7 @@
 				3E38A9512432294800EA2E10 /* TRTextView.swift in Sources */,
 				3E49890423F6B1670082322E /* SceneDelegate.swift in Sources */,
 				3E9CEDAB2402A849002E8FA3 /* Storyboard.swift in Sources */,
+				9505AB1B251782B20074D3D3 /* EditAnnotationCell.swift in Sources */,
 				3ED413F323F8776000BEC2C5 /* Codable.swift in Sources */,
 				3EC8306A247E5A05008E0597 /* BookNavigator.swift in Sources */,
 				3E03BDC32412994000E16147 /* ContentHeaderView.swift in Sources */,

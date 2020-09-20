@@ -28,6 +28,7 @@ class EditAnnotationViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "x"), style: .done, target: nil, action: nil)
         navigationController?.navigationBar.tintColor = .white
         navigationController?.view.backgroundColor = .red
+        tableView.register(EditAnnotationCell.nib(), forCellReuseIdentifier: EditAnnotationCell.reuseIdentifier)
     }
 
     private func bindViewModel() {
@@ -42,5 +43,16 @@ class EditAnnotationViewController: UITableViewController {
             .map { (true, nil) }
             .drive(onNext: dismiss)
             .disposed(by: rx.disposeBag)
+        
+        let cellIdentifier = EditAnnotationCell.reuseIdentifier
+        let cellType = EditAnnotationCell.self
+
+        output.annotations
+            .asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: cellType)) { [unowned self] _, model, cell in
+                cell.set(model: model)
+                self.tableView.refreshControl?.endRefreshing()
+        }
+        .disposed(by: rx.disposeBag)
     }
 }
