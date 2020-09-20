@@ -77,8 +77,8 @@ extension Array where Element == Annotation {
         switch order {
         case .newest: return sorted { $0.updated > $1.updated }
         case .oldest: return sorted { $0.updated < $1.updated }
-        case .ascending: return sorted { $0.quote < $1.quote }
-        case .descending: return sorted { $0.quote > $1.quote }
+        case .ascending: return sorted { $0.quoteText < $1.quoteText }
+        case .descending: return sorted { $0.quoteText > $1.quoteText }
         }
     }
 }

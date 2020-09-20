@@ -45,17 +45,14 @@ class HypothesisAnnotationsUseCase: AnnotationsUseCase {
     func getAnnotations(shortName: String?, quote: String?) -> Single<[Annotation]> {
         guard let userId = userProfileRelay.value?.userId else { return Single.error(AnnotationsError.noUserProfile) }
         let shortName = shortName.flatMap { "\($0)/*" } ?? "*"
+        let wildcardUri = "https://edtechbooks.org/\(shortName)"
         let data = AnnotationSearch(limit: 200,
                                     user: userId,
                                     quote: quote,
-                                    wildcardUri: "https://edtechbooks.org/\(shortName)")
+                                    wildcardUri: wildcardUri)
 
         let response: Single<AnnotationResponse> = networkService.request(path: "search", method: .get, data: data)
-        return response.do(onSuccess: { ann in
-            print(ann)
-        }, onError: { err in
-            print(err)
-        })
+        return response
             .map { $0.rows }
     }
 

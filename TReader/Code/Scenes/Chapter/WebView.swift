@@ -55,12 +55,13 @@ class WebView: WKWebView {
         UIMenuController.shared.hideMenu()
     }
 
-    func add(annontation: JSAnnotation) {
-        //            let js = "attach_annotation(\"\(annotation.exact)\",\"\(annotation.prefix)\");"
-        //            print("js : \(js)")
-        //            webView.evaluateJavaScript(js) { (obj, err) in
-        //                if let err = err { print(err) }
-        //                if let obj = obj { print(obj) }
-        //            }
+    func add(annontations: [JSAnnotation]) {
+        guard let str = try? annontations.json() else { return }
+        let js = "attach_annotations(\(str));"
+        print("js : \(js)")
+        evaluateJavaScript(js) { (obj, err) in
+            if let err = err { print(err) }
+            if let obj = obj { print(obj) }
+        }
     }
 }

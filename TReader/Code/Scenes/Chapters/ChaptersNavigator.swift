@@ -72,8 +72,10 @@ class DefaultChaptersNavigator: ChaptersNavigator {
     func chapterViewController(chapter: Chapter, book: Book) -> ChapterViewController {
         let viewController: ChapterViewController = storyboard.instantiateViewController()
         viewController.viewModel = ChapterViewModel(chapter: chapter,
+                                                    book: book,
                                                     navigator: self,
-                                                    booksUseCase: services.booksUseCase())
+                                                    booksUseCase: services.booksUseCase(),
+                                                    annotationsUseCase: services.annotationsUseCase())
         return viewController
     }
 

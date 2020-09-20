@@ -104,7 +104,6 @@
 		3EE3C10524BE4F7B0047FC4D /* EditAnnotationNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10124BE4F7B0047FC4D /* EditAnnotationNavigator.swift */; };
 		3EE3C10624BE4F7B0047FC4D /* EditAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10224BE4F7B0047FC4D /* EditAnnotationViewController.swift */; };
 		3EE3C10724BE4F7B0047FC4D /* EditAnnontationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3C10324BE4F7B0047FC4D /* EditAnnontationViewModel.swift */; };
-		3EE50E5824F943260097886A /* JS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE50E5724F943260097886A /* JS.swift */; };
 		3EF457B824C1989100EC57BA /* select.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EF457B624C1989100EC57BA /* select.js */; };
 		3EFF974B23FC2B7B000103FE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF974A23FC2B7B000103FE /* Book.swift */; };
 		AAA5DDD24CC0A2A5CE5DB2E0 /* Pods_TReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CB35B80C6D2C13CD96B82C /* Pods_TReader.framework */; };
@@ -212,7 +211,6 @@
 		3EE3C10124BE4F7B0047FC4D /* EditAnnotationNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnnotationNavigator.swift; sourceTree = "<group>"; };
 		3EE3C10224BE4F7B0047FC4D /* EditAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnnotationViewController.swift; sourceTree = "<group>"; };
 		3EE3C10324BE4F7B0047FC4D /* EditAnnontationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAnnontationViewModel.swift; sourceTree = "<group>"; };
-		3EE50E5724F943260097886A /* JS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JS.swift; sourceTree = "<group>"; };
 		3EF457B624C1989100EC57BA /* select.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = select.js; sourceTree = "<group>"; };
 		3EFF974A23FC2B7B000103FE /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		591C195EBB897077DA992FD1 /* Pods-TReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TReader.debug.xcconfig"; path = "Target Support Files/Pods-TReader/Pods-TReader.debug.xcconfig"; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 			children = (
 				3E18F3FF2493C44C002EBDEF /* UserProfile.swift */,
 				3E18F4052493D838002EBDEF /* Annotation.swift */,
-				3EE50E5724F943260097886A /* JS.swift */,
 			);
 			path = Hypothesis;
 			sourceTree = "<group>";
@@ -794,7 +791,6 @@
 				3ED21EA52515FBE7008A2D7F /* SettingsViewController.swift in Sources */,
 				3E8A1FD524824D5D00A266D7 /* Date+format.swift in Sources */,
 				3ED21EA62515FBE7008A2D7F /* SettingsViewModel.swift in Sources */,
-				3EE50E5824F943260097886A /* JS.swift in Sources */,
 				3ED413F523F8795200BEC2C5 /* BooksListViewModel.swift in Sources */,
 				3E03BDC524129FC600E16147 /* UIImageView+Kingfisher.swift in Sources */,
 				3E8A1FD324824B2B00A266D7 /* SubtitleCell.swift in Sources */,

@@ -12,20 +12,30 @@ import RxCocoa
 
 class ChapterViewModel {
     let chapter: Chapter
-    let navigator: ChaptersNavigator
-    let booksUseCase: BooksUseCase
+    private let book: Book
+    private let navigator: ChaptersNavigator
+    private let booksUseCase: BooksUseCase
+    private let annotationsUseCase: AnnotationsUseCase
 
     init (chapter: Chapter,
+          book: Book,
           navigator: ChaptersNavigator,
-          booksUseCase: BooksUseCase) {
+          booksUseCase: BooksUseCase,
+          annotationsUseCase: AnnotationsUseCase) {
+        self.book = book
         self.chapter = chapter
         self.navigator = navigator
         self.booksUseCase = booksUseCase
+        self.annotationsUseCase = annotationsUseCase
     }
 
     func transform(input: Input) -> Output {
         let chapter = Driver
             .combineLatest(input.trigger, Driver.just(self.chapter)) { $1 }
+        let annotations = self.annotationsUseCase
+            .getAnnotations(shortName: "\(self.book.info.shortName)/\(self.chapter.shortName)", quote: nil)
+            .asDriver(onErrorJustReturn: [])
+
         let openChapter = input.openChapter
             .flatMap { [unowned self] (data) -> Driver<(Int, Book)> in
                 self.booksUseCase.book(id: data.0)
@@ -36,7 +46,9 @@ class ChapterViewModel {
         .do(onNext: self.navigator.to)
         .mapToVoid()
 
-        return Output(chapter: chapter, openChapter: openChapter)
+        return Output(chapter: chapter,
+                      annotations: annotations,
+                      openChapter: openChapter)
     }
 
     func add(annotation: JSAnnotation) {
@@ -70,6 +82,7 @@ extension ChapterViewModel {
     }
     struct Output {
         let chapter: Driver<Chapter>
+        let annotations: Driver<[Annotation]>
         let openChapter: Driver<Void>
     }
 }

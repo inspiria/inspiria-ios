@@ -57,6 +57,13 @@ class ChapterViewController: UIViewController {
         output.openChapter
             .drive()
             .disposed(by: rx.disposeBag)
+
+        output.annotations
+            .map { $0.compactMap { $0.jsAnnotation() } }
+            .drive(onNext: { [unowned self] ann in
+                self.webView.add(annontations: ann)
+            })
+            .disposed(by: rx.disposeBag)
     }
 }
 
@@ -99,12 +106,10 @@ extension ChapterViewController: WKScriptMessageHandler {
         case "annotate":
             guard let str = message.body as? String,
                   let annotation = try? JSAnnotation(json: str) else { return }
-            webView.add(annontation: annotation)
             viewModel.add(annotation: annotation)
         case "highlight":
             guard let str = message.body as? String,
                   let annotation = try? JSAnnotation(json: str) else { return }
-            webView.add(annontation: annotation)
             viewModel.add(highlight: annotation)
         case "select":
             print(message.body)

@@ -47,19 +47,34 @@ struct Annotation: Codable, Annotationable {
     let tags: [String]
     let group: String
     let target: [AnnotationTarget]
+}
 
-    var quote: String {
-        let res = target.flatMap { ann -> [String] in
-            let res = ann.selector.compactMap { sel -> String? in
+extension Annotation {
+    var quoteText: String { return quote?.exact ?? "" }
+    var quote: TextQuoteSelector? {
+        let res = target.flatMap { ann -> [TextQuoteSelector] in
+            let res = ann.selector.compactMap { sel -> TextQuoteSelector? in
                 if case let AnnotationSelector.quote(selector) = sel {
-                    return selector.exact
+                    return selector
                 }
                 return nil
             }
             return res
         }
-        return res.first ?? ""
+        return res.first
     }
+
+    func jsAnnotation() -> JSAnnotation? {
+        guard let quote = quote else { return nil }
+        return JSAnnotation(id: id, exact: quote.exact, prefix: quote.prefix, suffix: quote.suffix)
+    }
+}
+
+struct JSAnnotation: Codable {
+    let id: String?
+    let exact: String
+    let prefix: String
+    let suffix: String
 }
 
 struct NewAnnotation: Codable, Annotationable {
@@ -110,7 +125,7 @@ enum AnnotationSelector: Codable {
 }
 
 struct RangeSelector: Codable {
-    let type: AnnotationSelector.`Type` = .range
+    var type: AnnotationSelector.`Type` = .range
     let endOffset: Int
     let startOffset: Int
     let endContainer: String
@@ -118,13 +133,13 @@ struct RangeSelector: Codable {
 }
 
 struct TextPositionSelector: Codable {
-    let type: AnnotationSelector.`Type` = .position
+    var type: AnnotationSelector.`Type` = .position
     let end: Int
     let start: Int
 }
 
 struct TextQuoteSelector: Codable {
-    let type: AnnotationSelector.`Type` = .quote
+    var type: AnnotationSelector.`Type` = .quote
     let exact: String
     let prefix: String
     let suffix: String

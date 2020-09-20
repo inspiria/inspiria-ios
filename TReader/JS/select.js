@@ -11,19 +11,13 @@ function selectText(colour) {
   const prefix = quoteSelector.prefix
   const suffix = quoteSelector.suffix
 
-  const positionSelector = anchoring.TextPositionAnchor.fromRange(document.body, range)
-  const start = positionSelector.start
-  const end = positionSelector.end
-
   const titleElement = document.querySelector('head title')
   const title = titleElement ? titleElement.innerText : location.href
 
   const data = {
     exact: exact,
     prefix: prefix,
-    suffix: suffix,
-    start: start,
-    end: end,
+    suffix: suffix
   }
 
   attach_annotations([data]);

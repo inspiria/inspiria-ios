@@ -57,10 +57,10 @@ class AnnotationCell: UITableViewCell {
 
         if let str = model.highlight, !str.isEmpty {
             let strings = str.components(separatedBy: " ")
-            quoteLabel.attributedText = model.annotation.quote.highlight(text: strings, color: ColorStyle.orange.color)
+            quoteLabel.attributedText = model.annotation.quoteText.highlight(text: strings, color: ColorStyle.orange.color)
             userTextLabel.attributedString = model.annotation.text.highlight(text: strings, color: ColorStyle.orange.color)
         } else {
-            quoteLabel.text = model.annotation.quote
+            quoteLabel.text = model.annotation.quoteText
             userTextLabel.attributedString = model.annotation.text.highlight(text: [])
         }
 
