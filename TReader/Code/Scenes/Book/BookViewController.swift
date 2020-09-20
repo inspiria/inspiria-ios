@@ -40,13 +40,7 @@ class BookViewController: ButtonBarPagerTabStripViewController {
             .disposed(by: rx.disposeBag)
 
         output.error
-            .drive(onNext: { [unowned self] error in
-                let alert = UIAlertController(title: "Failed to load book",
-                                              message: error.localizedDescription,
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-                self.present(alert, animated: true, completion: nil)
-            })
+            .drive(rx.errorBinding)
             .disposed(by: rx.disposeBag)
     }
 

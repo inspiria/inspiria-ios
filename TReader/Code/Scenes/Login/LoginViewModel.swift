@@ -24,6 +24,7 @@ class LoginViewModel {
 
     func transform(input: Input) -> Output {
         let errorTracker = ErrorTracker()
+        let activityTracker = ActivityIndicator()
 
         let authorize = input.authorize
             .do(onNext: navigator.toOAuth)
@@ -32,11 +33,22 @@ class LoginViewModel {
             .asDriver()
             .filterNil()
             .flatMap { code in
-                self.authUseCase.getToken(with: code)
+                self.authUseCase
+                    .getToken(with: code)
                     .trackError(errorTracker)
-                    .mapToVoid()
-                    .asDriver(onErrorJustReturn: ())
-        }
+                    .trackActivity(activityTracker)
+                    .asDriverOnErrorJustComplete()
+                    .flatMap { _ in
+                        return DefaultUseCaseProvider.provider
+                            .annotationsUseCase()
+                            .getUserProfile()
+                            .trackError(errorTracker)
+                            .trackActivity(activityTracker)
+                            .mapToVoid()
+                            .asDriverOnErrorJustComplete()
+                    }
+            }
+            .do(onNext: self.authUseCase.skipLogin)
 
         let skipAuthorize = input.skipAuthorize
             .do(onNext: { [unowned self] in
@@ -46,7 +58,8 @@ class LoginViewModel {
         return Output(authorize: authorize,
                       getToken: getToken,
                       skipAuthorize: skipAuthorize,
-                      error: errorTracker.asDriver())
+                      error: errorTracker.asDriver(),
+                      activity: activityTracker.asDriver())
     }
 
     func logIn(code: String) {
@@ -64,5 +77,6 @@ extension LoginViewModel {
         let getToken: Driver<Void>
         let skipAuthorize: Driver<Void>
         let error: Driver<Error>
+        let activity: Driver<Bool>
     }
 }

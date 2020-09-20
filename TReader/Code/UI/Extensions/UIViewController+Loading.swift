@@ -12,7 +12,7 @@ import RxCocoa
 
 private let aHudTag = 998998
 extension Reactive where Base: UIViewController {
-    public var isRefreshing: Binder<Bool> {
+    public var isRefreshingBinding: Binder<Bool> {
         return Binder(self.base) { controller, refreshing in
             let view = controller.navigationController?.view ?? controller.view!
             if refreshing {

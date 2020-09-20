@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W7M-16-6jQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W7M-16-6jQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,7 +40,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7Bl-X0-Sc2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="IPg-9F-8FD">
                             <size key="itemSize" width="0.0" height="0.0"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -113,8 +115,8 @@
                     <view key="view" contentMode="scaleToFill" id="2Ib-zm-VW0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="uWy-tS-Uri"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JY1-2p-8mo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -166,14 +168,14 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="E5e-Il-wHj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="VLm-m7-4Xa" firstAttribute="leading" secondItem="E5e-Il-wHj" secondAttribute="leading" id="1Gf-6u-1Ld"/>
                             <constraint firstItem="VLm-m7-4Xa" firstAttribute="bottom" secondItem="E5e-Il-wHj" secondAttribute="bottom" id="jaD-dH-dlB"/>
                             <constraint firstItem="E5e-Il-wHj" firstAttribute="trailing" secondItem="VLm-m7-4Xa" secondAttribute="trailing" id="uGZ-D6-q1x"/>
                             <constraint firstItem="VLm-m7-4Xa" firstAttribute="top" secondItem="E5e-Il-wHj" secondAttribute="top" id="uTj-8d-k5s"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="E5e-Il-wHj"/>
                     </view>
                     <connections>
                         <outlet property="stackView" destination="yjC-FM-C6z" id="jTn-EL-LiR"/>
@@ -259,15 +261,15 @@
                                                 </button>
                                                 <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d4m-Wa-135">
                                                     <rect key="frame" x="10" y="89" width="370" height="33"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDE-Au-AjT" customClass="DTAttributedLabel">
                                                     <rect key="frame" x="10" y="89" width="370" height="33.5"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 </view>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is the note about the piece of text above that I highlighted on the page. Here is my opinion. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBq-Gy-rI2">
                                                     <rect key="frame" x="10" y="89" width="370" height="33.5"/>
@@ -383,7 +385,7 @@ Login with your Hypothes.is account to use this feature.</string>
                                         <color key="textColor" name="LightBackground"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3Z-OP-jTV">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3Z-OP-jTV">
                                         <rect key="frame" x="24" y="186" width="232" height="28"/>
                                         <color key="backgroundColor" name="Orange"/>
                                         <constraints>
@@ -419,7 +421,7 @@ Login with your Hypothes.is account to use this feature.</string>
                                     <constraint firstAttribute="trailing" secondItem="6m3-NQ-ilY" secondAttribute="trailing" constant="24" id="vSc-Qv-bLr"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jv-Mc-fbE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jv-Mc-fbE">
                                 <rect key="frame" x="141.5" y="784" width="131" height="27"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
                                 <state key="normal" title="Continue without log in">
@@ -427,7 +429,8 @@ Login with your Hypothes.is account to use this feature.</string>
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="clH-J8-Hhf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="clH-J8-Hhf" firstAttribute="bottom" secondItem="3Jv-Mc-fbE" secondAttribute="bottom" constant="51" id="5T0-H5-HVu"/>
                             <constraint firstItem="fCT-5C-gQU" firstAttribute="top" secondItem="999-vb-8hj" secondAttribute="top" id="8ez-M0-xd1"/>
@@ -438,7 +441,6 @@ Login with your Hypothes.is account to use this feature.</string>
                             <constraint firstItem="fCT-5C-gQU" firstAttribute="leading" secondItem="999-vb-8hj" secondAttribute="leading" id="jzq-NX-u7x"/>
                             <constraint firstItem="3Jv-Mc-fbE" firstAttribute="centerX" secondItem="fCT-5C-gQU" secondAttribute="centerX" id="uvm-9n-EyM"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="clH-J8-Hhf"/>
                     </view>
                     <connections>
                         <outlet property="continueButton" destination="3Jv-Mc-fbE" id="jeC-ez-FVx"/>
@@ -457,7 +459,7 @@ Login with your Hypothes.is account to use this feature.</string>
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dVF-WX-Fba">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="BeW-OB-Yyf">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -480,7 +482,7 @@ Login with your Hypothes.is account to use this feature.</string>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="yWS-oF-yAU" firstAttribute="leading" secondItem="oDr-ze-Eyt" secondAttribute="trailing" constant="6" id="0Sp-uD-QwA"/>
                                 <constraint firstAttribute="bottom" secondItem="vQn-41-twO" secondAttribute="bottom" constant="8" id="B3K-Ha-83z"/>
@@ -506,6 +508,48 @@ Login with your Hypothes.is account to use this feature.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WYv-MN-5H2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3051" y="-1593"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="tXa-3Z-urw">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="0JW-fr-6V2" customClass="SettingsViewController" customModule="Inspiria" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QzB-uO-hcv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VY0-oU-q4u">
+                                <rect key="frame" x="181" y="423" width="52" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBs-Rl-VPG">
+                                        <rect key="frame" x="0.0" y="0.0" width="52" height="30"/>
+                                        <state key="normal" title="Log in">
+                                            <color key="titleColor" name="MenuDark"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fg8-Ic-Afc">
+                                        <rect key="frame" x="0.0" y="30" width="52" height="30"/>
+                                        <state key="normal" title="Log out">
+                                            <color key="titleColor" name="MenuDark"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DZv-u4-zvR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VY0-oU-q4u" firstAttribute="centerY" secondItem="DZv-u4-zvR" secondAttribute="centerY" id="qV1-Bw-BCR"/>
+                            <constraint firstItem="VY0-oU-q4u" firstAttribute="centerX" secondItem="DZv-u4-zvR" secondAttribute="centerX" id="xO3-y3-1Ay"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logInButton" destination="kBs-Rl-VPG" id="LIW-G5-bM1"/>
+                        <outlet property="logOutButton" destination="Fg8-Ic-Afc" id="Qb1-me-A0P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zYg-cH-J91" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1488" y="479"/>
         </scene>
     </scenes>
     <color key="tintColor" name="BkgrndWhite"/>
@@ -540,5 +584,11 @@ Login with your Hypothes.is account to use this feature.</string>
         <namedColor name="TextDark">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

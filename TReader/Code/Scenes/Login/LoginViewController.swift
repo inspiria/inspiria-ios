@@ -56,13 +56,11 @@ class LoginViewController: UIViewController {
             .disposed(by: rx.disposeBag)
 
         output.error
-            .drive(onNext: { [unowned self] error in
-                let alert = UIAlertController(title: "Failed to log in",
-                                              message: error.localizedDescription,
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-                self.present(alert, animated: true, completion: nil)
-            })
+            .drive(rx.errorBinding)
+            .disposed(by: rx.disposeBag)
+
+        output.activity
+            .drive(rx.isRefreshingBinding)
             .disposed(by: rx.disposeBag)
     }
 }

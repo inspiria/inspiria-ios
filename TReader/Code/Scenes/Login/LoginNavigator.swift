@@ -37,11 +37,15 @@ class DefaultLoginNavigator: NSObject, LoginNavigator {
         controller.viewModel = LoginViewModel(navigator: self, authUseCase: services.authUseCase())
         controller.modalPresentationStyle = .overCurrentContext
 
-        rootController.rx.viewDidAppear
-            .subscribe { [unowned self] _ in
-                self.rootController.present(controller, animated: false, completion: nil)
+        if rootController.viewIfLoaded?.window != nil {
+            rootController.present(controller, animated: true, completion: nil)
+        } else {
+            rootController.rx.viewDidAppear
+                .subscribe { [unowned self] _ in
+                    self.rootController.present(controller, animated: false, completion: nil)
+            }
+            .disposed(by: rx.disposeBag)
         }
-        .disposed(by: rx.disposeBag)
     }
 
     func toOAuth() {

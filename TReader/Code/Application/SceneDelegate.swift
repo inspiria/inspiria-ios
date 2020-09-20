@@ -24,39 +24,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard (scene as? UIWindowScene) != nil else { return }
         guard let rootController = window?.rootViewController as? UITabBarController else { return }
 
+        let settingsController = UINavigationController()
         let booksController = UINavigationController()
         let annotationsController = UINavigationController()
 
-        booksController.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "Library"), tag: 0)
-        annotationsController.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "Notes"), tag: 1)
+        settingsController.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "Settings"), tag: 0)
+        booksController.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "Library"), tag: 1)
+        annotationsController.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "Notes"), tag: 2)
 
-        rootController.setViewControllers([booksController, annotationsController], animated: false)
+        rootController.setViewControllers([settingsController, booksController, annotationsController], animated: false)
+        rootController.selectedIndex = 1
 
-        auth.showLogIn
+        auth.doShowLogIn
             .do(onNext: { [unowned self] show in
                 if show {
                     self.loadLogin(with: storyboard, rootController: rootController)
                 } else {
                     rootController.dismiss(animated: true, completion: nil)
                     self.loadMain(with: storyboard,
+                                  settingsController: settingsController,
                                   booksController: booksController,
                                   annotationsController: annotationsController)
                 }
             })
-            .flatMap { show -> Driver<Void> in
-                if !show {
-                    return DefaultUseCaseProvider.provider
-                        .annotationsUseCase()
-                        .getUserProfile()
-                        .asObservable()
-                        .mapToVoid()
-                        .asDriver(onErrorJustReturn: ())
-                } else {
-                    return Driver.just(())
-                }
-        }
-        .drive()
-        .disposed(by: rx.disposeBag)
+            .drive()
+            .disposed(by: rx.disposeBag)
     }
 
     func loadLogin(with storyboard: UIStoryboard, rootController: UITabBarController) {
@@ -69,21 +61,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func loadMain(with storyboard: UIStoryboard,
+                  settingsController: UINavigationController,
                   booksController: UINavigationController,
                   annotationsController: UINavigationController) {
 
         let provider = DefaultUseCaseProvider.provider
-        let booksNavigator  = DefaultBooksListNavigator(services: provider,
-                                                   storyboard: storyboard,
-                                                   controller: booksController)
+
+        let settingsNavigator  = DefaultSettingsNavigator(services: provider, storyboard: storyboard, controller: settingsController)
+        settingsNavigator.toSettings()
+
+        let booksNavigator  = DefaultBooksListNavigator(services: provider, storyboard: storyboard, controller: booksController)
         booksNavigator.toList()
 
-        let annotationsNavigator  = DefaultAnnotationsLibratyNavigator(services: provider,
-                                                                           storyboard: storyboard,
-                                                                           controller: annotationsController)
+        let annotationsNavigator  = DefaultAnnotationsLibratyNavigator(services: provider, storyboard: storyboard, controller: annotationsController)
         annotationsNavigator.toAnnotations()
 
-        self.navigators = [booksNavigator, annotationsNavigator]
+        self.navigators = [settingsNavigator, booksNavigator, annotationsNavigator]
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

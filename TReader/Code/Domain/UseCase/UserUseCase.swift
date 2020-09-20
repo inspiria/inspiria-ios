@@ -28,11 +28,13 @@ protocol Authorization {
 }
 
 protocol UserUseCase {
-    var loggedIn: Driver <Bool> { get }
-    var showLogIn: Driver <Bool> { get }
+    var isLoggedIn: Driver <Bool> { get }
+    var doShowLogIn: Driver <Bool> { get }
 
     var oAuthUrl: URL { get }
 
+    func showLogIn()
+    func logOut()
     func skipLogin()
     func getToken(with code: String) -> Single<AccessToken>
     func accessToken() -> Single<String?>
@@ -50,12 +52,20 @@ class HypothesisUserUseCase: UserUseCase, Authorization {
         self.networkService = networkService
     }
 
-    var loggedIn: Driver<Bool> { accessTokenRelay.asDriver().map { $0 != nil } }
-    var showLogIn: Driver<Bool> { showLogInRelay.asDriver() }
+    var isLoggedIn: Driver<Bool> { accessTokenRelay.asDriver().map { $0 != nil } }
+    var doShowLogIn: Driver<Bool> { showLogInRelay.asDriver() }
 
     var oAuthUrl: URL {
         let str = "\(networkService.url)/oauth/authorize?client_id=\(clientId)&response_type=code"
         return URL(string: str)!
+    }
+
+    func showLogIn() {
+        self.set(showLogIn: true)
+    }
+
+    func logOut() {
+        self.set(token: nil)
     }
 
     func skipLogin() {
@@ -69,7 +79,6 @@ class HypothesisUserUseCase: UserUseCase, Authorization {
         return response
             .do(onSuccess: { [unowned self] token in
                 self.set(token: token)
-                self.set(showLogIn: false)
             })
     }
 
