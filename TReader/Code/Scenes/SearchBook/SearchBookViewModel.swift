@@ -27,12 +27,14 @@ class SearchBookViewModel {
     }
 
     func transform(input: Input) -> Output {
+        let activityTracker = ActivityIndicator()
         let items = input.searchTrigger
             .distinctUntilChanged()
             .flatMap { query -> Driver<[SearchItem]> in
                 guard query.count > 3 else { return Driver.just([]) }
                 return self.searchUseCase
                     .search(query: query, in: self.book)
+                    .trackActivity(activityTracker)
                     .asDriver(onErrorJustReturn: [])
                     .map { $0.map { SearchItem(model: $0, highlight: query) } }
             }
@@ -43,7 +45,10 @@ class SearchBookViewModel {
 
         let title = Driver.just(book.info.title)
 
-        return Output(title: title, items: items, selected: selected)
+        return Output(title: title,
+                      items: items,
+                      selected: selected,
+                      activity: activityTracker.asDriver())
     }
 }
 
@@ -56,5 +61,6 @@ extension SearchBookViewModel {
         let title: Driver<String>
         let items: Driver<[SearchItem]>
         let selected: Driver<Void>
+        let activity: Driver<Bool>
     }
 }

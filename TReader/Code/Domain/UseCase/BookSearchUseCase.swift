@@ -29,8 +29,8 @@ class DefaultBookSearchUseCase: BookSearchUseCase {
                 var result = [BookSearchResult]()
                 try book.chapters.forEach { chapter in
                     let file = self.filesService.getChapterUrl(id: book.info.id, chapterFile: chapter.fileName)
-                    var data = try Data(contentsOf: file)
-                    let text = try self.html2String(from: &data)
+//                    var data = try Data(contentsOf: file)
+                    let text = try self.html2String(url: file)
                     let regex = try NSRegularExpression(pattern: query, options: .caseInsensitive)
                     let range = NSRange(location: 0, length: text.utf16.count)
 
@@ -55,10 +55,12 @@ class DefaultBookSearchUseCase: BookSearchUseCase {
         .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
     }
 
-    func html2String(from: inout Data) throws -> String {
+    func html2String(url: URL) throws -> String {
         let type = NSAttributedString.DocumentType.html
         let encoding = String.Encoding.utf8.rawValue
-        let str = try NSAttributedString(data: from, options: [.documentType: type, .characterEncoding: encoding], documentAttributes: nil)
-        return str.string
+        let str = try NSAttributedString(url: url,
+                                         options: [.documentType: type, .characterEncoding: encoding],
+                                         documentAttributes: nil)
+        return str.plainTextString()
     }
 }

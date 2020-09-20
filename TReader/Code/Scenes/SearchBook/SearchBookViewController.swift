@@ -62,6 +62,10 @@ class SearchBookViewController: UITableViewController {
             .drive()
             .disposed(by: rx.disposeBag)
 
+        output.activity
+            .drive(rx.isRefreshingBinding)
+            .disposed(by: rx.disposeBag)
+
         rx.viewWillAppear
             .subscribe(onNext: showKeyboard(show:))
             .disposed(by: rx.disposeBag)
