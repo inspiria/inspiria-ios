@@ -35,11 +35,7 @@ class AnnotationViewModel {
                     .mapToVoid()
         }.startWith(())
         
-        let list = [Annotation(id: "", created: Date(), updated: Date(), user: "tadas", uri: "", text: "Test annotation", tags: ["tag"], group: "", target: [])]
-        let m = list.compactMap { AnnotationCellModel(annotation: $0, highlight: "") }
-        let annotations = Driver.just(m)
-        
-        let annotations2 = Driver
+        let annotations = Driver
             .combineLatest(input.searchTrigger, input.sortTrigger, input.refreshTrigger, delete)
             .flatMap { str, order, _, _ in
                 self.annotationsUseCase
