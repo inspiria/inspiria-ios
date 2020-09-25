@@ -213,10 +213,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="URq-Oc-v92">
-                                <rect key="frame" x="67" y="290.5" width="280" height="315.5"/>
+                                <rect key="frame" x="67" y="297" width="280" height="302"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hypothesis-logo" translatesAutoresizingMaskIntoConstraints="NO" id="z1i-m6-0b5">
-                                        <rect key="frame" x="30" y="265.5" width="92" height="20"/>
+                                        <rect key="frame" x="30" y="252" width="92" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="92" id="KIg-6v-J2K"/>
                                             <constraint firstAttribute="height" constant="20" id="SMY-6L-sNu"/>
@@ -230,7 +230,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6m3-NQ-ilY">
-                                        <rect key="frame" x="24" y="80" width="232" height="95.5"/>
+                                        <rect key="frame" x="24" y="80" width="232" height="82"/>
                                         <string key="text">Textbook Reader uses Hypothes.is to annotate text within the app.
 
 Login with your Hypothes.is account to use this feature.</string>
@@ -239,7 +239,7 @@ Login with your Hypothes.is account to use this feature.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3Z-OP-jTV">
-                                        <rect key="frame" x="24" y="199.5" width="232" height="28"/>
+                                        <rect key="frame" x="24" y="186" width="232" height="28"/>
                                         <color key="backgroundColor" name="Orange"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="Wxd-ve-vHz"/>
@@ -249,7 +249,7 @@ Login with your Hypothes.is account to use this feature.</string>
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Don’t have a Hypothes.is account? Sign up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGj-fF-40K">
-                                        <rect key="frame" x="134" y="263.5" width="122" height="24"/>
+                                        <rect key="frame" x="134" y="250" width="122" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" name="MenuGray"/>
                                         <nil key="highlightedColor"/>
@@ -371,13 +371,13 @@ Login with your Hypothes.is account to use this feature.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VY0-oU-q4u">
-                                <rect key="frame" x="26" y="70" width="362" height="766"/>
+                                <rect key="frame" x="26" y="65.5" width="362" height="770.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bei-Bl-ofT">
-                                        <rect key="frame" x="0.0" y="0.0" width="362" height="382.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="362" height="384.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMX-t1-3oF">
-                                                <rect key="frame" x="66.5" y="202.5" width="220" height="37.5"/>
+                                                <rect key="frame" x="66.5" y="203.5" width="220" height="37.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annotation and highlighting by Hypothes.is " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LA-sz-soP">
                                                         <rect key="frame" x="24" y="2" width="181.5" height="33.5"/>
@@ -405,9 +405,9 @@ Login with your Hypothes.is account to use this feature.</string>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBs-Rl-VPG">
-                                                <rect key="frame" x="79" y="112.5" width="204" height="30"/>
+                                                <rect key="frame" x="79" y="133.5" width="204" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="Yep-si-e92"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Yep-si-e92"/>
                                                 </constraints>
                                                 <state key="normal" title="Log in">
                                                     <color key="titleColor" name="Orange"/>
@@ -422,28 +422,28 @@ Login with your Hypothes.is account to use this feature.</string>
                                             <constraint firstItem="kBs-Rl-VPG" firstAttribute="centerX" secondItem="bei-Bl-ofT" secondAttribute="centerX" id="1ED-S4-yGB"/>
                                             <constraint firstItem="kBs-Rl-VPG" firstAttribute="width" secondItem="EMX-t1-3oF" secondAttribute="width" multiplier="0.927273" id="LJL-on-lQ0"/>
                                             <constraint firstItem="0LA-sz-soP" firstAttribute="centerX" secondItem="bei-Bl-ofT" secondAttribute="centerX" id="UEX-gG-fYq"/>
-                                            <constraint firstItem="EMX-t1-3oF" firstAttribute="top" secondItem="kBs-Rl-VPG" secondAttribute="bottom" constant="60" id="te4-1a-t2s"/>
+                                            <constraint firstItem="EMX-t1-3oF" firstAttribute="top" secondItem="kBs-Rl-VPG" secondAttribute="bottom" constant="40" id="te4-1a-t2s"/>
                                             <constraint firstItem="EMX-t1-3oF" firstAttribute="centerY" secondItem="bei-Bl-ofT" secondAttribute="centerY" constant="30" id="vYI-G8-8bi"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="And-TK-Qjb">
-                                        <rect key="frame" x="0.0" y="382.5" width="362" height="1"/>
+                                        <rect key="frame" x="0.0" y="384.5" width="362" height="1"/>
                                         <color key="backgroundColor" name="MenuGray"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="XW0-2z-T5T"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZ4-gF-mGu">
-                                        <rect key="frame" x="0.0" y="383.5" width="362" height="382.5"/>
+                                        <rect key="frame" x="0.0" y="385.5" width="362" height="385"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Submit feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amc-tX-oo7">
-                                                <rect key="frame" x="6" y="104.5" width="109.5" height="17"/>
+                                                <rect key="frame" x="6" y="105.5" width="109.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="MenuDark"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0Uf-Pn-4sa">
-                                                <rect key="frame" x="6" y="131.5" width="350" height="120"/>
+                                                <rect key="frame" x="6" y="132.5" width="350" height="120"/>
                                                 <color key="backgroundColor" name="LightBackground"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -454,7 +454,7 @@ Login with your Hypothes.is account to use this feature.</string>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGd-Xe-67a">
-                                                <rect key="frame" x="6" y="265.5" width="53" height="27"/>
+                                                <rect key="frame" x="6" y="266.5" width="53" height="27"/>
                                                 <color key="backgroundColor" name="Orange"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53" id="f2c-xs-bbw"/>
@@ -494,12 +494,13 @@ Login with your Hypothes.is account to use this feature.</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DZv-u4-zvR" firstAttribute="bottom" secondItem="VY0-oU-q4u" secondAttribute="bottom" constant="26" id="0o3-cM-Bnh"/>
-                            <constraint firstItem="VY0-oU-q4u" firstAttribute="top" secondItem="DZv-u4-zvR" secondAttribute="top" constant="26" id="ECU-cv-BdG"/>
+                            <constraint firstItem="VY0-oU-q4u" firstAttribute="height" secondItem="QzB-uO-hcv" secondAttribute="height" multiplier="0.86" id="Ak5-Bv-TCc"/>
                             <constraint firstItem="VY0-oU-q4u" firstAttribute="leading" secondItem="DZv-u4-zvR" secondAttribute="leading" constant="26" id="Q4Z-08-O99"/>
                             <constraint firstItem="DZv-u4-zvR" firstAttribute="trailing" secondItem="VY0-oU-q4u" secondAttribute="trailing" constant="26" id="UuO-gY-GQi"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomLayoutConstraint" destination="0o3-cM-Bnh" id="7y3-GA-8FG"/>
                         <outlet property="inputTextView" destination="0Uf-Pn-4sa" id="ZAW-TW-HKJ"/>
                         <outlet property="logInButton" destination="kBs-Rl-VPG" id="LIW-G5-bM1"/>
                         <outlet property="saveButton" destination="nGd-Xe-67a" id="WqL-hC-jzZ"/>

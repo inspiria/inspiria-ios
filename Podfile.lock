@@ -45,6 +45,9 @@ PODS:
   - RxGesture (3.0.2):
     - RxCocoa (~> 5.1)
     - RxSwift (~> 5.1)
+  - RxKeyboard (1.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
   - RxOptional (4.1.0):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
@@ -68,6 +71,7 @@ DEPENDENCIES:
   - RxCocoa (~> 5)
   - RxCoreData (~> 1.0.0)
   - RxGesture
+  - RxKeyboard
   - RxOptional
   - RxRelay (~> 5)
   - RxSwift (~> 5)
@@ -91,6 +95,7 @@ SPEC REPOS:
     - RxCocoa
     - RxCoreData
     - RxGesture
+    - RxKeyboard
     - RxOptional
     - RxRelay
     - RxSwift
@@ -113,6 +118,7 @@ SPEC CHECKSUMS:
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxCoreData: 1ed5f83e80facccc90fc054eb7f39a44177de56a
   RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
+  RxKeyboard: 6683c4344304a00f943c158bd8a43ce5469c82a7
   RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
@@ -122,6 +128,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 2f0a98e87f863e55cfd3bf258835d406be6c2659
+PODFILE CHECKSUM: e829a5b59b44ab9e001e34df570a34cbc740aa33
 
 COCOAPODS: 1.9.3

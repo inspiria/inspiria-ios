@@ -11,6 +11,7 @@ target 'TReader' do
   pod 'RxOptional'
   pod 'NSObject+Rx'
   pod 'RxGesture'
+  pod 'RxKeyboard'
   pod 'RxCoreData', '~> 1.0.0'
   pod 'RxAlertController'
   pod 'RxViewController'

@@ -10,14 +10,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 import MessageUI
+import RxKeyboard
 
 class SettingsViewController: UIViewController, MFMailComposeViewControllerDelegate {
     var viewModel: SettingsViewModel!
 
-    @IBOutlet var logInButton: UIButton!
-
+    @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         let output = viewModel.transform(input: input)
 
         output.isLoggedIn
-            .map { $0 ? "You are logged in." : "Login for note-taking and highlighting" }
+            .map { $0 ? "You are logged in." : "Login for note-taking" }
             .drive(logInButton.rx.title())
             .disposed(by: rx.disposeBag)
 
@@ -58,14 +59,17 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
             .drive()
             .disposed(by: rx.disposeBag)
 
-//        output.logOutAction
-//            .drive()
-//            .disposed(by: rx.disposeBag)
-
         inputTextView.rx.text
             .asDriver()
             .map { $0 != nil && $0!.isEmpty == false }
             .drive(saveButton.rx.isEnabled)
+            .disposed(by: rx.disposeBag)
+
+        RxKeyboard.instance
+            .visibleHeight
+            .drive(onNext: { [bottomLayoutConstraint] keyboardVisibleHeight in
+                bottomLayoutConstraint?.constant = keyboardVisibleHeight + 26
+            })
             .disposed(by: rx.disposeBag)
     }
 
