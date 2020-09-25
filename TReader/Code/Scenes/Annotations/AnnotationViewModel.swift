@@ -24,7 +24,7 @@ class AnnotationViewModel {
     func transform(input: Input) -> Output {
         let activity = ActivityIndicator()
         let error = ErrorTracker()
-
+        let refresh = BehaviorSubject<Void>(value: ())
         let delete = input.deleteTrigger
             .flatMap {
                 self.annotationsUseCase
@@ -34,10 +34,9 @@ class AnnotationViewModel {
                     .asDriver(onErrorJustReturn: false)
                     .mapToVoid()
         }.startWith(())
-
         let annotations = Driver
-            .combineLatest(input.searchTrigger, input.sortTrigger, input.refreshTrigger, delete)
-            .flatMap { str, order, _, _ in
+            .combineLatest(input.searchTrigger, input.sortTrigger, input.refreshTrigger, delete, refresh.asDriverOnErrorJustComplete())
+            .flatMap { str, order, _, _, _ in
                 self.annotationsUseCase
                     .getAnnotations(shortName: self.book?.info.shortName, quote: str)
                     .map { $0.sorted(by: order) }
@@ -46,22 +45,28 @@ class AnnotationViewModel {
                     .asDriver(onErrorJustReturn: [])
                     .map { $0.map { AnnotationCellModel(annotation: $0, highlight: str) } }
         }
-
-        let edit = annotations.map { $0.map {
-            $0.edit.flatMap { ann in
-                self.navigator
-                    .toEdit(annotation: ann)
-                    .map { AnnotationUpdate(id: ann.id, updated: ann.updated, text: $0 ) }
-            }.flatMap { update in
-                self.annotationsUseCase
-                    .updateAnnotation(update: update).debug()
-                    .trackError(error)
-                    .trackActivity(activity)
-                    .asDriverOnErrorJustComplete()
-            }.mapToVoid()
-        } }
-
-        return Output(annotations: annotations, edits: edit, delete: delete, activity: activity.asDriver(), error: error.asDriver())
+        let edit = annotations.map {
+            $0.map {
+                $0.edit.flatMap { ann in
+                    self.navigator
+                        .toEdit(annotation: ann)
+                        .map { AnnotationUpdate(id: ann.id, updated: ann.updated, text: $0 ) }
+                }.flatMap { update in
+                    self.annotationsUseCase
+                        .updateAnnotation(update: update)
+                        .trackError(error)
+                        .trackActivity(activity)
+                        .asDriverOnErrorJustComplete()
+                }
+                .mapToVoid()
+                .do(onNext: refresh.onNext)
+            }
+        }
+        return Output(annotations: annotations,
+                      edits: edit,
+                      delete: delete,
+                      activity: activity.asDriver(),
+                      error: error.asDriver())
     }
 }
 

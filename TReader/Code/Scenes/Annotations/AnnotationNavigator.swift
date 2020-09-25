@@ -39,6 +39,7 @@ class DefaultAnnotationsLibratyNavigator: AnnotationsLibratyNavigator, Annotatio
     }
 
     func toEdit(annotation: Annotationable) -> Driver<String> {
-        fatalError("Not implemented")
+        let navigator = DefaultEditAnnotationNavigator(services: services, controller: rootController)
+        return navigator.toEditNote(annotation: annotation)
     }
 }
