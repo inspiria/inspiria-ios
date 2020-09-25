@@ -124,7 +124,7 @@ class AnnotationCell: UITableViewCell {
 
         inputTextView.rx.text
             .asDriver()
-            .map { model.annotation.text != $0 && $0 != nil }
+            .map { model.annotation.text != $0 && $0 != nil && $0!.isEmpty == false }
             .drive(saveButton.rx.isEnabled)
             .disposed(by: rx.disposeBag)
     }

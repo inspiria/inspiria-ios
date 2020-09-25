@@ -15,7 +15,7 @@ protocol ChaptersNavigator {
     func toBook()
     func toSearch(book: Book)
     func to(chapterId: Int, of book: Book)
-    func toEdit(annotation: Annotation) -> Driver<String>
+    func toEdit(annotation: Annotationable) -> Driver<String>
     func chapterViewController(chapter: Chapter, book: Book) -> ChapterViewController
 }
 
@@ -79,7 +79,7 @@ class DefaultChaptersNavigator: ChaptersNavigator {
         return viewController
     }
 
-    func toEdit(annotation: Annotation) -> Driver<String> {
+    func toEdit(annotation: Annotationable) -> Driver<String> {
         let navigator = DefaultEditAnnotationNavigator(services: services, controller: rootController)
         return navigator.toEditNote(annotation: annotation)
     }

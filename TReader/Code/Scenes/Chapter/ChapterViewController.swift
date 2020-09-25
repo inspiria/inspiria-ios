@@ -19,6 +19,7 @@ class ChapterViewController: UIViewController {
     // swiftlint:enable force_cast
 
     private var openChapterSubject = PublishSubject<(Int, Int)>()
+    private var jsAction = PublishSubject<(JSAction, JSAnnotation)>()
 
     override func loadView() {
         let webConfiguration = WebViewConfiguration()
@@ -38,11 +39,12 @@ class ChapterViewController: UIViewController {
 
     private func bindViewModel() {
         let openChapter = openChapterSubject.asDriverOnErrorJustComplete()
+        let annotationAction = jsAction.asDriverOnErrorJustComplete()
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .mapToVoid()
             .asDriverOnErrorJustComplete()
 
-        let input = ChapterViewModel.Input(trigger: viewWillAppear, openChapter: openChapter)
+        let input = ChapterViewModel.Input(trigger: viewWillAppear, openChapter: openChapter, annotationAction: annotationAction)
         let output = viewModel.transform(input: input)
 
         output.chapter
@@ -54,8 +56,16 @@ class ChapterViewController: UIViewController {
             })
             .disposed(by: rx.disposeBag)
 
-        output.openChapter
-            .drive()
+        output.drivers.forEach {
+            $0.drive().disposed(by: rx.disposeBag)
+        }
+
+        output.error
+            .drive(rx.errorBinding)
+            .disposed(by: rx.disposeBag)
+
+        output.activity
+            .drive(rx.isRefreshingBinding)
             .disposed(by: rx.disposeBag)
 
         output.annotations
@@ -94,32 +104,15 @@ extension ChapterViewController: WKNavigationDelegate {
 extension ChapterViewController: WKScriptMessageHandler {
     func registerJSCallbacks() {
         webView.configuration.userContentController.add(self, name: "error")
-        webView.configuration.userContentController.add(self, name: "annotate")
-        webView.configuration.userContentController.add(self, name: "highlight")
-        webView.configuration.userContentController.add(self, name: "select")
+        webView.configuration.userContentController.add(self, name: JSAction.annotate.rawValue)
+        webView.configuration.userContentController.add(self, name: JSAction.highlight.rawValue)
+        webView.configuration.userContentController.add(self, name: JSAction.select.rawValue)
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        switch message.name {
-        case "error":
-            print("js error: \(message.body)")
-        case "annotate":
-            guard let str = message.body as? String,
-                  let annotation = try? JSAnnotation(json: str) else { return }
-            viewModel.add(annotation: annotation)
-        case "highlight":
-            guard let str = message.body as? String,
-                  let annotation = try? JSAnnotation(json: str) else { return }
-            viewModel.add(highlight: annotation)
-        case "select":
-            print(message.body)
-            guard let str = message.body as? String,
-                  let annotation = try? JSAnnotation(json: str),
-                  let id = annotation.id else { return }
-            viewModel.edit(annotation: id)
-        default:
-            print(message.name)
-            print(message.body)
-        }
+        guard  let action = JSAction(rawValue: message.name),
+               let str = message.body as? String,
+               let annotation = try? JSAnnotation(json: str) else { return print(message) }
+        jsAction.onNext((action, annotation))
     }
 }

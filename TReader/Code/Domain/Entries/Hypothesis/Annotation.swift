@@ -35,7 +35,6 @@ protocol Annotationable {
     var updated: Date { get }
     var uri: String { get }
     var text: String { get }
-    var created: Date { get }
     var quoteText: String { get }
 }
 
@@ -72,20 +71,23 @@ extension Annotation {
     }
 }
 
-struct JSAnnotation: Codable {
-    let id: String?
-    let exact: String
-    let prefix: String
-    let suffix: String
-}
-
-struct NewAnnotation: Codable, Annotationable {
+struct AnnotationCreate: Codable, Annotationable {
     var id: String = ""
-    var updated: Date
+    var updated: Date = Date()
     let uri: String
-    let text: String
-    let created: Date
-    var quoteText: String
+    var text: String
+    let quoteText: String
+    let target: [AnnotationTarget]
+
+    init(uri: String, text: String, annotation: JSAnnotation) {
+        self.uri = uri
+        self.text = text
+        self.quoteText = annotation.exact
+        let selector = AnnotationSelector.quote(TextQuoteSelector(exact: annotation.exact,
+                                                                  prefix: annotation.prefix,
+                                                                  suffix: annotation.suffix))
+        self.target = [AnnotationTarget(source: "", selector: [selector])]
+    }
 }
 
 struct AnnotationUpdate: Codable {
@@ -149,6 +151,13 @@ struct TextPositionSelector: Codable {
 
 struct TextQuoteSelector: Codable {
     var type: AnnotationSelector.`Type` = .quote
+    let exact: String
+    let prefix: String
+    let suffix: String
+}
+
+struct JSAnnotation: Codable {
+    let id: String?
     let exact: String
     let prefix: String
     let suffix: String

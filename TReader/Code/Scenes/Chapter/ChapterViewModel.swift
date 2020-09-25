@@ -10,6 +10,10 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum JSAction: String {
+    case annotate, highlight, select
+}
+
 class ChapterViewModel {
     let chapter: Chapter
     private let book: Book
@@ -30,12 +34,18 @@ class ChapterViewModel {
     }
 
     func transform(input: Input) -> Output {
+        let activity = ActivityIndicator()
+        let error = ErrorTracker()
+        let refresh = BehaviorSubject<Void>(value: ())
+
         let chapter = Driver
             .combineLatest(input.trigger, Driver.just(self.chapter)) { $1 }
-        let annotations = self.annotationsUseCase
-            .getAnnotations(shortName: "\(self.book.info.shortName)/\(self.chapter.shortName)", quote: nil)
-            .asDriver(onErrorJustReturn: [])
-
+        let annotations = refresh.flatMap {
+            self.annotationsUseCase
+                .getAnnotations(shortName: "\(self.book.info.shortName)/\(self.chapter.shortName)", quote: nil)
+                .trackActivity(activity)
+        }
+        .asDriver(onErrorJustReturn: [])
         let openChapter = input.openChapter
             .flatMap { [unowned self] (data) -> Driver<(Int, Book)> in
                 self.booksUseCase.book(id: data.0)
@@ -46,32 +56,59 @@ class ChapterViewModel {
         .do(onNext: self.navigator.to)
         .mapToVoid()
 
+        let edit = input.annotationAction
+            .filter { $0.0 == .select }
+            .map { $0.1.id }
+            .filterNil()
+            .withLatestFrom(annotations) { id, ann in ann.filter { $0.id == id }.first }
+            .filterNil()
+            .flatMap { ann in
+                self.navigator
+                    .toEdit(annotation: ann)
+                    .map { AnnotationUpdate(id: ann.id, updated: ann.updated, text: $0 ) }
+            }.flatMap { update in
+                self.annotationsUseCase
+                    .updateAnnotation(update: update)
+                    .trackError(error)
+                    .trackActivity(activity)
+                    .asDriverOnErrorJustComplete()
+            }
+            .mapToVoid()
+            .do(onNext: refresh.onNext)
+        let add = input.annotationAction
+            .filter { $0.0 == .highlight }
+            .map { AnnotationCreate(uri: "https://edtechbooks.org/\(self.book.info.shortName)/\(self.chapter.shortName)", text: "", annotation: $0.1) }
+            .flatMap { create in
+                self.annotationsUseCase
+                    .createAnnotation(create: create)
+                    .trackError(error)
+                    .trackActivity(activity)
+                    .asDriverOnErrorJustComplete()
+            }
+            .mapToVoid()
+            .do(onNext: refresh.onNext)
+        let addWithText = input.annotationAction
+            .filter { $0.0 == .annotate }
+            .map { AnnotationCreate(uri: "https://edtechbooks.org/\(self.book.info.shortName)/\(self.chapter.shortName)", text: "", annotation: $0.1) }
+            .flatMap { ann in
+                self.navigator
+                    .toEdit(annotation: ann)
+                    .map { str -> AnnotationCreate in  var annotation = ann; annotation.text = str; return annotation }
+            }.flatMap { create in
+                self.annotationsUseCase
+                    .createAnnotation(create: create)
+                    .trackError(error)
+                    .trackActivity(activity)
+                    .asDriverOnErrorJustComplete()
+            }
+            .mapToVoid()
+            .do(onNext: refresh.onNext)
+
         return Output(chapter: chapter,
                       annotations: annotations,
-                      openChapter: openChapter)
-    }
-
-    func add(annotation: JSAnnotation) {
-        let selector = AnnotationSelector.quote(TextQuoteSelector(exact: annotation.exact,
-                                                                  prefix: annotation.prefix,
-                                                                  suffix: annotation.suffix))
-        let target = AnnotationTarget(source: "", selector: [selector])
-        let ann = Annotation(id: "0",
-                             created: Date(),
-                             updated: Date(), user: "acc:tadas@malka.lt",
-                             uri: "",
-                             text: "",
-                             tags: [],
-                             group: "",
-                             target: [target])
-        navigator.toEdit(annotation: ann)
-    }
-
-    func add(highlight: JSAnnotation) {
-    }
-
-    func edit(annotation id: String) {
-//        navigator.toCreate(annotation: annotation)
+                      activity: activity.asDriver(),
+                      error: error.asDriver(),
+                      drivers: [openChapter, edit, add, addWithText])
     }
 }
 
@@ -79,10 +116,13 @@ extension ChapterViewModel {
     struct Input {
         let trigger: Driver<Void>
         let openChapter: Driver<(Int, Int)>
+        let annotationAction: Driver<(JSAction, JSAnnotation)>
     }
     struct Output {
         let chapter: Driver<Chapter>
         let annotations: Driver<[Annotation]>
-        let openChapter: Driver<Void>
+        let activity: Driver<Bool>
+        let error: Driver<Error>
+        let drivers: [Driver<Void>]
     }
 }
