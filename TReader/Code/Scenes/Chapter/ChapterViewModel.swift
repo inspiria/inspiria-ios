@@ -72,9 +72,9 @@ class ChapterViewModel {
                     .trackError(error)
                     .trackActivity(activity)
                     .asDriverOnErrorJustComplete()
+                    .mapToVoid()
+                    .do(onNext: refresh.onNext)
             }
-            .mapToVoid()
-            .do(onNext: refresh.onNext)
         let add = input.annotationAction
             .filter { $0.0 == .highlight }
             .map { AnnotationCreate(uri: "https://edtechbooks.org/\(self.book.info.shortName)/\(self.chapter.shortName)", text: "", annotation: $0.1) }
@@ -84,9 +84,9 @@ class ChapterViewModel {
                     .trackError(error)
                     .trackActivity(activity)
                     .asDriverOnErrorJustComplete()
+                    .mapToVoid()
+                    .do(onNext: refresh.onNext)
             }
-            .mapToVoid()
-            .do(onNext: refresh.onNext)
         let addWithText = input.annotationAction
             .filter { $0.0 == .annotate }
             .map { AnnotationCreate(uri: "https://edtechbooks.org/\(self.book.info.shortName)/\(self.chapter.shortName)", text: "", annotation: $0.1) }
@@ -100,9 +100,9 @@ class ChapterViewModel {
                     .trackError(error)
                     .trackActivity(activity)
                     .asDriverOnErrorJustComplete()
+                    .mapToVoid()
+                    .do(onNext: refresh.onNext)
             }
-            .mapToVoid()
-            .do(onNext: refresh.onNext)
 
         return Output(chapter: chapter,
                       annotations: annotations,

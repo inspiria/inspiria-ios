@@ -102,6 +102,10 @@ class AnnotationViewController: UITableViewController {
             .drive()
             .disposed(by: rx.disposeBag)
 
+        output.activity
+            .drive(rx.isRefreshingBinding)
+            .disposed(by: rx.disposeBag)
+
         output.error
             .drive(rx.errorBinding)
             .disposed(by: rx.disposeBag)

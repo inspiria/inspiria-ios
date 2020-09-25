@@ -3194,8 +3194,8 @@
         }
 
         function clear_annotations() {
-            var anns = document.querySelectorAll('mark-hypothesis-annotation');
-            anns.forEach(el => { el.style.background = 'none'; });
+//            var anns = document.querySelectorAll('mark-hypothesis-annotation');
+//            anns.forEach(el => { el.style.background = 'none'; });
         }
 
         function attach_annotations(rows) {

@@ -25,6 +25,16 @@ class AnnotationViewModel {
         let activity = ActivityIndicator()
         let error = ErrorTracker()
         let refresh = BehaviorSubject<Void>(value: ())
+        let annotations = Driver
+            .combineLatest(input.searchTrigger, input.sortTrigger, input.refreshTrigger, refresh.asDriverOnErrorJustComplete())
+            .flatMap { str, order, _, _ in
+                self.annotationsUseCase
+                    .getAnnotations(shortName: self.book?.info.shortName, quote: str)
+                    .map { $0.sorted(by: order) }
+                    .trackError(error)
+                    .asDriver(onErrorJustReturn: [])
+                    .map { $0.map { AnnotationCellModel(annotation: $0, highlight: str) } }
+        }
         let delete = input.deleteTrigger
             .flatMap {
                 self.annotationsUseCase
@@ -33,17 +43,7 @@ class AnnotationViewModel {
                     .trackActivity(activity)
                     .asDriver(onErrorJustReturn: false)
                     .mapToVoid()
-        }.startWith(())
-        let annotations = Driver
-            .combineLatest(input.searchTrigger, input.sortTrigger, input.refreshTrigger, delete, refresh.asDriverOnErrorJustComplete())
-            .flatMap { str, order, _, _, _ in
-                self.annotationsUseCase
-                    .getAnnotations(shortName: self.book?.info.shortName, quote: str)
-                    .map { $0.sorted(by: order) }
-                    .trackError(error)
-                    .trackActivity(activity)
-                    .asDriver(onErrorJustReturn: [])
-                    .map { $0.map { AnnotationCellModel(annotation: $0, highlight: str) } }
+                    .do(onNext: refresh.onNext)
         }
         let edit = annotations.map {
             $0.map {
