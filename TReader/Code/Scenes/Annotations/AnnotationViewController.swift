@@ -28,6 +28,7 @@ class AnnotationViewController: UITableViewController {
 
         tableView.refreshControl = UIRefreshControl()
         tableView.tableHeaderView = headerView
+        tableView.register(AnnotationCell.nib(), forCellReuseIdentifier: AnnotationCell.reuseIdentifier)
     }
 
     private func bindViewModel() {

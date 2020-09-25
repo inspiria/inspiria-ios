@@ -9,19 +9,25 @@
 import UIKit
 import RxCocoa
 import RxSwift
-import DTRichTextEditor
 
 struct AnnotationCellModel {
     fileprivate var deletePS = PublishSubject<String>()
-    fileprivate var editPS = PublishSubject<Annotation>()
-    var delete: Driver<String> { return deletePS.asDriverOnErrorJustComplete() }
-    var edit: Driver<Annotation> { return editPS.asDriverOnErrorJustComplete() }
+    fileprivate var editPS = PublishSubject<Annotationable>()
+    fileprivate var savePS = PublishSubject<String>()
+    fileprivate var cancelPS = PublishSubject<Void>()
 
-    let annotation: Annotation
+    var delete: Driver<String> { return deletePS.asDriverOnErrorJustComplete() }
+    var edit: Driver<Annotationable> { return editPS.asDriverOnErrorJustComplete() }
+    var save: Driver<String> { return savePS.asDriverOnErrorJustComplete() }
+    var cancel: Driver<Void> { return cancelPS.asDriverOnErrorJustComplete() }
+
+    let annotation: Annotationable
+    let isEditing: Bool
     let highlight: String?
 
-    init(annotation: Annotation, highlight: String? = nil) {
+    init(annotation: Annotationable, edit: Bool = false, highlight: String? = nil) {
         self.annotation = annotation
+        self.isEditing = edit
         self.highlight = highlight
     }
 }
@@ -34,9 +40,17 @@ class AnnotationCell: UITableViewCell {
     @IBOutlet var chapterLabel: UILabel!
     @IBOutlet var pageLabel: UILabel!
     @IBOutlet var quoteLabel: UILabel!
-    @IBOutlet var userTextLabel: DTAttributedLabel!
+    @IBOutlet var userTextLabel: UILabel!
+
     @IBOutlet var editButton: UIButton!
     @IBOutlet var deleteButton: UIButton!
+
+    @IBOutlet weak var inputTextView: UITextView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+
+    @IBOutlet weak var editView: UIView!
+    @IBOutlet weak var textView: UIView!
 
     private var disposeBag = DisposeBag()
 
@@ -50,18 +64,33 @@ class AnnotationCell: UITableViewCell {
         containerView.layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
         containerView.layer.shadowRadius = 2
         containerView.layer.cornerRadius = cornerRadius
+
+        inputTextView.layer.cornerRadius = cornerRadius
+        inputTextView.layer.borderWidth = 1
+        inputTextView.layer.borderColor = UIColor(hexString: "#E6E6E6")!.cgColor
+        inputTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
+        saveButton.layer.cornerRadius = cornerRadius
     }
 
     func set(model: AnnotationCellModel) {
         dateLabel.text = model.annotation.updated.formatedString()
 
+        if model.isEditing {
+            editView.isHidden = false
+            textView.isHidden = true
+            inputTextView.text = model.annotation.text
+        } else {
+            editView.isHidden = true
+            textView.isHidden = false
+            userTextLabel.text = model.annotation.text
+        }
+
         if let str = model.highlight, !str.isEmpty {
             let strings = str.components(separatedBy: " ")
             quoteLabel.attributedText = model.annotation.quoteText.highlight(text: strings, color: ColorStyle.orange.color)
-            userTextLabel.attributedString = model.annotation.text.highlight(text: strings, color: ColorStyle.orange.color)
         } else {
             quoteLabel.text = model.annotation.quoteText
-            userTextLabel.attributedString = model.annotation.text.highlight(text: [])
         }
 
         disposeBag = DisposeBag()
@@ -77,6 +106,19 @@ class AnnotationCell: UITableViewCell {
             .asDriver()
             .map { model.annotation.id }
             .drive(model.deletePS)
+            .disposed(by: disposeBag)
+
+        saveButton.rx
+            .tap
+            .asDriver()
+            .map { [weak self] in self?.inputTextView.text ?? "" }
+            .drive(model.savePS)
+            .disposed(by: disposeBag)
+
+        cancelButton.rx
+            .tap
+            .asDriver()
+            .drive(model.cancelPS)
             .disposed(by: disposeBag)
     }
 }

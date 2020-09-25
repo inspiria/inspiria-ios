@@ -40,9 +40,7 @@ class AnnotationViewModel {
             .flatMap { str, order, _, _ in
                 self.annotationsUseCase
                     .getAnnotations(shortName: self.book?.info.shortName, quote: str)
-                    .map {
-                        $0.sorted(by: order)
-                    }
+                    .map { $0.sorted(by: order) }
                     .trackError(error)
                     .trackActivity(activity)
                     .asDriver(onErrorJustReturn: [])

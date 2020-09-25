@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AnnotationNavigator {
-    func toEdit(annotation: Annotation)
+    func toEdit(annotation: Annotationable)
 }
 
 protocol AnnotationsLibratyNavigator {
@@ -36,7 +36,7 @@ class DefaultAnnotationsLibratyNavigator: AnnotationsLibratyNavigator, Annotatio
         rootController.viewControllers = [notesController]
     }
 
-    func toEdit(annotation: Annotation) {
+    func toEdit(annotation: Annotationable) {
         fatalError("Not implemented")
     }
 }

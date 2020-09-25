@@ -13,6 +13,7 @@ import RxSwift
 import RxCocoa
 
 protocol EditAnnotationNavigator {
+    func cancelEdit()
     func toEditNote(annotation: Annotationable) -> Single<String>
 }
 
@@ -39,5 +40,9 @@ class DefaultEditAnnotationNavigator: EditAnnotationNavigator {
         rootController.present(menu, animated: true, completion: nil)
 
         return viewController.viewModel.updatedText
+    }
+
+    func cancelEdit() {
+        rootController.dismiss(animated: true, completion: nil)
     }
 }

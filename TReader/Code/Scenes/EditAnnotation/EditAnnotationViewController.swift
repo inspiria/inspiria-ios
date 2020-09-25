@@ -28,14 +28,14 @@ class EditAnnotationViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "x"), style: .done, target: nil, action: nil)
         navigationController?.navigationBar.tintColor = .white
         navigationController?.view.backgroundColor = .red
-        tableView.register(EditAnnotationCell.nib(), forCellReuseIdentifier: EditAnnotationCell.reuseIdentifier)
+
+        tableView.backgroundColor = ColorStyle.iconsLight.color
+        tableView.allowsSelection = false
+        tableView.separatorStyle = .none
+        tableView.register(AnnotationCell.nib(), forCellReuseIdentifier: AnnotationCell.reuseIdentifier)
     }
 
     private func bindViewModel() {
-
-        let input = EditAnnontationViewModel.Input()
-        let output = viewModel.transform(input: input)
-        output.disposableDrivers.forEach { $0.drive().disposed(by: rx.disposeBag) }
 
         navigationItem
             .leftBarButtonItem?.rx.tap
@@ -43,9 +43,10 @@ class EditAnnotationViewController: UITableViewController {
             .map { (true, nil) }
             .drive(onNext: dismiss)
             .disposed(by: rx.disposeBag)
-        
-        let cellIdentifier = EditAnnotationCell.reuseIdentifier
-        let cellType = EditAnnotationCell.self
+
+        let output = viewModel.transform()
+        let cellIdentifier = AnnotationCell.reuseIdentifier
+        let cellType = AnnotationCell.self
 
         output.annotations
             .asObservable()
@@ -54,5 +55,9 @@ class EditAnnotationViewController: UITableViewController {
                 self.tableView.refreshControl?.endRefreshing()
         }
         .disposed(by: rx.disposeBag)
+
+        output.cancel
+            .drive()
+            .disposed(by: rx.disposeBag)
     }
 }

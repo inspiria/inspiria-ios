@@ -61,6 +61,6 @@ class DefaultBookSearchUseCase: BookSearchUseCase {
         let str = try NSAttributedString(url: url,
                                          options: [.documentType: type, .characterEncoding: encoding],
                                          documentAttributes: nil)
-        return str.plainTextString()
+        return str.string
     }
 }

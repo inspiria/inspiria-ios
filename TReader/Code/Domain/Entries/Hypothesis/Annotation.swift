@@ -31,10 +31,12 @@ struct DeleteAnnotationResponse: Codable {
 }
 
 protocol Annotationable {
+    var id: String { get }
+    var updated: Date { get }
     var uri: String { get }
     var text: String { get }
     var created: Date { get }
-    var target: [AnnotationTarget] { get }
+    var quoteText: String { get }
 }
 
 struct Annotation: Codable, Annotationable {
@@ -78,10 +80,12 @@ struct JSAnnotation: Codable {
 }
 
 struct NewAnnotation: Codable, Annotationable {
+    var id: String = ""
+    var updated: Date
     let uri: String
     let text: String
     let created: Date
-    let target: [AnnotationTarget]
+    var quoteText: String
 }
 
 struct AnnotationTarget: Codable {

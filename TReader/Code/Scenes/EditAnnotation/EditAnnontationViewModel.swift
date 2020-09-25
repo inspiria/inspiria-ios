@@ -12,34 +12,31 @@ import RxCocoa
 
 class EditAnnontationViewModel {
     private let navigator: EditAnnotationNavigator
-    private let annotation: Annotationable
+    private let annotation: AnnotationCellModel
 
-    private let finalTextBehaviorRelay = BehaviorRelay<String>(value: "")
     var updatedText: Single<String> {
-        finalTextBehaviorRelay
-            .asObservable().skip(1)
+        return annotation.save
+            .asObservable()
             .asSingle()
     }
 
     init (navigator: EditAnnotationNavigator, annotation: Annotationable) {
         self.navigator = navigator
-        self.annotation = annotation
+        self.annotation = AnnotationCellModel(annotation: annotation, edit: true)
     }
 
-    func transform(input: Input) -> Output {
-        let models = [annotation].compactMap { EditAnnotationModel(annotation: $0) }
-        let annotations = Driver.just(models)
-        
+    func transform() -> Output {
+        let annotations = Driver.just([annotation])
+        let cancel = annotation.cancel
+            .do(onNext: navigator.cancelEdit)
         return Output(annotations: annotations,
-                      disposableDrivers: [])
+                      cancel: cancel)
     }
 }
 
 extension EditAnnontationViewModel {
-    struct Input {
-    }
     struct Output {
-        let annotations: Driver<[EditAnnotationModel]>
-        let disposableDrivers: [Driver<Void>]
+        let annotations: Driver<[AnnotationCellModel]>
+        let cancel: Driver<Void>
     }
 }
