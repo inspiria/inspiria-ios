@@ -34,7 +34,7 @@ class AnnotationViewModel {
                     .asDriver(onErrorJustReturn: false)
                     .mapToVoid()
         }.startWith(())
-        
+
         let annotations = Driver
             .combineLatest(input.searchTrigger, input.sortTrigger, input.refreshTrigger, delete)
             .flatMap { str, order, _, _ in
@@ -47,7 +47,19 @@ class AnnotationViewModel {
                     .map { $0.map { AnnotationCellModel(annotation: $0, highlight: str) } }
         }
 
-        let edit = annotations.map { $0.map { $0.edit.do(onNext: self.navigator.toEdit).mapToVoid() } }
+        let edit = annotations.map { $0.map {
+            $0.edit.flatMap { ann in
+                self.navigator
+                    .toEdit(annotation: ann)
+                    .map { AnnotationUpdate(id: ann.id, updated: ann.updated, text: $0 ) }
+            }.flatMap { update in
+                self.annotationsUseCase
+                    .updateAnnotation(update: update).debug()
+                    .trackError(error)
+                    .trackActivity(activity)
+                    .asDriverOnErrorJustComplete()
+            }.mapToVoid()
+        } }
 
         return Output(annotations: annotations, edits: edit, delete: delete, activity: activity.asDriver(), error: error.asDriver())
     }

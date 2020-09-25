@@ -26,6 +26,7 @@ protocol AnnotationsUseCase {
     func getUserProfile() -> Single<UserProfile>
     func getAnnotations(shortName: String?, quote: String?) -> Single<[Annotation]>
     func deleteAnnotation(id: String) -> Single<Bool>
+    func updateAnnotation(update: AnnotationUpdate) -> Single<Annotation>
 }
 
 class HypothesisAnnotationsUseCase: AnnotationsUseCase {
@@ -54,6 +55,10 @@ class HypothesisAnnotationsUseCase: AnnotationsUseCase {
         let response: Single<AnnotationResponse> = networkService.request(path: "search", method: .get, data: data)
         return response
             .map { $0.rows }
+    }
+
+    func updateAnnotation(update: AnnotationUpdate) -> Single<Annotation> {
+        return networkService.request(path: "annotations/\(update.id)", method: .patch, data: update)
     }
 
     func deleteAnnotation(id: String) -> Single<Bool> {

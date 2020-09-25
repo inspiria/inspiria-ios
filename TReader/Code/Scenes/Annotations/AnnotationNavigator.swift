@@ -8,8 +8,10 @@
 
 import UIKit
 
+import RxCocoa
+
 protocol AnnotationNavigator {
-    func toEdit(annotation: Annotationable)
+    func toEdit(annotation: Annotationable) -> Driver<String>
 }
 
 protocol AnnotationsLibratyNavigator {
@@ -36,7 +38,7 @@ class DefaultAnnotationsLibratyNavigator: AnnotationsLibratyNavigator, Annotatio
         rootController.viewControllers = [notesController]
     }
 
-    func toEdit(annotation: Annotationable) {
+    func toEdit(annotation: Annotationable) -> Driver<String> {
         fatalError("Not implemented")
     }
 }

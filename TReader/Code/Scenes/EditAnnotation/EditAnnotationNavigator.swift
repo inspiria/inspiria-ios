@@ -14,7 +14,7 @@ import RxCocoa
 
 protocol EditAnnotationNavigator {
     func cancelEdit()
-    func toEditNote(annotation: Annotationable) -> Single<String>
+    func toEditNote(annotation: Annotationable) -> Driver<String>
 }
 
 class DefaultEditAnnotationNavigator: EditAnnotationNavigator {
@@ -27,7 +27,7 @@ class DefaultEditAnnotationNavigator: EditAnnotationNavigator {
         self.rootController = controller
     }
 
-    func toEditNote(annotation: Annotationable) -> Single<String> {
+    func toEditNote(annotation: Annotationable) -> Driver<String> {
         let viewController = EditAnnotationViewController()
         viewController.viewModel = EditAnnontationViewModel(navigator: self, annotation: annotation)
 

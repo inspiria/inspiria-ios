@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 protocol BookNavigator {
     func to(book: BookInfo)
@@ -64,8 +65,8 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
         navigator.to(chapterId: chapterId, of: book)
     }
 
-    func toEdit(annotation: Annotationable) {
+    func toEdit(annotation: Annotationable) -> Driver<String> {
         let navigator = DefaultEditAnnotationNavigator(services: services, controller: rootController)
-        navigator.toEditNote(annotation: annotation)
+        return navigator.toEditNote(annotation: annotation)
     }
 }

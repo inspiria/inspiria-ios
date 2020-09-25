@@ -58,7 +58,7 @@ class ChapterViewModel {
         let target = AnnotationTarget(source: "", selector: [selector])
         let ann = Annotation(id: "0",
                              created: Date(),
-                             updated: Date(), user: "tadas",
+                             updated: Date(), user: "acc:tadas@malka.lt",
                              uri: "",
                              text: "",
                              tags: [],

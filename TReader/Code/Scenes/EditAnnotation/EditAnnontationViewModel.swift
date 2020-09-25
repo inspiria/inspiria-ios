@@ -14,10 +14,9 @@ class EditAnnontationViewModel {
     private let navigator: EditAnnotationNavigator
     private let annotation: AnnotationCellModel
 
-    var updatedText: Single<String> {
+    var updatedText: Driver<String> {
         return annotation.save
-            .asObservable()
-            .asSingle()
+            .do(onNext: { [unowned self] _ in self.navigator.cancelEdit() })
     }
 
     init (navigator: EditAnnotationNavigator, annotation: Annotationable) {

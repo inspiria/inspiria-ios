@@ -36,6 +36,7 @@ class NetworkService {
         case post = "POST"
         case get = "GET"
         case put = "PUT"
+        case patch = "PATCH"
         case delete = "DELETE"
     }
 
@@ -176,7 +177,7 @@ fileprivate extension String {
 fileprivate extension Encodable {
     func httpBody(method: NetworkService.HTTPMethod, contentType: NetworkService.ContentType) -> Data? {
         switch method {
-        case .post, .put, .delete:
+        case .post, .put, .patch, .delete:
             switch contentType {
             case .json:
                 return self.jsonDataOrNil()

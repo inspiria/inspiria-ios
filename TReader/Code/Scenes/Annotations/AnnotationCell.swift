@@ -108,18 +108,25 @@ class AnnotationCell: UITableViewCell {
             .drive(model.deletePS)
             .disposed(by: disposeBag)
 
-        saveButton.rx
-            .tap
-            .asDriver()
-            .map { [weak self] in self?.inputTextView.text ?? "" }
-            .drive(model.savePS)
-            .disposed(by: disposeBag)
-
         cancelButton.rx
             .tap
             .asDriver()
             .drive(model.cancelPS)
             .disposed(by: disposeBag)
+
+        saveButton.rx
+            .tap
+            .asDriver()
+            .map { [weak self] in self?.inputTextView.text }
+            .filterNil()
+            .drive(model.savePS)
+            .disposed(by: disposeBag)
+
+        inputTextView.rx.text
+            .asDriver()
+            .map { model.annotation.text != $0 && $0 != nil }
+            .drive(saveButton.rx.isEnabled)
+            .disposed(by: rx.disposeBag)
     }
 }
 

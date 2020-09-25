@@ -88,10 +88,15 @@ struct NewAnnotation: Codable, Annotationable {
     var quoteText: String
 }
 
+struct AnnotationUpdate: Codable {
+    var id: String
+    var updated: Date
+    let text: String
+}
+
 struct AnnotationTarget: Codable {
     let source: String
     let selector: [AnnotationSelector]
-
 }
 
 enum AnnotationSelector: Codable {

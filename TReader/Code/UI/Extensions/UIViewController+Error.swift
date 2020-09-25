@@ -17,8 +17,8 @@ extension Reactive where Base: UIViewController {
                                           message: error.localizedDescription,
                                           preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-            if let parent = controller.parent {
-                parent.present(alert, animated: true, completion: nil)
+            if let top = controller.presentedViewController {
+                top.present(alert, animated: true, completion: nil)
             } else {
                 controller.present(alert, animated: true, completion: nil)
             }
