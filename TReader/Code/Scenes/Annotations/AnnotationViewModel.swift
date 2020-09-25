@@ -34,7 +34,7 @@ class AnnotationViewModel {
                     .asDriver(onErrorJustReturn: false)
                     .mapToVoid()
         }.startWith(())
-
+        
         let annotations = Driver
             .combineLatest(input.searchTrigger, input.sortTrigger, input.refreshTrigger, delete)
             .flatMap { str, order, _, _ in

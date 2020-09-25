@@ -27,7 +27,11 @@ class EditAnnontationViewModel {
     }
 
     func transform(input: Input) -> Output {
-        return Output(disposableDrivers: [])
+        let models = [annotation].compactMap { EditAnnotationModel(annotation: $0) }
+        let annotations = Driver.just(models)
+        
+        return Output(annotations: annotations,
+                      disposableDrivers: [])
     }
 }
 
@@ -35,6 +39,7 @@ extension EditAnnontationViewModel {
     struct Input {
     }
     struct Output {
+        let annotations: Driver<[EditAnnotationModel]>
         let disposableDrivers: [Driver<Void>]
     }
 }
