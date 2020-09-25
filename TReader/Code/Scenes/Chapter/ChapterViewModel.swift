@@ -38,14 +38,12 @@ class ChapterViewModel {
         let error = ErrorTracker()
         let refresh = BehaviorSubject<Void>(value: ())
 
-        let chapter = Driver
-            .combineLatest(input.trigger, Driver.just(self.chapter)) { $1 }
+        let chapter = Driver.just(self.chapter)
         let annotations = refresh.flatMap {
             self.annotationsUseCase
                 .getAnnotations(shortName: "\(self.book.info.shortName)/\(self.chapter.shortName)", quote: nil)
                 .trackActivity(activity)
-        }
-        .asDriver(onErrorJustReturn: [])
+        }.asDriver(onErrorJustReturn: [])
         let openChapter = input.openChapter
             .flatMap { [unowned self] (data) -> Driver<(Int, Book)> in
                 self.booksUseCase.book(id: data.0)

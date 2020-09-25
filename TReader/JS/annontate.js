@@ -3189,13 +3189,16 @@
             highlight.title = payload;
             highlight.className = 'hypothesis_annotation';
             highlight.style.background = '#FFFACD';
+//            highlight.addEventListener('touchstart', selectAnnotation)
 
             wrap(highlight, range);
         }
 
         function clear_annotations() {
-//            var anns = document.querySelectorAll('mark-hypothesis-annotation');
-//            anns.forEach(el => { el.style.background = 'none'; });
+            var anns = document.querySelectorAll('mark-hypothesis-annotation');
+            anns.forEach(el => {
+                el.style.background = 'none';
+            });
         }
 
         function attach_annotations(rows) {
@@ -3213,10 +3216,12 @@
             }
 
             var anns = document.querySelectorAll('mark-hypothesis-annotation');
-            anns.forEach(el => el.addEventListener('touchstart', event => {
-                var data = event.target.getAttribute('data-hypothesis');
-                window.webkit.messageHandlers.select.postMessage(data);
-            }));
+            anns.forEach(el => el.addEventListener('touchstart', selectAnnotation));
+        }
+
+        function selectAnnotation(event) {
+            var data = event.target.getAttribute('data-hypothesis');
+            window.webkit.messageHandlers.select.postMessage(data);
         }
 
         module.exports = attach_annotations;
