@@ -213,10 +213,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="URq-Oc-v92">
-                                <rect key="frame" x="67" y="297" width="280" height="302"/>
+                                <rect key="frame" x="67" y="290.5" width="280" height="315.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hypothesis-logo" translatesAutoresizingMaskIntoConstraints="NO" id="z1i-m6-0b5">
-                                        <rect key="frame" x="30" y="252" width="92" height="20"/>
+                                        <rect key="frame" x="30" y="265.5" width="92" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="92" id="KIg-6v-J2K"/>
                                             <constraint firstAttribute="height" constant="20" id="SMY-6L-sNu"/>
@@ -230,7 +230,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6m3-NQ-ilY">
-                                        <rect key="frame" x="24" y="80" width="232" height="82"/>
+                                        <rect key="frame" x="24" y="80" width="232" height="95.5"/>
                                         <string key="text">Textbook Reader uses Hypothes.is to annotate text within the app.
 
 Login with your Hypothes.is account to use this feature.</string>
@@ -239,7 +239,7 @@ Login with your Hypothes.is account to use this feature.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3Z-OP-jTV">
-                                        <rect key="frame" x="24" y="186" width="232" height="28"/>
+                                        <rect key="frame" x="24" y="199.5" width="232" height="28"/>
                                         <color key="backgroundColor" name="Orange"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="Wxd-ve-vHz"/>
@@ -249,7 +249,7 @@ Login with your Hypothes.is account to use this feature.</string>
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Don’t have a Hypothes.is account? Sign up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGj-fF-40K">
-                                        <rect key="frame" x="134" y="250" width="122" height="24"/>
+                                        <rect key="frame" x="134" y="263.5" width="122" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" name="MenuGray"/>
                                         <nil key="highlightedColor"/>
@@ -371,38 +371,143 @@ Login with your Hypothes.is account to use this feature.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VY0-oU-q4u">
-                                <rect key="frame" x="181" y="423" width="52" height="60"/>
+                                <rect key="frame" x="26" y="70" width="362" height="766"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBs-Rl-VPG">
-                                        <rect key="frame" x="0.0" y="0.0" width="52" height="30"/>
-                                        <state key="normal" title="Log in">
-                                            <color key="titleColor" name="MenuDark"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fg8-Ic-Afc">
-                                        <rect key="frame" x="0.0" y="30" width="52" height="30"/>
-                                        <state key="normal" title="Log out">
-                                            <color key="titleColor" name="MenuDark"/>
-                                        </state>
-                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bei-Bl-ofT">
+                                        <rect key="frame" x="0.0" y="0.0" width="362" height="382.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMX-t1-3oF">
+                                                <rect key="frame" x="66.5" y="202.5" width="220" height="37.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annotation and highlighting by Hypothes.is " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LA-sz-soP">
+                                                        <rect key="frame" x="24" y="2" width="181.5" height="33.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" name="MenuDark"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hypothesis-logo-KO" translatesAutoresizingMaskIntoConstraints="NO" id="qVl-O6-YEv">
+                                                        <rect key="frame" x="0.0" y="4" width="19" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="19" id="UCP-GA-Nja"/>
+                                                            <constraint firstAttribute="height" constant="20" id="onN-WY-Ujm"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="0LA-sz-soP" firstAttribute="leading" secondItem="qVl-O6-YEv" secondAttribute="trailing" constant="5" id="6ex-ix-M6M"/>
+                                                    <constraint firstItem="qVl-O6-YEv" firstAttribute="leading" secondItem="EMX-t1-3oF" secondAttribute="leading" id="85o-fq-caY"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0LA-sz-soP" secondAttribute="trailing" constant="5" id="Ice-en-sUW"/>
+                                                    <constraint firstAttribute="width" constant="220" id="OB3-Hq-DyR"/>
+                                                    <constraint firstItem="0LA-sz-soP" firstAttribute="top" secondItem="EMX-t1-3oF" secondAttribute="top" constant="2" id="dlx-LN-hRb"/>
+                                                    <constraint firstAttribute="bottom" secondItem="0LA-sz-soP" secondAttribute="bottom" constant="2" id="fM9-04-q0N"/>
+                                                    <constraint firstItem="qVl-O6-YEv" firstAttribute="top" secondItem="EMX-t1-3oF" secondAttribute="top" constant="4" id="wEN-zl-t3S"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBs-Rl-VPG">
+                                                <rect key="frame" x="79" y="112.5" width="204" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Yep-si-e92"/>
+                                                </constraints>
+                                                <state key="normal" title="Log in">
+                                                    <color key="titleColor" name="Orange"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" name="MenuDark"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="kBs-Rl-VPG" firstAttribute="centerX" secondItem="bei-Bl-ofT" secondAttribute="centerX" id="1ED-S4-yGB"/>
+                                            <constraint firstItem="kBs-Rl-VPG" firstAttribute="width" secondItem="EMX-t1-3oF" secondAttribute="width" multiplier="0.927273" id="LJL-on-lQ0"/>
+                                            <constraint firstItem="0LA-sz-soP" firstAttribute="centerX" secondItem="bei-Bl-ofT" secondAttribute="centerX" id="UEX-gG-fYq"/>
+                                            <constraint firstItem="EMX-t1-3oF" firstAttribute="top" secondItem="kBs-Rl-VPG" secondAttribute="bottom" constant="60" id="te4-1a-t2s"/>
+                                            <constraint firstItem="EMX-t1-3oF" firstAttribute="centerY" secondItem="bei-Bl-ofT" secondAttribute="centerY" constant="30" id="vYI-G8-8bi"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="And-TK-Qjb">
+                                        <rect key="frame" x="0.0" y="382.5" width="362" height="1"/>
+                                        <color key="backgroundColor" name="MenuGray"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="XW0-2z-T5T"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZ4-gF-mGu">
+                                        <rect key="frame" x="0.0" y="383.5" width="362" height="382.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Submit feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amc-tX-oo7">
+                                                <rect key="frame" x="6" y="104.5" width="109.5" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="MenuDark"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0Uf-Pn-4sa">
+                                                <rect key="frame" x="6" y="131.5" width="350" height="120"/>
+                                                <color key="backgroundColor" name="LightBackground"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="OEd-dg-BsD"/>
+                                                </constraints>
+                                                <color key="textColor" name="MenuDark"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGd-Xe-67a">
+                                                <rect key="frame" x="6" y="265.5" width="53" height="27"/>
+                                                <color key="backgroundColor" name="Orange"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53" id="f2c-xs-bbw"/>
+                                                    <constraint firstAttribute="height" constant="27" id="pHA-zM-BXR"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                                <state key="normal" title="Send">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" white="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="composeEmail" destination="0JW-fr-6V2" eventType="touchUpInside" id="Uta-Qg-OPH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="nGd-Xe-67a" firstAttribute="top" secondItem="0Uf-Pn-4sa" secondAttribute="bottom" constant="14" id="Qtv-sM-Fia"/>
+                                            <constraint firstAttribute="trailing" secondItem="0Uf-Pn-4sa" secondAttribute="trailing" constant="6" id="Rwc-KU-zTE"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="amc-tX-oo7" secondAttribute="trailing" constant="20" symbolic="YES" id="TTz-Kl-tnU"/>
+                                            <constraint firstItem="nGd-Xe-67a" firstAttribute="leading" secondItem="0Uf-Pn-4sa" secondAttribute="leading" id="gbH-Pe-ftM"/>
+                                            <constraint firstItem="amc-tX-oo7" firstAttribute="leading" secondItem="0Uf-Pn-4sa" secondAttribute="leading" id="gtv-tg-cqS"/>
+                                            <constraint firstItem="0Uf-Pn-4sa" firstAttribute="leading" secondItem="NZ4-gF-mGu" secondAttribute="leading" constant="6" id="mXS-0X-3Y8"/>
+                                            <constraint firstItem="0Uf-Pn-4sa" firstAttribute="top" secondItem="amc-tX-oo7" secondAttribute="bottom" constant="10" id="pBq-5q-AHD"/>
+                                            <constraint firstItem="0Uf-Pn-4sa" firstAttribute="centerY" secondItem="NZ4-gF-mGu" secondAttribute="centerY" id="se7-FS-84W"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="NZ4-gF-mGu" firstAttribute="height" secondItem="bei-Bl-ofT" secondAttribute="height" id="70a-Zk-hUK"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DZv-u4-zvR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="VY0-oU-q4u" firstAttribute="centerY" secondItem="DZv-u4-zvR" secondAttribute="centerY" id="qV1-Bw-BCR"/>
-                            <constraint firstItem="VY0-oU-q4u" firstAttribute="centerX" secondItem="DZv-u4-zvR" secondAttribute="centerX" id="xO3-y3-1Ay"/>
+                            <constraint firstItem="DZv-u4-zvR" firstAttribute="bottom" secondItem="VY0-oU-q4u" secondAttribute="bottom" constant="26" id="0o3-cM-Bnh"/>
+                            <constraint firstItem="VY0-oU-q4u" firstAttribute="top" secondItem="DZv-u4-zvR" secondAttribute="top" constant="26" id="ECU-cv-BdG"/>
+                            <constraint firstItem="VY0-oU-q4u" firstAttribute="leading" secondItem="DZv-u4-zvR" secondAttribute="leading" constant="26" id="Q4Z-08-O99"/>
+                            <constraint firstItem="DZv-u4-zvR" firstAttribute="trailing" secondItem="VY0-oU-q4u" secondAttribute="trailing" constant="26" id="UuO-gY-GQi"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="inputTextView" destination="0Uf-Pn-4sa" id="ZAW-TW-HKJ"/>
                         <outlet property="logInButton" destination="kBs-Rl-VPG" id="LIW-G5-bM1"/>
-                        <outlet property="logOutButton" destination="Fg8-Ic-Afc" id="Qb1-me-A0P"/>
+                        <outlet property="saveButton" destination="nGd-Xe-67a" id="WqL-hC-jzZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYg-cH-J91" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1488" y="479"/>
+            <point key="canvasLocation" x="-1488.4057971014495" y="478.79464285714283"/>
         </scene>
     </scenes>
     <color key="tintColor" name="BkgrndWhite"/>
@@ -410,10 +515,8 @@ Login with your Hypothes.is account to use this feature.</string>
         <image name="Bkgrnd" width="312" height="568"/>
         <image name="Highlighter" width="38" height="38"/>
         <image name="Hypothesis-logo" width="92" height="20"/>
+        <image name="Hypothesis-logo-KO" width="19" height="20"/>
         <image name="SelectOpen" width="28" height="28"/>
-        <namedColor name="BkgrndWhite">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="BkgrndWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
