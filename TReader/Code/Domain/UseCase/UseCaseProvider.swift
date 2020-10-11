@@ -61,5 +61,4 @@ class DefaultUseCaseProvider: UseCaseProvider {
     func authUseCase() -> UserUseCase {
         return mOAuthUseCase
     }
-    
 }

@@ -44,7 +44,6 @@ class ChapterViewModel {
             self.annotationsUseCase
                 .getAnnotations(shortName: "\(self.book.info.shortName)/\(self.chapter.shortName)", quote: nil)
         }.asDriver(onErrorJustReturn: [])
-
         let openChapter = input.openChapter
             .flatMap { data in
                 self.booksUseCase.book(id: data.0)
@@ -64,7 +63,8 @@ class ChapterViewModel {
                 self.navigator
                     .toEdit(annotation: ann)
                     .map { AnnotationUpdate(id: ann.id, updated: ann.updated, text: $0 ) }
-            }.flatMap { update in
+            }
+            .flatMap { update in
                 self.annotationsUseCase
                     .updateAnnotation(update: update)
                     .trackError(error)
@@ -92,7 +92,8 @@ class ChapterViewModel {
                 self.navigator
                     .toEdit(annotation: ann)
                     .map { str -> AnnotationCreate in  var annotation = ann; annotation.text = str; return annotation }
-            }.flatMap { create in
+            }
+            .flatMap { create in
                 self.annotationsUseCase
                     .createAnnotation(create: create)
                     .trackError(error)

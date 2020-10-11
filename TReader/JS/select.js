@@ -20,7 +20,7 @@ function selectText(colour) {
     suffix: suffix
   }
 
-  attach_annotations([data]);
+//  attach_annotations([data]);
 
   selection.removeAllRanges();
 
