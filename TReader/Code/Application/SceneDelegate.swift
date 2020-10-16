@@ -51,6 +51,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .disposed(by: rx.disposeBag)
     }
 
+    func openSettings() {
+        if let rootController = window?.rootViewController as? UITabBarController {
+            rootController.selectedIndex = 0
+        }
+    }
+
     func loadLogin(with storyboard: UIStoryboard, rootController: UITabBarController) {
         let provider = DefaultUseCaseProvider.provider
         let navigator = DefaultLoginNavigator(services: provider,

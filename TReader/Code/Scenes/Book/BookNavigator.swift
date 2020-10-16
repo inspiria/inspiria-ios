@@ -52,6 +52,7 @@ class DefaultBookNavigator: BookNavigator, ContentNavigator, AnnotationNavigator
 
     func to(book info: BookInfo) {
         let tabController = BookViewController()
+//        tabController.hidesBottomBarWhenPushed = true
         tabController.viewModel = BookViewModel(booksUseCase: self.services.booksUseCase(),
                                                 navigator: self,
                                                 bookInfo: info)

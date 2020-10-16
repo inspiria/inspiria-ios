@@ -15,7 +15,7 @@ enum AnnotationsError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .noUserProfile: return "Failed to restore user profile. Please login with Hypothesis."
+        case .noUserProfile: return "Failed to restore user profile. Please login with Hypothes.is."
         }
     }
 }
@@ -59,14 +59,17 @@ class HypothesisAnnotationsUseCase: AnnotationsUseCase {
     }
 
     func updateAnnotation(update: AnnotationUpdate) -> Single<Annotation> {
+        guard userProfileRelay.value != nil else { return Single.error(AnnotationsError.noUserProfile) }
         return networkService.request(path: "annotations/\(update.id)", method: .patch, data: update)
     }
 
     func createAnnotation(create: AnnotationCreate) -> Single<Annotation> {
+        guard userProfileRelay.value != nil else { return Single.error(AnnotationsError.noUserProfile) }
         return networkService.request(path: "annotations", method: .post, data: create)
     }
 
     func deleteAnnotation(id: String) -> Single<Bool> {
+        guard userProfileRelay.value != nil else { return Single.error(AnnotationsError.noUserProfile) }
         let response: Single<DeleteAnnotationResponse> = networkService.request(path: "annotations/\(id)", method: .delete)
         return response.map { $0.deleted }
     }

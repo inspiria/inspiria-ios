@@ -39,21 +39,20 @@ class ChapterViewModel {
         let refresh = BehaviorSubject<Void>(value: ())
 
         let chapter = Driver.just(self.chapter)
+
         let annotations = refresh.flatMap {
             self.annotationsUseCase
                 .getAnnotations(shortName: "\(self.book.info.shortName)/\(self.chapter.shortName)", quote: nil)
-                .trackActivity(activity)
         }.asDriver(onErrorJustReturn: [])
         let openChapter = input.openChapter
-            .flatMap { [unowned self] (data) -> Driver<(Int, Book)> in
+            .flatMap { data in
                 self.booksUseCase.book(id: data.0)
                     .map { (data.1, $0) }
                     .asObservable()
                     .asDriverOnErrorJustComplete()
-        }
-        .do(onNext: self.navigator.to)
-        .mapToVoid()
-
+                    .do(onNext: self.navigator.to)
+                    .mapToVoid()
+            }
         let edit = input.annotationAction
             .filter { $0.0 == .select }
             .map { $0.1.id }
@@ -64,7 +63,8 @@ class ChapterViewModel {
                 self.navigator
                     .toEdit(annotation: ann)
                     .map { AnnotationUpdate(id: ann.id, updated: ann.updated, text: $0 ) }
-            }.flatMap { update in
+            }
+            .flatMap { update in
                 self.annotationsUseCase
                     .updateAnnotation(update: update)
                     .trackError(error)
@@ -92,7 +92,8 @@ class ChapterViewModel {
                 self.navigator
                     .toEdit(annotation: ann)
                     .map { str -> AnnotationCreate in  var annotation = ann; annotation.text = str; return annotation }
-            }.flatMap { create in
+            }
+            .flatMap { create in
                 self.annotationsUseCase
                     .createAnnotation(create: create)
                     .trackError(error)
@@ -101,7 +102,6 @@ class ChapterViewModel {
                     .mapToVoid()
                     .do(onNext: refresh.onNext)
             }
-
         return Output(chapter: chapter,
                       annotations: annotations,
                       activity: activity.asDriver(),
