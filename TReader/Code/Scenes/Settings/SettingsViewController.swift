@@ -85,8 +85,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
 
         let email = "inspiria@byu.edu"
         let subject = "Inspiria%20app%20feedback"
-        let body = "Inspiria%20app%20feedback%20body"
-        if let url = URL(string: "mailto:\(email)?subject=\(subject)&body=\(body)") {
+        if let url = URL(string: "mailto:\(email)?subject=\(subject)") {
             UIApplication.shared.open(url)
         }
     }
