@@ -17,6 +17,8 @@ enum ColorStyle: CaseIterable {
     case bkgrndWhite
     case iconsLight
     case readingUnderline
+    case darkGray
+    case lightBackground
 
     var color: UIColor {
         switch self {
@@ -28,6 +30,8 @@ enum ColorStyle: CaseIterable {
         case .bkgrndWhite: return UIColor.bkgrndWhite
         case .iconsLight: return UIColor.iconsLight
         case .readingUnderline: return UIColor.readingUnderline
+        case .darkGray: return UIColor.darkGray
+        case .lightBackground: return UIColor.lightBackground
         }
     }
 }
@@ -65,4 +69,11 @@ fileprivate extension UIColor {
         return UIColor.init(named: "ReadingUnderline")!
     }
 
+    @nonobjc class var darkGray: UIColor {
+        return UIColor.init(named: "DarkGray")!
+    }
+
+    @nonobjc class var lightBackground: UIColor {
+        return UIColor.init(named: "LightBackground")!
+    }
 }

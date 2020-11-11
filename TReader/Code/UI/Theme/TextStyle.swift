@@ -47,6 +47,37 @@ class TextStyle {
             }
         }
     }
+
+    enum Notes: String, TextStylable, CaseIterable {
+        case h1
+        case bookTitle
+        case bodyText
+        case date
+        case bookDetail
+        case replayLink
+
+        var font: UIFont {
+            switch self {
+            case .h1: return UIFont.systemFont(ofSize: 14, weight: .bold)
+            case .bookTitle: return UIFont.systemFont(ofSize: 14, weight: .medium)
+            case .bodyText: return UIFont.systemFont(ofSize: 14, weight: .regular)
+            case .date: return UIFont.systemFont(ofSize: 10, weight: .semibold)
+            case .bookDetail: return UIFont.systemFont(ofSize: 10, weight: .regular)
+            case .replayLink: return UIFont.systemFont(ofSize: 10, weight: .bold)
+            }
+        }
+
+        var lineHeight: CGFloat {
+            switch self {
+            case .h1: return 17.0
+            case .bookTitle: return 17.0
+            case .bodyText: return 17.0
+            case .date: return 12.0
+            case .bookDetail: return 12.0
+            case .replayLink: return 12.0
+            }
+        }
+    }
 }
 
 fileprivate extension UIFont {

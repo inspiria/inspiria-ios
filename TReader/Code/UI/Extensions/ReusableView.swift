@@ -20,6 +20,13 @@ extension ReusableView {
     static func resourceName() -> String {
         return NSStringFromClass(self).components(separatedBy: ".").last!
     }
+
+    static func nib() -> UINib {
+        return UINib(nibName: resourceName(), bundle: Bundle(for: self))
+    }
+}
+
+extension UITableViewCell: ReusableView {
 }
 
 extension UICollectionViewCell: ReusableView {

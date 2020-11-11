@@ -1,19 +1,80 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSerif-Regular.ttf">
+            <string>NotoSerif</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bkgrnd" translatesAutoresizingMaskIntoConstraints="NO" id="WUV-HQ-Dfm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ohi-aG-7MT">
+                                <rect key="frame" x="78.5" y="387.5" width="257.5" height="121"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Open Source" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Lx-6a-RAI">
+                                        <rect key="frame" x="0.0" y="0.0" width="257.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="NotoSerif" family="Noto Serif" pointSize="18"/>
+                                        <color key="textColor" name="LightBackground"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pn0-hj-sBg">
+                                        <rect key="frame" x="0.0" y="33" width="257.5" height="1"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifh-Do-Xyg">
+                                                <rect key="frame" x="116.5" y="0.0" width="24" height="1"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="24" id="IIx-gn-esc"/>
+                                                    <constraint firstAttribute="height" constant="1" id="bsG-9Z-92K"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="G4E-4Q-dc3"/>
+                                            <constraint firstItem="ifh-Do-Xyg" firstAttribute="centerX" secondItem="pn0-hj-sBg" secondAttribute="centerX" id="kK1-J1-6EL"/>
+                                            <constraint firstItem="ifh-Do-Xyg" firstAttribute="centerY" secondItem="pn0-hj-sBg" secondAttribute="centerY" id="wUP-y8-MY7"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEe-bR-Y57">
+                                        <rect key="frame" x="0.0" y="46" width="257.5" height="75"/>
+                                        <string key="text">Textbook
+Reader</string>
+                                        <fontDescription key="fontDescription" name="NotoSerif" family="Noto Serif" pointSize="32"/>
+                                        <color key="textColor" name="LightBackground"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="3Vh-AC-Hmk"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ohi-aG-7MT" firstAttribute="centerX" secondItem="WUV-HQ-Dfm" secondAttribute="centerX" id="BUt-Ft-yna"/>
+                            <constraint firstAttribute="trailing" secondItem="WUV-HQ-Dfm" secondAttribute="trailing" id="GJX-zq-tJq"/>
+                            <constraint firstItem="WUV-HQ-Dfm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Jb2-9c-pri"/>
+                            <constraint firstItem="WUV-HQ-Dfm" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="O4k-Ea-Uh9"/>
+                            <constraint firstItem="Ohi-aG-7MT" firstAttribute="centerY" secondItem="WUV-HQ-Dfm" secondAttribute="centerY" id="Uxt-Tb-unn"/>
+                            <constraint firstAttribute="bottom" secondItem="WUV-HQ-Dfm" secondAttribute="bottom" id="mff-pk-GNO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -22,4 +83,10 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Bkgrnd" width="312" height="568"/>
+        <namedColor name="LightBackground">
+            <color red="0.93725490196078431" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -23,41 +23,60 @@ enum NetworkError: LocalizedError {
 }
 
 class NetworkService {
-    private let url: String
+    let url: String
     private let disposeBag = DisposeBag()
+    private let authorization: Authorization?
 
-    init(url: String) {
+    init(url: String, authorization: Authorization? = nil) {
         self.url = url
+        self.authorization = authorization
     }
 
     enum HTTPMethod: String {
         case post = "POST"
         case get = "GET"
         case put = "PUT"
+        case patch = "PATCH"
         case delete = "DELETE"
+    }
+
+    enum ContentType: String {
+        case json = "application/json"
+        case urlencoded = "application/x-www-form-urlencoded"
     }
 
     func request<T>(path: String,
                     method: HTTPMethod = .get,
+                    contentType: ContentType = .json,
                     data: Encodable? = nil) -> Single<T> where T: Decodable {
-
-        var urlComponents = URLComponents(string: "\(self.url)/\(path)")!
-        var req = URLRequest(url: urlComponents.url!)
-        req.setValue("application/json", forHTTPHeaderField: "Accept")
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        req.httpMethod = method.rawValue
-
-        switch method {
-        case .post, .put, .delete:
-            req.httpBody = data?.jsonDataOrNil()
-        case .get:
-            let data = try? data?.asDictionary()
-            let queryItems = data?.compactMap { pair -> URLQueryItem? in
-                guard let value = String.fromAny(any: pair.value) else { return nil }
-                return URLQueryItem(name: pair.key, value: value)
+        if let auth = authorization {
+            return auth.accessToken()
+                .flatMap { token -> Single<T> in
+                    self.request(path: path,
+                                 method: method,
+                                 contentType: contentType,
+                                 data: data,
+                                 authorizationToken: token)
             }
-            urlComponents.queryItems = queryItems
-            req.url = urlComponents.url!
+        } else {
+            return request(path: path, method: method, contentType: contentType, data: data, authorizationToken: nil)
+        }
+    }
+
+    func request<T>(path: String,
+                    method: HTTPMethod,
+                    contentType: ContentType,
+                    data: Encodable?,
+                    authorizationToken: String?) -> Single<T> where T: Decodable {
+
+        let urlComponents = URLComponents(string: "\(self.url)/\(path)", method: method, data: data)!
+        var req = URLRequest(url: urlComponents.url!)
+        req.httpMethod = method.rawValue
+        req.httpBody = data?.httpBody(method: method, contentType: contentType)
+        req.setValue("application/json", forHTTPHeaderField: "Accept")
+        req.setValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
+        if let token = authorizationToken {
+            req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
 
         return Single.create { single in
@@ -142,8 +161,8 @@ class NetworkService {
     }
 }
 
-extension String {
-    fileprivate static func fromAny(any: Any) -> String? {
+fileprivate extension String {
+    static func fromAny(any: Any) -> String? {
         switch any {
         case let any as Int: return String(any)
         case let any as Double: return String(any)
@@ -151,6 +170,45 @@ extension String {
         case let any as Bool: return String(any)
         case let any as String: return any
         default: return nil
+        }
+    }
+}
+
+fileprivate extension Encodable {
+    func httpBody(method: NetworkService.HTTPMethod, contentType: NetworkService.ContentType) -> Data? {
+        switch method {
+        case .post, .put, .patch, .delete:
+            switch contentType {
+            case .json:
+                return self.jsonDataOrNil()
+            case .urlencoded:
+                var components = URLComponents()
+                components.queryItems = self.asQueryItems()
+                let str = components.url?.absoluteString.dropFirst()
+                return str?.data(using: .utf8)
+            }
+        default:
+            return nil
+        }
+    }
+
+    func asQueryItems() -> [URLQueryItem]? {
+        let data = try? self.asDictionary()
+        return data?.compactMap { pair -> URLQueryItem? in
+            guard let value = String.fromAny(any: pair.value) else { return nil }
+            return URLQueryItem(name: pair.key, value: value)
+        }
+    }
+}
+
+fileprivate extension URLComponents {
+    init?(string: String, method: NetworkService.HTTPMethod, data: Encodable?) {
+        self.init(string: string)
+        switch method {
+        case .get:
+            self.queryItems = data?.asQueryItems()
+        default:
+            break
         }
     }
 }

@@ -11,8 +11,16 @@ target 'TReader' do
   pod 'RxOptional'
   pod 'NSObject+Rx'
   pod 'RxGesture'
+  pod 'RxKeyboard'
+  pod 'RxCoreData', '~> 1.0.0'
+  pod 'RxAlertController'
+  pod 'RxViewController'
 
   pod 'Kingfisher', '~> 5.0'
   pod 'Zip', '~> 1.1'
-  pod 'WordPress-Aztec-iOS'
+  pod "WordPress-Aztec-iOS"
+  pod 'Marklight'
+  pod 'DTRichTextEditor'
+  pod 'XLPagerTabStrip', '~> 9.0'
+  pod 'SideMenu'
 end

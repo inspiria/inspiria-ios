@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol ChaptersNavigator {
+    func back()
+    func toBook()
+    func toSearch(book: Book)
     func to(chapterId: Int, of book: Book)
-    func previousChapterViewController(chapterId: Int, book: Book) -> UIViewController?
-    func nextChapterViewController(chapterId: Int, book: Book) -> UIViewController?
+    func toEdit(annotation: Annotationable) -> Driver<String>
+    func chapterViewController(chapter: Chapter, book: Book) -> ChapterViewController
 }
 
 class DefaultChaptersNavigator: ChaptersNavigator {
@@ -27,40 +32,55 @@ class DefaultChaptersNavigator: ChaptersNavigator {
         self.rootController = controller
     }
 
+    func back() {
+        rootController.popViewController(animated: true)
+    }
+
+    func toBook() {
+        rootController.popViewController(animated: true)
+    }
+
+    func toSearch(book: Book) {
+        let navigator = DefaultSearchBookNavigator(services: services,
+                                                   storyboard: storyboard,
+                                                   controller: rootController,
+                                                   chaptersNavigator: self)
+        navigator.toSearch(book: book)
+    }
+
     func to(chapterId: Int, of book: Book) {
         let chapter = book.chapters.filter { $0.id == chapterId }.first!
         let cViewController = chapterViewController(chapter: chapter, book: book)
-
         let viewController = ChaptersViewController(transitionStyle: .scroll,
                                                     navigationOrientation: .horizontal,
                                                     options: nil)
-        viewController.navigator = self
-        viewController.book = book
-        viewController.setViewControllers([cViewController], direction: .forward, animated: false, completion: nil)
+
+        viewController.viewModel = ChaptersViewModel(book: book,
+                                                     chapterId: chapterId,
+                                                     navigator: self,
+                                                     booksUseCase: services.booksUseCase(),
+                                                     bookmarkUseCase: services.bookmarkUseCase())
+
+        viewController.setViewControllers([cViewController],
+                                          direction: .forward,
+                                          animated: false,
+                                          completion: nil)
+
         rootController.pushViewController(viewController, animated: true)
     }
 
-    func previousChapterViewController(chapterId: Int, book: Book) -> UIViewController? {
-        guard let index = book.chapters.firstIndex(where: { $0.id == chapterId }) else { return nil }
-        guard index > 0 else { return nil }
-        let chapter = book.chapters[index-1]
-        let controller = chapterViewController(chapter: chapter, book: book)
-        return controller
-    }
-
-    func nextChapterViewController(chapterId: Int, book: Book) -> UIViewController? {
-        guard let index = book.chapters.firstIndex(where: { $0.id == chapterId }) else { return nil }
-        guard index < book.chapters.count - 1 else { return nil }
-        let chapter = book.chapters[index+1]
-        let controller = chapterViewController(chapter: chapter, book: book)
-        return controller
-    }
-
-    private func chapterViewController(chapter: Chapter, book: Book) -> ChapterViewController {
+    func chapterViewController(chapter: Chapter, book: Book) -> ChapterViewController {
         let viewController: ChapterViewController = storyboard.instantiateViewController()
         viewController.viewModel = ChapterViewModel(chapter: chapter,
+                                                    book: book,
                                                     navigator: self,
-                                                    booksUseCase: services.booksUseCase())
+                                                    booksUseCase: services.booksUseCase(),
+                                                    annotationsUseCase: services.annotationsUseCase())
         return viewController
+    }
+
+    func toEdit(annotation: Annotationable) -> Driver<String> {
+        let navigator = DefaultEditAnnotationNavigator(services: services, controller: rootController)
+        return navigator.toEditNote(annotation: annotation)
     }
 }
